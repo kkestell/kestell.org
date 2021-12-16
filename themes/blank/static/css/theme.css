@@ -1,0 +1,178 @@
+/* reset */
+
+article, aside, audio, command, datagrid, details, dialog, embed, 
+figcaption, figure, footer, header, hgroup, menu, nav, section, summary,
+video, wbr {
+	display: block;
+}
+
+bdi, figcaption, keygen, mark, meter, progress, rp, rt, ruby, time {
+	display: inline;
+}
+
+acronym, applet, big, center, dir, font, frame, frameset, noframes, s,
+strike, tt, u, xmp {
+	display: none;
+}
+
+a, abbr, area, article, aside, audio, b, bdo, blockquote, body, button, 
+canvas, caption, cite, code, col, colgroup, command, datalist, dd, del, 
+details, dialog, dfn, div, dl, dt, em, embed, fieldset, figure, form,
+h1, h2, h3, h4, h5, h6, head, header, hgroup, hr, html, i, iframe, img, 
+input, ins, keygen, kbd, label, legend, li, map, mark, menu, meter, nav,
+noscript, object, ol, optgroup, option, output, p, param, pre, progress,
+q, rp, rt, ruby, samp, section, select, small, span, strong, sub, sup, 
+table, tbody, td, textarea, tfoot, th, thead, time, tr, ul, var, video {
+	background: transparent;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	margin: 0;
+	outline: none;
+	padding: 0;
+	text-align: left;
+	text-decoration: none;
+	vertical-align: baseline;
+	z-index: 1;
+}
+
+body {
+	line-height: 1;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+blockquote, q {
+	quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+	content: '';
+	content: none;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* variables */
+
+:root {
+  --font-family: system-ui, -apple-system, "Segoe UI", "Roboto", "Ubuntu",
+  "Cantarell", "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+  "Segoe UI Symbol", "Noto Color Emoji";
+  --line-height: 1.75;
+  --font-weight: 400;
+  --spacing: 1rem;
+  --block-spacing-vertical: calc(var(--spacing) * 2);
+}
+
+/* theme */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: rgb(14, 14, 14);
+    --text-color: #fefefe;
+    --link-color: #ccc;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --background-color: #fefefe;
+    --text-color: rgb(14, 14, 14);
+    --link-color: #333;
+  }
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  font-weight: var(--font-weight);
+  line-height: var(--line-height);
+}
+
+main {
+  max-width: 45rem;
+  margin: 0 auto;
+}
+
+p, ul, ol {
+  margin-bottom: 1rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 3rem 0 1.38rem;
+  line-height: 1.3;
+  font-weight: 300;
+}
+
+h1 {
+  font-size: 2.488rem;
+}
+
+h2 {
+  font-size: 2.074rem;
+}
+
+h3 {
+  font-size: 1.728rem;
+}
+
+h4 {
+  font-size: 1.44rem;
+}
+
+h5 {
+  font-size: 1.2rem;
+}
+
+h6 {
+  font-size: 1rem;
+}
+
+ul, ol {
+  margin-left: 2rem;
+}
+
+li {
+  list-style: disc;
+}
+
+th {
+  padding-right: 1rem;
+}
+
+body > footer {
+  padding: var(--block-spacing-vertical) 0;
+  text-align: center;
+}
+
+a {
+  color: var(--link-color);
+}
+
+code {
+  font-family: monospace;
+}
+
+/* header */
+
+body > header > nav > ul {
+  display: inline-block;
+}
+
+body > header > nav > ul > li {
+  display: inline-block;
+  padding: calc(var(--block-spacing-vertical) / 2);
+  font-size: calc(var(--font-size) * 1.2);
+}

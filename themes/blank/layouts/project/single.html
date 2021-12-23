@@ -1,0 +1,25 @@
+{{ define "main" }}
+<main>
+  <article>
+    <h1 class="title">{{ .Title }}</h1>
+    {{ .Content }}
+    <!-- 
+    <time datetime="{{ .Date.Format "2006-01-02T15:04:05" }}">{{ .Date | time.Format ":date_long" }}</time>
+    {{ with .Params.tags }}
+    <div>
+        <ul id="tags">
+            {{ range . }}
+            <li><a href="{{ " /tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a></li>
+            {{ end }}
+        </ul>
+    </div>
+    {{ end }}
+    -->
+  </article>
+  <!--
+  <aside>
+    {{ .TableOfContents }}
+  </aside>
+  -->
+</main>
+{{ end }}

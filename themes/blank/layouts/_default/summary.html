@@ -1,5 +1,6 @@
-<article>
+<section>
 	<h1><a href="{{ .Permalink }}">{{ .Title }}</a></h1>
+	<time>{{ .Date.Format "Mon, Jan 2, 2006" }}</time>
 	<!--
 	{{ range .Params.tags }}
 	<a href="{{ " /tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
@@ -11,4 +12,4 @@
 		<a href="{{ .Permalink }}">Read more...</a>
 	</p>
 	{{ end }}
-</article>
+</section>

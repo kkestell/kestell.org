@@ -99,12 +99,8 @@ body {
   font-size: var(--font-size);
   font-weight: var(--font-weight);
   line-height: var(--line-height);
-}
-
-main {
-  max-width: 45rem;
+  max-width: 60rem;
   margin: 0 auto;
-  padding: 0 2rem;
 }
 
 p, ul, ol {
@@ -113,31 +109,32 @@ p, ul, ol {
 
 h1, h2, h3, h4, h5, h6 {
   margin: 3rem 0 1.38rem;
-  line-height: 1.3;
+  line-height: 1.4;
   font-weight: 300;
 }
 
 h1 {
-  font-size: 2.488rem;
-}
-
-h2 {
   font-size: 2.074rem;
 }
 
-h3 {
+h1.title {
+  font-size: 2.488rem;
+  font-weight: 400;
+}
+
+h2 {
   font-size: 1.728rem;
 }
 
-h4 {
+h3 {
   font-size: 1.44rem;
 }
 
-h5 {
+h4 {
   font-size: 1.2rem;
 }
 
-h6 {
+h5 {
   font-size: 1rem;
 }
 
@@ -153,11 +150,6 @@ th {
   padding-right: 1rem;
 }
 
-body > footer {
-  padding: var(--block-spacing-vertical) 0;
-  text-align: center;
-}
-
 a {
   color: var(--link-color);
 }
@@ -166,10 +158,18 @@ code {
   font-family: monospace;
 }
 
+img {
+  max-width: 100%;
+}
+
 /* header */
 
+body > header {
+  grid-area: header;
+}
+
 body > header > nav > ul {
-  margin-left: 1rem;
+  margin: 0 0 0 1rem;
   display: inline-block;
 }
 
@@ -177,4 +177,84 @@ body > header > nav > ul > li {
   display: inline-block;
   padding: 1rem;
   font-size: calc(var(--font-size) * 1.2);
+}
+
+body > header > nav > ul:first-child > li:first-child {
+  font-weight: bold;
+}
+
+/* main */
+
+@media (min-width: 1023px) {
+  body > main {
+    display: flex;
+  }
+}
+
+/* article */
+
+body > main > article {
+  padding: 2rem;
+}
+
+@media (min-width: 1023px) {
+  body > main > article {
+    flex-grow: 1;
+  }
+}
+
+/* aside */
+
+body > main > aside {
+  display: none;
+}
+
+@media (min-width: 1023px) {
+  body > main > aside {
+    display: block;
+    flex-shrink: 0;
+    width: 15rem;
+    padding: 2rem;
+  }
+}
+
+body > main > aside ul {
+  margin: 0;
+}
+
+body > main > aside ul ul {
+  font-size: 0.8rem;
+}
+
+body > main > aside li {
+  list-style: none;
+}
+
+/* footer */
+
+body > footer {
+  padding: 2rem;
+  text-align: center;
+}
+
+/* projects */
+
+ul.projects {
+  margin: 0;
+}
+
+ul.projects li {
+  list-style: none;
+  margin-bottom: 2rem;
+}
+
+ul.projects h2 {
+  margin: 0;
+  font-size: 1.44rem;
+  font-weight: 400;
+}
+
+ul.projects time {
+  font-size: 0.9rem;
+  color: #555;
 }

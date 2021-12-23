@@ -4,10 +4,9 @@
 			<li><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></li>
 		</ul>
 		<ul>
-			{{ with .Site.Menus.main }}
-			{{ range . }}
-			<li><a href="{{ .URL | relURL }}">{{ .Name }}</a></li>
-			{{ end }}
+			{{ $currentPage := . }}
+			{{ range .Site.Menus.main }}
+			<li {{ if $currentPage.HasMenuCurrent "main" . }} class="active" {{ end }}><a href="{{ .URL | relURL }}">{{ .Name }}</a></li>
 			{{ end }}
 		</ul>
 	</nav>

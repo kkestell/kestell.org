@@ -61,13 +61,8 @@ table {
 /* variables */
 
 :root {
-  --font-family: system-ui, -apple-system, "Segoe UI", "Roboto", "Ubuntu",
-  "Cantarell", "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-  "Segoe UI Symbol", "Noto Color Emoji";
+  --font-size: 16px;
   --line-height: 1.75;
-  --font-weight: 400;
-  --spacing: 1rem;
-  --block-spacing-vertical: calc(var(--spacing) * 2);
 }
 
 /* theme */
@@ -76,6 +71,10 @@ table {
   :root {
     --background-color: rgb(14, 14, 14);
     --text-color: #fefefe;
+    --nav-link-color: #fff;
+    --nav-active-color: #eee;
+    --code-background: #222;
+    --code-text: #fefefe;
     --link-color: #ccc;
   }
 }
@@ -84,18 +83,24 @@ table {
   :root {
     --background-color: #fefefe;
     --text-color: rgb(14, 14, 14);
+    --nav-link-color: #111;
+    --nav-active-color: #000;
+    --code-background: #eee;
+    --code-text: #111;
     --link-color: #333;
   }
 }
 
 html {
-  font-size: 16px;
+  font-size: var(--font-size);
 }
 
 body {
   background-color: var(--background-color);
   color: var(--text-color);
-  font-family: var(--font-family);
+  font-family: system-ui, -apple-system, "Segoe UI", "Roboto", "Ubuntu",
+  "Cantarell", "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+  "Segoe UI Symbol", "Noto Color Emoji";
   font-size: var(--font-size);
   font-weight: var(--font-weight);
   line-height: var(--line-height);
@@ -148,14 +153,23 @@ li {
 
 th {
   padding-right: 1rem;
+  font-weight: 600;
 }
 
 a {
   color: var(--link-color);
+  border-bottom: 1px solid var(--link-color);
 }
 
 code {
   font-family: monospace;
+}
+
+pre > code {
+  padding: 1rem;
+  background: var(--code-background);
+  color: var(--code-text);
+  display: block;
 }
 
 img {
@@ -176,11 +190,26 @@ body > header > nav > ul {
 body > header > nav > ul > li {
   display: inline-block;
   padding: 1rem;
-  font-size: calc(var(--font-size) * 1.2);
+}
+
+body > header > nav > ul > li > a {
+  display: inline-block;
+  padding-bottom: 0.2rem;
+  color: var(--nav-link-color);
+  border-bottom: none;
+}
+
+body > header > nav > ul > li.active > a {
+  color: var(--nav-active-color); 
+  border-bottom: 3px solid var(--nav-active-color);
 }
 
 body > header > nav > ul:first-child > li:first-child {
   font-weight: bold;
+}
+
+body > header > nav > ul:first-child > li:first-child > a {
+  border-bottom: none;
 }
 
 /* main */
@@ -256,5 +285,4 @@ ul.projects h2 {
 
 ul.projects time {
   font-size: 0.9rem;
-  color: #555;
 }

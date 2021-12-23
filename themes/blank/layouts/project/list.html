@@ -1,0 +1,22 @@
+{{ define "main" }}
+<main>
+  <article>
+    {{ if or .Title .Content }}
+    <section>
+      <h1 class="title">{{ .Title }}</h1>
+      {{ .Content }}
+    </section>
+    {{ end }}
+    <section>
+      <ul class="projects">
+        {{ range .Paginator.Pages }}
+          <li>
+            <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+            <time>{{ .Date.Format "2006" }}</time>
+          </li>
+        {{ end }}
+      </ul>
+      {{ partial "pagination.html" . }}
+  </article>
+</main>
+{{ end }}

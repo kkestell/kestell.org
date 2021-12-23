@@ -2,3 +2,8 @@ baseURL = 'https://kestell.pages.dev/'
 languageCode = 'en-us'
 title = 'Kyle Kestell'
 theme = 'blank'
+
+[markup]
+  [markup.tableOfContents]
+    startLevel = 1
+    endLevel = 2

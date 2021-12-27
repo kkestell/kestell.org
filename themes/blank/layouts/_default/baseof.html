@@ -15,12 +15,248 @@
 	{{ printf `
 	<link rel="%s" type="%s" href="%s" title="%s">` .Rel .MediaType.Type .RelPermalink $.Site.Title | safeHTML }}
 	{{- end }}
+  <script src="/js/three/three.min.js"></script>
+  <script src="/js/three/controls/OrbitControls.js"></script>
+  <!--
+  <script src="/js/three/loaders/STLLoader.js"></script>
+  <script src="/js/three/loaders/FBXLoader.js"></script>
+  <script src="/js/three/loaders/GLTFLoader.js"></script>
+  -->
+  <script src="/js/three/loaders/OBJLoader.js"></script>
 </head>
 
 <body>
 	{{ partial "header" . }}
 	{{ block "main" . }}{{ end }}
 	{{ partial "footer" . }}
+
+  <script>
+    class StlModel extends HTMLElement {
+      constructor() {
+        super();
+        var shadow = this.attachShadow({mode: 'open'});
+
+        var style = document.createElement('style');
+
+        style.textContent = ':host { width: 100%: }' +
+                            'canvas {' +
+                              'margin: 1rem auto; width: 100%; height: 450px' +
+                            '}';
+        shadow.appendChild(style);
+
+        const src = this.getAttribute('src');
+        const camera_x = this.getAttribute('x');
+        const camera_y = this.getAttribute('y');
+        const camera_z = this.getAttribute('z');
+
+        let time = 0;
+
+        const scene = new THREE.Scene();
+        //scene.background = new THREE.Color(0xFFFFFF);
+
+        const camera = new THREE.PerspectiveCamera(30, 2, 0.1, 1000);
+        camera.position.x = camera_x;
+        camera.position.y = camera_y;
+        camera.position.z = camera_z;
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.shadowMap.enabled = true;
+        shadow.appendChild(renderer.domElement);
+
+        const controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.rotateSpeed = 0.1;
+        controls.dampingFactor = 0.1;
+        controls.enableZoom = false;
+        controls.autoRotate = true;
+        controls.autoRotateSpeed = 2;
+        controls.target = new THREE.Vector3(0, -15, 0);
+
+        scene.add(new THREE.HemisphereLight(0xFFFFFF, 0.5));
+
+        const light = new THREE.PointLight(0xFFFFFF, 0.5);
+        light.position.set(0, 100, 100);
+        light.castShadow = true;
+        scene.add(light);
+
+        const loader = new THREE.OBJLoader();
+
+        loader.load(src, function (object) {
+          object.traverse(function (child) {
+            if (child instanceof THREE.Mesh) {
+              const geometry = child.geometry;
+              const material = new THREE.MeshPhongMaterial({
+                color: 0xBBBBBB,
+                specular: 0xFFFFFF,
+              });
+              const mesh = new THREE.Mesh(geometry, material);
+              mesh.castShadow = true;
+              mesh.receiveShadow = true;
+              scene.add(mesh);
+            }
+          });
+
+          /*
+
+          */
+          /*
+          let xzextent = 0;
+          let yextent = 0;
+
+          object.traverse(function (child) {
+            if (child instanceof THREE.Mesh) {
+              child.geometry.computeBoundingBox();
+
+              let middle = new THREE.Vector3();
+              child.geometry.boundingBox.getCenter(middle);
+
+              let size = new THREE.Vector3();
+              child.geometry.boundingBox.getSize(size);
+
+              let extent = Math.max(size.x, size.z);
+
+              if (extent > xzextent) {
+                xzextent = extent;
+              }
+
+              if (size.y > yextent) {
+                yextent = size.y;
+              }
+              */
+
+              /*
+              const material = new THREE.MeshStandardMaterial( { color: 0xFFFFFF } );
+              const mesh = new THREE.Mesh(child.geometry, material);
+              mesh.castShadow = true;
+              mesh.receiveShadow = true;
+              */
+              //child.geometry.applyMatrix(new THREE.Matrix4().makeTranslation(-middle.x, -middle.y, -middle.z));
+
+              //scene.add(mesh);
+          //  }
+          //});
+
+          //scene.add(object);
+
+
+          /*
+          const middle = new THREE.Vector3();
+          geometry.computeBoundingBox();
+          geometry.boundingBox.getCenter(middle);
+          mesh.geometry.applyMatrix(new THREE.Matrix4().makeTranslation(-middle.x, -middle.y, -middle.z));
+
+          const largestDimension = Math.max(geometry.boundingBox.max.x, geometry.boundingBox.max.y, geometry.boundingBox.max.z);
+          camera.position.z = largestDimension * 1.2;
+          camera.position.y = largestDimension * 0.6;
+
+          camera.lookAt(0, 0, 0);
+
+          light1.position.set(largestDimension, largestDimension, largestDimension);
+          */
+
+          function resizeCanvasToDisplaySize() {
+            const canvas = renderer.domElement;
+            const width = canvas.clientWidth;
+            const height = canvas.clientHeight;
+
+            if (canvas.width !== width || canvas.height !== height) {
+              renderer.setSize(width, height, false);
+              camera.aspect = width / height;
+              camera.updateProjectionMatrix();
+            }
+          }
+
+          function animate(time) {
+            time *= 0.001;
+            //object.rotation.y = time * 0.1;
+            //controls.update();
+            resizeCanvasToDisplaySize();
+            controls.update();
+            renderer.render(scene, camera);
+            requestAnimationFrame(animate);
+          };
+
+          requestAnimationFrame(animate);
+        });
+
+
+
+        // Create spans
+        /*
+        var wrapper = document.createElement('span');
+        wrapper.setAttribute('class','wrapper');
+        var icon = document.createElement('span');
+        icon.setAttribute('class','icon');
+        icon.setAttribute('tabindex', 0);
+        var info = document.createElement('span');
+        info.setAttribute('class','info');
+
+        // Take attribute content and put it inside the info span
+        var text = this.getAttribute('text');
+        info.textContent = text;
+
+        // Insert icon
+        var imgUrl;
+        if(this.hasAttribute('img')) {
+          imgUrl = this.getAttribute('img');
+        } else {
+          imgUrl = 'img/default.png';
+        }
+        var img = document.createElement('img');
+        img.src = imgUrl;
+        icon.appendChild(img);
+
+        // Create some CSS to apply to the shadow dom
+        var style = document.createElement('style');
+
+        style.textContent = '.wrapper {' +
+                              'position: relative;' +
+                            '}' +
+
+                            '.info {' +
+                                'font-size: 0.8rem;' +
+                                'width: 200px;' +
+                                'display: inline-block;' +
+                                'border: 1px solid black;' +
+                                'padding: 10px;' +
+                                'background: white;' +
+                                'border-radius: 10px;' +
+                                'opacity: 0;' +
+                                'transition: 0.6s all;' +
+                                'position: absolute;' +
+                                'bottom: 20px;' +
+                                'left: 10px;' +
+                                'z-index: 3;' +
+                              '}' +
+
+                              'img {' +
+                                'width: 1.2rem' +
+                              '}' +
+
+                              '.icon:hover + .info, .icon:focus + .info {' +
+                                'opacity: 1;' +
+                              '}';
+
+        // attach the created elements to the shadow dom
+
+        shadow.appendChild(style);
+        shadow.appendChild(wrapper);
+        wrapper.appendChild(icon);
+        wrapper.appendChild(info);
+        */
+      }
+    }
+
+		customElements.define('stl-model', StlModel);
+
+    /*
+    let stlModel = document.querySelector('stl-model');
+
+    let canvas = stlModel.querySelector('canvas');
+
+
+    */
+	</script>
 </body>
 
 </html>

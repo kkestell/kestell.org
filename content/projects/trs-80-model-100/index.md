@@ -9,10 +9,6 @@ type: "project"
 
 Fallere at acuta in iungi *insonuit respondere ut* per paulatimque enixa, ecce nam et. Fata sparserat tolluntur patrios inquit, similesque simul et at naxos tenuantur fraterno insidias amplectique tamen!
 
-{{< model src="lcd-bracket.obj" eye="0,70,200" target="0,-50,0" >}}
-
-Lorem ipsum dolor sit amet.
-
 ![TRS-80 Model 100](trs-80.jpg)
 
 Lorem markdownum iungere semina, ne, vix in, ostendens. Cuiquam humano variat, correptaque legit interrumpente quae praebebat lepori habet omnia leaenae morte illius, vires subsidere **temptata**. Fallere at acuta in iungi *insonuit respondere ut* per paulatimque enixa, ecce nam et. Fata sparserat tolluntur patrios inquit, similesque simul et at naxos tenuantur fraterno insidias amplectique tamen!
@@ -25,11 +21,19 @@ Lorem markdownum iungere semina, ne, vix in, ostendens. Cuiquam humano variat, c
 
 # Screen
 
-# Foo
+## LCD
 
 Lorem markdownum iungere semina, ne, vix in, ostendens. Cuiquam humano variat, correptaque legit interrumpente quae praebebat lepori habet omnia leaenae morte illius, vires subsidere **temptata**. Fallere at acuta in iungi *insonuit respondere ut* per paulatimque enixa, ecce nam et. Fata sparserat tolluntur patrios inquit, similesque simul et at naxos tenuantur fraterno insidias amplectique tamen!
 
 Lorem markdownum iungere semina, ne, vix in, ostendens. Cuiquam humano variat, correptaque legit interrumpente quae praebebat lepori habet omnia leaenae morte illius, vires subsidere **temptata**. Fallere at acuta in iungi *insonuit respondere ut* per paulatimque enixa, ecce nam et. Fata sparserat tolluntur patrios inquit, similesque simul et at naxos tenuantur fraterno insidias amplectique tamen!
+
+## Bracket
+
+Lorem markdownum iungere semina, ne, vix in, ostendens. Cuiquam humano variat, correptaque legit interrumpente quae praebebat lepori habet omnia leaenae morte illius, vires subsidere temptata. Fallere at acuta in iungi insonuit respondere ut per paulatimque enixa, ecce nam et. Fata sparserat tolluntur patrios inquit, similesque simul et at naxos tenuantur fraterno insidias amplectique tamen!
+
+{{< model src="lcd-bracket.obj" eye="0,150,200" target="0,-50,0" >}}
+
+Lorem markdownum iungere semina, ne, vix in, ostendens. Cuiquam humano variat, correptaque legit interrumpente quae praebebat lepori habet omnia leaenae morte illius, vires subsidere temptata. Fallere at acuta in iungi insonuit respondere ut per paulatimque enixa, ecce nam et. Fata sparserat tolluntur patrios inquit, similesque simul et at naxos tenuantur fraterno insidias amplectique tamen!
 
 #### H4
 
@@ -37,9 +41,12 @@ Lorem markdownum iungere semina, ne, vix in, ostendens. Cuiquam humano variat, c
 
 # Keyboard
 
-##### H5
+## Matrix
 
 Fallere at acuta in iungi *insonuit respondere ut* per paulatimque enixa, ecce nam et. Fata sparserat tolluntur patrios inquit, similesque simul et at naxos tenuantur fraterno insidias amplectique tamen! Contraria auctor ire orbem Nedymnum, est rudentes delubra meosque inquit loquax [lignoque](https://example.com) dixit nostras; non fuga mihi. Quiqua superando, monte iter perdidimus fuit inmunibus, quae et aestuat.
+
+![TRS-80 Model 100 Keyboard Matrix](keyboard-matrix.jpg)
+
 
 ###### H6
 

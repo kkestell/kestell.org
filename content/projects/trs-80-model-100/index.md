@@ -9,7 +9,7 @@ type: "project"
 
 Fallere at acuta in iungi *insonuit respondere ut* per paulatimque enixa, ecce nam et. Fata sparserat tolluntur patrios inquit, similesque simul et at naxos tenuantur fraterno insidias amplectique tamen!
 
-{{< stl src="lcd-bracket.obj" x="0" y="100" z="320" >}}
+{{< model src="lcd-bracket.obj" eye="0,70,200" target="0,-50,0" >}}
 
 Lorem ipsum dolor sit amet.
 

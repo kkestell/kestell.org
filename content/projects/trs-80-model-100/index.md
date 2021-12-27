@@ -9,6 +9,10 @@ type: "project"
 
 Fallere at acuta in iungi *insonuit respondere ut* per paulatimque enixa, ecce nam et. Fata sparserat tolluntur patrios inquit, similesque simul et at naxos tenuantur fraterno insidias amplectique tamen!
 
+{{< stl src="lcd-bracket.obj" x="0" y="100" z="320" >}}
+
+Lorem ipsum dolor sit amet.
+
 ![TRS-80 Model 100](trs-80.jpg)
 
 Lorem markdownum iungere semina, ne, vix in, ostendens. Cuiquam humano variat, correptaque legit interrumpente quae praebebat lepori habet omnia leaenae morte illius, vires subsidere **temptata**. Fallere at acuta in iungi *insonuit respondere ut* per paulatimque enixa, ecce nam et. Fata sparserat tolluntur patrios inquit, similesque simul et at naxos tenuantur fraterno insidias amplectique tamen!

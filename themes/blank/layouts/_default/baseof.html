@@ -16,11 +16,10 @@
 	<link rel="%s" type="%s" href="%s" title="%s">` .Rel .MediaType.Type .RelPermalink $.Site.Title | safeHTML }}
 	{{- end }}
   <script src="/js/three/three.min.js"></script>
-  <script src="/js/three/controls/OrbitControls.js"></script>
   <!--
-  <script src="/js/three/loaders/STLLoader.js"></script>
   <script src="/js/three/loaders/FBXLoader.js"></script>
   <script src="/js/three/loaders/GLTFLoader.js"></script>
+  <script src="/js/three/loaders/STLLoader.js"></script>
   -->
   <script src="/js/three/loaders/OBJLoader.js"></script>
 </head>
@@ -57,10 +56,8 @@
 
         // camera
 
-        const camera = new THREE.PerspectiveCamera(70, 2, 0.1, 1000);
-        camera.position.x = parseFloat(eye[0]);
-        camera.position.y = parseFloat(eye[1]);
-        camera.position.z = parseFloat(eye[2]);
+        const camera = new THREE.PerspectiveCamera(60, 2, 0.1, 1000);
+        camera.position.set(parseFloat(eye[0]), parseFloat(eye[1]), parseFloat(eye[2]));
         camera.lookAt(parseFloat(target[0]), parseFloat(target[1]), parseFloat(target[2]));
 
         // renderer

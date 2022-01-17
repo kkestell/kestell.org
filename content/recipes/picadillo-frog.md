@@ -7,7 +7,7 @@ draft: false
 ## Ingredients
 
 | Amount | Ingredient |
-| ------ | -----------|
+| ------ | ---------- |
 | 1 cup  | Picadillo  |
 | 1 ea   | Frog       |
 

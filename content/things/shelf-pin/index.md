@@ -5,8 +5,6 @@ draft: false
 type: "thing"
 model: 
     file: "shelf-pin.obj"
-    eye: "0,15,30"
-    target: "0,0,0"
 downloads:
     - "shelf-pin.stl"
 ---

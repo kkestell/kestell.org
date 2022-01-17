@@ -57,24 +57,38 @@
         // camera
 
         const camera = new THREE.PerspectiveCamera(60, 2, 0.1, 1000);
-        camera.position.set(parseFloat(eye[0]), parseFloat(eye[1]), parseFloat(eye[2]));
-        camera.lookAt(parseFloat(target[0]), parseFloat(target[1]), parseFloat(target[2]));
+        //camera.position.set(parseFloat(eye[0]), parseFloat(eye[1]), parseFloat(eye[2]));
+        //camera.lookAt(0, 0, 0);
 
         // renderer
 
         const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        // renderer.shadowMap.enabled = true;
+        // renderer.shadowMap.type = THREE.PCFShadowMap;
         renderer.domElement.height = renderer.domElement.width / 1.7;
         shadow.appendChild(renderer.domElement);
 
         // light
 
-        const light = new THREE.DirectionalLight();
-        light.position.set(0.5, 1, 0.1);
+        const light = new THREE.DirectionalLight(0xffffff, 1, 10000);
+        light.position.set(0.5, 1, 0);
+        // light.castShadow = true;
+        // light.shadow.mapSize.width = 512; // default
+        // light.shadow.mapSize.height = 512; // default
+        // light.shadow.camera.near = 0.5; // default
+        // light.shadow.camera.far = 500; // default
         scene.add(light);
 
-        const light2 = new THREE.DirectionalLight();
-        light2.position.set(-0.5, 1, 0.1);
-        scene.add(light2);
+        scene.add(new THREE.AmbientLight(0xffffff, 0.1));
+
+        // const light = new THREE.PointLight(0xffffff, 1);
+        // light.position.set(0, 100, 0);
+        // light.castShadow = true; // default false
+        // light.shadow.mapSize.width = 1024; // default
+        // light.shadow.mapSize.height = 1024; // default
+        // light.shadow.camera.near = 0.01; // default
+        // light.shadow.camera.far = 5000; // default
+        // scene.add(light);
 
         // load model
 
@@ -83,14 +97,39 @@
         let obj = new THREE.Object3D();
         scene.add(obj);
 
+        // ground
+        // const groundGeometry =  new THREE.BoxGeometry(1, 0.1, 1);
+        // const groundMaterial = new THREE.MeshStandardMaterial( { color: 0xff0000 } )
+        // const ground = new THREE.Mesh(groundGeometry, groundMaterial);
+        // // ground.receiveShadow = true;
+        // scene.add(ground);
+
+        //const helper = new THREE.CameraHelper( light.shadow.camera );
+        //scene.add( helper );
+
         let time = 0;
 
         loader.load(src, function (object) {
+          let min = new THREE.Vector3(Number.MAX_SAFE_INTEGER, Number.MAX_SAFE_INTEGER, Number.MAX_SAFE_INTEGER);
+          let max = new THREE.Vector3(Number.MIN_SAFE_INTEGER, Number.MIN_SAFE_INTEGER, Number.MIN_SAFE_INTEGER);
+
           object.traverse(function (child) {
             if (child instanceof THREE.Mesh) {
               const geometry = child.geometry;
-              const material = new THREE.MeshStandardMaterial();
+              geometry.computeBoundingBox();
+
+              if (geometry.boundingBox.min.x < min.x) min.x = geometry.boundingBox.min.x;
+              if (geometry.boundingBox.min.y < min.y) min.y = geometry.boundingBox.min.y;
+              if (geometry.boundingBox.min.z < min.z) min.z = geometry.boundingBox.min.z;
+
+              if (geometry.boundingBox.max.x > max.x) max.x = geometry.boundingBox.max.x;
+              if (geometry.boundingBox.max.y > max.y) max.y = geometry.boundingBox.max.y;
+              if (geometry.boundingBox.max.z > max.z) max.z = geometry.boundingBox.max.z;
+
+              const material = new THREE.MeshStandardMaterial({ color: 0xdddddd });
               const mesh = new THREE.Mesh(geometry, material);
+              // mesh.castShadow = true;
+              //mesh.receiveShadow = true;
               obj.add(mesh);
             }
           });
@@ -108,6 +147,24 @@
           }
 
           function animate(time) {
+            // const groundScale = Math.max(
+            //   Math.max(Math.abs(min.x), max.x),
+            //   Math.max(Math.abs(min.z), max.z)
+            // ) * 5;
+
+            const cameraDistance = Math.max(
+              Math.max(
+                Math.max(Math.abs(min.x), max.x),
+                Math.max(Math.abs(min.y), max.y)
+              ),
+              Math.max(Math.abs(min.z), max.z) * 2) * 1.25;
+
+            console.log(cameraDistance);
+
+            // ground.position.set(0, min.y - 0.1, 0);
+            // ground.scale.set(groundScale, 1, groundScale);
+            camera.position.set(0, cameraDistance / 2, cameraDistance);
+            camera.lookAt(0, 0, 0);
             time *= 0.001;
             obj.rotation.y = time * 0.3;
             resizeCanvasToDisplaySize();

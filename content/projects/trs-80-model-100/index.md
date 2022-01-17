@@ -25,7 +25,7 @@ The display has a 1920×480 IPS panel. I think I read somewhere that these were 
 
 The LCD is mounted to a custom 3D printed bracket that's attached to the enclosure using the original screw bosses. The LCD fits snugly between bracket and the front plastic, with three pieces of double sided tape between the display and the bracket for good measure.
 
-{{< model src="lcd-bracket.obj" eye="0,150,200" target="0,-50,0" >}}
+{{< model src="lcd-bracket.obj" >}}
 
 Lorem markdownum iungere semina, ne, vix in, ostendens. Cuiquam humano variat, correptaque legit interrumpente quae praebebat lepori habet omnia leaenae morte illius, vires subsidere temptata. Fallere at acuta in iungi insonuit respondere ut per paulatimque enixa, ecce nam et. Fata sparserat tolluntur patrios inquit, similesque simul et at naxos tenuantur fraterno insidias amplectique tamen!
 

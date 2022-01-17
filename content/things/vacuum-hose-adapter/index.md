@@ -5,8 +5,6 @@ draft: false
 type: "thing"
 model: 
     file: "vacuum-hose-adapter.obj"
-    eye: "0,100,130"
-    target: "0,30,0"
 downloads:
     - "vacuum-hose-adapter.scad"
 ---

@@ -5,7 +5,7 @@ draft: false
 type: "project"
 ---
 
-# Lorem Markdown
+# Overview
 
 Fallere at acuta in iungi *insonuit respondere ut* per paulatimque enixa, ecce nam et. Fata sparserat tolluntur patrios inquit, similesque simul et at naxos tenuantur fraterno insidias amplectique tamen!
 
@@ -15,29 +15,32 @@ Lorem markdownum iungere semina, ne, vix in, ostendens. Cuiquam humano variat, c
 
 Correptaque legit interrumpente quae praebebat lepori habet omnia leaenae.
 
-# Habet Omnia
-
-Lorem markdownum iungere semina, ne, vix in, ostendens. Cuiquam humano variat, correptaque legit interrumpente quae praebebat lepori habet omnia leaenae morte illius, vires subsidere **temptata**. Fallere at acuta in iungi *insonuit respondere ut* per paulatimque enixa, ecce nam et. Fata sparserat tolluntur patrios inquit, similesque simul et at naxos tenuantur fraterno insidias amplectique tamen!
-
 # Screen
 
 ## LCD
 
-Lorem markdownum iungere semina, ne, vix in, ostendens. Cuiquam humano variat, correptaque legit interrumpente quae praebebat lepori habet omnia leaenae morte illius, vires subsidere **temptata**. Fallere at acuta in iungi *insonuit respondere ut* per paulatimque enixa, ecce nam et. Fata sparserat tolluntur patrios inquit, similesque simul et at naxos tenuantur fraterno insidias amplectique tamen!
-
-Lorem markdownum iungere semina, ne, vix in, ostendens. Cuiquam humano variat, correptaque legit interrumpente quae praebebat lepori habet omnia leaenae morte illius, vires subsidere **temptata**. Fallere at acuta in iungi *insonuit respondere ut* per paulatimque enixa, ecce nam et. Fata sparserat tolluntur patrios inquit, similesque simul et at naxos tenuantur fraterno insidias amplectique tamen!
+The display has a 1920×480 IPS panel. I think I read somewhere that these were designed as rear-view mirrors. At 218mm, it's actually a little wider than the original LCD.
 
 ## Bracket
 
-Lorem markdownum iungere semina, ne, vix in, ostendens. Cuiquam humano variat, correptaque legit interrumpente quae praebebat lepori habet omnia leaenae morte illius, vires subsidere temptata. Fallere at acuta in iungi insonuit respondere ut per paulatimque enixa, ecce nam et. Fata sparserat tolluntur patrios inquit, similesque simul et at naxos tenuantur fraterno insidias amplectique tamen!
+The LCD is mounted to a custom 3D printed bracket that's attached to the enclosure using the original screw bosses. The LCD fits snugly between bracket and the front plastic, with three pieces of double sided tape between the display and the bracket for good measure.
 
 {{< model src="lcd-bracket.obj" eye="0,150,200" target="0,-50,0" >}}
 
 Lorem markdownum iungere semina, ne, vix in, ostendens. Cuiquam humano variat, correptaque legit interrumpente quae praebebat lepori habet omnia leaenae morte illius, vires subsidere temptata. Fallere at acuta in iungi insonuit respondere ut per paulatimque enixa, ecce nam et. Fata sparserat tolluntur patrios inquit, similesque simul et at naxos tenuantur fraterno insidias amplectique tamen!
 
-#### H4
+## Configuration
 
-Lorem markdownum iungere semina, ne, vix in, ostendens. Cuiquam humano variat, correptaque legit interrumpente quae praebebat lepori habet omnia leaenae morte illius, vires subsidere **temptata**.
+```
+hdmi_force_hotplug=1
+hdmi_group=2
+hdmi_mode=87
+hdmi_force_mode=1
+hdmi_timings=480 0 30 30 30 1920 0 6 6 6 0 0 0 60 0 66000000 7
+max_framebuffer_width=480
+max_framebuffer_height=1920
+display_hdmi_rotate=1
+```
 
 # Keyboard
 
@@ -46,26 +49,6 @@ Lorem markdownum iungere semina, ne, vix in, ostendens. Cuiquam humano variat, c
 Fallere at acuta in iungi *insonuit respondere ut* per paulatimque enixa, ecce nam et. Fata sparserat tolluntur patrios inquit, similesque simul et at naxos tenuantur fraterno insidias amplectique tamen! Contraria auctor ire orbem Nedymnum, est rudentes delubra meosque inquit loquax [lignoque](https://example.com) dixit nostras; non fuga mihi. Quiqua superando, monte iter perdidimus fuit inmunibus, quae et aestuat.
 
 ![TRS-80 Model 100 Keyboard Matrix](keyboard-matrix.jpg)
-
-
-###### H6
-
-Alimenta caelo est cecinisse vultus! Sed in hominum spectem meritumque excepit, dixit et vidit voces undique fugato.
-
-1. Tempora poenamque stabam exclamat blanda
-2. Specie agros enim marisque
-3. Numina indignos et Inachus ut quoque venasque
-
-Est rudentes delubra meosque inquit loquax
-[lignoque](http://spatiosi.net/mortua-nondum) dixit.
-
-## Certare sine tumet
-
-Et nec illam sint animum ludos nec nec soror propior pariterque vero. Nec petit
-adhuc et est est telo auditos. Sub est terra facit iter super. Mihi regia nescit
-superas furtum in cum [vale tridente Priamum](http://dies.net/). Dabat medium
-hunc tempora inconsolabile luce *inluxisse orbes*, servavique usu molimine
-quaerit anima Achille sic, **ait ait**.
 
 Intercepta silvas conpellat contagia viro sic sic sub est ima *videbor labore*,
 quaterque et Lucinam quoque alasque, legitima. Murraeque et dictis invasit

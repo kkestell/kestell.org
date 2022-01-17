@@ -104,7 +104,7 @@ body {
   font-size: var(--font-size);
   font-weight: var(--font-weight);
   line-height: var(--line-height);
-  max-width: 60rem;
+  max-width: 50rem;
   margin: 0 auto;
 }
 
@@ -114,7 +114,7 @@ p, ul, ol {
 
 h1, h2, h3, h4, h5, h6 {
   margin: 3rem 0 1.38rem;
-  line-height: 1.4;
+  line-height: 1.2;
   font-weight: 300;
 }
 
@@ -151,8 +151,11 @@ li {
   list-style: disc;
 }
 
+th, td {
+  padding-right: 2rem;
+}
+
 th {
-  padding-right: 1rem;
   font-weight: 600;
 }
 
@@ -170,10 +173,21 @@ pre > code {
   background: var(--code-background);
   color: var(--code-text);
   display: block;
+  overflow: auto;
+}
+
+blockquote {
+  margin-left: 2rem;
 }
 
 img {
   max-width: 100%;
+}
+
+@media (min-width: 1023px) {
+  img {
+    margin: 1.5rem 0;
+  }
 }
 
 /* header */

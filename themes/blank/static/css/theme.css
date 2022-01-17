@@ -168,11 +168,9 @@ code {
   font-family: monospace;
 }
 
-pre > code {
+div.highlight > pre {
   padding: 1rem;
-  background: var(--code-background);
-  color: var(--code-text);
-  display: block;
+  max-width: 50rem;
   overflow: auto;
 }
 

@@ -1,0 +1,55 @@
+{{ define "main" }}
+<main>
+  <article>
+    <h1 class="title">{{ .Title }}</h1>
+    {{ .Content }}
+    <h1>Preview</h1>
+    <x-model src="{{ .Params.model.file }}" eye="{{ .Params.model.eye }}" target="{{ .Params.model.target }}"></x-model>
+    <h1>Downloads</h1>
+    <table>
+        <thead>
+            <th>Format</th>
+            <th>Size</th>
+            <th>Modified</th>
+        </thead>
+        <tbody>
+            {{ range .Params.downloads }}
+            <tr>
+                {{ $path := path.Join $.Page.File.Dir .}}
+                {{ $file := os.Stat $path }}
+                {{ $ext := substr (path.Ext .) 1 | upper }}
+                {{ $size := printf "%.2f" (div $file.Size 1000.0) }}
+                {{ $mod := $file.ModTime.Format "January 2, 2006" }}
+                <td>
+                    <a href="{{ . }}">{{ $ext }}</a>
+                </td>
+                <td>
+                    {{ $size }} KB
+                </td>
+                <td>
+                    {{ $mod }}
+                </td>
+            </tr>
+            {{ end }}
+        </tbody>
+    </table>
+    <!-- 
+    <time datetime="{{ .Date.Format "2006-01-02T15:04:05" }}">{{ .Date | time.Format ":date_long" }}</time>
+    {{ with .Params.tags }}
+    <div>
+        <ul id="tags">
+            {{ range . }}
+            <li><a href="{{ " /tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a></li>
+            {{ end }}
+        </ul>
+    </div>
+    {{ end }}
+    -->
+  </article>
+  <!--
+  <aside>
+    {{ .TableOfContents }}
+  </aside>
+  -->
+</main>
+{{ end }}

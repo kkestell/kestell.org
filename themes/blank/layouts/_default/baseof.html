@@ -72,6 +72,10 @@
         light.position.set(0.5, 1, 0.1);
         scene.add(light);
 
+        const light2 = new THREE.DirectionalLight();
+        light2.position.set(-0.5, 1, 0.1);
+        scene.add(light2);
+
         // load model
 
         const loader = new THREE.OBJLoader();

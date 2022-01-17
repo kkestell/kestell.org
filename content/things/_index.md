@@ -1,6 +1,6 @@
 ---
-title: "Recipes"
+title: "Things"
 draft: false
 menu: main
-type: "recipe"
+type: "thing"
 ---

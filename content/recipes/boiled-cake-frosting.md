@@ -6,10 +6,12 @@ draft: false
 
 ## Ingredients
 
-- 4 tbsp All-Purpose Flour
-- 1 cup Whole Milk
-- 16 tbsp Unsalted Butter
-- 200 g Granulated Sugar
+| Amount  | Ingredient        |
+| ------- | ----------------- |
+| 4 tbsp  | All-Purpose Flour |
+| 1 cup   | Whole Milk        |
+| 16 tbsp | Unsalted Butter   |
+| 200 g   | Granulated Sugar  |
 
 ## Instructions
 

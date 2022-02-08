@@ -6,12 +6,12 @@ draft: false
 
 ## Ingredients
 
-- 500 g Bread Flour
-- 330 g Water
-- 20 g Extra Virgin Olive Oil
-- 5 g Kosher Salt
-- 5 g Sugar
-- 3 g Active Dry Yeast
+| Amount | Ingredient       |
+| ------ | ---------------- |
+| 500 g  | Bread Flour      |
+| 350 g  | Water            |
+| 3 g    | Kosher Salt      |
+| 2 tsp  | Active Dry Yeast |
 
 ## Notes
 

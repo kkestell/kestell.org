@@ -10,12 +10,14 @@ Erica the Mortadella Queen's famous cranberry sauce.
 
 ## Ingredients
 
-- 1 lb Fresh Cranberries
-- ¼ cup Bourbon
-- ½ cup Maple Syrup
-- ¾ cup Granulated Sugar
-- 1 ea Orange (Zest and Juice)
-- 2 ea Cinnamon Sticks
+| Amount | Ingredient              |
+| ------ | ----------------------- |
+| 1 lb   | Fresh Cranberries       |
+| ¼ cup  | Bourbon                 |
+| ½ cup  | Maple Syrup             |
+| ¾ cup  | Granulated Sugar        |
+| 1 ea   | Orange (Zest and Juice) |
+| 2 ea   | Cinnamon Sticks         |
 
 ## Instructions
 

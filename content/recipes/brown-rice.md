@@ -6,12 +6,14 @@ draft: false
 
 ## Ingredients
 
-- 1 ½ cup Brown Rice
-- 2 ½ cup Water
-- 1 tbsp Unsalted Butter
-- 1 tsp Kosher Salt
-- 1 ea Bay Leaf
-- Black Pepper
+| Amount  | Ingredient      |
+| ------- | --------------- |
+| 1 ½ cup | Brown Rice      |
+| 2 ½ cup | Water           |
+| 1 tbsp  | Unsalted Butter |
+| 1 tsp   | Kosher Salt     |
+| 1 ea    | Bay Leaf        |
+|         | Black Pepper    |
 
 ## Instructions
 

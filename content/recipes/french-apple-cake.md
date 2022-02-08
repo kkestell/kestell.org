@@ -6,15 +6,17 @@ draft: false
 
 ## Ingredients
 
-- 1 cup All-Purpose Flour
-- 1 tsp Baking Powder
-- ¼ tsp Salt
-- 1 stick Unsalted Butter, softened
-- ⅔ cup Granulated Sugar
-- 2 Eggs
-- 1 tsp Vanilla Extract
-- 3 tbsp Dark Rum
-- 4 cups Baking Apples, peeled, cored and cut into half-inch cubes (about 2 apples)
+| Amount  | Ingredient                                                                 |
+| ------- | -------------------------------------------------------------------------- |
+| 1 cup   | All-Purpose Flour                                                          |
+| 1 tsp   | Baking Powder                                                              |
+| ¼ tsp   | Salt                                                                       |
+| 1 stick | Unsalted Butter, softened                                                  |
+| ⅔ cup   | Granulated Sugar                                                           |
+| 2 ea    | Eggs                                                                       |
+| 1 tsp   | Vanilla Extract                                                            |
+| 3 tbsp  | Dark Rum                                                                   |
+| 4 cups  | Baking Apples, peeled, cored and cut into half-inch cubes (about 2 apples) |
 
 ## Instructions
 

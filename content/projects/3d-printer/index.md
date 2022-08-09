@@ -1,5 +1,6 @@
 ---
 title: "3D Printer"
+description: "Lorem ipsum dolor sit amet"
 date: 2019-03-27T17:58:38-06:00
 draft: false
 type: "project"

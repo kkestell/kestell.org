@@ -1,5 +1,6 @@
 ---
 title: "Vortex of the Mind"
+description: "Lorem ipsum dolor sit amet"
 date: 1993-11-27T17:58:38-06:00
 draft: false
 type: "project"

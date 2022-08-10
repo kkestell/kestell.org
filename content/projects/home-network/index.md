@@ -18,7 +18,9 @@ Lorem ipsum dolor sit amet.
 
 TP-Link Archer C5
 
-{{< redact >}}Top Secret!!!{{< /redact >}}
+### SSH
+
+`ssh root:password@10.0.0.1`
 
 ## Switch
 
@@ -27,6 +29,10 @@ Lorem ipsum dolor sit amet.
 ## Wireless AP
 
 TP-Link EAP610 V2
+
+## NAS
+
+Lorem ipsum dolor sit amet.
 
 # Network
 

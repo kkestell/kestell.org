@@ -1,7 +1,7 @@
 ---
 title: "Home Network"
 description: "Lorem ipsum dolor sit amet"
-date: 2022-05-21T17:58:38-06:00
+date: 2022-05-21
 draft: false
 type: "project"
 ---
@@ -35,6 +35,14 @@ TP-Link EAP610 V2
 Lorem ipsum dolor sit amet.
 
 # Network
+
+## Static IPs
+
+| IP Address | Hostname          | Description     |
+| ---------- | ----------------- | --------------- |
+| 10.0.0.1   | openwrt.lan       | Router          |
+| 10.0.0.125 | homeassistant.lan | Home automation |
+| 10.0.0.102 | nas.lan           | NAS             |
 
 ## Trusted VNET
 
@@ -457,4 +465,14 @@ config rule
 config forwarding
 	option src 'iot'
 	option dest 'lan'
+```
+
+# Misc.
+
+## WiFi QR Codes
+
+Install the `qrencode` package.
+
+```
+qrencode "WIFI:T:WPA;S:ssid;P:password;;" -o qr.png
 ```

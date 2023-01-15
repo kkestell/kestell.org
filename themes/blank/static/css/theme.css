@@ -58,6 +58,10 @@ table {
 	border-spacing: 0;
 }
 
+table code {
+  white-space: nowrap;
+}
+
 /* variables */
 
 :root {

@@ -58,7 +58,7 @@ table {
 	border-spacing: 0;
 }
 
-table code {
+td:nth-child(1) {
   white-space: nowrap;
 }
 

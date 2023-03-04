@@ -34,15 +34,25 @@ TP-Link EAP610 V2
 
 Lorem ipsum dolor sit amet.
 
+## Printer
+
+Brother HL-L2340D.
+
+Hostname: `BRW1008B16E541A.lan`
+
+```console
+$ yay brlaser
+```
+
 # Network
 
 ## Static IPs
 
-| IP Address | Hostname          | Description     |
-| ---------- | ----------------- | --------------- |
-| 10.0.0.1   | openwrt.lan       | Router          |
-| 10.0.0.125 | homeassistant.lan | Home automation |
-| 10.0.0.102 | nas.lan           | NAS             |
+| IP Address | Hostname            | Description     |
+| ---------- | ------------------- | --------------- |
+| 10.0.0.1   | openwrt.lan         | Router          |
+| 10.0.0.102 | nas.lan             | NAS             |
+| 10.0.0.125 | homeassistant.lan   | Home automation |
 
 ## Trusted VNET
 

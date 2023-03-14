@@ -2,7 +2,7 @@
 title: "Ink"
 description: "Lorem ipsum dolor sit amet"
 date: 2021-08-13
-draft: false
+draft: true
 type: "project"
 ---
 

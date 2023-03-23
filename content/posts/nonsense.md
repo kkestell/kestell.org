@@ -24,9 +24,15 @@ $ xdg-mime default org.gnome.Nautilus.desktop inode/directory
 
 where `org.gnome.Nautilus.desktop` is the desktop entry for your file manager.
 
-If you want the change to be system-wide, run the command above as root or create/edit the following file:
+Or maybe Ultimaker Cura decided it was your new image viewer:
 
-`/usr/share/applications/mimeapps.list`:
+```
+$ xdg-mime default org.gnome.eog.desktop image/jpeg image/png
+```
+
+The `xdg-mime default` command will modify `~/.config/mimetypes.list`.
+
+If you want the change to be system-wide, run the command above as root. This will modify`/usr/share/applications/mimeapps.list`.
 
 ```
 [Default Applications]

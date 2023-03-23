@@ -1,6 +1,6 @@
 ---
 title: "Home Network"
-description: "Your friends on trex all usin' PGP? I'll fuckin' read it in hex; that ain't shit to me. "
+description: "“Your friends on trex all usin' PGP? I'll fuckin' read it in hex; that ain't shit to me.”"
 date: 2022-05-21
 draft: false
 type: "project"
@@ -14,11 +14,10 @@ TODO
 
 ### Router
 
-TP-Link Archer C5
-
-```console
-$ ssh root:password@10.0.0.1
-```
+|          |                       |
+| -------- | --------------------- |
+| Hostname | `openwrt.lan`         |
+| Model    | TP-Link Archer C5     |
 
 ### Switch
 
@@ -26,18 +25,25 @@ TODO
 
 ### Wireless AP
 
-TP-Link EAP610 V2
+|          |                       |
+| -------- | --------------------- |
+| Model    | TP-Link EAP610 V2     |
 
 ### NAS
 
-TODO
+|          |                          |
+| -------- | ------------------------ |
+| Hostname | `nas.lan`                |
+| Model    | QNAP TS-251              |
+| Disk 1   | WDC WD40EFRX-68WT0N0 4TB |
+| Disk 2   | WDC WD40EFRX-68WT0N0 4TB |
 
 ### Printer
 
-| | |
-|-|-|
-| Model    | Brother HL-L2340D |
+|          |                       |
+| -------- | --------------------- |
 | Hostname | `BRW1008B16E541A.lan` |
+| Model    | Brother HL-L2340D     |
 
 ```console
 $ yay brlaser
@@ -45,13 +51,13 @@ $ yay brlaser
 
 ## Raspberry Pi Rack
 
-| Model         | Hostname |
-| ------------- | -------- |
-| `Pi 4B Rev 1.2` | `io.lan` |
-| `Pi 4B Rev 1.2` | `europa.lan` |
+| Model           | Hostname       |
+| --------------- | -------------- |
+| `Pi 4B Rev 1.2` | `io.lan`       |
+| `Pi 4B Rev 1.2` | `europa.lan`   |
 | `Pi 3B Rev 1.2` | `ganymede.lan` |
 | `Pi 1B Rev 2`   | `callisto.lan` |
-| `Pi 1B Rev 2`   | `thebe.lan` |
+| `Pi 1B Rev 2`   | `thebe.lan`    |
 
 ```console
 $ ssh-copy-id -i ~/.ssh/id_rsa.pub kyle@io.lan

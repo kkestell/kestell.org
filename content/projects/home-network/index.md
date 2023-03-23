@@ -42,6 +42,24 @@ Hostname: `BRW1008B16E541A.lan`
 $ yay brlaser
 ```
 
+# Raspberry Pi Rack
+
+| Model | Hostname |
+| ----- | -------- |
+| Raspberry Pi 4 Model B Rev 1.2 | io.lan |
+| Raspberry Pi 4 Model B Rev 1.2 | europa.lan |
+| Raspberry Pi 3 Model B Rev 1.2 | ganymede.lan |
+| Raspberry Pi Model B Rev 2 | callisto.lan |
+| Raspberry Pi Model B Rev 2 | thebe.lan |
+
+```console
+$ ssh-copy-id -i ~/.ssh/id_rsa.pub kyle@io.lan
+```
+
+```console
+$ cat /sys/firmware/devicetree/base/model
+```
+
 # Network
 
 ## Static IPs
@@ -50,7 +68,7 @@ $ yay brlaser
 | ---------- | ------------------- | --------------- |
 | 10.0.0.1   | openwrt.lan         | Router          |
 | 10.0.0.102 | nas.lan             | NAS             |
-| 10.0.0.125 | homeassistant.lan   | Home automation |
+| 10.0.0.125 | europa.lan          | Home Assistant  |
 
 ## Trusted VNET
 

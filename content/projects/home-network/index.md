@@ -506,6 +506,9 @@ config forwarding
 
 Install the `qrencode` package.
 
+* `25x25 dots * 192 pixels per dot = 4800x4800 pixels`
+* `4800x4800 pixels / 600 DPI = 8x8 inches`
+
 ```console
-$ qrencode "WIFI:T:WPA;S:ssid;P:password;;" -o qr.png
+$ qrencode "WIFI:T:WPA;S:ssid;P:password;;" -s 192 -m 0 -d 600 -o qr.png
 ```

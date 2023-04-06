@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title }}</title>
+  <link rel="stylesheet" href="static/css/theme.css">
+</head>
+<body>
+  {% include 'header.html.j2' %}
+  <h1>kestell.org</h1>
+  <article id="pages">
+    {% for page in pages %}
+      <h2><a href="{{ page.path }}">{{ page.title }}</a></h2>
+      <p>{{ page.description }}</p>
+    {% endfor %}
+  </article>
+  {% include 'footer.html.j2' %}
+</body>
+</html>

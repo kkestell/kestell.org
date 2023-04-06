@@ -1,46 +1,32 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/python
 {
-	"name": "Hugo (Community)",
-	"build": {
-		"dockerfile": "Dockerfile",
-		"args": {
-			// Update VARIANT to pick hugo variant.
-			// Example variants: hugo, hugo_extended
-			// Rebuild the container if it already exists to update.
-			"VARIANT": "hugo",
-			// Update VERSION to pick a specific hugo version.
-			// Example versions: latest, 0.73.0, 0,71.1
-			// Rebuild the container if it already exists to update.
-			"VERSION": "latest",
-			// Update NODE_VERSION to pick the Node.js version: 12, 14
-			"NODE_VERSION": "14"
-		}
+	"name": "Python 3",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	"image": "mcr.microsoft.com/devcontainers/python:0-3.11",
+	"features": {
+		"ghcr.io/rocker-org/devcontainer-features/pandoc:1": {}
 	},
-
-	// Configure tool-specific properties.
 	"customizations": {
-		// Configure properties specific to VS Code.
 		"vscode": {
-			// Set *default* container specific settings.json values on container create.
-			"settings": { 
-				"html.format.templating": true
-			},
-			
-			// Add the IDs of extensions you want installed when the container is created.
 			"extensions": [
-				"bungcip.better-toml",
-				"davidanson.vscode-markdownlint"
+				"GitHub.copilot"
 			]
 		}
 	},
 
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	// "features": {},
+
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	"forwardPorts": [
-		1313
-	],
+	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "uname -a",
+	"postCreateCommand": "./.devcontainer/post-create.sh"
 
-	// Set `remoteUser` to `root` to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
-	"remoteUser": "node"
+	// Configure tool-specific properties.
+	// "customizations": {},
+
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
 }

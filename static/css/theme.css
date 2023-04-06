@@ -161,11 +161,6 @@ body {
     line-height: 1;
 }
 
-ol,
-ul {
-    list-style: none;
-}
-
 blockquote,
 q {
     quotes: none;
@@ -273,10 +268,10 @@ h2 {
     margin-top: 2rem;
 }
 
-h2:before {
+/* h2:before {
     content: '⛧ ';
     color: var(--link-color);
-}
+} */
 
 h3 {
     font-size: 1.2rem;
@@ -293,6 +288,10 @@ h5 {
 ul,
 ol {
     margin-left: 2rem;
+}
+
+ul {
+    list-style: disc;
 }
 
 ul.task-list {
@@ -315,7 +314,6 @@ td {
 
 th {
     font-weight: bold;
-    color: var(--text-color-dim);
 }
 
 a {
@@ -328,6 +326,15 @@ a.footnote-ref {
     margin: 0 0.25rem;
     font-weight: bold;
     text-decoration: underline;
+}
+
+a.back {
+    color: var(--text-color-dim);
+    text-decoration: none;
+    font-weight: normal;
+    display: inline-block;
+    width: 2rem;
+    margin-left: -2rem;
 }
 
 sup {
@@ -346,6 +353,8 @@ aside#footnotes a.footnote-back {
 
 img {
     max-width: 100%;
+    margin: 2rem auto;
+    display: block;
 }
 
 figcaption {
@@ -408,7 +417,6 @@ dd {
 
 dt {
     font-weight: bold;
-    color: var(--text-color-dim);
     margin-right: 1rem;
 }
 
@@ -420,10 +428,16 @@ small {
     font-size: 0.8rem;
 }
 
-article#pages h2 {
+article#pages h3 {
     margin: 2rem 0 0 0;
 }
 
 article#pages p {
     margin: 0.5rem 0 0 0;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid var(--rule-color);
+    margin: 2rem 0;
 }

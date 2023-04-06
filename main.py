@@ -1,6 +1,7 @@
 import frontmatter
 from jinja2 import Environment, FileSystemLoader
 import markdown
+from markdown.extensions.toc import TocExtension
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 from bs4 import BeautifulSoup as bs
@@ -16,7 +17,7 @@ import shutil
 
 def build_page(file, template, output_dir):
     post = frontmatter.load(file)
-    content = markdown.markdown(post.content, extensions=['fenced_code', 'codehilite', 'footnotes', 'tables', 'smarty', 'def_list'])
+    content = markdown.markdown(post.content, extensions=['fenced_code', 'codehilite', 'footnotes', 'tables', 'smarty', 'def_list', 'toc'])
     env = Environment(loader=FileSystemLoader('templates'))
     template = env.get_template(template)
     html = template.render(content=content, **post.metadata)

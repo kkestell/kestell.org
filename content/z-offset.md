@@ -5,25 +5,25 @@ created: 2023-01-15
 updated: 2023-01-15
 ---
 
-| GCode | Description |      |
-| ----- | ----------- | ---- |
-| [M851](https://marlinfw.org/docs/gcode/M851.html) Z0 | Set Z-probe offset to 0.|
-| [M500](https://marlinfw.org/docs/gcode/M500.html) | Save all configurable settings to EEPROM. |
-| [M501](https://marlinfw.org/docs/gcode/M501.html) | Load all saved settings from EEPROM. |
-| [M503](https://marlinfw.org/docs/gcode/M503.html) | Print all runtime-configurable settings to the host console. |
-| [G28](https://marlinfw.org/docs/gcode/G028.html) | Auto home. |
-| [G1](https://marlinfw.org/docs/gcode/G000-G001.html) F60 Z0 | Move to Z0. |
-| [M211](https://marlinfw.org/docs/gcode/M211.html) S0 | Unlock software endstops to enable movement below Z0. |
-| [M109](https://marlinfw.org/docs/gcode/M109.html) S190 | Set nozzle temperature to 220 °C. |
-| [G1](https://marlinfw.org/docs/gcode/G000-G001.html) F60 Z-0.2 | Move extruder to Z-0.2. Adjust the value in the previous step until you can just barely move a piece of paper placed between the nozzle and print bed. Subtract another 0.1 from this value. This will be your new Z-probe offset value. |
-| [M851](https://marlinfw.org/docs/gcode/M851.html) Z-2.2 | Set Z-probe offset to -2.2. This value should be whatever you measured in the previous step. |
-| [M211](https://marlinfw.org/docs/gcode/M211.html) S0 | Lock software endstops to prevent movement below Z0. |
-| [M500](https://marlinfw.org/docs/gcode/M500.html) | Save all configurable settings to EEPROM. |
-| [M501](https://marlinfw.org/docs/gcode/M501.html) | Load all saved settings from EEPROM. |
-| [M503](https://marlinfw.org/docs/gcode/M503.html) | Print all runtime-configurable settings to the host console. |
-| [G28](https://marlinfw.org/docs/gcode/G028.html) | Auto home. |
-| [G1](https://marlinfw.org/docs/gcode/G000-G001.html) F60 Z0 | Move to Z0 to confirm. |
-| [M109](https://marlinfw.org/docs/gcode/M109.html) S0 | Set nozzle temperature to 0 °C. |
+| GCode        | Description                                                                                                                                                                                                                              |
+| ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| M851 Z0      | Set Z-probe offset to 0.                                                                                                                                                                                                                 |
+| M500         | Save all configurable settings to EEPROM.                                                                                                                                                                                                |
+| M501         | Load all saved settings from EEPROM.                                                                                                                                                                                                     |
+| M503         | Print all runtime-configurable settings to the host console.                                                                                                                                                                             |
+| G28          | Auto home.                                                                                                                                                                                                                               |
+| G1 F60 Z0    | Move to Z0.                                                                                                                                                                                                                              |
+| M211 S0      | Unlock software endstops to enable movement below Z0.                                                                                                                                                                                    |
+| M109 S190    | Set nozzle temperature to 220 °C.                                                                                                                                                                                                        |
+| G1 F60 Z-0.2 | Move extruder to Z-0.2. Adjust the value in the previous step until you can just barely move a piece of paper placed between the nozzle and print bed. Subtract another 0.1 from this value. This will be your new Z-probe offset value. |
+| M851 Z-2.2   | Set Z-probe offset to -2.2. This value should be whatever you measured in the previous step.                                                                                                                                             |
+| M211 S0      | Lock software endstops to prevent movement below Z0.                                                                                                                                                                                     |
+| M500         | Save all configurable settings to EEPROM.                                                                                                                                                                                                |
+| M501         | Load all saved settings from EEPROM.                                                                                                                                                                                                     |
+| M503         | Print all runtime-configurable settings to the host console.                                                                                                                                                                             |
+| G28          | Auto home.                                                                                                                                                                                                                               |
+| G1 F60 Z0    | Move to Z0 to confirm.                                                                                                                                                                                                                   |
+| M109 S0      | Set nozzle temperature to 0 °C.                                                                                                                                                                                                          |
 
 ## `start.gcode`
 

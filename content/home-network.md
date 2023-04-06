@@ -2,7 +2,7 @@
 title: "Home Network"
 description: "“Your friends on trex all usin' PGP? I'll fuckin' read it in hex; that ain't shit to me.”"
 created: 2022-05-21
-updated: 2022-05-21
+updated: 2023-04-06
 ---
 
 ## Hardware
@@ -546,17 +546,4 @@ config rule
 config forwarding
     option src 'iot'
     option dest 'lan'
-```
-
-## Misc.
-
-### WiFi QR Codes
-
-Install the `qrencode` package.
-
-* `25x25 dots * 192 pixels per dot = 4800x4800 pixels`
-* `4800x4800 pixels / 600 DPI = 8x8 inches`
-
-```console
-$ qrencode "WIFI:T:WPA;S:ssid;P:password;;" -s 192 -m 0 -d 600 -o qr.png
 ```

@@ -3,13 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ title }}</title>
-  <link rel="stylesheet" href="static/css/theme.css">
-  <link rel="stylesheet" href="static/css/syntax.css">
+  <title>{{ metadata.title }}</title>
+  <link rel="stylesheet" href="/static/css/theme.css">
+  <link rel="stylesheet" href="/static/css/syntax.css">
 </head>
 <body>
   {% include 'header.html.j2' %}
-  <h1><a href="index.html" class="back">←</a>{{ title }}</h1>
+  <h1><a href="{{ category.path }}" class="back">←</a>{{ metadata.title }}</h1>
+  <h2 class="subtitle">{{ metadata.description }}</h2>
   {{ content }}
   {% include 'footer.html.j2' %}
 </body>

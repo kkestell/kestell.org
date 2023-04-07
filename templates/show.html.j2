@@ -9,7 +9,7 @@
 </head>
 <body>
   {% include 'header.html.j2' %}
-  <h1><a href="{{ category.path }}" class="back">←</a>{{ metadata.title }}</h1>
+  <h1>{{ metadata.title }}</h1>
   <h2 class="subtitle">{{ metadata.description }}</h2>
   {{ content }}
   {% include 'footer.html.j2' %}

@@ -82,15 +82,13 @@ class SiteBuilder:
             path='/' / output_file.relative_to(self.args.out)
         )
 
-    def build_category_index(self, category):
-        output = self.render_template("index.html.j2", { "category_name": category.name, "pages": category.pages })
-        output_file = self.args.out / category.name / "index.html"
-        output_file.write_text(output)
-        print(output_file.name)
+    # def build_category_index(self, category):
+    #     output = self.render_template("index.html.j2", { "category_name": category.name, "pages": category.pages })
+    #     output_file = self.args.out / category.name / "index.html"
+    #     output_file.write_text(output)
+    #     print(output_file.name)
 
     def build_home(self, categories):
-        for category in categories:
-            category.pages = category.pages[:3]
         output = self.render_template("home.html.j2", { "categories": categories })
         output_file = self.args.out / "index.html"
         output_file.write_text(output)
@@ -110,8 +108,8 @@ class SiteBuilder:
             for file in category_directory.glob("*.md"):
                 page = self.build_page(file, category)
                 category.pages.append(page)
-            category.pages.sort(key=lambda page: page.updated, reverse=True)
-            self.build_category_index(category)
+            category.pages.sort(key=lambda page: page.title, reverse=False)
+            # self.build_category_index(category)
             categories.append(category)
         return categories
 
@@ -121,7 +119,9 @@ class SiteBuilder:
 
 
 def copy_static_files(args):
-    start_time = time()
+    static_dir = args.out / "static"
+    if static_dir.exists():
+        shutil.rmtree(static_dir)
     shutil.copytree("static", args.out / "static")
 
 

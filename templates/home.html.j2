@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ title }}</title>
+  <title>Kyle Kestell</title>
   <link rel="stylesheet" href="static/css/theme.css">
 </head>
 <body>
@@ -11,11 +11,14 @@
   <h1>Kyle Kestell</h1>
   <article id="pages">
     {% for category in categories %}
-      <h2>{{ category.name|capitalize }}</h2>
-      {% for page in category.pages %}
-        <h3><a href="{{ page.path }}">{{ page.title }}</a></h3>
-        <p>{{ page.description }}</p>
-      {% endfor %}
+      <div class="column">
+        <h3>{{ category.name|capitalize }}</h3>
+        <ul>
+        {% for page in category.pages %}
+          <li><a href="{{ page.path }}">{{ page.title }}</a></li>
+        {% endfor %}
+        </ul>
+      </div>
     {% endfor %}
   </article>
   {% include 'footer.html.j2' %}

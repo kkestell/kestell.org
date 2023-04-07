@@ -6,7 +6,7 @@ from contextlib import contextmanager
 from dataclasses import dataclass
 from functools import partial
 from pathlib import Path
-from time import time
+from time import perf_counter, time
 from typing import List
 
 import frontmatter
@@ -116,97 +116,36 @@ class SiteBuilder:
         return categories
 
     def build(self):
-        start_time = time()
         categories = self.process_categories()
         self.build_home(categories)
-        end_time = time()
-        print(f"Build took {int((end_time - start_time) * 1000)}ms")
 
 
 def copy_static_files(args):
     start_time = time()
     shutil.copytree("static", args.out / "static", dirs_exist_ok=True)
-    end_time = time()
-    print(f"Copy static files took {int((end_time - start_time) * 1000)}ms")
-
-last_trigger_time = time()
-
-
-class FileSystemHandler(FileSystemEventHandler):
-    def __init__(self, builder):
-        self.builder = builder
-
-    def on_any_event(self, event):
-        if event.event_type not in ["created", "modified", "deleted"]:
-            return
-        global last_trigger_time
-        current_time = time()
-        if event.src_path.find("~") == -1 and (current_time - last_trigger_time) > 1:
-            last_trigger_time = current_time
-            self.builder.build()
-
-            # if event.src_path.endswith(".md") or event.src_path.startswith("templates"):
-            #     print(f"File {event.src_path} {event.event_type}")
-            #     build(args)
-            # elif event.src_path.startswith("static"):
-            #     print(f"File {event.src_path} {event.event_type}")
-            #     copy_static_files(args)
 
 
 @contextmanager
-def http_server(host: str, port: int, directory: str):
-    server = http.server.ThreadingHTTPServer(
-        (host, port), partial(http.server.SimpleHTTPRequestHandler, directory=directory)
-    )
-    server_thread = threading.Thread(target=server.serve_forever, name="http_server")
-    server_thread.start()
-
+def benchmark():
+    start_time = perf_counter()
     try:
         yield
     finally:
-        server.shutdown()
-        server_thread.join()
-
-
-class Watcher:
-    def __init__(self, args):
-        self.builder = SiteBuilder(args)
-        self.observer = Observer()
-        self.handler = FileSystemHandler(self.builder)
-        self.observer.schedule(self.handler, args.content, recursive=True)
-        self.observer.schedule(self.handler, "templates", recursive=True)
-        self.observer.schedule(self.handler, "static", recursive=True)
-
-    def watch(self):
-        with http_server("localhost", self.builder.args.port, self.builder.args.out):
-            self.builder.build()
-            self.observer.start()
-            try:
-                while True:
-                    pass
-            except KeyboardInterrupt:
-                self.observer.stop()
-                self.observer.join()
+        elapsed_time = perf_counter() - start_time
+        print(f"{elapsed_time * 1000:.0f}ms")
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="TODO")
 
-    parser.add_argument("command", choices=["build", "watch"], help="Command to run")
-    parser.add_argument(
-        "--content", type=Path, default="content", help="Path to content directory"
-    )
-    parser.add_argument(
-        "--out", type=Path, default="build", help="Path to output directory"
-    )
+    parser.add_argument("--content", type=Path, default="content", help="Path to content directory")
+    parser.add_argument("--out", type=Path, default="build", help="Path to output directory")
     parser.add_argument("--pretty", action="store_true", help="Prettify HTML")
-    parser.add_argument("--port", type=int, default=1313, help="Port to serve on")
 
     args = parser.parse_args()
 
-    if args.command == "build":
+    copy_static_files(args)
+
+    with benchmark():
         builder = SiteBuilder(args)
         builder.build()
-    elif args.command == "watch":
-        watcher = Watcher(args)
-        watcher.watch()

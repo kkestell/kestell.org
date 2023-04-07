@@ -7,6 +7,7 @@ from dataclasses import dataclass
 from functools import partial
 from pathlib import Path
 from time import time
+from typing import List
 
 import frontmatter
 import markdown
@@ -29,7 +30,7 @@ class Page:
 class Category:
     name: str
     path: Path
-    pages: list[Page]
+    pages: List[Page]
 
 
 class SiteBuilder:

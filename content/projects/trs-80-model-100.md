@@ -9,7 +9,7 @@ updated: 2022-04-14
 
 TODO
 
-![TRS-80 Model 100](static/images/trs-80.jpg)
+![TRS-80 Model 100](/static/images/trs-80.jpg)
 
 TODO
 

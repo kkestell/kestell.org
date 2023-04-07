@@ -4,16 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ title }}</title>
-  <link rel="stylesheet" href="/static/css/theme.css">
+  <link rel="stylesheet" href="static/css/theme.css">
 </head>
 <body>
   {% include 'header.html.j2' %}
   <h1>Kyle Kestell</h1>
-  <h2 class="subtitle"><a href="/" class="back">←</a>{{ category_name|capitalize }}</h2>
   <article id="pages">
-    {% for page in pages %}
-      <h3><a href="{{ page.path }}">{{ page.title }}</a></h3>
-      <p>{{ page.description }}</p>
+    {% for category in categories %}
+      <h2>{{ category.name|capitalize }}</h2>
+      {% for page in category.pages %}
+        <h3><a href="{{ page.path }}">{{ page.title }}</a></h3>
+        <p>{{ page.description }}</p>
+      {% endfor %}
     {% endfor %}
   </article>
   {% include 'footer.html.j2' %}

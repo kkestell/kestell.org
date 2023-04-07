@@ -122,7 +122,7 @@ class SiteBuilder:
 
 def copy_static_files(args):
     start_time = time()
-    shutil.copytree("static", args.out / "static", dirs_exist_ok=True)
+    shutil.copytree("static", args.out / "static")
 
 
 @contextmanager

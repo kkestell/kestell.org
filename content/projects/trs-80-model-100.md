@@ -44,4 +44,4 @@ display_hdmi_rotate=1
 
 TODO
 
-![TRS-80 Model 100 Keyboard Matrix](static/images/keyboard-matrix.jpg)
+![TRS-80 Model 100 Keyboard Matrix](/static/images/keyboard-matrix.jpg)

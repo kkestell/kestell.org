@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vortex of the Mind</title>
+  <link rel="stylesheet" href="/static/css/theme.css">
+  <link rel="stylesheet" href="/static/css/syntax.css">
+</head>
+<body>
+  <h1>Vortex of the Mind</h1>
+  <h2 class="subtitle">NOTE: Certain rooms are only accessible through random teleportation.</h2>
+  <pre><code class="language-basic">100 REM ****************************** START
+101 PRINT &quot;THIS GAME IS LICENSED TO MRS. OLSON&quot;
+102 PRINT &quot;&quot;
+101 PRINT &quot;     Welcome, what is your name?&quot;
+102 INPUT &quot;     &quot;;a$
+107 FOR i=1 TO 5
+108 PRINT &quot;&quot;
+109 NEXT i
+103 PRINT &quot;     Hello, &quot;;a$; &quot;, prepare to blow your mind in ...&quot;
+104 PRINT &quot;&quot;
+104 PRINT &quot;&quot;
+105 PRINT &quot;                          ... Kyle's VORTEX OF THE MIND&quot;
+106 PRINT &quot;                             ... Kyle's VORTEX OF THE MIND&quot;
+105 PRINT &quot;                                ... Kyle's VORTEX OF THE MIND&quot;
+107 FOR i=1 TO 10
+108 PRINT &quot;&quot;
+109 NEXT i
+112 INPUT &quot;                                        ... press RETURN to continue&quot;;Q$
+126 PRINT &quot;......&quot;
+127 PRINT &quot;You &quot; ;a$;&quot;, have traveled to many far away lands and conquered many&quot;
+120 PRINT &quot;foes.  But now you are about embark on an amazing journey, a&quot;
+121 PRINT &quot;journey into KYLES VORTEX OF THE MIND.&quot;
+122 PRINT &quot;&quot;
+123 PRINT &quot;&quot;
+124 PRINT &quot;&quot;
+125 PRINT &quot;On the way, you will face many decisions and challenges.&quot;
+126 PRINT &quot;But remember you must not let the evil subduct you for you are on&quot;
+127 PRINT &quot;a misson of peace.  Your goal is to rescue the king from his own&quot;
+120 PRINT &quot;split personality - your foe the hairy bloat!&quot;
+121 PRINT &quot;&quot;
+122 INPUT &quot;                                         ...Press RETURN to continue&quot;;d$
+123 PRINT &quot;(NOTE)&quot;
+124 PRINT &quot;Certain rooms are only accessible through random teleportation.&quot;
+125 PRINT &quot;&quot;
+126 PRINT &quot;&quot;
+127 PRINT &quot;......&quot;
+138 INPUT &quot;                                        ... press RETURN to continue   &quot;;Q$
+1000 REM ****************************** ENTRY ROOM
+1001 REM
+1002 PRINT &quot;You are in the ENTRY ROOM&quot;
+1003 PRINT &quot;&quot;
+1004 PRINT &quot;You are standing in a big room.&quot;
+1005 PRINT &quot;There is only one door which opens to the South.&quot;
+1006 PRINT &quot;Do you want to enter? (y/n)&quot;
+1007 PRINT &quot;&quot;
+1008 INPUT b$
+1009 IF b$=&quot;y&quot; GOTO 2000
+1010 PRINT &quot;The ceiling slowly moves downward and crushes your skull.&quot;
+1011 PRINT &quot;You should have entered.&quot;
+1012 GOTO 20000
+2000 REM ****************************** GATEWAY ROOM
+2001 REM
+2002 PRINT &quot;You are in the GATEWAY ROOM&quot;
+2003 PRINT &quot;&quot;
+2004 PRINT &quot;You are in a room with four doors.&quot;
+2005 PRINT &quot;The door to the East is locked.&quot;
+2006 PRINT &quot;The doors to the North, South, and West are wide open.&quot;
+2007 PRINT &quot;Where do you want to go (n/s/w/e)?&quot;
+2008 INPUT b$
+2009 PRINT ''&quot;
+2011 IF b$=&quot;n&quot; THEN 1000 REM ENTRY ROOM
+2013 IF b$=&quot;s&quot; THEN 4000 REM CHAMBER OF HORROR
+2015 IF b$=&quot;w&quot; THEN 3000 REM DIMENSIONAL WARP
+2017 IF b$=&quot;e&quot; THEN 2019 REM ASK FOR CODE
+2018 GOTO 2007
+2019 PRINT &quot;Please enter the code&quot;
+2020 INPUT p$
+2021 IF p$ &lt;&gt; &quot;open door oh god of all that walks&quot; THEN 2007
+2022 PRINT &quot;&quot;
+2023 PRINT &quot;The door slowly starts to open almost like magic.&quot;
+2024 PRINT &quot;Do you enter ? (y/n)&quot;
+2025 INPUT f$
+2026 IF f$ = &quot;n&quot; THEN 2000
+2027 PRINT ''
+2028 GOTO 11000 REM GARDEN OF STONE
+3000 REM ****************************** DIMENSIONAL WARP
+3001 REM
+3002 PRINT &quot;You are in the DIMENSIONAL WARP&quot;
+3003 PRINT &quot;&quot;
+3004 PRINT &quot;POOF !!&quot;
+3005 PRINT &quot;You are gone.&quot;
+3006 PRINT ''
+3007 GOTO 900 REM UPSIDE DOWN ROOM
+4000 REM ****************************** CHAMBER OF HORROR
+4001 REM
+4002 PRINT &quot;You are in the CHAMBER OF HORROR&quot;
+4003 PRINT &quot;&quot;
+4004 PRINT &quot;A wraith appears out of nowhere and emits a
+4005 PRINT &quot;   blood curdling scream&quot;
+4006 PRINT &quot;There are only three doors.&quot;
+4007 PRINT &quot;One is to the East and one to the north the other is to the West.&quot;
+4008 PRINT &quot;&quot;
+4009 PRINT &quot;Which door do you choose? (e/w)&quot;
+4010 INPUT b$
+4011 IF b$=&quot;e&quot; THEN GOTO 5000 REM NO ROOM
+4012 IF b$=&quot;w&quot; THEN 6000 REM ROOM OF THE HAIRY BLOAT
+4013 IF B$ = &quot;n&quot; THEN 2002 REM Gateway room
+4014 GOTO 4009
+5000 REM ****************************** NO ROOM
+5001 REM
+5002 PRINT &quot;You are in the NO ROOM&quot;
+5003 PRINT &quot;&quot;
+5004 PRINT &quot;God, are you dumb 0!0!0!&quot;
+5005 PRINT &quot;You are going forward.&quot;
+5006 PRINT &quot;You smack your head into the wall, boy that wasn't very smart.&quot;
+5007 PRINT &quot;You are going backward.&quot;
+5008 PRINT &quot;You smack your head into the wall, boy that wasnt very smart.&quot;
+5009 PRINT &quot;&quot;
+5010 GOTO 5005
+6000 REM ****************************** ROOM OF THE HAIRY BLOAT
+6001 REM
+6002 PRINT &quot;You are in the ROOM OF THE HAIRY BLOAT&quot;
+6003 PRINT &quot;&quot;
+6004 PRINT &quot;You are going West&quot;
+6005 PRINT &quot;You cannot return this way.&quot;
+6006 PRINT &quot;You enter a room with a very fat man sitting in a very old chair.&quot;
+6007 PRINT &quot;You try to say hello to the man but he does not answer.&quot;
+6008 PRINT &quot;He only gives you the key to the East door&quot;
+6009 PRINT &quot;   in the GATEWAY ROOM.&quot;
+6010 PRINT &quot;If you say the words 'open door oh god of all that walks'&quot;
+6011 PRINT &quot;   it shall be done.&quot;
+6012 PRINT &quot;This room has three doors.&quot;
+6013 PRINT &quot;They go North, South and East.&quot;
+6014 PRINT &quot;Where do you want to go? (n/s/e)&quot;
+6015 INPUT b$
+6016 IF b$=&quot;n&quot; THEN 7000 REM ZOMBIE ROOM
+6017 IF b$=&quot;w&quot; THEN 8000 REM UPSIDE DOWN ROOM
+6018 IF b$=&quot;s&quot; THEN 9000 REM LIFE OR DEATH ROOM
+6019 IF b$=&quot;e&quot; THEN 4002 REM CHAMBER OF HORRER
+6020 PRINT ''
+6021 GOTO 6014
+7000 REM ****************************** ZOMBIE ROOM
+7001 REM
+7002 PRINT &quot;You are in the ZOMBIE ROOM&quot;
+7003 PRINT &quot;&quot;
+7004 PRINT &quot;There two doors, one to the East and one to the South&quot;
+7005 PRINT &quot;Where do you want to go?  (e/s)?&quot;
+7006 PRINT &quot;Wait!  A zombie starts at you and eats you.&quot;
+7007 GOTO 20000
+8000 REM ****************************** UPSIDE DOWN
+8001 REM
+8002 PRINT &quot;You are in the UPSIDE DOWN&quot;
+8003 PRINT &quot;&quot;
+8004 PRINT &quot;As you turn to go left a trap door opens and you fall down a hole.&quot;
+8005  PRINT &quot;You don't understand the door that was just there is now gone.&quot;
+8006 PRINT &quot;Suddenly, you land with a thump.&quot;
+8007 PRINT &quot;You find yourself in a large room where everything is&quot;
+8008 PRINT &quot;   upside down.
+8009 PRINT &quot;You feel weird.
+8010 PRINT &quot;There is one door to the East of you.&quot;
+8011 PRINT &quot;Do you want to enter? (y/n)&quot;
+8012 INPUT b$
+8013 PRINT &quot;&quot;
+8014 IF b$=&quot;y&quot; THEN 7000 REM LIFE OR DEATH ROOM
+8015 PRINT &quot;The ground shakes, &quot;;a$;&quot;.  You fall into a pit of bubbling&quot;
+8016 PRINT &quot;   brains on acid.&quot;
+8017 GOTO 20000
+9000 REM ****************************** LIFE OR DEATH ROOM
+9001 REM
+9002 PRINT &quot;You are in the LIFE OR DEATH ROOM&quot;
+9003 PRINT &quot;&quot;
+9004 PRINT &quot;Do you want to die? (y/n)&quot;
+9005 INPUT b$
+9006 IF b$ = &quot;n&quot; THEN 9009
+9007 IF b$ = &quot;y&quot; THEN 20000
+9008 GOTO 9004
+9009 PRINT &quot;Suddenly you warp to the FIRE ROOM.&quot;
+10000 REM ****************************** FIRE ROOM
+10001 REM
+10002 PRINT &quot;You are in the FIRE ROOM&quot;
+10003 PRINT &quot;&quot;
+10004 PRINT &quot;You are in a large room with no exits.&quot;
+10005 PRINT&quot;Sudenly a fire beast starts you on fire you jump&quot;
+10006 PRINT &quot;   into a pool of water.&quot;
+10007 PRINT &quot;You swim  until you end up in a  garden made of stone.&quot;
+10008 PRINT &quot;You stumble around in the darkness.&quot;
+11000 REM ****************************** GARDEN OF STONE
+11001 REM
+11002 PRINT &quot;You are in the GARDEN OF STONE&quot;
+11003 PRINT &quot;&quot;
+11004 PRINT &quot;You look around but your attempt is in vain for you can't see&quot;
+11005 PRINT &quot;   because there is no light.&quot;
+11006 PRINT &quot;Do you want to look for a torch? (y/n)&quot;
+11007 INPUT q$
+11008 IF q$ = &quot;n&quot; THEN 11012
+11009  PRINT &quot;You attempt to look for a torch but stumble and fall&quot;
+11010 PRINT &quot;   causing you to break your neck.&quot;
+11011 GOTO 20000
+11012 PRINT &quot;You decide not to look for a torch and after about a&quot;
+11013 PRINT &quot;minute or so a trap door opens&quot;
+11014 PRINT &quot;You see a pipe do you grab it? (y/n)&quot;
+11015 INPUT t$
+11016 IF t$ = &quot;y&quot; THEN 11019
+11017 PRINT &quot;you decide not to grab the pipe and fall to your death.&quot;
+11018 GOTO 20000
+11019  PRINT &quot;You grab the pipe and avoid falling to your death as you&quot;
+11020 PRINT &quot;   climb out.&quot;
+11021 PRINT &quot; You remember never to stand there again.&quot;
+11022 PRINT &quot;When you get out of the trap the room is different.&quot;
+11025 PRINT &quot; the room is differant for it is made of glass there is a statue of&quot;
+11028 PRINT &quot;the hairy bloat this is very odd&quot;
+11031 PRINT &quot; do you want to take a closer look? (y/n)
+11034 INPUT z$
+11037 IF z$ = &quot;n&quot; THEN 11125
+11040 PRINT &quot;as you are takeing a closer look you loose your balance and grab&quot;
+11043 PRINT &quot;the arm of the hairy bloat and from his cup an acid pours out&quot;
+11046 PRINT &quot; you see that it is quickly refilled from a tube op his arm&quot;
+11049 PRINT &quot; do you want to try to burn a door in the wall? (y/n)&quot;
+11052 INPUT m$
+11052 IF m$ = &quot;n&quot; THEN 11125
+11055 PRINT &quot;you sucseed and with one drop of acid a door is made&quot;
+11058 PRINT &quot;do you enter? (y/n)&quot;
+11061 INPUT t$
+11062 IF t$ = &quot;n&quot; THEN 11125
+11065 PRINT &quot; the room is very dark then you hear the voice of the hairy bloat&quot;
+11069 PRINT &quot;then he speaks THOU ART DAMNED FOR ENTERING THE VORTEX&quot;
+11071 PRINT &quot; OF THE MIND&quot;
+11074 PRINT &quot;then he points a hairy finger at you and zap&quot;
+11123 PRINT &quot;You are teleported to a different room.&quot;
+11124 GOTO 12000
+11125 PRINT &quot; you do nothing for the next 8 days and starve to death&quot;
+11126 GOTO 100
+12000 REM ******************************RANDOM TELEPORT
+12001 REM
+12000 z=13*RND(1)+1
+12001 z=INT(z)
+12003 IF z=1 THEN 1000 REM ENTRY ROOM
+12005 IF z=2 THEN 2000 REM GETWAY ROOM
+12007 IF z=3 THEN 3000 REM DIMENSIONAL WARP
+12009 IF z=4 THEN 4000 REM CHAMBER OF HORROR
+12003 IF z=5 THEN 5000 REM NO ROOM
+12005 IF z=6 THEN 6000 REM ROOM OF THE HAIRY BLOAT
+12007 IF z=7 THEN 7000 REM ZOMBIE ROOM
+12009 IF z=8 THEN 8000 REM UPSIDE DOWN ROOM
+12003 IF z=9 THEN 9000 REM LIFE OR DEATH ROOM
+12005 IF z=10 THEN 10000 REM FIRE ROOM
+12007 IF z=11 THEN 11000 REM GARDEN OF STONE
+12009 IF z=12 THEN 20000 REM RANDOM TELEPORT
+12010 IF z= 13 THEN 20008 REM random teleport
+20000 REM ****************************** RESTART
+20001 REM
+20002 PRINT &quot;You are finished here.&quot;
+20003 REM
+20004 PRINT &quot;Do you want to play again? (y/n)&quot;
+20005 INPUT r$
+20006 IF r$=&quot;y&quot; THEN 100
+20007 IF r$=&quot;n&quot; THEN STOP
+20008 PRINT &quot;you are transported to a room with nothing in it execpt&quot;
+20010 PRINT &quot;a piece of moldy stinky spoiled meat&quot;
+20020 PRINT &quot; you take the meat and put it in your pack&quot;
+20025 PRINT &quot;there is a door to the east and south where do you go? (e/s)&quot;
+20030 INPUT j$
+30035 IF j$= &quot;e&quot; THEN 30050
+30040 PRINT &quot;you are going south you enter a room where the only door is&quot;
+30045 PRINT &quot;to the south&quot;
+</code></pre>
+
+</body>
+</html>

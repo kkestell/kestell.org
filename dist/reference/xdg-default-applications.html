@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XDG Default Applications</title>
+  <link rel="stylesheet" href="/static/css/theme.css">
+  <link rel="stylesheet" href="/static/css/syntax.css">
+</head>
+<body>
+  <h1>XDG Default Applications</h1>
+  <h2 class="subtitle">Fixing broken file associations in Linux.</h2>
+  <h2 id="xdg-mime"><code>xdg-mime</code></h2>
+<p>Print the <code>.desktop</code> filename of the application that is registered to open directories:</p>
+<pre><code class="language-shell">$ xdg-mime query default inode/directory
+</code></pre>
+<p>Associate directories with Nautilus (Files). This will modify <code>~/.config/mimetypes.list</code>:</p>
+<pre><code class="language-shell">$ xdg-mime default org.gnome.Nautilus.desktop inode/directory
+</code></pre>
+<h3 id="example.configmimeapps.list">Example <code>~/.config/mimeapps.list</code></h3>
+<pre><code class="language-ini">[Default Applications]
+audio/x-wav=io.bassi.Amberol.desktop
+audio/mp3=io.bassi.Amberol.desktop
+audio/ogg=io.bassi.Amberol.desktop
+audio/x-flac=io.bassi.Amberol.desktop
+application/pdf=org.gnome.Evince.desktop
+image/jpeg=org.gnome.eog.desktop
+image/png=org.gnome.eog.desktop
+inode/directory=org.gnome.Nautilus.desktop
+text/plain=org.gnome.TextEditor.desktop
+text/markdown=org.gnome.TextEditor.desktop
+video/mp4=io.github.celluloid_player.Celluloid.desktop
+video/x-matroska=io.github.celluloid_player.Celluloid.desktop
+video/webm=io.github.celluloid_player.Celluloid.desktop
+video/quicktime=io.github.celluloid_player.Celluloid.desktop
+video/x-m4v=io.github.celluloid_player.Celluloid.desktop
+video/ogg=io.github.celluloid_player.Celluloid.desktop
+</code></pre>
+<p>If you want the change to be system-wide, run <code>xdg-mime</code> as root. This will modify <code>/usr/share/applications/mimeapps.list</code>.</p>
+<h2 id="further-reading">Further Reading</h2>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types">Mozilla Developer Network: Common MIME Types</a></li>
+<li><a href="https://wiki.archlinux.org/title/default_applications">Arch Wiki: Default Applications</a></li>
+</ul>
+
+</body>
+</html>

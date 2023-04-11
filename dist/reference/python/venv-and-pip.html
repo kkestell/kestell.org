@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Virtual Environments and Packages</title>
+  <link rel="stylesheet" href="/static/css/theme.css">
+  <link rel="stylesheet" href="/static/css/syntax.css">
+</head>
+<body>
+  <h1>Virtual Environments and Packages</h1>
+  <h2 class="subtitle"></h2>
+  <h2 id="virtual-environments">Virtual Environments</h2>
+<p>Create a virtual environment</p>
+<pre><code class="language-console">$ python -m venv myenv
+</code></pre>
+<p>Activate a virtual environment</p>
+<pre><code class="language-console">$ source myenv/bin/activate
+</code></pre>
+<p>Deactivate a virtual environment</p>
+<pre><code class="language-console">$ deactivate
+</code></pre>
+<h2 id="pip"><code>pip</code></h2>
+<p>Install a package</p>
+<pre><code class="language-console">$ pip install &lt;package_name&gt;
+</code></pre>
+<p>List installed packages</p>
+<pre><code class="language-console">$ pip list
+</code></pre>
+<p>Uninstall a package</p>
+<pre><code class="language-console">$ pip uninstall &lt;package_name&gt;
+</code></pre>
+<p>Upgrade a package</p>
+<pre><code class="language-console">$ pip install --upgrade &lt;package_name&gt;
+</code></pre>
+<p>Freeze installed packages to a requirements file</p>
+<pre><code class="language-console">$ pip freeze &gt; requirements.txt
+</code></pre>
+<p>Install packages from a requirements file</p>
+<pre><code class="language-console">$ pip install -r requirements.txt
+</code></pre>
+
+</body>
+</html>

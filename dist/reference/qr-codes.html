@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generating QR Codes</title>
+  <link rel="stylesheet" href="/static/css/theme.css">
+  <link rel="stylesheet" href="/static/css/syntax.css">
+</head>
+<body>
+  <h1>Generating QR Codes</h1>
+  <h2 class="subtitle">Lorem ipsum dolor sit amet</h2>
+  <p><img src="/static/images/qr.png" alt="QR Code" /></p>
+<h2 id="qrencode"><code>qrencode</code></h2>
+<h3 id="wifi-qr-codes">WiFi QR Codes</h3>
+<p>Replace <code>ssid</code> and <code>password</code> with the appropriate values.</p>
+<pre><code class="language-shell">$ qrencode -o qr.png &quot;WIFI:T:WPA;S:ssid;P:password;;&quot;
+</code></pre>
+<h3 id="urls">URLs</h3>
+<pre><code class="language-shell">$ qrencode -o qr.png &quot;https://example.com&quot;
+</code></pre>
+<h3 id="printing">Printing</h3>
+<p>I have a Brother HL-L2300D laser printer which has a native print resolution of 600 DPI. I'd like to be able to print my QR code on a standard US letter-size piece of paper. According to <a href="https://support.brother.com/g/s/id/htmldoc/printer/cv_hll2300d/use/manual/index.html#GUID-1BBF837B-7708-4FCB-8F03-EBC668571B9F_20#KEY=unprintable%20areas">the manual</a>, the minimum margins on the Brother HL-L2300D are 0.16&quot;, so I figure an 8&quot; QR code gives me 0.25&quot; of margin, which is plenty. Dividied by 25, that's 192 pixels per dot.</p>
+<p>Generate the QR code:</p>
+<pre><code class="language-shell">$ qrencode -o qr.png -s 192 -m 0 -d 600 &quot;whatever&quot;
+</code></pre>
+<dl>
+<dt><code>-s</code></dt>
+<dd>Size of each dot in pixels</dd>
+<dt><code>-m</code></dt>
+<dd>Margin in dots</dd>
+<dt><code>-d</code></dt>
+<dd>DPI</dd>
+<dt><code>-o</code></dt>
+<dd>Output file</dd>
+</dl>
+<p>And print it:</p>
+<pre><code class="language-shell">$ lpr qr.png
+</code></pre>
+
+</body>
+</html>

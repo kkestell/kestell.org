@@ -19,7 +19,14 @@
 <dd><code>openwrt.lan</code></dd>
 <dt>Model</dt>
 <dd>TP-Link Archer C5</dd>
+<dt>Version</dt>
+<dd>21.02.3</dd>
 </dl>
+<h4 id="updating">Updating</h4>
+<pre><code class="language-shell">$ opkg update
+$ opkg list-upgradable
+$ opkg list-upgradable | cut -f 1 -d ' ' | xargs -r opkg upgrade
+</code></pre>
 <h3 id="switch">Switch</h3>
 <p>TODO</p>
 <h3 id="wireless-ap">Wireless AP</h3>
@@ -44,40 +51,53 @@
 <dd><code>BRW1008B16E541A.lan</code></dd>
 <dt>Model</dt>
 <dd>Brother HL-L2340D</dd>
+<dt>Unprintable Area (Margins)</dt>
+<dd>0.16&quot;</dd>
 </dl>
 <pre><code class="language-console">$ yay brlaser
 </code></pre>
 <h2 id="raspberry-pi-rack">Raspberry Pi Rack</h2>
-<table>
-<thead>
-<tr>
-<th>Hostname</th>
-<th>Model</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>io.lan</code></td>
-<td>Pi 4B Rev 1.2</td>
-</tr>
-<tr>
-<td><code>europa.lan</code></td>
-<td>Pi 4B Rev 1.2</td>
-</tr>
-<tr>
-<td><code>ganymede.lan</code></td>
-<td>Pi 3B Rev 1.2</td>
-</tr>
-<tr>
-<td><code>callisto.lan</code></td>
-<td>Pi 1B Rev 2</td>
-</tr>
-<tr>
-<td><code>thebe.lan</code></td>
-<td>Pi 1B Rev 2</td>
-</tr>
-</tbody>
-</table>
+<h3 id="io">Io</h3>
+<p>Currently out of service.</p>
+<h3 id="europa">Europa</h3>
+<dl>
+<dt>Hostname</dt>
+<dd><code>ganymede.lan</code></dd>
+<dt>Model</dt>
+<dd>Pi 4b Rev 1.2</dd>
+</dl>
+<h4 id="services">Services</h4>
+<ul>
+<li>Home Assistant</li>
+</ul>
+<h3 id="ganymede">Ganymede</h3>
+<dl>
+<dt>Hostname</dt>
+<dd><code>ganymede.lan</code></dd>
+<dt>Model</dt>
+<dd>Pi 3b Rev 1.2</dd>
+</dl>
+<h4 id="services-1">Services</h4>
+<ul>
+<li><a href="/projects/blink-comparator.html">Blink Comparator</a></li>
+<li><a href="/projects/telegram-bot.html">Telegram Bot</a></li>
+<li><a href="/projects/timelapse.html">Timelapse</a></li>
+</ul>
+<h3 id="callisto">Callisto</h3>
+<dl>
+<dt>Hostname</dt>
+<dd><code>callisto.lan</code></dd>
+<dt>Model</dt>
+<dd>Pi 3b Rev 1.2</dd>
+</dl>
+<h3 id="thebe">Thebe</h3>
+<dl>
+<dt>Hostname</dt>
+<dd><code>callisto.lan</code></dd>
+<dt>Model</dt>
+<dd>Pi 3b Rev 1.2</dd>
+</dl>
+<h2 id="misc">Misc.</h2>
 <pre><code class="language-console">$ ssh-copy-id -i ~/.ssh/id_rsa.pub kyle@io.lan
 </code></pre>
 <pre><code class="language-console">$ cat /sys/firmware/devicetree/base/model

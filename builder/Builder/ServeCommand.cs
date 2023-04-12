@@ -5,7 +5,7 @@ namespace Builder;
 internal class ServeCommand : BaseCommand
 {
     public Option<int> Port { get; } =
-        new("static", () => 1313, "Port");
+        new(new[] {"--port", "-p"}, () => 1313, "Port to serve on");
 
     public ServeCommand() : base("serve", "Serve the site")
     {

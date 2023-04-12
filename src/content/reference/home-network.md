@@ -19,6 +19,17 @@ Hostname
 Model
 :   TP-Link Archer C5
 
+Version
+:    21.02.3
+
+#### Updating
+
+```shell
+$ opkg update
+$ opkg list-upgradable
+$ opkg list-upgradable | cut -f 1 -d ' ' | xargs -r opkg upgrade
+```
+
 ### Switch
 
 TODO
@@ -50,19 +61,62 @@ Hostname
 Model
 :   Brother HL-L2340D
 
+Unprintable Area (Margins)
+:    0.16"
+
 ```console
 $ yay brlaser
 ```
 
 ## Raspberry Pi Rack
 
-| Hostname       | Model           
-| -------------- | --------------- 
-| `io.lan`       | Pi 4B Rev 1.2 
-| `europa.lan`   | Pi 4B Rev 1.2 
-| `ganymede.lan` | Pi 3B Rev 1.2 
-| `callisto.lan` | Pi 1B Rev 2   
-| `thebe.lan`    | Pi 1B Rev 2   
+### Io
+
+Currently out of service.
+
+### Europa
+
+Hostname
+:    `ganymede.lan`
+
+Model
+:    Pi 4b Rev 1.2
+
+#### Services
+
+* Home Assistant
+
+### Ganymede
+
+Hostname
+:    `ganymede.lan`
+
+Model
+:    Pi 3b Rev 1.2
+
+#### Services
+
+* [Blink Comparator](/projects/blink-comparator.html)
+* [Telegram Bot](/projects/telegram-bot.html)
+* [Timelapse](/projects/timelapse.html)
+
+### Callisto
+
+Hostname
+:    `callisto.lan`
+
+Model
+:    Pi 3b Rev 1.2
+
+### Thebe
+
+Hostname
+:    `callisto.lan`
+
+Model
+:    Pi 3b Rev 1.2
+
+## Misc.
 
 ```console
 $ ssh-copy-id -i ~/.ssh/id_rsa.pub kyle@io.lan

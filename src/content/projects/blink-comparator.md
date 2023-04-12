@@ -7,15 +7,15 @@ draft: false
 
 ## Overview
 
-`blink-comparator` is a Python program that periodically fetches a website and compares the current version with the previous one. If the two versions are different, a Telegram message is sent to the user that contains a diff of the two versions.
+`blink-comparator` periodically fetches a website and compares the current version to the previous one. If it detects any differences between the two versions, it sends a Telegram message containing a diff of the two versions to the user.
 
-To date, I've used this program to find:
+So far, I have used this program to:
 
-* COVID vaccine appointments in my area
-* Stock availability of infant formula, mason jars, and other items
-* Early childhood family education class openings
+* Locate COVID vaccine appointments in my area
+* Check stock availability for infant formula, mason jars, and other items
+* Find openings in early childhood family education classes
 
-Blink Comparator was designed to consume minimal system resources -- I have it running on a Raspberry Pi -- and to be as simple and foolproof as possible.
+Blink Comparator is designed to consume minimal system resources and to be as simple and foolproof as possible.
 
 ## The Name
 

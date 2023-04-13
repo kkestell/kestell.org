@@ -7,7 +7,7 @@ draft: false
 
 ## Overview
 
-`blink-comparator` periodically fetches a website and compares the current version to the previous one. If it detects any differences between the two versions, it sends a Telegram message containing a diff of the two versions to the user.
+`blink-comparator` periodically fetches a website and compares the current version with what it fetched previously. If it detects any differences, it sends a Telegram message containing a diff of the two versions to the user.
 
 So far, I have used this program to:
 

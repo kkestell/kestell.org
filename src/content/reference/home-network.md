@@ -72,7 +72,11 @@ $ yay brlaser
 
 ### Io
 
-Currently out of service.
+Hostname
+:    `io`
+
+Model
+:    Raspberry Pi 4 Model B Rev 1.2
 
 ### Europa
 
@@ -80,7 +84,7 @@ Hostname
 :    `europa`
 
 Model
-:    Pi 4b Rev 1.2
+:    Raspberry Pi 4 Model B Rev 1.2
 
 #### Services
 
@@ -92,7 +96,7 @@ Hostname
 :    `ganymede`
 
 Model
-:    Pi 3b Rev 1.2
+:    Raspberry Pi 3 Model B Rev 1.2
 
 #### Services
 
@@ -106,7 +110,7 @@ Hostname
 :    `callisto`
 
 Model
-:    Pi 3b Rev 1.2
+:    Raspberry Pi Model B Rev 2
 
 ### Thebe
 
@@ -114,7 +118,7 @@ Hostname
 :    `thebe`
 
 Model
-:    Pi 3b Rev 1.2
+:    Raspberry Pi Model B Rev 2
 
 ## Misc.
 

@@ -53,6 +53,9 @@ internal class SiteBuilder
         var sw = new Stopwatch();
         sw.Start();
 
+        if (Directory.Exists("dist"))
+            Directory.Delete("dist", true);
+    
         Directory.CreateDirectory("dist");
 
         var files = Directory.GetFiles(buildOptions.ContentDirectory.FullName, "*.md", SearchOption.AllDirectories);
@@ -74,32 +77,7 @@ internal class SiteBuilder
         sw.Stop();
         Console.WriteLine($"Built in {sw.ElapsedMilliseconds}ms");
     }
-
-    public void BuildSingle(string file)
-    {
-        var sw = new Stopwatch();
-        sw.Start();
-
-        Directory.CreateDirectory("dist");
-
-        BuildPage(file);
-            
-        CopyDirectory(buildOptions.StaticDirectory.FullName, Path.Combine(buildOptions.OutputDirectory.FullName, "static"), true);
-
-        sw.Stop();
-        Console.WriteLine($"Built {file} in {sw.ElapsedMilliseconds}ms");
-    }
-
-    private void BuildHomepage(List<Page> pages)
-    {
-        var directory = ConvertPagesToSiteDirectory(pages);
-        SortSiteDirectory(directory);
-        var root = GenerateNestedList(directory, 1);
-
-        var homeHtml = homeTemplate(new { Root = root });
-        File.WriteAllText(Path.Combine(buildOptions.OutputDirectory.FullName, "index.html"), homeHtml);
-    }
-
+    
     private Page? BuildPage(string file)
     {
         var content = File.ReadAllText(file);
@@ -132,6 +110,16 @@ internal class SiteBuilder
         Console.WriteLine($"{file} -> {outputFile}");
 
         return page;
+    }
+    
+    private void BuildHomepage(List<Page> pages)
+    {
+        var directory = ConvertPagesToSiteDirectory(pages);
+        SortSiteDirectory(directory);
+        var root = GenerateNestedList(directory, 1);
+
+        var homeHtml = homeTemplate(new { Root = root });
+        File.WriteAllText(Path.Combine(buildOptions.OutputDirectory.FullName, "index.html"), homeHtml);
     }
     
     private string GenerateNestedList(SiteDirectory directory, int depth)

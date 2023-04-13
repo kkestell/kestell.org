@@ -14,27 +14,10 @@ internal class ServeCommandHandler
         watcher = new Watcher(options.RootDirectory.FullName);
         builder = new SiteBuilder(options);
 
-        watcher.Changed += Build;
-        watcher.Created += Build;
+        watcher.Changed += Rebuild;
+        watcher.Created += Rebuild;
         watcher.Deleted += Rebuild;
         watcher.Renamed += Rebuild;
-    }
-
-    private void Build(object? sender, FileSystemEventArgs e)
-    {
-        try
-        {
-            Console.WriteLine($"{e.Name}");
-            
-            if (e.Name.EndsWith(".md"))
-                builder.BuildSingle(e.FullPath);
-            else
-                builder.Build();
-        }
-        catch (Exception exception)
-        {
-            Console.WriteLine(exception);
-        }
     }
 
     private void Rebuild(object? sender, FileSystemEventArgs e)

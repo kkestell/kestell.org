@@ -77,7 +77,7 @@ Currently out of service.
 ### Europa
 
 Hostname
-:    `ganymede.lan`
+:    `europa`
 
 Model
 :    Pi 4b Rev 1.2
@@ -89,7 +89,7 @@ Model
 ### Ganymede
 
 Hostname
-:    `ganymede.lan`
+:    `ganymede`
 
 Model
 :    Pi 3b Rev 1.2
@@ -103,7 +103,7 @@ Model
 ### Callisto
 
 Hostname
-:    `callisto.lan`
+:    `callisto`
 
 Model
 :    Pi 3b Rev 1.2
@@ -111,7 +111,7 @@ Model
 ### Thebe
 
 Hostname
-:    `callisto.lan`
+:    `thebe`
 
 Model
 :    Pi 3b Rev 1.2

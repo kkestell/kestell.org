@@ -2,4 +2,4 @@ venv/
 bin/
 obj/
 .idea/
-publish/
+dist/*

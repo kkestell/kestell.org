@@ -2,4 +2,3 @@ venv/
 bin/
 obj/
 .idea/
-dist/*

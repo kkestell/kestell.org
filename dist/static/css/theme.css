@@ -201,7 +201,7 @@ td:nth-child(1) {
         --rule-color: #222;
         --nav-link-color: #fff;
         --nav-active-color: #eee;
-        --link-color: #008080;
+        --link-color: #78aeed;
     }
 }
 
@@ -213,7 +213,7 @@ td:nth-child(1) {
         --rule-color: #eee;
         --nav-link-color: #111;
         --nav-active-color: #000;
-        --link-color: #008080;
+        --link-color: #1c71d8;
     }
 }
 

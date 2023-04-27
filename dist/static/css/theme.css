@@ -202,6 +202,7 @@ td:nth-child(1) {
         --nav-link-color: #fff;
         --nav-active-color: #eee;
         --link-color: #78aeed;
+        --icon-color: #e7e7e7;
     }
 }
 
@@ -214,6 +215,7 @@ td:nth-child(1) {
         --nav-link-color: #111;
         --nav-active-color: #000;
         --link-color: #1c71d8;
+        --icon-color: #111;
     }
 }
 
@@ -245,6 +247,53 @@ ol {
     margin-bottom: 1rem;
 }
 
+header {
+    margin-bottom: 3rem;
+}
+
+header h1 {
+    font-size: 1.8rem;
+}
+
+header h2.subtitle {
+    margin: 1rem 0 2rem;
+    font-weight: normal;
+    font-size: 1.2rem;
+}
+
+header ul {
+    list-style: none;
+    margin: 0;
+}
+
+header li {
+    display: inline-block;
+    margin-right: 1rem;
+}
+
+header li a, header li span {
+    position: relative;
+    padding-left: 25px;
+    font-size: 0.9rem;
+}
+
+header li a svg, header li span svg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 18px;
+    height: 18px;
+    fill: var(--icon-color);
+}
+ 
+footer {
+    color: var(--text-color-dim);
+    font-size: 0.9rem;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--rule-color);
+}
+
 h1,
 h2,
 h3,
@@ -257,22 +306,12 @@ h6 {
     font-weight: bold;
 }
 
-h1 {
-    font-size: 1.8rem;
-    text-align: center;
-}
-
 h2 {
     font-size: 1.5rem;
     margin-top: 2rem;
 }
 
-h2.subtitle {
-    text-align: center;
-    margin: 1rem 0 4rem;
-    font-weight: normal;
-    font-size: 1.2rem;
-}
+
 
 h3 {
     font-size: 1.2rem;
@@ -393,13 +432,6 @@ del {
     text-decoration: line-through;
 }
 
-footer {
-    margin-top: 3rem;
-    padding-top: 2rem;
-    border-top: 1px solid var(--rule-color);
-    text-align: center;
-}
-
 pre {
     margin-bottom: 1rem;
 }
@@ -453,3 +485,4 @@ hr {
 #pages h6{
     font-size: 1rem;
 }
+

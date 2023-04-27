@@ -5,10 +5,12 @@ public class Page
     public Dictionary<string, string> Meta { get; set; }
     public string Content { get; set; }
     public string Path { get; set; }
+    public string Pdf { get; set; }
+    public string GeneratedAt { get; set; }
 
     public string Title => Meta["title"];
     public string Description => Meta["description"];
-
+    public string Date => Meta["date"];
 }
 
 public abstract class Node

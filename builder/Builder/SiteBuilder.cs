@@ -2,6 +2,7 @@ using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Globalization;
 using System.Text;
+using System.Text.RegularExpressions;
 using HandlebarsDotNet;
 using Markdig;
 using YamlDotNet.Core;
@@ -32,7 +33,7 @@ internal class SiteBuilder
 
         markdownPipeline = new MarkdownPipelineBuilder()
             .UseYamlFrontMatter()
-            .UseCustomContainers()
+            .UseCustomContainers() 
             .UseEmphasisExtras()
             .UseGridTables()
             .UseMediaLinks()
@@ -77,6 +78,45 @@ internal class SiteBuilder
         sw.Stop();
         Console.WriteLine($"Built in {sw.ElapsedMilliseconds}ms");
     }
+
+    private void GeneratePdf(string markdownFile, string outputFile)
+    {
+        var tempFile = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
+
+        File.Copy(markdownFile, tempFile, true);
+
+        var content = File.ReadAllText(tempFile);
+
+        // FIXME: Yuck!
+        var absoluteImagePath = Path.Combine(buildOptions.StaticDirectory.FullName, "images");
+        content = content.Replace("/static/images", absoluteImagePath);
+
+        File.WriteAllText(tempFile, content);
+
+        var startInfo = new ProcessStartInfo
+        {
+            FileName = "pandoc",
+            Arguments = $"{tempFile} --pdf-engine=xelatex --template={Path.Combine(buildOptions.TemplateDirectory.FullName, "default.latex")} --variable \"geometry=margin=0.75in\" --highlight-style=monochrome -o {outputFile}",
+            RedirectStandardOutput = true,
+            RedirectStandardError = true,
+            UseShellExecute = false,
+            CreateNoWindow = true,
+            WorkingDirectory = buildOptions.ContentDirectory.FullName
+        };
+
+        var process = new Process { StartInfo = startInfo };
+        process.Start();
+        process.WaitForExit();
+
+        if (process.ExitCode != 0)
+        {
+            throw new Exception($"pandoc failed with exit code {process.ExitCode} and error {process.StandardError.ReadToEnd()} when converting {markdownFile} to {outputFile}");
+        }
+
+        File.Delete(tempFile);
+
+        Console.WriteLine($"{markdownFile} -> {outputFile}");
+    }
     
     private Page? BuildPage(string file)
     {
@@ -90,24 +130,29 @@ internal class SiteBuilder
         var html = Markdown.ToHtml(content, markdownPipeline);
 
         var relativePath = Path.GetRelativePath(buildOptions.ContentDirectory.FullName, file);
-        var outputFile = Path.ChangeExtension(Path.Combine(buildOptions.OutputDirectory.FullName, relativePath), ".html");
+        var outputHtmlFile = Path.ChangeExtension(Path.Combine(buildOptions.OutputDirectory.FullName, relativePath), ".html");
+        var outputPdfFile = Path.ChangeExtension(Path.Combine(buildOptions.OutputDirectory.FullName, relativePath), ".pdf");
         
-        Directory.CreateDirectory(Path.GetDirectoryName(outputFile)!);
+        Directory.CreateDirectory(Path.GetDirectoryName(outputHtmlFile)!);
 
-        var path = Path.GetRelativePath(buildOptions.OutputDirectory.FullName, outputFile);
-
+        var path = Path.GetRelativePath(buildOptions.OutputDirectory.FullName, outputHtmlFile);
+       
         var page = new Page
         {
             Meta = pageMeta,
             Content = html,
+            Pdf = Path.GetFileName(outputPdfFile),
+            GeneratedAt = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
             Path = path
         };
         
         var renderedHtml = pageTemplate(new { Page = page });
 
-        File.WriteAllText(outputFile, renderedHtml);
+        File.WriteAllText(outputHtmlFile, renderedHtml);
         
-        Console.WriteLine($"{file} -> {outputFile}");
+        Console.WriteLine($"{file} -> {outputHtmlFile}");
+
+        GeneratePdf(file, outputPdfFile);
 
         return page;
     }

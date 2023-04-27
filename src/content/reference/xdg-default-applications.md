@@ -1,6 +1,6 @@
 ---
 title: "XDG Default Applications"
-description: "Fixing broken file associations in Linux."
+subtitle: "Fixing broken file associations in Linux."
 date: 2021-11-27
 draft: false
 ---
@@ -10,18 +10,16 @@ draft: false
 Print the `.desktop` filename of the application that is registered to open directories:
 
 ```shell
-$ xdg-mime query default inode/directory
+xdg-mime query default inode/directory
 ```
 
 Associate directories with Nautilus (Files). This will modify `~/.config/mimetypes.list`:
 
 ```shell
-$ xdg-mime default org.gnome.Nautilus.desktop inode/directory
+xdg-mime default org.gnome.Nautilus.desktop inode/directory
 ```
 
 ### Example `~/.config/mimeapps.list`
-
-
 
 ```ini
 [Default Applications]

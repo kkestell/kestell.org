@@ -2,7 +2,6 @@ using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Globalization;
 using System.Text;
-using System.Text.RegularExpressions;
 using HandlebarsDotNet;
 using Markdig;
 using YamlDotNet.Core;
@@ -20,6 +19,7 @@ internal class SiteBuilder
     private readonly MarkdownPipeline markdownPipeline;
     private readonly HandlebarsTemplate<object, object> pageTemplate;
     private readonly HandlebarsTemplate<object, object> homeTemplate;
+    private readonly object lockObject = new object();
 
     public SiteBuilder(BuildOptions buildOptions)
     {
@@ -51,6 +51,12 @@ internal class SiteBuilder
 
     public void Build()
     {
+        Console.WriteLine();
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine($"Build started at {DateTime.Now:hh:mm:ss tt}");
+        Console.ResetColor();
+        Console.WriteLine();
+        
         var sw = new Stopwatch();
         sw.Start();
 
@@ -64,9 +70,9 @@ internal class SiteBuilder
         var pages = new ConcurrentBag<Page>();
 
         Parallel.ForEach(files, file =>
-        {
+        {           
             var page = BuildPage(file);
-            
+
             if (page is not null)
                 pages.Add(page);
         });
@@ -75,15 +81,25 @@ internal class SiteBuilder
 
         CopyDirectory(buildOptions.StaticDirectory.FullName, Path.Combine(buildOptions.OutputDirectory.FullName, "static"), true);
 
+        Parallel.ForEach(files, file =>
+        {
+            GeneratePdf(file);
+        });
+        
         sw.Stop();
-        Console.WriteLine($"Built in {sw.ElapsedMilliseconds}ms");
-    }
 
-    private void GeneratePdf(string markdownFile, string outputFile)
+        Console.WriteLine();
+
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine($"✓ Completed in {sw.Elapsed.TotalSeconds:0.00} seconds");
+        Console.ResetColor();
+     }
+
+    private string RewriteImagePaths(string file)
     {
         var tempFile = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
 
-        File.Copy(markdownFile, tempFile, true);
+        File.Copy(file, tempFile, true);
 
         var content = File.ReadAllText(tempFile);
 
@@ -93,10 +109,25 @@ internal class SiteBuilder
 
         File.WriteAllText(tempFile, content);
 
+        return tempFile;
+    }
+
+    private void GeneratePdf(string file)
+    {
+        var sw = new Stopwatch();
+        sw.Start();
+
+        var relativePath = Path.GetRelativePath(buildOptions.ContentDirectory.FullName, file);
+        var outputFile = Path.ChangeExtension(Path.Combine(buildOptions.OutputDirectory.FullName, relativePath), ".pdf");
+
+        var tempFile = RewriteImagePaths(file);
+
+        var args = $"{tempFile} --pdf-engine=xelatex --include-in-header=\"{Path.Combine(buildOptions.TemplateDirectory.FullName, "header.tex")}\" --variable \"block-headings\" --highlight-style=monochrome -f markdown -t pdf -o {outputFile}";
+
         var startInfo = new ProcessStartInfo
         {
             FileName = "pandoc",
-            Arguments = $"{tempFile} --pdf-engine=xelatex --template={Path.Combine(buildOptions.TemplateDirectory.FullName, "default.latex")} --variable \"geometry=margin=0.75in\" --highlight-style=monochrome -o {outputFile}",
+            Arguments = args,
             RedirectStandardOutput = true,
             RedirectStandardError = true,
             UseShellExecute = false,
@@ -110,49 +141,71 @@ internal class SiteBuilder
 
         if (process.ExitCode != 0)
         {
-            throw new Exception($"pandoc failed with exit code {process.ExitCode} and error {process.StandardError.ReadToEnd()} when converting {markdownFile} to {outputFile}");
+            throw new Exception($"pandoc failed with exit code {process.ExitCode} and error {process.StandardError.ReadToEnd()} when converting {file} to {outputFile}");
         }
-
+       
         File.Delete(tempFile);
 
-        Console.WriteLine($"{markdownFile} -> {outputFile}");
+        sw.Stop();
+
+        var elapsed = $"{sw.Elapsed.TotalSeconds:0.00}";
+
+        lock(lockObject)
+        {
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.Write($"{elapsed,-4}");
+            Console.ResetColor();
+            Console.Write($" {Path.GetRelativePath(buildOptions.OutputDirectory.ToString(), outputFile)}");
+            Console.WriteLine();
+        }
     }
     
     private Page? BuildPage(string file)
-    {
+    {       
+        var sw = new Stopwatch();
+        sw.Start();
+
         var content = File.ReadAllText(file);
         var pageMeta = ParseMetadata(content);
 
         bool.TryParse(pageMeta["draft"], out var draft);
         if (draft)
             return null;
-
+        
         var html = Markdown.ToHtml(content, markdownPipeline);
 
         var relativePath = Path.GetRelativePath(buildOptions.ContentDirectory.FullName, file);
-        var outputHtmlFile = Path.ChangeExtension(Path.Combine(buildOptions.OutputDirectory.FullName, relativePath), ".html");
-        var outputPdfFile = Path.ChangeExtension(Path.Combine(buildOptions.OutputDirectory.FullName, relativePath), ".pdf");
+        var outputFile = Path.ChangeExtension(Path.Combine(buildOptions.OutputDirectory.FullName, relativePath), ".html");
         
-        Directory.CreateDirectory(Path.GetDirectoryName(outputHtmlFile)!);
+        Directory.CreateDirectory(Path.GetDirectoryName(outputFile)!);
 
-        var path = Path.GetRelativePath(buildOptions.OutputDirectory.FullName, outputHtmlFile);
+        var path = Path.GetRelativePath(buildOptions.OutputDirectory.FullName, outputFile);
        
         var page = new Page
         {
             Meta = pageMeta,
             Content = html,
-            Pdf = Path.GetFileName(outputPdfFile),
+            Pdf = Path.GetFileName(Path.ChangeExtension(outputFile, ".pdf")),
             GeneratedAt = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
             Path = path
         };
         
         var renderedHtml = pageTemplate(new { Page = page });
 
-        File.WriteAllText(outputHtmlFile, renderedHtml);
+        File.WriteAllText(outputFile, renderedHtml);
         
-        Console.WriteLine($"{file} -> {outputHtmlFile}");
+        sw.Stop();
 
-        GeneratePdf(file, outputPdfFile);
+        var elapsed = $"{sw.Elapsed.TotalSeconds:0.00}";
+
+        lock(lockObject)
+        {
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.Write($"{elapsed,-4}");
+            Console.ResetColor();
+            Console.Write($" {Path.GetRelativePath(buildOptions.OutputDirectory.ToString(), outputFile)}");
+            Console.WriteLine();
+        }
 
         return page;
     }
@@ -195,7 +248,10 @@ internal class SiteBuilder
                     htmlBuilder.AppendLine($"<li>{GenerateNestedList(childDirectory, depth + 1)}</li>");
                     break;
                 case SiteFile siteFile:
-                    htmlBuilder.AppendLine($"<li><a href=\"{siteFile.PageData.Path}\">{siteFile.PageData.Meta["title"]}</a></li>");
+                    htmlBuilder.Append($"<li><a href=\"{siteFile.PageData.Path}\">{siteFile.PageData.Meta["title"]}</a>");
+                    if (!string.IsNullOrEmpty(siteFile.PageData.Meta["subtitle"]))
+                        htmlBuilder.Append($"<br /><span>{siteFile.PageData.Meta["subtitle"]}</span>");
+                    htmlBuilder.Append("</li>\n");
                     break;
             }
         }

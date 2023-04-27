@@ -474,6 +474,11 @@ hr {
     margin-left: 0;
 }
 
+#pages li {
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
 #pages li > ul {
     margin-left: 2rem;
 }
@@ -483,6 +488,10 @@ hr {
 #pages h4, 
 #pages h5, 
 #pages h6{
-    font-size: 1rem;
+    font-size: 1.3rem;
 }
 
+#pages span {
+    font-size: 0.9rem;
+    color: var(--text-color-dim);
+}

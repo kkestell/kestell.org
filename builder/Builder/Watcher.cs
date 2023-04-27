@@ -22,8 +22,6 @@ public class Watcher : IDisposable
         watcher.Filter = "";
         watcher.IncludeSubdirectories = true;
         watcher.EnableRaisingEvents = true;
-
-        Console.WriteLine($"Watching {path}...");
     }
     
     private void OnChanged(object sender, FileSystemEventArgs e)

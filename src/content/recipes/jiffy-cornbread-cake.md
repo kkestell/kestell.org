@@ -1,11 +1,9 @@
 ---
 title: "Jiffy Cornbread Cake"
-description: ""
+subtitle: ""
 date: 2021-11-27
 draft: false
 ---
-
-## Jiffy Cornbread Cake
 
 ### Ingredients
 

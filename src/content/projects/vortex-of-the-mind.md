@@ -1,6 +1,6 @@
 ---
 title: "Vortex of the Mind"
-description: "NOTE: Certain rooms are only accessible through random teleportation."
+subtitle: "NOTE: Certain rooms are only accessible through random teleportation."
 date: 2021-11-27
 draft: false
 ---

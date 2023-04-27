@@ -43,9 +43,9 @@
 <dd>21.02.3</dd>
 </dl>
 <h4 id="updating">Updating</h4>
-<pre><code class="language-shell">$ opkg update
-$ opkg list-upgradable
-$ opkg list-upgradable | cut -f 1 -d ' ' | xargs -r opkg upgrade
+<pre><code class="language-shell">opkg update
+opkg list-upgradable
+opkg list-upgradable | cut -f 1 -d ' ' | xargs -r opkg upgrade
 </code></pre>
 <h3 id="switch">Switch</h3>
 <p>TODO</p>
@@ -74,7 +74,7 @@ $ opkg list-upgradable | cut -f 1 -d ' ' | xargs -r opkg upgrade
 <dt>Unprintable Area (Margins)</dt>
 <dd>0.16&quot;</dd>
 </dl>
-<pre><code class="language-console">$ yay brlaser
+<pre><code class="language-shell">yay brlaser
 </code></pre>
 <h2 id="raspberry-pi-rack">Raspberry Pi Rack</h2>
 <h3 id="io">Io</h3>
@@ -123,9 +123,9 @@ $ opkg list-upgradable | cut -f 1 -d ' ' | xargs -r opkg upgrade
 <dd>Raspberry Pi Model B Rev 2</dd>
 </dl>
 <h2 id="misc">Misc.</h2>
-<pre><code class="language-console">$ ssh-copy-id -i ~/.ssh/id_rsa.pub kyle@io.lan
+<pre><code class="language-shell">ssh-copy-id -i ~/.ssh/id_rsa.pub kyle@io.lan
 </code></pre>
-<pre><code class="language-console">$ cat /sys/firmware/devicetree/base/model
+<pre><code class="language-shell">cat /sys/firmware/devicetree/base/model
 </code></pre>
 <h2 id="network">Network</h2>
 <h3 id="static-ips">Static IPs</h3>
@@ -212,7 +212,7 @@ $ opkg list-upgradable | cut -f 1 -d ' ' | xargs -r opkg upgrade
 <h2 id="configuration">Configuration</h2>
 <h3 id="router-1">Router</h3>
 <h4 id="etcconfigsystem"><code>/etc/config/system</code></h4>
-<pre><code>config system
+<pre><code class="language-default">config system
     option hostname 'OpenWrt'
     option timezone 'UTC'
     option ttylogin '0'
@@ -228,7 +228,7 @@ config timeserver 'ntp'
     list server '3.openwrt.pool.ntp.org'
 </code></pre>
 <h4 id="etcconfignetwork"><code>/etc/config/network</code></h4>
-<pre><code>config interface 'loopback'
+<pre><code class="language-default">config interface 'loopback'
     option device 'lo'
     option proto 'static'
     option ipaddr '127.0.0.1'
@@ -303,7 +303,7 @@ config device
     list ports 'eth1.3'
 </code></pre>
 <h4 id="etcconfigdhcp"><code>/etc/config/dhcp</code></h4>
-<pre><code>config dnsmasq
+<pre><code class="language-default">config dnsmasq
     option domainneeded '1'
     option localise_queries '1'
     option rebind_protection '1'
@@ -377,7 +377,7 @@ config host
     option mac 'DC:A6:32:D0:7D:0B'
 </code></pre>
 <h4 id="etcconfigwireless"><code>/etc/config/wireless</code></h4>
-<pre><code>config wifi-device 'radio0'
+<pre><code class="language-default">config wifi-device 'radio0'
     option type 'mac80211'
     option path 'pci0000:00/0000:00:00.0'
     option channel '36'
@@ -413,7 +413,7 @@ config wifi-iface 'wifinet1'
     option hidden '1'
 </code></pre>
 <h4 id="etcconfigfirewall"><code>/etc/config/firewall</code></h4>
-<pre><code>config defaults
+<pre><code class="language-default">config defaults
     option input 'ACCEPT'
     option output 'ACCEPT'
     option forward 'REJECT'
@@ -583,7 +583,7 @@ config forwarding
 </code></pre>
 
   <footer>
-    <p>Generated on 2023-04-27 05:56:31</p>
+    <p>Generated on 2023-04-27 16:10:26</p>
   </footer>
 </body>
 </html>

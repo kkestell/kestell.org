@@ -1,6 +1,6 @@
 ---
 title: "Brewed"
-description: "Lorem ipsum dolor sit amet"
+subtitle: "Homebrew beer recipes"
 date: 2011-11-27
 draft: false
 ---

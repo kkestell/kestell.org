@@ -1,6 +1,6 @@
 ---
 title: "TRS-80 Model 100"
-description: "Lorem ipsum dolor sit amet"
+subtitle: ""
 date: 2021-11-27
 draft: false
 ---

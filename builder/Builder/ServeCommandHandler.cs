@@ -5,14 +5,12 @@ namespace Builder;
 internal class ServeCommandHandler
 {
     private readonly Watcher watcher;
-    private readonly SiteBuilder builder;
     private readonly ServeOptions options;
 
     public ServeCommandHandler(ServeCommand command)
     {
         options = new ServeOptions(command);
         watcher = new Watcher(options.RootDirectory.FullName);
-        builder = new SiteBuilder(options);
 
         watcher.Changed += Rebuild;
         watcher.Created += Rebuild;
@@ -22,9 +20,19 @@ internal class ServeCommandHandler
 
     private void Rebuild(object? sender, FileSystemEventArgs e)
     {
+        if (!string.IsNullOrEmpty(e.Name))
+        {
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.WriteLine(new string('─', Console.WindowWidth));
+            Console.ResetColor();
+        }
+
+        var builder = new SiteBuilder(options);
+
         try
         {
-            Console.WriteLine($"{e.Name}");
+            // Console.WriteLine($"{e.Name}");
             builder.Build();
         }
         catch (Exception exception)
@@ -37,8 +45,19 @@ internal class ServeCommandHandler
     {
         try
         {
-            builder.Build();
-            Console.WriteLine($"Listening on http://localhost:{options.Port}...");
+            // Console.WriteLine();
+            // Console.ForegroundColor = ConsoleColor.Yellow;
+            // Console.WriteLine($"Listening on http://localhost:{options.Port}...");
+            // Console.ResetColor();
+            // Console.WriteLine();
+
+            // Console.ForegroundColor = ConsoleColor.DarkGray;
+            // Console.WriteLine(new string('─', Console.WindowWidth));
+            // Console.WriteLine();
+            // Console.ResetColor();            
+
+            Rebuild(null, new FileSystemEventArgs(WatcherChangeTypes.All, "", ""));
+
             CreateHostBuilder(options).Build().Run();
         }
         catch (Exception e)
@@ -52,11 +71,13 @@ internal class ServeCommandHandler
     
     private static IHostBuilder CreateHostBuilder(ServeOptions serveOptions) =>
         Host.CreateDefaultBuilder()
-            // .ConfigureLogging(logging =>
-            // {
-            //     logging.ClearProviders();
-            //     logging.SetMinimumLevel(LogLevel.None);
-            // })        
+            .ConfigureLogging((hostingContext, logging) =>
+            {
+                logging.ClearProviders();
+                logging.AddConsole();
+                logging.AddFilter("Microsoft.Hosting", LogLevel.None);
+                logging.AddFilter("Microsoft.AspNetCore", LogLevel.None);
+            })
             .ConfigureWebHostDefaults(webBuilder =>
             {
                 webBuilder.UseUrls($"http://localhost:{serveOptions.Port}");
@@ -75,4 +96,5 @@ internal class ServeCommandHandler
                     });
                 });
             });
+
 }

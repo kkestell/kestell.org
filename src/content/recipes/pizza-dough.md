@@ -1,11 +1,9 @@
 ---
 title: "Pizza Dough"
-description: ""
+subtitle: ""
 date: 2021-11-27
 draft: false
 ---
-
-## Pizza Dough
 
 Standard pizza dough with 70% hydration and 2.5% salt.
 

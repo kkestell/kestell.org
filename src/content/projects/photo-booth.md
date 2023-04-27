@@ -1,6 +1,6 @@
 ---
 title: "Photo Booth"
-description: "Lorem ipsum dolor sit amet"
+subtitle: ""
 date: 2017-11-27
 draft: false
 ---

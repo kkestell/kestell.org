@@ -1,6 +1,6 @@
 ---
 title: "Z-Probe Offset"
-description: Z-offset calibration procedure for Marlin firmware.
+subtitle: Z-offset calibration procedure for Marlin firmware.
 date: 2021-11-27
 draft: false
 ---

@@ -1,6 +1,6 @@
 ---
 title: "Generating QR Codes"
-description: "Lorem ipsum dolor sit amet"
+subtitle: ""
 date: 2021-11-27
 draft: false
 ---
@@ -14,13 +14,13 @@ draft: false
 Replace `ssid` and `password` with the appropriate values.
 
 ```shell
-$ qrencode -o qr.png "WIFI:T:WPA;S:ssid;P:password;;"
+qrencode -o qr.png "WIFI:T:WPA;S:ssid;P:password;;"
 ```
 
 ### URLs
 
 ```shell
-$ qrencode -o qr.png "https://example.com"
+qrencode -o qr.png "https://example.com"
 ```
 
 ### Printing
@@ -29,7 +29,7 @@ I have a Brother HL-L2300D laser printer which has a native print resolution of 
 
 Generate the QR code:
 
-```
+```shell
 qrencode -o qr.png -s 192 -m 0 -d 600 "whatever"
 ```
 
@@ -47,6 +47,6 @@ qrencode -o qr.png -s 192 -m 0 -d 600 "whatever"
 
 And print it:
 
-```
+```shell
 lpr qr.png
 ```

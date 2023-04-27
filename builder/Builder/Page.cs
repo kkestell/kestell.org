@@ -9,7 +9,7 @@ public class Page
     public string GeneratedAt { get; set; }
 
     public string Title => Meta["title"];
-    public string Description => Meta["description"];
+    public string Subtitle => Meta["subtitle"];
     public string Date => Meta["date"];
 }
 

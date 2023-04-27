@@ -15,6 +15,7 @@
     <ItemGroup>
       <PackageReference Include="Handlebars.Net" Version="2.1.4" />
       <PackageReference Include="Markdig" Version="0.31.0" />
+      <PackageReference Include="ShellProgressBar" Version="5.2.0" />
       <PackageReference Include="System.CommandLine" Version="2.0.0-beta4.22272.1" />
       <PackageReference Include="YamlDotNet" Version="13.0.2" />
     </ItemGroup>

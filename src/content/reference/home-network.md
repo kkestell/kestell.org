@@ -1,6 +1,6 @@
 ---
 title: "Home Network"
-description: "“Your friends on trex all usin' PGP? I'll fuckin' read it in hex; that ain't shit to me.”"
+subtitle: "“Your friends on trex all usin' PGP? I'll fuckin' read it in hex; that ain't shit to me.”"
 date: 2021-11-27
 draft: false
 ---
@@ -25,9 +25,9 @@ Version
 #### Updating
 
 ```shell
-$ opkg update
-$ opkg list-upgradable
-$ opkg list-upgradable | cut -f 1 -d ' ' | xargs -r opkg upgrade
+opkg update
+opkg list-upgradable
+opkg list-upgradable | cut -f 1 -d ' ' | xargs -r opkg upgrade
 ```
 
 ### Switch
@@ -64,8 +64,8 @@ Model
 Unprintable Area (Margins)
 :    0.16"
 
-```console
-$ yay brlaser
+```shell
+yay brlaser
 ```
 
 ## Raspberry Pi Rack
@@ -122,12 +122,12 @@ Model
 
 ## Misc.
 
-```console
-$ ssh-copy-id -i ~/.ssh/id_rsa.pub kyle@io.lan
+```shell
+ssh-copy-id -i ~/.ssh/id_rsa.pub kyle@io.lan
 ```
 
-```console
-$ cat /sys/firmware/devicetree/base/model
+```shell
+cat /sys/firmware/devicetree/base/model
 ```
 
 ## Network
@@ -223,7 +223,7 @@ IP Type
 
 #### `/etc/config/system`
 
-```
+```default
 config system
     option hostname 'OpenWrt'
     option timezone 'UTC'
@@ -242,7 +242,7 @@ config timeserver 'ntp'
 
 #### `/etc/config/network`
 
-```
+```default
 config interface 'loopback'
     option device 'lo'
     option proto 'static'
@@ -320,7 +320,7 @@ config device
 
 #### `/etc/config/dhcp`
 
-```
+```default
 config dnsmasq
     option domainneeded '1'
     option localise_queries '1'
@@ -397,7 +397,7 @@ config host
 
 #### `/etc/config/wireless`
 
-```
+```default
 config wifi-device 'radio0'
     option type 'mac80211'
     option path 'pci0000:00/0000:00:00.0'
@@ -436,7 +436,7 @@ config wifi-iface 'wifinet1'
 
 #### `/etc/config/firewall`
 
-```
+```default
 config defaults
     option input 'ACCEPT'
     option output 'ACCEPT'

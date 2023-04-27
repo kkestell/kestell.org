@@ -29,8 +29,8 @@ I have a Brother HL-L2300D laser printer which has a native print resolution of 
 
 Generate the QR code:
 
-```shell
-$ qrencode -o qr.png -s 192 -m 0 -d 600 "whatever"
+```
+qrencode -o qr.png -s 192 -m 0 -d 600 "whatever"
 ```
 
 `-s`
@@ -47,6 +47,6 @@ $ qrencode -o qr.png -s 192 -m 0 -d 600 "whatever"
 
 And print it:
 
-```shell
-$ lpr qr.png
+```
+lpr qr.png
 ```

@@ -23,8 +23,6 @@ The display has a 192×480 IPS panel. I think I read somewhere that these were d
 
 The LCD is mounted to a custom 3D printed bracket that's attached to the enclosure using the original screw bosses. The LCD fits snugly between bracket and the front plastic, with three pieces of double sided tape between the display and the bracket for good measure.
 
-{{< model src="lcd-bracket.obj" >}}
-
 ### Configuration
 
 ```ini

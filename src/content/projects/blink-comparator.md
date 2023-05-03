@@ -1,6 +1,6 @@
 ---
 title: "Blink Comparator"
-subtitle: "Camera one, camera two, camera one, camera two..."
+subtitle: "Camera one, camera two..."
 date: 2019-12-01
 draft: false
 ---

@@ -184,7 +184,7 @@ td:nth-child(1) {
     white-space: nowrap;
 }
 
-/* variables */
+/* VARIABLES */
 
 :root {
     --font-size: 17px;
@@ -198,6 +198,7 @@ td:nth-child(1) {
         --header-color: #fafafa;
         --text-color: #e7e7e7;
         --text-color-dim: #666;
+        --text-color-dimmer: #444;
         --rule-color: #222;
         --nav-link-color: #fff;
         --nav-active-color: #eee;
@@ -211,6 +212,7 @@ td:nth-child(1) {
         --background-color: #fefefe;
         --text-color: #111;
         --text-color-dim: #aaa;
+        --text-color-dimmer: #ccc;
         --rule-color: #eee;
         --nav-link-color: #111;
         --nav-active-color: #000;
@@ -218,6 +220,8 @@ td:nth-child(1) {
         --icon-color: #111;
     }
 }
+
+/* CORE */
 
 html {
     font-size: var(--font-size);
@@ -247,53 +251,6 @@ ol {
     margin-bottom: 1rem;
 }
 
-header {
-    margin-bottom: 3rem;
-}
-
-header h1 {
-    font-size: 1.8rem;
-}
-
-header h2.subtitle {
-    margin: 1rem 0 2rem;
-    font-weight: normal;
-    font-size: 1.2rem;
-}
-
-header ul {
-    list-style: none;
-    margin: 0;
-}
-
-header li {
-    display: inline-block;
-    margin-right: 1rem;
-}
-
-header li a, header li span {
-    position: relative;
-    padding-left: 25px;
-    font-size: 0.9rem;
-}
-
-header li a svg, header li span svg {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 18px;
-    height: 18px;
-    fill: var(--icon-color);
-}
- 
-footer {
-    color: var(--text-color-dim);
-    font-size: 0.9rem;
-    margin-top: 3rem;
-    padding-top: 2rem;
-    border-top: 1px solid var(--rule-color);
-}
-
 h1,
 h2,
 h3,
@@ -310,8 +267,6 @@ h2 {
     font-size: 1.5rem;
     margin-top: 2rem;
 }
-
-
 
 h3 {
     font-size: 1.2rem;
@@ -362,13 +317,6 @@ a {
     text-decoration: underline;
 }
 
-a.footnote-ref {
-    text-decoration: none;
-    margin: 0 0.25rem;
-    font-weight: bold;
-    text-decoration: underline;
-}
-
 a.back {
     color: var(--text-color-dim);
     text-decoration: none;
@@ -382,14 +330,6 @@ sup {
     position: relative;
     top: -0.5em;
     font-size: 80%;
-}
-
-aside#footnotes ol li {
-    list-style: decimal;
-}
-
-aside#footnotes a.footnote-back {
-    margin: 0 0.25rem;
 }
 
 img {
@@ -408,16 +348,6 @@ figcaption {
 blockquote {
     padding-left: 2rem;
     border-left: 0.25rem solid var(--rule-color);
-}
-
-div.footnote {
-    margin-top: 3rem;
-}
-
-div.footnote ol {
-    list-style-type: decimal;
-    font-size: 0.9rem;
-    margin-top: 1rem;
 }
 
 strong {
@@ -455,6 +385,7 @@ dt {
 
 dd {
     display: flex;
+    flex-wrap: wrap;
 }
 
 small {
@@ -467,7 +398,84 @@ hr {
     margin: 2rem 0;
 }
 
-/* homepage */
+a.footnote-ref {
+    text-decoration: none;
+    margin: 0 0.1rem;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+div.footnotes {
+    margin-top: 3rem;
+    font-size: 0.9rem;
+}
+
+div.footnotes hr {
+    display: none;
+}
+
+div.footnotes p {
+    line-height: 1.5;
+}
+
+div.footnotes a.footnote-back-ref {
+    margin-left: 0.5rem;
+}
+
+/* NAVIGATION */
+
+header {
+    margin-bottom: 3rem;
+}
+
+header h1 {
+    font-size: 1.8rem;
+}
+
+header h2 {
+    margin: 1rem 0 2rem;
+    font-weight: normal;
+    font-size: 1.2rem;
+}
+
+header ul {
+    list-style: none;
+    margin: 0;
+}
+
+header li {
+    display: inline-block;
+    margin-right: 1rem;
+}
+
+header li a, header li span {
+    position: relative;
+    padding-left: 25px;
+    font-size: 0.9rem;
+}
+
+header li a svg, header li span svg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 18px;
+    height: 18px;
+    fill: var(--icon-color);
+}
+ 
+footer {
+    color: var(--text-color-dimmer);
+    font-size: 0.8rem;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--rule-color);
+}
+
+footer p {
+    text-align: center;
+}
+
+/* HOMEPAGE */
 
 #pages ul {
     list-style: none;
@@ -475,7 +483,7 @@ hr {
 }
 
 #pages li {
-    line-height: 1.5;
+    line-height: 1.6;
     margin-bottom: 1rem;
 }
 
@@ -493,5 +501,5 @@ hr {
 
 #pages span {
     font-size: 0.9rem;
-    color: var(--text-color-dim);
+    /* color: var(--text-color-dim); */
 }

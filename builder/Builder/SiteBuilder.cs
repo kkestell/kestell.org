@@ -43,6 +43,7 @@ internal class SiteBuilder
             .UseSmartyPants()
             .UseAutoIdentifiers()
             .UseAutoLinks()
+            .UseFootnotes()
             .Build();
 
         pageTemplate = Handlebars.Compile(File.ReadAllText(Path.Combine(buildOptions.TemplateDirectory.FullName, "page.hbs")));

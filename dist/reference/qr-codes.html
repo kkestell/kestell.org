@@ -10,7 +10,7 @@
 <body>
   <header>
     <h1>Generating QR Codes</h1>
-    <h2 class="subtitle"></h2>
+    <h2></h2>
     <ul>
       <li>
         <span>
@@ -40,7 +40,7 @@
 <pre><code class="language-shell">qrencode -o qr.png &quot;https://example.com&quot;
 </code></pre>
 <h3 id="printing">Printing</h3>
-<p>I have a Brother HL-L2300D laser printer which has a native print resolution of 600 DPI. I'd like to be able to print my QR code on a standard US letter-size piece of paper. According to <a href="https://support.brother.com/g/s/id/htmldoc/printer/cv_hll2300d/use/manual/index.html#GUID-1BBF837B-7708-4FCB-8F03-EBC668571B9F_20#KEY=unprintable%20areas">the manual</a>, the minimum margins on the Brother HL-L2300D are 0.16&quot;, so I figure an 8&quot; QR code gives me 0.25&quot; of margin, which is plenty. Dividied by 25, that's 192 pixels per dot.</p>
+<p>I have a Brother HL-L2300D laser printer<a id="fnref:1" href="#fn:1" class="footnote-ref"><sup>1</sup></a> which has a native print resolution of 600 DPI. I'd like to be able to print my QR code on a standard US letter-size piece of paper. According to <a href="https://support.brother.com/g/s/id/htmldoc/printer/cv_hll2300d/use/manual/index.html#GUID-1BBF837B-7708-4FCB-8F03-EBC668571B9F_20#KEY=unprintable%20areas">the manual</a>, the minimum margins on the Brother HL-L2300D are 0.16&quot;, so I figure an 8&quot; QR code gives me 0.25&quot; of margin, which<a id="fnref:2" href="#fn:2" class="footnote-ref"><sup>2</sup></a> is plenty. Dividied by 25, that's 192 pixels per dot.</p>
 <p>Generate the QR code:</p>
 <pre><code class="language-shell">qrencode -o qr.png -s 192 -m 0 -d 600 &quot;whatever&quot;
 </code></pre>
@@ -57,9 +57,20 @@
 <p>And print it:</p>
 <pre><code class="language-shell">lpr qr.png
 </code></pre>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn:1">
+<p>Hello World<a href="#fnref:1" class="footnote-back-ref">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>I have a Brother HL-L2300D laser printer1 which has a native print resolution of 600 DPI. I'd like to be able to print my QR code on a standard US letter-size piece of paper. According to the manual, the minimum margins on the Brother HL-L2300D are 0.16&quot;, so I figure an 8&quot; QR code gives me<a href="#fnref:2" class="footnote-back-ref">&#8617;</a></p>
+</li>
+</ol>
+</div>
 
   <footer>
-    <p>Generated on 2023-04-27 16:10:26</p>
+    <p>Generated on 2023-04-28 10:51:10</p>
   </footer>
 </body>
 </html>

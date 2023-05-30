@@ -118,6 +118,13 @@ internal class SiteBuilder
         var sw = new Stopwatch();
         sw.Start();
 
+        var content = File.ReadAllText(file);
+        var pageMeta = ParseMetadata(content);
+
+        bool.TryParse(pageMeta["draft"], out var draft);
+        if (draft && !buildOptions.BuildDrafts)
+            return;
+
         var relativePath = Path.GetRelativePath(buildOptions.ContentDirectory.FullName, file);
         var outputFile = Path.ChangeExtension(Path.Combine(buildOptions.OutputDirectory.FullName, relativePath), ".pdf");
 
@@ -170,7 +177,7 @@ internal class SiteBuilder
         var pageMeta = ParseMetadata(content);
 
         bool.TryParse(pageMeta["draft"], out var draft);
-        if (draft)
+        if (draft && !buildOptions.BuildDrafts)
             return null;
         
         var html = Markdown.ToHtml(content, markdownPipeline);
@@ -249,7 +256,10 @@ internal class SiteBuilder
                     htmlBuilder.AppendLine($"<li>{GenerateNestedList(childDirectory, depth + 1)}</li>");
                     break;
                 case SiteFile siteFile:
-                    htmlBuilder.Append($"<li><a href=\"{siteFile.PageData.Path}\">{siteFile.PageData.Meta["title"]}</a>");
+                    htmlBuilder.Append("<li>");
+                    if (siteFile.PageData.Meta.ContainsKey("draft") && bool.Parse(siteFile.PageData.Meta["draft"]))
+                        htmlBuilder.Append("✍️ ");
+                    htmlBuilder.Append($"<a href=\"{siteFile.PageData.Path}\">{siteFile.PageData.Meta["title"]}</a>");
                     if (!string.IsNullOrEmpty(siteFile.PageData.Meta["subtitle"]))
                         htmlBuilder.Append($"<br /><span>{siteFile.PageData.Meta["subtitle"]}</span>");
                     htmlBuilder.Append("</li>\n");

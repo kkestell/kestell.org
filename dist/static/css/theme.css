@@ -204,6 +204,8 @@ td:nth-child(1) {
         --nav-active-color: #eee;
         --link-color: #78aeed;
         --icon-color: #e7e7e7;
+        --h2-color: #eee;
+        --h3-color: #ddd;
     }
 }
 
@@ -218,6 +220,8 @@ td:nth-child(1) {
         --nav-active-color: #000;
         --link-color: #1c71d8;
         --icon-color: #111;
+        --h2-color: #333;
+        --h3-color: #555;
     }
 }
 
@@ -264,12 +268,15 @@ h6 {
 }
 
 h2 {
-    font-size: 1.5rem;
-    margin-top: 2rem;
+    font-size: 1.6rem;
+    margin-top: 3rem;
+    color: var(--h2-color);
 }
 
 h3 {
     font-size: 1.2rem;
+    margin-top: 3rem;
+    color: var(--h3-color);
 }
 
 h4 {

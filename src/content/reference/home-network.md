@@ -1,6 +1,6 @@
 ---
 title: "Home Network"
-subtitle: "“Your friends on trex all usin' PGP? I'll fuckin' read it in hex; that ain't shit to me.”"
+subtitle: "Lines of light ranged in the nonspace of the mind, clusters and constellations of data."
 date: 2021-11-27
 draft: false
 ---
@@ -70,7 +70,9 @@ yay brlaser
 
 ## Raspberry Pi Rack
 
-### Io
+### Hosts
+
+#### Io
 
 Hostname
 :    `io`
@@ -78,7 +80,7 @@ Hostname
 Model
 :    Raspberry Pi 4 Model B Rev 1.2
 
-### Europa
+#### Europa
 
 Hostname
 :    `europa`
@@ -86,7 +88,7 @@ Hostname
 Model
 :    Raspberry Pi 4 Model B Rev 1.2
 
-### Ganymede
+#### Ganymede
 
 Hostname
 :    `ganymede`
@@ -94,13 +96,13 @@ Hostname
 Model
 :    Raspberry Pi 3 Model B Rev 1.2
 
-#### Services
+##### Services
 
 * [Blink Comparator](/projects/blink-comparator.html)
 * [Telegram Bot](/projects/telegram-bot.html)
 * [Timelapse](/projects/timelapse.html)
 
-### Callisto
+#### Callisto
 
 Hostname
 :    `callisto`
@@ -108,7 +110,7 @@ Hostname
 Model
 :    Raspberry Pi Model B Rev 2
 
-### Thebe
+#### Thebe
 
 Hostname
 :    `thebe`
@@ -116,7 +118,7 @@ Hostname
 Model
 :    Raspberry Pi Model B Rev 2
 
-## Misc.
+### Misc.
 
 ```shell
 ssh-copy-id -i ~/.ssh/id_rsa.pub kyle@io.lan
@@ -601,3 +603,58 @@ config forwarding
     option src 'iot'
     option dest 'lan'
 ```
+
+## Misc.
+
+### Names
+
+#### Moons of Saturn
+
+* Titan
+* Rhea
+* Iapetus
+* Dione
+* Tethys
+* Enceladus
+* Mimas
+* Hyperion
+* Phoebe
+* Janus
+
+#### Moons of Jupiter
+
+* ~~Ganymede~~
+* ~~Callisto~~
+* ~~Io~~
+* ~~Europa~~
+* Amalthea
+* Himalia
+* Elara
+* Pasiphae
+* Sinope
+* Lysithea
+* ~~Thebe~~
+
+#### Moons of Uranus
+
+* Titania
+* Oberon
+* Umbriel
+* Ariel
+* Miranda
+* Sycorax
+* Puck
+* Portia
+* Juliet
+* Belinda
+
+#### Moons of Neptune
+
+* Triton
+* Proteus
+* Nereid
+* Larissa
+* Galatea
+* Despina
+* Thalassa
+* Naiad

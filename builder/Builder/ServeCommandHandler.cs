@@ -10,6 +10,8 @@ internal class ServeCommandHandler
     public ServeCommandHandler(ServeCommand command)
     {
         options = new ServeOptions(command);
+        options.BuildDrafts = true;
+        
         watcher = new Watcher(options.RootDirectory.FullName);
 
         watcher.Changed += Rebuild;
@@ -32,8 +34,8 @@ internal class ServeCommandHandler
 
         try
         {
-            // Console.WriteLine($"{e.Name}");
             builder.Build();
+            // Console.WriteLine($"{e.Name}");
         }
         catch (Exception exception)
         {
@@ -45,11 +47,10 @@ internal class ServeCommandHandler
     {
         try
         {
-            // Console.WriteLine();
-            // Console.ForegroundColor = ConsoleColor.Yellow;
-            // Console.WriteLine($"Listening on http://localhost:{options.Port}...");
-            // Console.ResetColor();
-            // Console.WriteLine();
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"Listening on http://localhost:{options.Port}...");
+            Console.ResetColor();
 
             // Console.ForegroundColor = ConsoleColor.DarkGray;
             // Console.WriteLine(new string('─', Console.WindowWidth));

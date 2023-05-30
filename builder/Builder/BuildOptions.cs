@@ -11,6 +11,7 @@ internal class BuildOptions
     public DirectoryInfo OutputDirectory { get; }
     public DirectoryInfo TemplateDirectory { get; }
     public DirectoryInfo StaticDirectory { get; }
+    public bool BuildDrafts { get; set; }
     
     public BuildOptions(BaseCommand command)
     {

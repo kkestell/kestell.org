@@ -80,13 +80,19 @@ Hostname
 Model
 :    Raspberry Pi 4 Model B Rev 1.2
 
+RAM
+:    4GB
+
 #### Europa
 
 Hostname
 :    `europa`
 
 Model
-:    Raspberry Pi 4 Model B Rev 1.2
+:    Raspberry Pi 4 Model B Rev 1.4
+
+RAM
+:    2GB
 
 #### Ganymede
 
@@ -95,6 +101,9 @@ Hostname
 
 Model
 :    Raspberry Pi 3 Model B Rev 1.2
+
+RAM
+:    1GB
 
 ##### Services
 
@@ -110,6 +119,9 @@ Hostname
 Model
 :    Raspberry Pi Model B Rev 2
 
+RAM
+:    512MB
+
 #### Thebe
 
 Hostname
@@ -117,6 +129,9 @@ Hostname
 
 Model
 :    Raspberry Pi Model B Rev 2
+
+RAM
+:    512MB
 
 ### Misc.
 

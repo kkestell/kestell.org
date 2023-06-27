@@ -3,16 +3,16 @@
 {
 	"name": "Alpine",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	"image": "mcr.microsoft.com/devcontainers/base:alpine-3.18"
+	"image": "mcr.microsoft.com/devcontainers/base:alpine-3.18",
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [],
+	"forwardPorts": [1313],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "sudo apk update && sudo apk add dotnet7-sdk texmf-dist texlive-full pandoc texlive-xetex ttf-dejavu"
+	"postCreateCommand": "sudo apk update && sudo apk add dotnet7-sdk texmf-dist texlive-full pandoc ttf-dejavu"
 
 	// Configure tool-specific properties.
 	// "customizations": {},

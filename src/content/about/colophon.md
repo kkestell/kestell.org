@@ -26,3 +26,11 @@ $ builder serve --root ./src --output ./dist --port 8080
 ## Misc. Notes
 
 An `install.sh` script is included in the root of the repository. This script AOT compiles the builder CLI and copies it to `~/.local/bin`.
+
+## Source
+
+The source code for Builder is available on [GitHub](https://github.com/kkestell/kestell.org).
+
+## License
+
+Builder uses the [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.en.html).

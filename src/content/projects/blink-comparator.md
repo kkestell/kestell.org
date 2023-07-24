@@ -29,4 +29,4 @@ The source code for Blink Comparator is available on [GitHub](https://github.com
 
 ## License
 
-Blink Comparator uses the [Unlicense](https://unlicense.org/).
+Blink Comparator uses the [Zero-Clause BSD](https://opensource.org/license/0bsd/) license.

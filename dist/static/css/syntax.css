@@ -18,4 +18,5 @@ pre {
     font-size: 0.9rem;
     color: var(--code-fg);
     background: var(--code-bg);
+    line-height: 1.2;
 }

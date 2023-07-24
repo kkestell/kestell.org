@@ -83,6 +83,8 @@ Model
 RAM
 :    4GB
 
+* [Archive](/projects/archive.html)
+
 #### Europa
 
 Hostname
@@ -135,12 +137,22 @@ RAM
 
 ### Misc.
 
+Copy SSH key to host:
+
 ```shell
 ssh-copy-id -i ~/.ssh/id_rsa.pub kyle@io.lan
 ```
 
+Detect model:
+
 ```shell
 cat /sys/firmware/devicetree/base/model
+```
+
+Detect RAM:
+
+```shell
+free -h
 ```
 
 ## Network

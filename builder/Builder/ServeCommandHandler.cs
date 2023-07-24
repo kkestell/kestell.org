@@ -10,7 +10,6 @@ internal class ServeCommandHandler
     public ServeCommandHandler(ServeCommand command)
     {
         options = new ServeOptions(command);
-        options.BuildDrafts = true;
         
         watcher = new Watcher(options.RootDirectory.FullName);
 

@@ -87,6 +87,9 @@ opkg list-upgradable | cut -f 1 -d ' ' | xargs -r opkg upgrade
 <dt>RAM</dt>
 <dd>4GB</dd>
 </dl>
+<ul>
+<li><a href="/projects/archive.html">Archive</a></li>
+</ul>
 <h4 id="europa">Europa</h4>
 <dl>
 <dt>Hostname</dt>
@@ -130,9 +133,14 @@ opkg list-upgradable | cut -f 1 -d ' ' | xargs -r opkg upgrade
 <dd>512MB</dd>
 </dl>
 <h3 id="misc">Misc.</h3>
+<p>Copy SSH key to host:</p>
 <pre><code class="language-shell">ssh-copy-id -i ~/.ssh/id_rsa.pub kyle@io.lan
 </code></pre>
+<p>Detect model:</p>
 <pre><code class="language-shell">cat /sys/firmware/devicetree/base/model
+</code></pre>
+<p>Detect RAM:</p>
+<pre><code class="language-shell">free -h
 </code></pre>
 <h2 id="network">Network</h2>
 <h3 id="static-ips">Static IPs</h3>
@@ -643,7 +651,7 @@ config forwarding
 </ul>
 
   <footer>
-    <p>Generated on 2023-06-27 15:03:16</p>
+    <p>Generated on 2023-07-24 18:13:14</p>
   </footer>
 </body>
 </html>

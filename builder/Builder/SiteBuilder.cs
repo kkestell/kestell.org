@@ -52,11 +52,9 @@ internal class SiteBuilder
 
     public void Build()
     {
-        Console.WriteLine();
         Console.ForegroundColor = ConsoleColor.Cyan;
         Console.WriteLine($"Build started at {DateTime.Now:hh:mm:ss tt}");
         Console.ResetColor();
-        Console.WriteLine();
         
         var sw = new Stopwatch();
         sw.Start();
@@ -70,26 +68,37 @@ internal class SiteBuilder
 
         var pages = new ConcurrentBag<Page>();
 
-        Parallel.ForEach(files, file =>
-        {           
-            var page = BuildPage(file);
+        foreach (var file in files)
+        {
+            var done = false;
+            while(!done)
+            {
+                try
+                {
+                    var page = BuildPage(file);
 
-            if (page is not null)
-                pages.Add(page);
-        });
+                    if (page is not null)
+                        pages.Add(page);
+
+                    done = true;
+                }
+                catch(Exception ex)
+                {
+                    Console.WriteLine($"Exception {ex.Message} when building {file}");
+                }
+            }
+        }
 
         BuildHomepage(pages.ToList());
 
         CopyDirectory(buildOptions.StaticDirectory.FullName, Path.Combine(buildOptions.OutputDirectory.FullName, "static"), true);
 
-        Parallel.ForEach(files, file =>
+        foreach (var file in files)
         {
             GeneratePdf(file);
-        });
+        }
         
         sw.Stop();
-
-        Console.WriteLine();
 
         Console.ForegroundColor = ConsoleColor.Green;
         Console.WriteLine($"✓ Completed in {sw.Elapsed.TotalSeconds:0.00} seconds");
@@ -337,13 +346,13 @@ internal class SiteBuilder
 
         Directory.CreateDirectory(destinationDir);
 
-        Parallel.ForEach(dir.GetFiles(), file =>
+        foreach(var file in dir.GetFiles())
         {
             var targetFilePath = Path.Combine(destinationDir, file.Name);
             using var sourceStream = new FileStream(file.FullName, FileMode.Open, FileAccess.Read, FileShare.Read);
             using var destinationStream = new FileStream(targetFilePath, FileMode.Create, FileAccess.Write, FileShare.None);
             sourceStream.CopyTo(destinationStream);
-        });
+        }
 
         if (!recursive) return;
         

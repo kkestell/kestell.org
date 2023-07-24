@@ -13,9 +13,13 @@ internal abstract class BaseCommand : Command
     public Argument<DirectoryInfo> OutputDirectory { get; } =
         new("out", () => new DirectoryInfo(Path.Combine(Environment.CurrentDirectory, "dist")), "Output directory");
 
+    public Option<bool> Drafts { get; } =
+        new(new[] {"--drafts", "-D"}, () => false, "Include drafts");
+
     protected BaseCommand(string name, string? description = null) : base(name, description)
     {
         AddArgument(RootDirectory);
         AddArgument(OutputDirectory);
+        AddOption(Drafts);
     }
 }

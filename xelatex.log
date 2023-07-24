@@ -1,0 +1,17 @@
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023/Arch Linux) (INITEX)  24 JUL 2023 11:18
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**xelatex.ini
+(/usr/share/texmf-dist/tex/generic/tex-ini-files/xelatex.ini
+! I can't find file `latex.ltx'.
+l.17 \input latex.ltx
+                     
+(Press Enter to retry, or Control-D to exit)
+Please type another input file name: 
+! Emergency stop.
+l.17 
+     
+End of file on the terminal!
+
+No pages of output.

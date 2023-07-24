@@ -22,6 +22,7 @@ internal class BuildOptions
         ContentDirectory = new DirectoryInfo(Path.Combine(RootDirectory.FullName, "content"));
         TemplateDirectory = new DirectoryInfo(Path.Combine(RootDirectory.FullName, "templates"));
         StaticDirectory = new DirectoryInfo(Path.Combine(RootDirectory.FullName, "static"));
+        BuildDrafts = Option(command.Drafts);
     }
     
     protected T Argument<T>(Argument<T> argument) => command.Result!.GetValueForArgument(argument);

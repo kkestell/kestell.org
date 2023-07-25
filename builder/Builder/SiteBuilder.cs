@@ -93,9 +93,12 @@ internal class SiteBuilder
 
         CopyDirectory(buildOptions.StaticDirectory.FullName, Path.Combine(buildOptions.OutputDirectory.FullName, "static"), true);
 
-        foreach (var file in files)
+        if (buildOptions.BuildPdfs)
         {
-            GeneratePdf(file);
+            foreach (var file in files)
+            {
+                GeneratePdf(file);
+            }
         }
         
         sw.Stop();

@@ -12,6 +12,7 @@ internal class BuildOptions
     public DirectoryInfo TemplateDirectory { get; }
     public DirectoryInfo StaticDirectory { get; }
     public bool BuildDrafts { get; set; }
+    public bool BuildPdfs { get; set; }
     
     public BuildOptions(BaseCommand command)
     {
@@ -23,6 +24,7 @@ internal class BuildOptions
         TemplateDirectory = new DirectoryInfo(Path.Combine(RootDirectory.FullName, "templates"));
         StaticDirectory = new DirectoryInfo(Path.Combine(RootDirectory.FullName, "static"));
         BuildDrafts = Option(command.Drafts);
+        BuildPdfs = Option(command.Pdfs);
     }
     
     protected T Argument<T>(Argument<T> argument) => command.Result!.GetValueForArgument(argument);

@@ -15,34 +15,10 @@ The Ara compiler uses a hand-written LL(1) recursive descent parser that uses a 
 
 The Ara compiler emits LLVM IR.
 
-## Example
-
-```
-fn fib(n: int): int
-{
-    if (n == 0)
-    {
-        return 0
-    }
-
-    if (n == 1)
-    {
-        return 1
-    }
-  
-    return fib(n-2) + fib(n-1)
-}
-
-fn main(): int
-{
-    return fib(10)
-}
-```
-
 ## Source
 
 The source code for Ara is available on [GitHub](https://github.com/kkestell/ara).
 
 ## License
 
-Ara uses the [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.en.html).
+Ara uses the [Zero-Clause BSD](https://opensource.org/license/0bsd/) license.

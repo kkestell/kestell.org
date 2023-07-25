@@ -16,10 +16,14 @@ internal abstract class BaseCommand : Command
     public Option<bool> Drafts { get; } =
         new(new[] {"--drafts", "-D"}, () => false, "Include drafts");
 
+    public Option<bool> Pdfs { get; } =
+        new(new[] {"--pdfs", "-P"}, () => false, "Build PDFs");
+
     protected BaseCommand(string name, string? description = null) : base(name, description)
     {
         AddArgument(RootDirectory);
         AddArgument(OutputDirectory);
         AddOption(Drafts);
+        AddOption(Pdfs);
     }
 }

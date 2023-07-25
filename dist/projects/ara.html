@@ -35,34 +35,13 @@
 <p>The Ara compiler uses a hand-written LL(1) recursive descent parser that uses a single token lookahead to make parsing decisions without the need for backtracking.</p>
 <h3 id="code-generation">Code Generation</h3>
 <p>The Ara compiler emits LLVM IR.</p>
-<h2 id="example">Example</h2>
-<pre><code>fn fib(n: int): int
-{
-    if (n == 0)
-    {
-        return 0
-    }
-
-    if (n == 1)
-    {
-        return 1
-    }
-  
-    return fib(n-2) + fib(n-1)
-}
-
-fn main(): int
-{
-    return fib(10)
-}
-</code></pre>
 <h2 id="source">Source</h2>
 <p>The source code for Ara is available on <a href="https://github.com/kkestell/ara">GitHub</a>.</p>
 <h2 id="license">License</h2>
-<p>Ara uses the <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU General Public License v3.0</a>.</p>
+<p>Ara uses the <a href="https://opensource.org/license/0bsd/">Zero-Clause BSD</a> license.</p>
 
   <footer>
-    <p>Generated on 2023-07-24 18:13:14</p>
+    <p>Generated on 2023-07-24 20:31:16</p>
   </footer>
 </body>
 </html>

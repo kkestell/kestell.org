@@ -33,4 +33,4 @@ The source code for Builder is available on [GitHub](https://github.com/kkestell
 
 ## License
 
-Builder uses the [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.en.html).
+Builder uses the [Zero-Clause BSD](https://opensource.org/license/0bsd/) license.

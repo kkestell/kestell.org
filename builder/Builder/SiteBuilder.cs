@@ -95,10 +95,7 @@ internal class SiteBuilder
 
         if (buildOptions.BuildPdfs)
         {
-            foreach (var file in files)
-            {
-                GeneratePdf(file);
-            }
+            Parallel.ForEach(files, GeneratePdf);
         }
         
         sw.Stop();

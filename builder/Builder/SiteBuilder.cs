@@ -68,26 +68,13 @@ internal class SiteBuilder
 
         var pages = new ConcurrentBag<Page>();
 
-        foreach (var file in files)
+        Parallel.ForEach(files, (file) =>
         {
-            var done = false;
-            while(!done)
-            {
-                try
-                {
-                    var page = BuildPage(file);
+            var page = BuildPage(file);
 
-                    if (page is not null)
-                        pages.Add(page);
-
-                    done = true;
-                }
-                catch(Exception ex)
-                {
-                    Console.WriteLine($"Exception {ex.Message} when building {file}");
-                }
-            }
-        }
+            if (page != null)
+                pages.Add(page);
+        });
 
         BuildHomepage(pages.ToList());
 

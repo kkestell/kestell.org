@@ -5,6 +5,12 @@ date: 2021-11-27
 draft: false
 ---
 
+I wrote this when I was 9 or 10 years old. My dad would bring home his work computer, a Macintosh SE, for me to play with on the weekends. Someone he worked with must have given him a copy of Microsoft BASIC. I'd written BASIC on my dad's Timex Sinclair 1000 previously, but the Macintosh was a definite upgrade from the Sinclair 1000 and I remember thinking of this as my first "real program".
+
+Mrs. Olson was my computer lab teacher in elementary school. I put this on a floppy disk along with the BASIC interpreter and gave it to her, hoping to get some useful feedback. She gave it back to me a week or two later with an offhand comment about how many spelling errors she noticed. Thanks for nothing, lady.
+
+The floppy disk, homemade cardboard sleeve, and hand-drawn map sat on a bookshelf in my dad's office for the next 30 years. I don't think this represents the complete game, but it's what I was able to recover.
+
 ```basic
 100 REM ****************************** START
 101 PRINT "THIS GAME IS LICENSED TO MRS. OLSON"

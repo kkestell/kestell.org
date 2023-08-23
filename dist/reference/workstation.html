@@ -3,25 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TRS-80 Model 100</title>
+  <title>Workstation</title>
   <link rel="stylesheet" href="/static/css/theme.css">
   <link rel="stylesheet" href="/static/css/syntax.css">
 </head>
 <body>
   <header>
-    <h1>TRS-80 Model 100</h1>
-    <h2></h2>
+    <h1>Workstation</h1>
+    <h2>2021 - Current</h2>
     <ul>
       <li>
         <span>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M5.75 2a.75.75 0 01.75.75V4h7V2.75a.75.75 0 011.5 0V4h.25A2.75 2.75 0 0118 6.75v8.5A2.75 2.75 0 0115.25 18H4.75A2.75 2.75 0 012 15.25v-8.5A2.75 2.75 0 014.75 4H5V2.75A.75.75 0 015.75 2zm-1 5.5c-.69 0-1.25.56-1.25 1.25v6.5c0 .69.56 1.25 1.25 1.25h10.5c.69 0 1.25-.56 1.25-1.25v-6.5c0-.69-.56-1.25-1.25-1.25H4.75z" clip-rule="evenodd" />
           </svg>
-          2021-11-27
+          2022-10-29
         </span>
       </li>
       <li>
-        <a href="trs-80-model-100.pdf">
+        <a href="workstation.pdf">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M5 2.75C5 1.784 5.784 1 6.75 1h6.5c.966 0 1.75.784 1.75 1.75v3.552c.377.046.752.097 1.126.153A2.212 2.212 0 0118 8.653v4.097A2.25 2.25 0 0115.75 15h-.241l.305 1.984A1.75 1.75 0 0114.084 19H5.915a1.75 1.75 0 01-1.73-2.016L4.492 15H4.25A2.25 2.25 0 012 12.75V8.653c0-1.082.775-2.034 1.874-2.198.374-.056.75-.107 1.127-.153L5 6.25v-3.5zm8.5 3.397a41.533 41.533 0 00-7 0V2.75a.25.25 0 01.25-.25h6.5a.25.25 0 01.25.25v3.397zM6.608 12.5a.25.25 0 00-.247.212l-.693 4.5a.25.25 0 00.247.288h8.17a.25.25 0 00.246-.288l-.692-4.5a.25.25 0 00-.247-.212H6.608z" clip-rule="evenodd" />
           </svg>
@@ -30,29 +30,56 @@
       </li>
     </ul>
   </header>
-  <h2 id="overview">Overview</h2>
-<p>TODO</p>
-<p><img src="/static/images/trs-80.jpg" alt="TRS-80 Model 100" /></p>
-<p>TODO</p>
-<h2 id="screen">Screen</h2>
-<h3 id="lcd">LCD</h3>
-<p>The display has a 192×480 IPS panel. I think I read somewhere that these were designed as rear-view mirrors. At 218mm, it's actually a little wider than the original LCD.</p>
-<h3 id="bracket">Bracket</h3>
-<p>The LCD is mounted to a custom 3D printed bracket that's attached to the enclosure using the original screw bosses. The LCD fits snugly between bracket and the front plastic, with three pieces of double sided tape between the display and the bracket for good measure.</p>
-<h3 id="configuration">Configuration</h3>
-<pre><code class="language-ini">hdmi_force_hotplug=1
-hdmi_group=2
-hdmi_mode=87
-hdmi_force_mode=1
-hdmi_timings=480 0 30 30 30 1920 0 6 6 6 0 0 0 60 0 66000000 7
-max_framebuffer_width=480
-max_framebuffer_height=1920
-display_hdmi_rotate=1
-</code></pre>
-<h2 id="keyboard">Keyboard</h2>
-<h3 id="matrix">Matrix</h3>
-<p>TODO</p>
-<p><img src="/static/images/keyboard-matrix.jpg" alt="TRS-80 Model 100 Keyboard Matrix" /></p>
+  <h2 id="hardware">Hardware</h2>
+<p>Most of this was purchased from Micro Center in March of 2021.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Processor</strong></td>
+<td>Intel Core i7-10700K Comet Lake 3.8GHz 8 Core LGA 1200</td>
+</tr>
+<tr>
+<td><strong>Motherboard</strong></td>
+<td>ASUS Z490-I ROG Strix Intel LGA 1200 Mini-ITX</td>
+</tr>
+<tr>
+<td><strong>Memory</strong></td>
+<td>Corsair Vengeance LPX 32GB (2 x 16GB) DDR4-3200</td>
+</tr>
+<tr>
+<td><strong>Graphics</strong></td>
+<td>XFX Radeon RX 560 4gb</td>
+</tr>
+<tr>
+<td><strong>Storage</strong></td>
+<td>Intel 1TB 665p Series M.2 2280 NVMe SSD</td>
+</tr>
+<tr>
+<td></td>
+<td>Western Digital Black 500GB SN770 M.2 NVMe SSD</td>
+</tr>
+<tr>
+<td><strong>Case</strong></td>
+<td>NZXT H510 ATX Mid-Tower (Black)</td>
+</tr>
+<tr>
+<td><strong>Power Supply</strong></td>
+<td>EVGA 750 BQ 750 Watt 80 Plus Bronze Semi-Modular ATX</td>
+</tr>
+<tr>
+<td><strong>Display</strong></td>
+<td>2 x ProArt Display PA248QV 24.1” WUXGA (1920 x 1200) 16:10</td>
+</tr>
+</tbody>
+</table>
+<h2 id="software">Software</h2>
+<p>Arch / GNOME / Wayland</p>
 
   <footer>
     <p>Generated on 2023-08-23 16:00:50</p>

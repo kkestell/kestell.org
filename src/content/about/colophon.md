@@ -7,6 +7,8 @@ draft: false
 
 This site is built using a custom static site generator written in C#. Markdown conversion is handled by [Markdig](), [YamlDotNet]() is used for YAML parsing, and templating is done using [Handlebars.Net](). PDFs are generated using [Pandoc]().
 
+Pages are written in Markdown with YAML front matter. The front matter is used to specify the page title, subtitle, date, and whether or not the page is a draft.
+
 ## CLI
 
 The CLI supports two commands: `build` and `serve`.
@@ -22,6 +24,8 @@ The `serve` command starts a local web server and automatically rebuilds the sit
 ```shell
 $ builder serve --root ./src --output ./dist --port 8080
 ```
+
+Both the `build` and `serve` commands accept optional `--drafts` and `--pdfs` arguments which include draft posts in the build and control PDF generation, respectively.
 
 ## Misc. Notes
 

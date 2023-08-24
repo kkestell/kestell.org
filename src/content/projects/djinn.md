@@ -5,7 +5,7 @@ date: 2023-05-29
 draft: false
 ---
 
-Djinn downloads music from [Soulseek](https://www.slsknet.org/) and tags it with data from [MusicBrainz](https://musicbrainz.org/). Djinn can download a single release, or an artist's entire discography.
+Djinn downloads music using [Soulseek](https://www.slsknet.org/), with metadata from [MusicBrainz](https://musicbrainz.org/) and [Last.fm](https://www.last.fm/). Djinn can download a single release, or an artist's entire discography.
 
 ## Features
 

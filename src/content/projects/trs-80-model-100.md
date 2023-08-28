@@ -40,45 +40,36 @@ display_hdmi_rotate=1
 
 ### Matrix
 
-The TRS-80 keyboard matrix is 8 rows by 9 columns. The keyboard connects to the main board using two 10-pin connectors.
+The TRS-80 keyboard matrix is 9 columns by 8 rows. The pins on the keyboard PCB are labeled 1-20. Pins 1-9 correspond to columns 0-8, pins 10 and 11 aren't used, pins 12-19 correspond to rows 0-7, and pin 20 is ground.
 
 ![TRS-80 Model 100 Keyboard Matrix](/static/images/keyboard-matrix.jpg)
 
-<pre class="foo"><code>
-                     BLACK WIRES (COLUMNS)                
-       ╭────╭────╭────╭────╭────╭────╭────╭────╭────╭────╮
-       │ 01 │ 02 │ 03 │ 04 │ 05 │ 06 │ 07 │ 08 │ 09 │ 10 │
-       └────┴────┴────┴────┴────┴────┴────┴────┴────┴────┘
-         ^    ^    ^    ^    ^    ^    ^    ^    ^    NC  
-         │    │    │    │    │    │    │    │    │       
-Col 0 ───┘    │    │    │    │    │    │    │    │       
-Col 1 ────────┘    │    │    │    │    │    │    │       
-Col 2 ─────────────┘    │    │    │    │    │    │       
-Col 3 ──────────────────┘    │    │    │    │    │       
-Col 4 ───────────────────────┘    │    │    │    │       
-Col 5 ────────────────────────────┘    │    │    │       
-Col 6 ─────────────────────────────────┘    │    │       
-Col 7 ──────────────────────────────────────┘    │       
-Col 8 ───────────────────────────────────────────┘       
+#### Wiring
 
-                       WHITE WIRES (ROWS)                
-       ╭────╭────╭────╭────╭────╭────╭────╭────╭────╭────╮
-       │ 11 │ 12 │ 13 │ 14 │ 15 │ 16 │ 17 │ 18 │ 19 │ 20 │
-       └────┴────┴────┴────┴────┴────┴────┴────┴────┴────┘
-         NC   ^    ^    ^    ^    ^    ^    ^    ^    ^   
-              │    │    │    │    │    │    │    │    │   
-              │    │    │    │    │    │    │    │    │   
-Row 0 ────────┘    │    │    │    │    │    │    │    │   
-Row 1 ─────────────┘    │    │    │    │    │    │    │   
-Row 2 ──────────────────┘    │    │    │    │    │    │   
-Row 3 ───────────────────────┘    │    │    │    │    │   
-Row 4 ────────────────────────────┘    │    │    │    │   
-Row 5 ─────────────────────────────────┘    │    │    │   
-Row 6 ──────────────────────────────────────┘    │    │   
-Row 7 ───────────────────────────────────────────┘    │   
-  GND ────────────────────────────────────────────────┘   
+| Keyboard Pin | Function |
+| ------------ | -------- |
+| 1            | Column 0 |
+| 2            | Column 1 |
+| 3            | Column 2 |
+| 4            | Column 3 |
+| 5            | Column 4 |
+| 6            | Column 5 |
+| 7            | Column 6 |
+| 8            | Column 7 |
+| 9            | Column 8 |
+| 10           | Unused   |
+| 11           | Unused   |
+| 12           | Row 0    |
+| 13           | Row 1    |
+| 14           | Row 2    |
+| 15           | Row 3    |
+| 16           | Row 4    |
+| 17           | Row 5    |
+| 18           | Row 6    |
+| 19           | Row 7    |
+| 20           | GND      |
 
-</code></pre>
+#### Scanning
 
 The basic process for scanning the keyboard matrix is:
 
@@ -105,26 +96,28 @@ For this first experiment, I connected the rows and columns directly to the digi
 
 #### Wiring
 
-| Keyboard Pin | Description | Arduino Pro Micro Pin |
-| ------------ | ----------- | --------------------- |
-| 1            | Col 0       | 0                     |
-| 2            | Col 1       | 1                     |
-| 3            | Col 2       | 2                     |
-| 4            | Col 3       | 3                     |
-| 5            | Col 4       | 4                     |
-| 6            | Col 5       | 5                     |
-| 7            | Col 6       | 6                     |
-| 8            | Col 7       | 7                     |
-| 9            | Col 8       | 8                     |
-| 12           | Row 0       | 21                    |
-| 13           | Row 1       | 20                    |
-| 14           | Row 2       | 19                    |
-| 15           | Row 3       | 18                    |
-| 16           | Row 4       | 15                    |
-| 17           | Row 5       | 14                    |
-| 18           | Row 6       | 16                    |
-| 19           | Row 7       | 10                    |
-| 20           | GND         | GND                   |
+| Keyboard Pin | Function | Arduino Pro Micro Pin |
+| ------------ | -------- | --------------------- |
+| 1            | Column 0 | 0                     |
+| 2            | Column 1 | 1                     |
+| 3            | Column 2 | 2                     |
+| 4            | Column 3 | 3                     |
+| 5            | Column 4 | 4                     |
+| 6            | Column 5 | 5                     |
+| 7            | Column 6 | 6                     |
+| 8            | Column 7 | 7                     |
+| 9            | Column 8 | 8                     |
+| 10           | Unused   |                       |
+| 11           | Unused   |                       |
+| 12           | Row 0    | 21                    |
+| 13           | Row 1    | 20                    |
+| 14           | Row 2    | 19                    |
+| 15           | Row 3    | 18                    |
+| 16           | Row 4    | 15                    |
+| 17           | Row 5    | 14                    |
+| 18           | Row 6    | 16                    |
+| 19           | Row 7    | 10                    |
+| 20           | GND      | GND                   |
 
 #### Code
 
@@ -231,11 +224,11 @@ void loop()
 
 ### Detour: Shift Register Experiments
 
-#### Serial-In, Parallel-Out
+The easiest way to reduce the number of digital I/O pins used by the keyboard firmware is to use a shift register. Shift registers are either serial-in, parallel-out (SIPO) or parallel-in, serial-out (PISO). We'll need both types to read and write to the keyboard matrix.
 
-The easiest way to reduce the number of digital I/O pins used by the keyboard firmware is to use a shift register. The 74HC595 is an 8-bit serial-in, serial or parallel-out shift register. It has an 8-bit storage register and an 8-bit shift register. Data is written to the shift register using serial input, and the contents of the storage register are shifted out in parallel.
+#### Serial-In, Parallel-Out (74HC595)
 
-This example displays binary number on eight LEDs using only three digital I/O pins.
+The 74HC595 is an 8-bit serial-in, parallel-out shift register. This allows us to write to eight outputs using only three digital I/O pins.
 
 ```arduino
 int latchPin =  8; // pin connected to ST_CP of 74HC595
@@ -252,7 +245,7 @@ void setup()
 
 void loop()
 {
-    // count from 0 to 255 and display the number on the LEDs
+    // count from 0 to 255, displaying each number in binary on eight LEDs
     for (int num = 0; num < 256; num++)
     {
         // take the latch pin low so the LEDs don't change while you're sending in bits
@@ -269,5 +262,64 @@ void loop()
 }
 ```
 
-#### Parallel-In, Serial-Out
+This covers writing to the shift register, but we still need to read from the keyboard.
 
+#### Parallel-In, Serial-Out (74HC165)
+
+The 74HC165 is an 8-bit parallel-in, serial-out shift register. This allows us to read eight inputs using only three digital I/O pins.
+
+```arduino
+int loadPin  = 8;  // pin connected to PL of 74HC165
+int clockPin = 12; // pin connected to CP of 74HC165
+int dataPin  = 11; // pin connected to QH of 74HC165
+
+void setup()
+{
+    // set pins to control the shift register
+    pinMode(loadPin, OUTPUT);
+    pinMode(clockPin, OUTPUT);
+    pinMode(dataPin, INPUT);
+
+    // initialize serial communication
+    Serial.begin(9600);
+}
+
+void loop()
+{
+    // take the parallel load pin low
+    digitalWrite(loadPin, LOW);
+
+    delayMicroseconds(5);
+  
+    // take the parallel load pin high to update the QH pin
+    digitalWrite(loadPin, HIGH);
+    delayMicroseconds(5);
+
+    // shift in the bits
+    byte inputs = shiftIn(dataPin, clockPin, MSBFIRST);
+
+    // print the binary input
+    for (int i = 7; i >= 0; i--)
+    {
+        Serial.print(bitRead(inputs, i));
+    }
+    Serial.println();
+
+    delay(500);
+}
+```
+
+### Firmware v2
+
+Scanning the keyboard matrix involves writing to the columns and reading from the rows. We'll use a 74HC165 to read the rows, and chain two 74HC595s together to write to the columns.
+
+```
+Serial Data        ---> DS (74HC595 #1)
+Clock Input        ---> SH_CP (74HC595 #1) 
+                   ---> SH_CP (74HC595 #2)
+Latch Input        ---> ST_CP (74HC595 #1) 
+                   ---> ST_CP (74HC595 #2)
+Q7' (74HC595 #1)   ---> DS (74HC595 #2)
+Q0-Q7 (74HC595 #1) ---> Output Bits 1-8
+Q0-Q7 (74HC595 #2) ---> Output Bits 9-16
+```

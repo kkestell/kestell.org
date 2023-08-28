@@ -110,7 +110,7 @@ RAM
 ##### Services
 
 * [Blink Comparator](/projects/blink-comparator.html)
-* [Telegram Bot](/projects/telegram-bot.html)
+* [General Chang](/projects/general-chang.html)
 * [Timelapse](/projects/timelapse.html)
 
 #### Callisto

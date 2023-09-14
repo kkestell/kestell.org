@@ -9,7 +9,7 @@ draft: false
 
 ### Parsing
 
-The Ara compiler uses a hand-written LL(1) recursive descent parser that uses a single token lookahead to make parsing decisions without the need for backtracking.
+The Ara compiler uses a hand-written LL(1) recursive descent parser.
 
 ### Code Generation
 

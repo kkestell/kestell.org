@@ -10,7 +10,7 @@ pssh is a C# program for executing a specified command on multiple SSH hosts in 
 I mainly use this to keep my Raspberry Pis up to date. For example:
 
 ```
-pssh "export DEBIAN_FRONTEND=noninteractive && sudo apt-get update && sudo apt-get upgrade -y"
+pssh "sudo apt-get update && DEBIAN_FRONTEND=noninteractive sudo apt-get upgrade -y"
 ```
 
 ## Source

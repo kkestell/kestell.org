@@ -240,13 +240,16 @@ body {
     font-size: var(--font-size);
     font-weight: var(--font-weight);
     line-height: var(--line-height);
-    max-width: 50rem;
     padding: 2rem;
     margin: 0 auto;
 }
 
 code {
     font-family: var(--monospace-font-family);
+}
+
+p {
+    max-width: 50rem;
 }
 
 p,
@@ -480,6 +483,7 @@ footer {
 
 footer p {
     text-align: center;
+    max-width: 100%;
 }
 
 /* HOMEPAGE */

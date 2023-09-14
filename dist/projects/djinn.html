@@ -30,22 +30,66 @@
       </li>
     </ul>
   </header>
-  <p>Djinn downloads music using <a href="https://www.slsknet.org/">Soulseek</a>, with metadata from <a href="https://musicbrainz.org/">MusicBrainz</a> and <a href="https://www.last.fm/">Last.fm</a>. Djinn can download a single release, or an artist's entire discography.</p>
+  <p>Djinn downloads music using <a href="https://www.slsknet.org/">Soulseek</a> using metadata from <a href="https://musicbrainz.org/">MusicBrainz</a> and <a href="https://www.last.fm/">Last.fm</a>. Djinn can download a single release, or an artist's entire discography.</p>
 <h2 id="features">Features</h2>
 <ul>
 <li>Uses <code>TagLib</code>, <code>eyeD3</code>, and <code>metaflac</code> to tag MP3 and FLAC files.</li>
 <li>Automatically downloads cover art from MusicBrainz and Last.fm.</li>
 <li>Configurable directory and file names.</li>
 </ul>
+<h2 id="usage">Usage</h2>
+<pre><code>$ djinn download --help
+
+Description:
+  Download one or more releases
+
+Usage:
+  djinn download [options]
+
+Options:
+  --release-id &lt;release-id&gt;        Release ID
+  --release-title &lt;release-title&gt;  Release title
+  --artist-id &lt;artist-id&gt;          Artist ID
+  --artist-name &lt;artist-name&gt;      Artist name
+  --replace                        Replace existing album(s)
+  --file-types &lt;file-types&gt;        File types to download [default: .flac|.mp3]
+  --verbose                        Verbose output
+  --no-progress                    Disable realtime download progress
+  --year &lt;year&gt;                    Release year
+  --strip-existing-metadata        Strip existing metadata from downloaded files [default: True]
+  -?, -h, --help                   Show help and usage information
+</code></pre>
 <h2 id="examples">Examples</h2>
-<p>Download a single release:</p>
-<pre><code class="language-bash">djinn download --release 1b022e8e-4da6-4f9a-8f3d-3d3f2f0f3b6f
+<p>Download a single release by ID:</p>
+<pre><code class="language-shell">$ djinn download --release-id &quot;1b022e8e-4da6-4f9a-8f3d-3d3f2f0f3b6f&quot;
 </code></pre>
-<p>Download an artist's discography:</p>
-<pre><code class="language-bash">djinn download --artist 1b022e8e-4da6-4f9a-8f3d-3d3f2f0f3b6f
+<p>Download a single release by title:</p>
+<pre><code>$ djinn download --release-title "Abbey Road"
+
+Please select the correct release group for Abbey Road:
+<span style="color: #aaa">  Abbey's Road                    Ada Montellanico, Giovanni Falzone              2016
+  Abbey Road                      Various Artists                                 2012</span>
+<span style="color: yellow">&gt; Abbey Road                      The Beatles                                     1969</span>
+<span style="color: #aaa">  Abbey Road Live                 Colin Vearncombe                                2000
+  Neath Abbey Road                The Tunnelrunners                               2018
+  Off Abbey Road                  Mike Westbrook Band                             1989
+  Plays Abbey Road                Devil's Rubato Band, Gustav Peter Wöhler        1995</span></code></pre>
+<p>Download an artist's discography by ID:</p>
+<pre><code class="language-shell">$ djinn download --artist-id &quot;1b022e8e-4da6-4f9a-8f3d-3d3f2f0f3b6f&quot;
 </code></pre>
+<p>Download an artist's discography by name:</p>
+<pre><code>$ djinn download --artist-name "The Beatles"
+
+Please select the correct artist for The Beatles:
+<span style="color: yellow">&gt; The Beatles                                       UK rock band, “The Fab Four”</span>
+<span style="color: #aaa">  The Beatles                                       punk/lofi; published on Whe...
+  The Beatles                                       1960s Philadelphia doo-wop ...
+  The Beatles                                       SiIvaGunner collaboration     
+  The Beatles Connection                            Beatles Tribute Band          
+  Not The Beatles                                   
+  The Beatles Revival                               Czech 'The Beatles' tribute...</span></code></pre>
 <p>Download a single release, limiting downloads to .mp3 files, and replacing existing files:</p>
-<pre><code class="language-bash">djinn download --release 1b022e8e-4da6-4f9a-8f3d-3d3f2f0f3b6f --file-types .mp3 --replace
+<pre><code class="language-shell">$ djinn download --release-title &quot;Cryptic Writings&quot; --file-types .mp3 --replace
 </code></pre>
 <h2 id="source">Source</h2>
 <p>The source code for Djinn is available on <a href="https://github.com/kkestell/djinn">GitHub</a>.</p>
@@ -53,7 +97,7 @@
 <p>Djinn uses the <a href="https://opensource.org/license/0bsd/">Zero-Clause BSD</a> license.</p>
 
   <footer>
-    <p>Generated on 2023-08-28 10:59:03</p>
+    <p>Generated on 2023-09-14 16:15:43</p>
   </footer>
 </body>
 </html>

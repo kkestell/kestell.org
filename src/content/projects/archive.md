@@ -5,7 +5,7 @@ date: 2023-07-24
 draft: false
 ---
 
-This is just a shell script that runs rsync on a Systemd timer. It runs on a Raspberry Pi and copies files from a read-only network share to an old Samsung EVO 250GB SSD.
+This is just Systemd timer that runs rsync. It's set up on a Raspberry Pi and copies files from a read-only network share to an old Samsung EVO 250GB SSD.
 
 ## Source
 

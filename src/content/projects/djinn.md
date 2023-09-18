@@ -38,6 +38,20 @@ Options:
   -?, -h, --help                   Show help and usage information
 ```
 
+```
+$ djinn upgrade --help
+Description:
+  Replace mp3 files with flac files
+
+Usage:
+  djinn upgrade [options]
+
+Options:
+  --randomize     Randomize download order
+  --verbose       Verbose output
+  -?, -h, --help  Show help and usage information
+```
+
 ## Examples
 
 Download a single release by ID:
@@ -70,18 +84,24 @@ Download an artist's discography by name:
 <pre><code>$ djinn download --artist-name "The Beatles"
 
 Please select the correct artist for The Beatles:
-<span style="color: yellow">&gt; The Beatles                                       UK rock band, “The Fab Four”</span>
-<span style="color: #aaa">  The Beatles                                       punk/lofi; published on Whe...
-  The Beatles                                       1960s Philadelphia doo-wop ...
-  The Beatles                                       SiIvaGunner collaboration     
-  The Beatles Connection                            Beatles Tribute Band          
-  Not The Beatles                                   
-  The Beatles Revival                               Czech 'The Beatles' tribute...</span></code></pre>
+<span style="color: yellow">&gt; The Beatles                     UK rock band, “The Fab Four”</span>
+<span style="color: #aaa">  The Beatles                     punk/lofi; published on Whe...
+  The Beatles                     1960s Philadelphia doo-wop ...
+  The Beatles                     SiIvaGunner collaboration     
+  The Beatles Connection          Beatles Tribute Band          
+  Not The Beatles                 
+  The Beatles Revival             Czech 'The Beatles' tribute...</span></code></pre>
 
 Download a single release, limiting downloads to .mp3 files, and replacing existing files:
 
 ```shell
 $ djinn download --release-title "Cryptic Writings" --file-types .mp3 --replace
+```
+
+Scan your music library for albums in mp3 format and attempt to download replacements in flac format:
+
+```shell
+$ djinn upgrade
 ```
 
 ## Source

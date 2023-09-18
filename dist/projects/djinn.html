@@ -59,6 +59,18 @@ Options:
   --strip-existing-metadata        Strip existing metadata from downloaded files [default: True]
   -?, -h, --help                   Show help and usage information
 </code></pre>
+<pre><code>$ djinn upgrade --help
+Description:
+  Replace mp3 files with flac files
+
+Usage:
+  djinn upgrade [options]
+
+Options:
+  --randomize     Randomize download order
+  --verbose       Verbose output
+  -?, -h, --help  Show help and usage information
+</code></pre>
 <h2 id="examples">Examples</h2>
 <p>Download a single release by ID:</p>
 <pre><code class="language-shell">$ djinn download --release-id &quot;1b022e8e-4da6-4f9a-8f3d-3d3f2f0f3b6f&quot;
@@ -81,15 +93,18 @@ Please select the correct release group for Abbey Road:
 <pre><code>$ djinn download --artist-name "The Beatles"
 
 Please select the correct artist for The Beatles:
-<span style="color: yellow">&gt; The Beatles                                       UK rock band, “The Fab Four”</span>
-<span style="color: #aaa">  The Beatles                                       punk/lofi; published on Whe...
-  The Beatles                                       1960s Philadelphia doo-wop ...
-  The Beatles                                       SiIvaGunner collaboration     
-  The Beatles Connection                            Beatles Tribute Band          
-  Not The Beatles                                   
-  The Beatles Revival                               Czech 'The Beatles' tribute...</span></code></pre>
+<span style="color: yellow">&gt; The Beatles                     UK rock band, “The Fab Four”</span>
+<span style="color: #aaa">  The Beatles                     punk/lofi; published on Whe...
+  The Beatles                     1960s Philadelphia doo-wop ...
+  The Beatles                     SiIvaGunner collaboration     
+  The Beatles Connection          Beatles Tribute Band          
+  Not The Beatles                 
+  The Beatles Revival             Czech 'The Beatles' tribute...</span></code></pre>
 <p>Download a single release, limiting downloads to .mp3 files, and replacing existing files:</p>
 <pre><code class="language-shell">$ djinn download --release-title &quot;Cryptic Writings&quot; --file-types .mp3 --replace
+</code></pre>
+<p>Scan your music library for albums in mp3 format and attempt to download replacements in flac format:</p>
+<pre><code class="language-shell">$ djinn upgrade
 </code></pre>
 <h2 id="source">Source</h2>
 <p>The source code for Djinn is available on <a href="https://github.com/kkestell/djinn">GitHub</a>.</p>
@@ -97,7 +112,7 @@ Please select the correct artist for The Beatles:
 <p>Djinn uses the <a href="https://opensource.org/license/0bsd/">Zero-Clause BSD</a> license.</p>
 
   <footer>
-    <p>Generated on 2023-09-14 16:15:43</p>
+    <p>Generated on 2023-09-18 19:53:35</p>
   </footer>
 </body>
 </html>

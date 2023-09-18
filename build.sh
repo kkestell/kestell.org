@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-dotnet run --project builder/Builder/Builder.csproj -- build /workspaces/kestell.org/src/ /workspaces/kestell.org/dist/
+docker run -p 1313:1313 -v $(pwd)/builder:/app/builder -v $(pwd)/src:/site/src -v $(pwd)/dist:/site/dist kestell-dot-org /site/builder/publish/builder serve /site/src /site/dist -P

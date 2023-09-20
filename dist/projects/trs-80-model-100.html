@@ -377,15 +377,19 @@ void loop()
 </code></pre>
 <h3 id="detour-shift-register-experiments">Detour: Shift Register Experiments</h3>
 <p>The easiest way to reduce the number of digital I/O pins used by the keyboard firmware is to use a shift register. Shift registers are either serial-in, parallel-out (SIPO) or parallel-in, serial-out (PISO). We'll need both types to read and write to the keyboard matrix.</p>
-<h4 id="serial-in-parallel-out-74hc595">Serial-In, Parallel-Out (74HC595)</h4>
+<h4 id="serial-in-parallel-out-74hc595">Serial-In, Parallel-Out (<a href="https://www.ti.com/lit/ds/symlink/sn74hc595.pdf">74HC595</a>)</h4>
+<p><img src="/static/images/74HC595.png" alt="74HC595" /></p>
 <p>The 74HC595 is an 8-bit serial-in, parallel-out shift register. This allows us to write to eight outputs using only three digital I/O pins.</p>
-<pre><code class="language-arduino">int latchPin =  8; // pin connected to ST_CP of 74HC595
-int clockPin = 12; // pin connected to SH_CP of 74HC595
-int dataPin  = 11; // pin connected to DS of 74HC595
+<pre><code class="language-cpp">int latchPin = 8;  // Pin connected to RCLK  (pin 12)
+int clockPin = 14; // Pin connected to SRCLK (pin 11)
+int dataPin  = 16; // Pin connected to SER   (pin 14)
+
+// NOTE: Also connect VCC (pin 16) to 5V and GND (pin 8) to GND as well as OE (pin 13) to GND.
+// If you don't connect OE to GND, the 74HC595 will behave strangely.
 
 void setup()
 {
-    // set pins to output so you can control the shift register
+    // Set pins to output so you can control the shift register
     pinMode(latchPin, OUTPUT);
     pinMode(clockPin, OUTPUT);
     pinMode(dataPin,  OUTPUT);
@@ -393,55 +397,60 @@ void setup()
 
 void loop()
 {
-    // count from 0 to 255, displaying each number in binary on eight LEDs
+    // Count from 0 to 255, displaying each number in binary on eight LEDs
     for (int num = 0; num &lt; 256; num++)
     {
-        // take the latch pin low so the LEDs don't change while you're sending in bits
+        // Take the latch pin low so the LEDs don't change while you're sending in bits
         digitalWrite(latchPin, LOW);
 
-        // shift out the bits
+        // Shift out the bits
         shiftOut(dataPin, clockPin, MSBFIRST, num);
 
-        // take the latch pin high so the LEDs will light up
+        // Take the latch pin high so the LEDs will light up
         digitalWrite(latchPin, HIGH);
 
-        delay(500);
+        delay(50);
     }
 }
 </code></pre>
 <p>This covers writing to the shift register, but we still need to read from the keyboard.</p>
-<h4 id="parallel-in-serial-out-74hc165">Parallel-In, Serial-Out (74HC165)</h4>
+<h4 id="parallel-in-serial-out-74hc165">Parallel-In, Serial-Out (<a href="https://www.ti.com/lit/ds/symlink/sn74hc165.pdf">74HC165</a>)</h4>
+<p><img src="/static/images/74HC165.png" alt="74HC165" /></p>
 <p>The 74HC165 is an 8-bit parallel-in, serial-out shift register. This allows us to read eight inputs using only three digital I/O pins.</p>
-<pre><code class="language-arduino">int loadPin  = 8;  // pin connected to PL of 74HC165
-int clockPin = 12; // pin connected to CP of 74HC165
-int dataPin  = 11; // pin connected to QH of 74HC165
+<pre><code class="language-cpp">int loadPin  = 8;  // pin connected to SH/LD (pin 1)
+int clockPin = 14; // pin connected to CLK   (pin 2)
+int dataPin  = 16; // pin connected to QH    (pin 9)
 
 void setup()
 {
-    // set pins to control the shift register
+    // Set the load and clock pins to output so you can control the shift register
+    // and the data pin to input so you can read the serial in
     pinMode(loadPin, OUTPUT);
     pinMode(clockPin, OUTPUT);
     pinMode(dataPin, INPUT);
 
-    // initialize serial communication
+    // Initialize serial communication
     Serial.begin(9600);
 }
 
 void loop()
 {
-    // take the parallel load pin low
+    // Take the parallel load pin low
     digitalWrite(loadPin, LOW);
 
+    // ???
     delayMicroseconds(5);
   
-    // take the parallel load pin high to update the QH pin
+    // Take the parallel load pin high to update the QH pin
     digitalWrite(loadPin, HIGH);
+    
+    // ???
     delayMicroseconds(5);
 
-    // shift in the bits
+    // Shift in the bits
     byte inputs = shiftIn(dataPin, clockPin, MSBFIRST);
 
-    // print the binary input
+    // Print the binary input
     for (int i = 7; i &gt;= 0; i--)
     {
         Serial.print(bitRead(inputs, i));
@@ -464,7 +473,7 @@ Q0-Q7 (74HC595 #2) ---&gt; Output Bits 9-16
 </code></pre>
 
   <footer>
-    <p>Generated on 2023-09-18 19:53:35</p>
+    <p>Generated on 2023-09-20 16:44:28</p>
   </footer>
 </body>
 </html>

@@ -30,7 +30,7 @@
       </li>
     </ul>
   </header>
-  <p>Djinn downloads music using <a href="https://www.slsknet.org/">Soulseek</a> using metadata from <a href="https://musicbrainz.org/">MusicBrainz</a> and <a href="https://www.last.fm/">Last.fm</a>. Djinn can download a single release, or an artist's entire discography.</p>
+  <p>Djinn downloads albums from <a href="https://www.slsknet.org/">Soulseek</a> using metadata from <a href="https://musicbrainz.org/">MusicBrainz</a> and <a href="https://www.last.fm/">Last.fm</a>.</p>
 <h2 id="features">Features</h2>
 <ul>
 <li>Uses <code>TagLib</code>, <code>eyeD3</code>, and <code>metaflac</code> to tag MP3 and FLAC files.</li>
@@ -38,7 +38,7 @@
 <li>Configurable directory and file names.</li>
 </ul>
 <h2 id="usage">Usage</h2>
-<pre><code>$ djinn download --help
+<pre><code class="language-shell">$ djinn download --help
 
 Description:
   Download one or more releases
@@ -60,8 +60,9 @@ Options:
   -?, -h, --help                   Show help and usage information
 </code></pre>
 <pre><code>$ djinn upgrade --help
+
 Description:
-  Replace mp3 files with flac files
+  Scan library and replace mp3 albums with flac versions
 
 Usage:
   djinn upgrade [options]
@@ -106,13 +107,143 @@ Please select the correct artist for The Beatles:
 <p>Scan your music library for albums in mp3 format and attempt to download replacements in flac format:</p>
 <pre><code class="language-shell">$ djinn upgrade
 </code></pre>
+<h2 id="music-library-organization">Music Library Organization</h2>
+<p>Djinn assumes that your your music library follows a simple <code>Artist</code> / <code>Album</code> / <code>Track</code> hierarchy.</p>
+<p>You should set the <code>LibraryPath</code>, <code>ArtistFormat</code>, <code>AlbumFormat</code>, and <code>TrackFormat</code> strings in your configuration file to correspond with the way you organize your music.</p>
+<p>For example, given this configuration:</p>
+<pre><code>&quot;LibraryPath&quot;:  &quot;/home/kyle/Music&quot;,
+&quot;ArtistFormat&quot;: &quot;%S&quot;,
+&quot;AlbumFormat&quot;:  &quot;%Y %T&quot;,
+&quot;TrackFormat&quot;:  &quot;%n %t&quot;
+</code></pre>
+<p>Djinn would expect your music to be organized as e.g.:</p>
+<p><code>/home/kyle/Music/Beatles, The/1969 Abbey Road/01 Come Together.flac</code></p>
+<h2 id="configuration">Configuration</h2>
+<p>Djinn loads its configuration from <code>DJINN_CONFIG</code> or, if that isn't set, from <code>~/.config/djinn/djinn.json</code>.</p>
+<h3 id="configuration-file-example">Configuration File Example</h3>
+<p>Here is an example of what the configuration file might look like:</p>
+<pre><code class="language-json">{
+    &quot;LibraryPath&quot;: &quot;/home/kyle/Music&quot;,
+
+    &quot;LastFmApiKey&quot;: &quot;XXX&quot;,
+    &quot;LastFmApiSecret&quot;: &quot;XXX&quot;,
+
+    &quot;SoulseekUsername&quot;: &quot;XXX&quot;,
+    &quot;SoulseekPassword&quot;: &quot;XXX&quot;,
+
+    &quot;ArtistFormat&quot;: &quot;%S&quot;,
+    &quot;AlbumFormat&quot;: &quot;%Y %T&quot;,
+    &quot;TrackFormat&quot;: &quot;%n %t&quot;,
+
+    &quot;Watchdog&quot;: {
+        &quot;TimeoutMinutes&quot;: 30,
+        &quot;DelaySeconds&quot;: 10,
+        &quot;MinimumSpeedBytes&quot;: 50000,
+        &quot;QueuedRemotely&quot;: false
+    }
+}
+</code></pre>
+<h3 id="format-tokens">Format Tokens</h3>
+<p>The configuration includes format tokens that define how artist, album, and track information should be displayed. The available tokens are as follows:</p>
+<h4 id="artist-format-tokens">Artist Format Tokens</h4>
+<table>
+<thead>
+<tr>
+<th>Token</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>%A</code></td>
+<td>Artist Name</td>
+<td>The Beatles</td>
+</tr>
+<tr>
+<td><code>%S</code></td>
+<td>Artist Sort Name</td>
+<td>Beatles, The</td>
+</tr>
+<tr>
+<td><code>%%</code></td>
+<td>Literal &lsquo;%&rsquo; character</td>
+<td>%</td>
+</tr>
+</tbody>
+</table>
+<h4 id="album-format-tokens">Album Format Tokens</h4>
+<p>All artist tokens, plus:</p>
+<table>
+<thead>
+<tr>
+<th>Token</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>%T</code></td>
+<td>Album Title</td>
+<td>Yesterday</td>
+</tr>
+<tr>
+<td><code>%Y</code></td>
+<td>Album Year</td>
+<td>1965</td>
+</tr>
+</tbody>
+</table>
+<h4 id="track-format-tokens">Track Format Tokens</h4>
+<p>All artist and album tokens, plus:</p>
+<table>
+<thead>
+<tr>
+<th>Token</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>%t</code></td>
+<td>Track Title</td>
+<td>Yesterday</td>
+</tr>
+<tr>
+<td><code>%n</code></td>
+<td>Track Number (formatted as two digits)</td>
+<td>01</td>
+</tr>
+<tr>
+<td><code>%N</code></td>
+<td>Total number of tracks in the album</td>
+<td>14</td>
+</tr>
+</tbody>
+</table>
+<h3 id="watchdog">Watchdog</h3>
+<p>TODO</p>
+<h3 id="viewing-configuration-with-djinn-config">Viewing Configuration with <code>djinn config</code></h3>
+<p>You can view the path of the loaded config file and the parsed values by running:</p>
+<pre><code class="language-shell">$ djinn config
+
+Configuration loaded from /home/kyle/.config/djinn/djinn.json
+Library path:       /home/kyle/Music
+Last.fm API key:    XXX
+Last.fm API secret: XXX
+Soulseek username:  XXX
+Soulseek password:  XXX
+...
+</code></pre>
 <h2 id="source">Source</h2>
 <p>The source code for Djinn is available on <a href="https://github.com/kkestell/djinn">GitHub</a>.</p>
 <h2 id="license">License</h2>
 <p>Djinn uses the <a href="https://opensource.org/license/0bsd/">Zero-Clause BSD</a> license.</p>
 
   <footer>
-    <p>Generated on 2023-09-18 19:53:35</p>
+    <p>Generated on 2023-09-20 16:44:28</p>
   </footer>
 </body>
 </html>

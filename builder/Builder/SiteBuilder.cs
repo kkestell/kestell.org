@@ -403,7 +403,7 @@ internal class SiteBuilder
 
     private void PngCrush(string file)
     {
-        var args = $"-reduce -brute -ow \"{file}\"";
+        var args = $"-reduce -ow \"{file}\"";
 
         var startInfo = new ProcessStartInfo
         {

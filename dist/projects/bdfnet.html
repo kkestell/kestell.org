@@ -35,9 +35,9 @@
 <pre><code class="language-csharp">var font = BdfFont.Load(&quot;courR14.bdf&quot;);
 var aChar = font.Characters[0x61];
 
-for (int row = 0; row &lt; aChar.Height; row++)
+for (var row = 0; row &lt; aChar.Height; row++)
 {
-    for (int col = 0; col &lt; aChar.Width; col++)
+    for (var col = 0; col &lt; aChar.Width; col++)
     {
         Console.Write(aChar.Bitmap[row, col] == 1 ? &quot;*&quot; : &quot; &quot;);
     }
@@ -59,7 +59,7 @@ for (int row = 0; row &lt; aChar.Height; row++)
 <p>BdfNet uses the <a href="https://opensource.org/license/0bsd/">Zero-Clause BSD</a> license.</p>
 
   <footer>
-    <p>Generated on 2024-01-20 17:56:08</p>
+    <p>Generated on 2024-01-20 22:00:55</p>
   </footer>
 </body>
 </html>

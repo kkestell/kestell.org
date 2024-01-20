@@ -19,11 +19,16 @@ internal abstract class BaseCommand : Command
     public Option<bool> Pdfs { get; } =
         new(new[] {"--pdfs", "-P"}, () => false, "Build PDFs");
 
+    public Option<bool> OptimizeImages { get; } =
+        new(new[] {"--optimize", "-O"}, () => false, "Optimize images");
+
+
     protected BaseCommand(string name, string? description = null) : base(name, description)
     {
         AddArgument(RootDirectory);
         AddArgument(OutputDirectory);
         AddOption(Drafts);
         AddOption(Pdfs);
+        AddOption(OptimizeImages);
     }
 }

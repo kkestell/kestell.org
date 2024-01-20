@@ -1,11 +1,10 @@
-# Use .NET SDK image
-FROM mcr.microsoft.com/devcontainers/dotnet:0-7.0 AS build-env
+# Use Arch Linux base image
+FROM archlinux:base
 
-# Install additional dependencies
-RUN apt-get update && \
-    apt-get install -y pandoc texlive-xetex && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+# Update and install dependencies
+RUN pacman -Syu --noconfirm && \
+    pacman -S --noconfirm dotnet-sdk pandoc texlive-core pngcrush jpegoptim && \
+    pacman -Scc --noconfirm
 
 # Set working directory and copy the entire builder directory
 WORKDIR /site/builder

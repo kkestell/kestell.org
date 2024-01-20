@@ -63,16 +63,18 @@ $ djinn download --release-id "1b022e8e-4da6-4f9a-8f3d-3d3f2f0f3b6f"
 
 Download a single release by title:
 
-<pre><code>$ djinn download --release-title "Abbey Road"
+```console
+$ djinn download --release-title "Abyssal Hymns"
 
-Please select the correct release group for Abbey Road:
-<span style="color: #aaa">  Abbey's Road                    Ada Montellanico, Giovanni Falzone              2016
-  Abbey Road                      Various Artists                                 2012</span>
-<span style="color: yellow">&gt; Abbey Road                      The Beatles                                     1969</span>
-<span style="color: #aaa">  Abbey Road Live                 Colin Vearncombe                                2000
-  Neath Abbey Road                The Tunnelrunners                               2018
-  Off Abbey Road                  Mike Westbrook Band                             1989
-  Plays Abbey Road                Devil's Rubato Band, Gustav Peter Wöhler        1995</span></code></pre>
+Please select the correct release group for Abyssal Hymns:
+  Hymns from the Abyss            Morgoth Vardamir, Thorgil Frostbane             2016
+  Abyssal Hymns                   Various Artists                                 2012
+> Abyssal Hymns                   Nocturnal Serenade                              1969
+  Abyssal Hymns Live              Astaroth Nightwhisper                           2000
+  Beneath Abyssal Hymns           The Raven Mourners                              2018
+  Off Abyssal Hymns               The Dark Minstrels                              1989
+  Plays Abyssal Hymns             The Eldritch Band, Gustav Wöhler                1995
+```
 
 Download an artist's discography by ID:
 
@@ -82,16 +84,17 @@ $ djinn download --artist-id "1b022e8e-4da6-4f9a-8f3d-3d3f2f0f3b6f"
 
 Download an artist's discography by name:
 
-<pre><code>$ djinn download --artist-name "The Beatles"
+```console
+$ djinn download --artist-name "Kuolonkutsu"
 
-Please select the correct artist for The Beatles:
-<span style="color: yellow">&gt; The Beatles                     UK rock band, “The Fab Four”</span>
-<span style="color: #aaa">  The Beatles                     punk/lofi; published on Whe...
-  The Beatles                     1960s Philadelphia doo-wop ...
-  The Beatles                     SiIvaGunner collaboration     
-  The Beatles Connection          Beatles Tribute Band          
-  Not The Beatles                 
-  The Beatles Revival             Czech 'The Beatles' tribute...</span></code></pre>
+Please select the correct artist for Kuolonkutsu:
+> Kuolonkutsu                    Finnish black metal band, "Masters of the Eternal Night"
+  Kuolonkutsu Ensemble           Experimental group; fusing black metal with orchestral elements.
+  Kuolonkutsu Ritual             Atmospheric black metal project, inspired by Nordic folklore.
+  Kuolonkutsu Symphony           Symphonic black metal; known for epic compositions and dark themes.
+  Echoes of Kuolonkutsu          Tribute band dedicated to the Finnish black metal legends Kuolonkutsu.
+  Kuolonkutsu's Wrath            Side project of Kuolonkutsu members, focusing on more aggressive metal.
+```
 
 Download a single release, limiting downloads to .mp3 files, and replacing existing files:
 

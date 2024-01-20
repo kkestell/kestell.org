@@ -4,61 +4,53 @@ namespace Builder;
 
 internal class ServeCommandHandler
 {
-    private readonly Watcher watcher;
-    private readonly ServeOptions options;
+    private readonly ServeOptions _options;
+    private readonly CancellationTokenSource _cancellationTokenSource = new();
+    private readonly DirectoryWatcher _watcher;
 
     public ServeCommandHandler(ServeCommand command)
     {
-        options = new ServeOptions(command);
-        
-        watcher = new Watcher(options.RootDirectory.FullName);
-
-        watcher.Changed += Rebuild;
-        watcher.Created += Rebuild;
-        watcher.Deleted += Rebuild;
-        watcher.Renamed += Rebuild;
+        _options = new ServeOptions(command);
+        _watcher = new DirectoryWatcher(_options.ContentDirectory, _cancellationTokenSource.Token);
+        _watcher.OnChanged += OnChanged;
     }
 
-    private void Rebuild(object? sender, FileSystemEventArgs e)
+    private void OnChanged(object? sender, EventArgs e)
     {
-        if (!string.IsNullOrEmpty(e.Name))
-        {
-            Console.WriteLine();
-            Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.WriteLine(new string('─', Console.WindowWidth));
-            Console.ResetColor();
-        }
+        Rebuild();
+    }
 
-        var builder = new SiteBuilder(options);
+    private void Rebuild()
+    {
+        Console.WriteLine();
+        Console.ForegroundColor = ConsoleColor.DarkGray;
+        Console.WriteLine(new string('─', Console.WindowWidth));
+        Console.ResetColor();
+
+        var builder = new SiteBuilder(_options);
 
         try
         {
             builder.Build();
-            // Console.WriteLine($"{e.Name}");
         }
         catch (Exception exception)
         {
             Console.WriteLine(exception);
         }
     }
-    
+
     public int Run()
     {
         try
         {
             Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine($"Listening on http://localhost:{options.Port}...");
-            Console.ResetColor();
+            Console.WriteLine($"Listening on http://localhost:{_options.Port}...");
+            Console.ResetColor();          
 
-            // Console.ForegroundColor = ConsoleColor.DarkGray;
-            // Console.WriteLine(new string('─', Console.WindowWidth));
-            // Console.WriteLine();
-            // Console.ResetColor();            
+            Rebuild();
 
-            Rebuild(null, new FileSystemEventArgs(WatcherChangeTypes.All, "", ""));
-
-            CreateHostBuilder(options).Build().Run();
+            CreateHostBuilder(_options).Build().Run();
         }
         catch (Exception e)
         {

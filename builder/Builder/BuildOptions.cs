@@ -13,6 +13,7 @@ internal class BuildOptions
     public DirectoryInfo StaticDirectory { get; }
     public bool BuildDrafts { get; set; }
     public bool BuildPdfs { get; set; }
+    public bool OptimizeImages { get; set; }
     
     public BuildOptions(BaseCommand command)
     {
@@ -25,6 +26,7 @@ internal class BuildOptions
         StaticDirectory = new DirectoryInfo(Path.Combine(RootDirectory.FullName, "static"));
         BuildDrafts = Option(command.Drafts);
         BuildPdfs = Option(command.Pdfs);
+        OptimizeImages = Option(command.OptimizeImages);
     }
     
     protected T Argument<T>(Argument<T> argument) => command.Result!.GetValueForArgument(argument);

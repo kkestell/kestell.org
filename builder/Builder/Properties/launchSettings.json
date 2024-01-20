@@ -1,0 +1,14 @@
+{
+  "profiles": {
+    "Builder": {
+      "commandName": "Project",
+      "commandLineArgs": "serve src dist",
+      "workingDirectory": "D:\\src\\kestell.org",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:62223;http://localhost:62224"
+    }
+  }
+}

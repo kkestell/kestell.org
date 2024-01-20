@@ -13,7 +13,7 @@ Standard pizza dough with 70% hydration and 2.5% salt.
 | ------ | ----------------- |
 | 500 g  | All-Purpose Flour |
 | 360 g  | Water             |
-| 15 g   | Salt              |
+| 10 g   | Salt              |
 | 2 tsp  | Active Dry Yeast  |
 
 ### Instructions

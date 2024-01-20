@@ -3,7 +3,7 @@ FROM archlinux:base
 
 # Update and install dependencies
 RUN pacman -Syu --noconfirm && \
-    pacman -S --noconfirm dotnet-sdk pandoc texlive-core pngcrush jpegoptim && \
+    pacman -S --noconfirm dotnet-sdk pandoc texlive ttf-dejavu pngcrush jpegoptim && \
     pacman -Scc --noconfirm
 
 # Set working directory and copy the entire builder directory

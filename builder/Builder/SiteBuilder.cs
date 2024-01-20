@@ -70,15 +70,30 @@ internal class SiteBuilder
 
         Parallel.ForEach(files, (file) =>
         {
-            var page = BuildPage(file);
+            try
+            {
+                var page = BuildPage(file);
 
-            if (page != null)
-                pages.Add(page);
+                if (page != null)
+                    pages.Add(page);
+            }
+            catch (Exception e)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"✗ Failed to build {file}");
+                Console.WriteLine(e);
+                Console.ResetColor();
+            }
         });
 
         BuildHomepage(pages.ToList());
 
         CopyDirectory(buildOptions.StaticDirectory.FullName, Path.Combine(buildOptions.OutputDirectory.FullName, "static"), true);
+
+        if (buildOptions.OptimizeImages)
+        {
+            OptimizeImages();
+        }
 
         if (buildOptions.BuildPdfs)
         {
@@ -303,7 +318,7 @@ internal class SiteBuilder
 
     private static void AddPageToDirectory(SiteDirectory root, Page page)
     {
-        var pathSegments = page.Path.Split('/');
+        var pathSegments = page.Path.Split(Path.DirectorySeparatorChar);
 
         var directory = root;
         for (var i = 0; i < pathSegments.Length - 1; i++)
@@ -347,6 +362,88 @@ internal class SiteBuilder
         {
             var newDestinationDir = Path.Combine(destinationDir, subDir.Name);
             CopyDirectory(subDir.FullName, newDestinationDir, true);
+        }
+    }
+
+    private void OptimizeImages()
+    {
+        var files = Directory.GetFiles(Path.Combine(buildOptions.OutputDirectory.FullName, "static", "images"), "*.*", SearchOption.AllDirectories);
+
+        foreach (var file in files)
+        {
+            var sw = new Stopwatch();
+            sw.Start();
+
+            if (Path.GetExtension(file) == ".png")
+            {
+                PngCrush(file);
+            }
+            else if (Path.GetExtension(file) == ".jpg")
+            {
+                JpegOptim(file);
+            }
+
+            sw.Stop();
+            var elapsed = $"{sw.Elapsed.TotalSeconds:0.00}";
+
+            lock(lockObject)
+            {
+                Console.ForegroundColor = ConsoleColor.DarkGray;
+                Console.Write($"{elapsed,-4}");
+                Console.ResetColor();
+                Console.Write($" {Path.GetRelativePath(buildOptions.OutputDirectory.ToString(), file)}");
+                Console.WriteLine();
+            }
+        }
+    }
+
+    private void PngCrush(string file)
+    {
+        var args = $"-reduce -brute -ow \"{file}\"";
+
+        var startInfo = new ProcessStartInfo
+        {
+            FileName = "pngcrush",
+            Arguments = args,
+            RedirectStandardOutput = true,
+            RedirectStandardError = true,
+            UseShellExecute = false,
+            CreateNoWindow = true,
+            WorkingDirectory = buildOptions.ContentDirectory.FullName
+        };
+
+        var process = new Process { StartInfo = startInfo };
+        process.Start();
+        process.WaitForExit();
+
+        if (process.ExitCode != 0)
+        {
+            throw new Exception($"pngcrush failed with exit code {process.ExitCode} and error {process.StandardError.ReadToEnd()} when optimizing {file}");
+        }
+    }
+
+    private void JpegOptim(string file)
+    {
+        var args = $"--strip-all --all-progressive \"{file}\"";
+
+        var startInfo = new ProcessStartInfo
+        {
+            FileName = "jpegoptim",
+            Arguments = args,
+            RedirectStandardOutput = true,
+            RedirectStandardError = true,
+            UseShellExecute = false,
+            CreateNoWindow = true,
+            WorkingDirectory = buildOptions.ContentDirectory.FullName
+        };
+
+        var process = new Process { StartInfo = startInfo };
+        process.Start();
+        process.WaitForExit();
+
+        if (process.ExitCode != 0)
+        {
+            throw new Exception($"jpgoptim failed with exit code {process.ExitCode} and error {process.StandardError.ReadToEnd()} when optimizing {file}");
         }
     }
 }

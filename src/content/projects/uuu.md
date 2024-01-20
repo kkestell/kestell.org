@@ -2,7 +2,7 @@
 title: "UUU"
 subtitle: "3D software rasterizer."
 date: 2019-01-16
-draft: true
+draft: false
 ---
 
 TODO

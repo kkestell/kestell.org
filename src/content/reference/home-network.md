@@ -72,18 +72,16 @@ yay brlaser
 
 ### Hosts
 
-#### Io
+#### Ganymede
 
 Hostname
-:    `io`
+:    `ganymede`
 
 Model
 :    Raspberry Pi 4 Model B Rev 1.2
 
 RAM
 :    4GB
-
-* [Archive](/projects/archive.html)
 
 #### Europa
 
@@ -96,22 +94,16 @@ Model
 RAM
 :    2GB
 
-#### Ganymede
+#### Io
 
 Hostname
-:    `ganymede`
+:    `io`
 
 Model
 :    Raspberry Pi 3 Model B Rev 1.2
 
 RAM
 :    1GB
-
-##### Services
-
-* [Blink Comparator](/projects/blink-comparator.html)
-* [General Chang](/projects/general-chang.html)
-* [Timelapse](/projects/timelapse.html)
 
 #### Callisto
 
@@ -162,8 +154,6 @@ free -h
 | IP Address   | Hostname            | Description     |
 | ------------ | ------------------- | --------------- |
 | `10.0.0.1`   | `openwrt.lan`       | Router          |
-| `10.0.0.102` | `nas.lan`           | NAS             |
-| `10.0.0.125` | `europa.lan`        | Home Assistant  |
 
 ### Trusted VNET
 

@@ -25,7 +25,7 @@ The `serve` command starts a local web server and automatically rebuilds the sit
 builder serve --root ./src --output ./dist --port 8080
 ```
 
-Both the `build` and `serve` commands accept optional `--drafts` and `--pdfs` arguments which include draft posts in the build and control PDF generation, respectively.
+Both the `build` and `serve` commands accept optional `--drafts`, `--pdfs`, and `--optimize` arguments which include draft posts in the build, and control PDF generation and image optimization, respectively.
 
 ## Misc. Notes
 

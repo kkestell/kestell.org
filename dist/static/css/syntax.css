@@ -1,0 +1,22 @@
+@media (prefers-color-scheme: dark) {
+    :root {
+        --code-bg: #1c1c1c;
+        --code-fg: #eaeaea;
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --code-bg: #1c1c1c;
+        --code-fg: #eee;
+    }
+}
+
+pre {
+    padding: 1rem;
+    overflow-x: auto;
+    font-size: 0.9rem;
+    color: var(--code-fg);
+    background: var(--code-bg);
+    line-height: 1.2;
+}

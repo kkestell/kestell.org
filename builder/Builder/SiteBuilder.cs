@@ -374,6 +374,8 @@ internal class SiteBuilder
             var sw = new Stopwatch();
             sw.Start();
 
+            var originalSize = new FileInfo(file).Length;
+
             if (Path.GetExtension(file) == ".png")
             {
                 PngCrush(file);
@@ -383,6 +385,8 @@ internal class SiteBuilder
                 JpegOptim(file);
             }
 
+            var optimizedSize = new FileInfo(file).Length;
+
             sw.Stop();
             var elapsed = $"{sw.Elapsed.TotalSeconds:0.00}";
 
@@ -391,7 +395,7 @@ internal class SiteBuilder
                 Console.ForegroundColor = ConsoleColor.DarkGray;
                 Console.Write($"{elapsed,-4}");
                 Console.ResetColor();
-                Console.Write($" {Path.GetRelativePath(buildOptions.OutputDirectory.ToString(), file)}");
+                Console.Write($" {Path.GetRelativePath(buildOptions.OutputDirectory.ToString(), file)} {originalSize:N0} -> {optimizedSize:N0}");
                 Console.WriteLine();
             }
         }

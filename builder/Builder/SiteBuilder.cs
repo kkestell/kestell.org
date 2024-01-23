@@ -68,7 +68,8 @@ internal class SiteBuilder
 
         var pages = new ConcurrentBag<Page>();
 
-        Parallel.ForEach(files, (file) =>
+        // Parallel.ForEach(files, (file) =>
+        foreach (var file in files)
         {
             try
             {
@@ -84,7 +85,8 @@ internal class SiteBuilder
                 Console.WriteLine(e);
                 Console.ResetColor();
             }
-        });
+        }
+        // });
 
         BuildHomepage(pages.ToList());
 
@@ -97,7 +99,21 @@ internal class SiteBuilder
 
         if (buildOptions.BuildPdfs)
         {
-            Parallel.ForEach(files, GeneratePdf);
+            // Parallel.ForEach(files, GeneratePdf);
+            foreach (var file in files)
+            {
+                try
+                {
+                    GeneratePdf(file);
+                }
+                catch (Exception e)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine($"✗ Failed to build {file}");
+                    Console.WriteLine(e);
+                    Console.ResetColor();
+                }
+            }
         }
         
         sw.Stop();
@@ -422,7 +438,7 @@ internal class SiteBuilder
 
         if (process.ExitCode != 0)
         {
-            throw new Exception($"pngcrush failed with exit code {process.ExitCode} and error {process.StandardError.ReadToEnd()} when optimizing {file}");
+            Console.WriteLine($"pngcrush failed with exit code {process.ExitCode} and error {process.StandardError.ReadToEnd()} when optimizing {file}");
         }
     }
 
@@ -447,7 +463,7 @@ internal class SiteBuilder
 
         if (process.ExitCode != 0)
         {
-            throw new Exception($"jpgoptim failed with exit code {process.ExitCode} and error {process.StandardError.ReadToEnd()} when optimizing {file}");
+            Console.WriteLine($"jpgoptim failed with exit code {process.ExitCode} and error {process.StandardError.ReadToEnd()} when optimizing {file}");
         }
     }
 }

@@ -515,3 +515,51 @@ footer p {
     font-size: 0.9rem;
     /* color: var(--text-color-dim); */
 }
+
+
+/* BOOKS */
+
+.book {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--rule-color);
+}
+
+.book img {
+    margin: 0 20px 0 0;
+}
+
+.book h2, .book h3, .book h4, .book p {
+    margin: 0;
+}
+
+.book h2 {
+    margin-bottom: 0.5rem;
+}
+
+.book h3, .book h4 {
+    margin-bottom: 0.75rem;
+}
+
+.book h4, .book p {
+    width: 100%;
+}
+
+.book h4 {
+    font-size: 1.5rem;
+}
+
+.book blockquote {
+    font-size: 0.9rem;
+    color: var(--text-color-dim);
+}
+
+.book p {
+    margin-top: 1rem;
+}
+
+.book-content {
+    flex: 1;
+}

@@ -12,7 +12,7 @@ draft: false
 
 <table width="500">
   <tr>
-    <th width="300">Command</th>
+    <th width="250">Command</th>
     <th>Shortcut</th>
   </tr>
   <tr>
@@ -45,7 +45,7 @@ draft: false
 
 <table width="500">
   <tr>
-    <th width="300">Command</th>
+    <th width="250">Command</th>
     <th>Shortcut</th>
   </tr>  
   <tr>
@@ -92,13 +92,17 @@ draft: false
     <td>Delete Next Character</td>
     <td>Delete</td>
   </tr>
+  <tr>
+    <td>Delete Current Line</td>
+    <td>Shift + Delete</td>
+  </tr>
 </table>
 
 ### Navigation Commands
 
 <table width="500">
   <tr>
-    <th width="300">Command</th>
+    <th width="250">Command</th>
     <th>Shortcut</th>
   </tr>  
   <tr>
@@ -129,13 +133,21 @@ draft: false
     <td>Move Page Down</td>
     <td>Page Down</td>
   </tr>
+  <tr>
+    <td>Move to Start of Document</td>
+    <td>Ctrl + Home</td>
+  </tr>
+  <tr>
+    <td>Move to End of Document</td>
+    <td>Ctrl + End</td>
+  </tr>  
 </table>
 
 ### Selection Commands
 
 <table width="500">
   <tr>
-    <th width="300">Command</th>
+    <th width="250">Command</th>
     <th>Shortcut</th>
   </tr>  
   <tr>

@@ -1,5 +1,5 @@
 ---
-title: "Buttermilk Waffles"
+title: "Waffles"
 subtitle: ""
 date: 2024-01-20
 draft: false

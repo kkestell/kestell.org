@@ -24,7 +24,7 @@ internal class SiteBuilder
     public SiteBuilder(BuildOptions buildOptions)
     {
         this.buildOptions = buildOptions;
-        
+
         textInfo = new CultureInfo("en-US", false).TextInfo;
 
         yamlDeserializer = new DeserializerBuilder()
@@ -33,7 +33,7 @@ internal class SiteBuilder
 
         markdownPipeline = new MarkdownPipelineBuilder()
             .UseYamlFrontMatter()
-            .UseCustomContainers() 
+            .UseCustomContainers()
             .UseEmphasisExtras()
             .UseGridTables()
             .UseMediaLinks()
@@ -46,8 +46,10 @@ internal class SiteBuilder
             .UseFootnotes()
             .Build();
 
-        pageTemplate = Handlebars.Compile(File.ReadAllText(Path.Combine(buildOptions.TemplateDirectory.FullName, "page.hbs")));
-        homeTemplate = Handlebars.Compile(File.ReadAllText(Path.Combine(buildOptions.TemplateDirectory.FullName, "home.hbs")));
+        pageTemplate =
+            Handlebars.Compile(File.ReadAllText(Path.Combine(buildOptions.TemplateDirectory.FullName, "page.hbs")));
+        homeTemplate =
+            Handlebars.Compile(File.ReadAllText(Path.Combine(buildOptions.TemplateDirectory.FullName, "home.hbs")));
     }
 
     public void Build()
@@ -55,21 +57,20 @@ internal class SiteBuilder
         Console.ForegroundColor = ConsoleColor.Cyan;
         Console.WriteLine($"Build started at {DateTime.Now:hh:mm:ss tt}");
         Console.ResetColor();
-        
+
         var sw = new Stopwatch();
         sw.Start();
 
-        if (Directory.Exists("dist"))
-            Directory.Delete("dist", true);
-    
-        Directory.CreateDirectory("dist");
+        if (buildOptions.OutputDirectory.Exists)
+            buildOptions.OutputDirectory.Delete(recursive: true);
+        
+        buildOptions.OutputDirectory.Create();
 
         var files = Directory.GetFiles(buildOptions.ContentDirectory.FullName, "*.md", SearchOption.AllDirectories);
 
         var pages = new ConcurrentBag<Page>();
 
-        // Parallel.ForEach(files, (file) =>
-        foreach (var file in files)
+        Parallel.ForEach(files, (file) =>
         {
             try
             {
@@ -85,12 +86,13 @@ internal class SiteBuilder
                 Console.WriteLine(e);
                 Console.ResetColor();
             }
-        }
-        // });
+        });
 
         BuildHomepage(pages.ToList());
 
-        CopyDirectory(buildOptions.StaticDirectory.FullName, Path.Combine(buildOptions.OutputDirectory.FullName, "static"), true);
+        CopyFilesRecursively(
+            buildOptions.StaticDirectory, 
+            new DirectoryInfo(Path.Combine(buildOptions.OutputDirectory.FullName, "static")));
 
         if (buildOptions.OptimizeImages)
         {
@@ -115,13 +117,13 @@ internal class SiteBuilder
                 }
             }
         }
-        
+
         sw.Stop();
 
         Console.ForegroundColor = ConsoleColor.Green;
         Console.WriteLine($"✓ Completed in {sw.Elapsed.TotalSeconds:0.00} seconds");
         Console.ResetColor();
-     }
+    }
 
     private string RewriteImagePaths(string file)
     {
@@ -153,11 +155,13 @@ internal class SiteBuilder
             return;
 
         var relativePath = Path.GetRelativePath(buildOptions.ContentDirectory.FullName, file);
-        var outputFile = Path.ChangeExtension(Path.Combine(buildOptions.OutputDirectory.FullName, relativePath), ".pdf");
+        var outputFile =
+            Path.ChangeExtension(Path.Combine(buildOptions.OutputDirectory.FullName, relativePath), ".pdf");
 
         var tempFile = RewriteImagePaths(file);
 
-        var args = $"{tempFile} --pdf-engine=xelatex --include-in-header=\"{Path.Combine(buildOptions.TemplateDirectory.FullName, "header.tex")}\" --variable \"block-headings\" --highlight-style=monochrome -f markdown -t pdf -o {outputFile}";
+        var args =
+            $"{tempFile} --pdf-engine=xelatex --include-in-header=\"{Path.Combine(buildOptions.TemplateDirectory.FullName, "header.tex")}\" --variable \"block-headings\" --highlight-style=monochrome -f markdown -t pdf -o {outputFile}";
 
         var startInfo = new ProcessStartInfo
         {
@@ -176,16 +180,17 @@ internal class SiteBuilder
 
         if (process.ExitCode != 0)
         {
-            throw new Exception($"pandoc failed with exit code {process.ExitCode} and error {process.StandardError.ReadToEnd()} when converting {file} to {outputFile}");
+            throw new Exception(
+                $"pandoc failed with exit code {process.ExitCode} and error {process.StandardError.ReadToEnd()} when converting {file} to {outputFile}");
         }
-       
+
         File.Delete(tempFile);
 
         sw.Stop();
 
         var elapsed = $"{sw.Elapsed.TotalSeconds:0.00}";
 
-        lock(lockObject)
+        lock (lockObject)
         {
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.Write($"{elapsed,-4}");
@@ -194,9 +199,9 @@ internal class SiteBuilder
             Console.WriteLine();
         }
     }
-    
+
     private Page? BuildPage(string file)
-    {       
+    {
         var sw = new Stopwatch();
         sw.Start();
 
@@ -206,16 +211,17 @@ internal class SiteBuilder
         bool.TryParse(pageMeta["draft"], out var draft);
         if (draft && !buildOptions.BuildDrafts)
             return null;
-        
+
         var html = Markdown.ToHtml(content, markdownPipeline);
 
         var relativePath = Path.GetRelativePath(buildOptions.ContentDirectory.FullName, file);
-        var outputFile = Path.ChangeExtension(Path.Combine(buildOptions.OutputDirectory.FullName, relativePath), ".html");
-        
+        var outputFile =
+            Path.ChangeExtension(Path.Combine(buildOptions.OutputDirectory.FullName, relativePath), ".html");
+
         Directory.CreateDirectory(Path.GetDirectoryName(outputFile)!);
 
         var path = Path.GetRelativePath(buildOptions.OutputDirectory.FullName, outputFile);
-       
+
         var page = new Page
         {
             Meta = pageMeta,
@@ -224,16 +230,16 @@ internal class SiteBuilder
             GeneratedAt = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
             Path = path
         };
-        
+
         var renderedHtml = pageTemplate(new { Page = page });
 
         File.WriteAllText(outputFile, renderedHtml);
-        
+
         sw.Stop();
 
         var elapsed = $"{sw.Elapsed.TotalSeconds:0.00}";
 
-        lock(lockObject)
+        lock (lockObject)
         {
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.Write($"{elapsed,-4}");
@@ -244,7 +250,7 @@ internal class SiteBuilder
 
         return page;
     }
-    
+
     private void BuildHomepage(List<Page> pages)
     {
         var directory = ConvertPagesToSiteDirectory(pages);
@@ -254,7 +260,7 @@ internal class SiteBuilder
         var homeHtml = homeTemplate(new { Root = root });
         File.WriteAllText(Path.Combine(buildOptions.OutputDirectory.FullName, "index.html"), homeHtml);
     }
-    
+
     private string GenerateNestedList(SiteDirectory directory, int depth)
     {
         var htmlBuilder = new StringBuilder();
@@ -262,7 +268,7 @@ internal class SiteBuilder
         if (!string.IsNullOrEmpty(directory.Name))
         {
             var name = textInfo.ToTitleCase(directory.Name);
-            
+
             if (depth is >= 1 and <= 6)
             {
                 htmlBuilder.AppendLine($"<h{depth}>{name}</h{depth}>");
@@ -316,6 +322,7 @@ internal class SiteBuilder
         {
             AddPageToDirectory(root, page);
         }
+
         return root;
     }
 
@@ -346,44 +353,54 @@ internal class SiteBuilder
                 subDirectory = new SiteDirectory(pathSegment, new List<Node>());
                 directory.Children.Add(subDirectory);
             }
+
             directory = subDirectory;
         }
 
         var siteFile = new SiteFile(page.Meta["title"], page);
         directory.Children.Add(siteFile);
     }
-    
-    private static void CopyDirectory(string sourceDir, string destinationDir, bool recursive)
+
+    public static void CopyFilesRecursively(DirectoryInfo source, DirectoryInfo target)
     {
-        var dir = new DirectoryInfo(sourceDir);
-
-        if (!dir.Exists)
-            throw new DirectoryNotFoundException($"Source directory not found: {dir.FullName}");
-
-        var dirs = dir.GetDirectories();
-
-        Directory.CreateDirectory(destinationDir);
-
-        foreach(var file in dir.GetFiles())
-        {
-            var targetFilePath = Path.Combine(destinationDir, file.Name);
-            using var sourceStream = new FileStream(file.FullName, FileMode.Open, FileAccess.Read, FileShare.Read);
-            using var destinationStream = new FileStream(targetFilePath, FileMode.Create, FileAccess.Write, FileShare.None);
-            sourceStream.CopyTo(destinationStream);
-        }
-
-        if (!recursive) return;
-        
-        foreach (var subDir in dirs)
-        {
-            var newDestinationDir = Path.Combine(destinationDir, subDir.Name);
-            CopyDirectory(subDir.FullName, newDestinationDir, true);
-        }
+        foreach (DirectoryInfo dir in source.GetDirectories())
+            CopyFilesRecursively(dir, target.CreateSubdirectory(dir.Name));
+        foreach (FileInfo file in source.GetFiles())
+            file.CopyTo(Path.Combine(target.FullName, file.Name));
     }
+
+    // private static void CopyDirectory(string sourceDir, string destinationDir, bool recursive)
+    // {
+    //     var dir = new DirectoryInfo(sourceDir);
+    //
+    //     if (!dir.Exists)
+    //         throw new DirectoryNotFoundException($"Source directory not found: {dir.FullName}");
+    //
+    //     var dirs = dir.GetDirectories();
+    //
+    //     Directory.CreateDirectory(destinationDir);
+    //
+    //     foreach(var file in dir.GetFiles())
+    //     {
+    //         var targetFilePath = Path.Combine(destinationDir, file.Name);
+    //         using var sourceStream = new FileStream(file.FullName, FileMode.Open, FileAccess.Read, FileShare.Read);
+    //         using var destinationStream = new FileStream(targetFilePath, FileMode.Create, FileAccess.Write, FileShare.None);
+    //         sourceStream.CopyTo(destinationStream);
+    //     }
+    //
+    //     if (!recursive) return;
+    //     
+    //     foreach (var subDir in dirs)
+    //     {
+    //         var newDestinationDir = Path.Combine(destinationDir, subDir.Name);
+    //         CopyDirectory(subDir.FullName, newDestinationDir, true);
+    //     }
+    // }
 
     private void OptimizeImages()
     {
-        var files = Directory.GetFiles(Path.Combine(buildOptions.OutputDirectory.FullName, "static", "images"), "*.*", SearchOption.AllDirectories);
+        var files = Directory.GetFiles(Path.Combine(buildOptions.OutputDirectory.FullName, "static", "images"), "*.*",
+            SearchOption.AllDirectories);
 
         foreach (var file in files)
         {
@@ -406,12 +423,13 @@ internal class SiteBuilder
             sw.Stop();
             var elapsed = $"{sw.Elapsed.TotalSeconds:0.00}";
 
-            lock(lockObject)
+            lock (lockObject)
             {
                 Console.ForegroundColor = ConsoleColor.DarkGray;
                 Console.Write($"{elapsed,-4}");
                 Console.ResetColor();
-                Console.Write($" {Path.GetRelativePath(buildOptions.OutputDirectory.ToString(), file)} {originalSize:N0} -> {optimizedSize:N0}");
+                Console.Write(
+                    $" {Path.GetRelativePath(buildOptions.OutputDirectory.ToString(), file)} {originalSize:N0} -> {optimizedSize:N0}");
                 Console.WriteLine();
             }
         }
@@ -438,7 +456,8 @@ internal class SiteBuilder
 
         if (process.ExitCode != 0)
         {
-            Console.WriteLine($"pngcrush failed with exit code {process.ExitCode} and error {process.StandardError.ReadToEnd()} when optimizing {file}");
+            Console.WriteLine(
+                $"pngcrush failed with exit code {process.ExitCode} and error {process.StandardError.ReadToEnd()} when optimizing {file}");
         }
     }
 
@@ -463,7 +482,8 @@ internal class SiteBuilder
 
         if (process.ExitCode != 0)
         {
-            Console.WriteLine($"jpgoptim failed with exit code {process.ExitCode} and error {process.StandardError.ReadToEnd()} when optimizing {file}");
+            Console.WriteLine(
+                $"jpgoptim failed with exit code {process.ExitCode} and error {process.StandardError.ReadToEnd()} when optimizing {file}");
         }
     }
 }

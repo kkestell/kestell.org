@@ -14,7 +14,7 @@ Makes about 6 biscuits.
 | 180 g  | Buttermilk         |
 | 100 g  | Lard or Shortening |
 | 1 tbsp | Baking Powder      |
-| ½ tsp  | Kosher Salt        |
+| 1⁄2 tsp  | Kosher Salt        |
 
 ## Instructions
 

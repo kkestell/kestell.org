@@ -8,13 +8,13 @@ Makes 4 servings.
 
 ## Ingredients
 
-| Amount  | Ingredient        |
-|---------|-------------------|
-| 2 ¼ cup | Whole Milk        |
-| ¼ cup   | All-Purpose Flour |
-| ½ lb    | Breakfast Sausage |
-|         | Salt              |
-|         | Black Pepper      |
+| Amount    | Ingredient        |
+| --------- | ----------------- |
+| 2 1⁄4 cup  | Whole Milk        |
+| 1⁄4 cup    | All-Purpose Flour |
+| 1⁄2 lb     | Breakfast Sausage |
+|           | Salt              |
+|           | Black Pepper      |
 
 ## Instructions
 

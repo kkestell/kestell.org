@@ -12,7 +12,7 @@ draft: false
 | 2 tbsp | Sugar                                   |
 | 2 tsp  | Baking Powder                           |
 | 1 tsp  | Baking Soda                             |
-| ½ tsp  | Salt                                    |
+| 1⁄2 tsp | Salt                                    |
 | 2 cups | Low-Fat Buttermilk                      |
-| ½ cup  | Unsalted Butter, Melted                 |
+| 1⁄2 cup | Unsalted Butter, Melted                 |
 | 2 ea   | Large Eggs                              |

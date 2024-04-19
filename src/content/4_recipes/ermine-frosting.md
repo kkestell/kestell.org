@@ -8,7 +8,7 @@ draft: false
 
 | Amount  | Ingredient        |
 |---------|-------------------|
-| ¼ cup   | All-Purpose Flour |
+| 1⁄4 cup   | All-Purpose Flour |
 | 2 cup   | Whole Milk        |
 | 2 cup   | Unsalted Butter   |
 | 1 cup   | Granulated Sugar  |

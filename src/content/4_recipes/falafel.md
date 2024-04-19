@@ -9,10 +9,10 @@ draft: false
 | Amount | Ingredient             |
 |--------|------------------------|
 | 2 cups | Dried Chickpeas        |
-| ½ tsp  | Baking Soda            |
+| 1⁄2 tsp  | Baking Soda            |
 | 1 cup  | Parsley                |
-| ¾ cup  | Cilantro               |
-| ½ cup  | Dill                   |
+| 3⁄4 cup  | Cilantro               |
+| 1⁄2 cup  | Dill                   |
 | 1 ea   | Small Onion, Quartered |
 | 7-8    | Garlic Cloves, Peeled  |
 | 1 tbsp | Ground Black Pepper    |

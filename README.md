@@ -1,13 +1,15 @@
 # kestell.org
 
-Compile and install Builder:
+## Dependencies
+
+### Arch
 
 ```
-builder/install.sh
+sudo pacman -Sy inotify-tools
 ```
 
-Serve the site locally:
-
 ```
-builder serve
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
 ```

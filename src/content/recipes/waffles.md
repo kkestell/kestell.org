@@ -1,6 +1,5 @@
 ---
-title: "Waffles"
-subtitle: ""
+title: Waffles
 date: 2024-01-20
 draft: false
 ---
@@ -8,7 +7,7 @@ draft: false
 ## Ingredients
 
 | Amount | Ingredient                              |
-| ------ | --------------------------------------- |
+|--------|-----------------------------------------|
 | 2 cups | All-Purpose Flour                       |
 | 2 tbsp | Sugar                                   |
 | 2 tsp  | Baking Powder                           |

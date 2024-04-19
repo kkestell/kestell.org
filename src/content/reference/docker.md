@@ -1,6 +1,5 @@
 ---
-title: "Docker CLI"
-subtitle: ""
+title: Docker CLI
 date: 2023-04-24
 draft: true
 ---

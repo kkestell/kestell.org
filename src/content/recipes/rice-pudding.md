@@ -1,6 +1,5 @@
 ---
-title: "Rice Pudding"
-subtitle: ""
+title: Rice Pudding
 date: 2024-01-20
 draft: false
 ---
@@ -9,16 +8,16 @@ draft: false
 
 Serve with cinnamon and nutmeg.
 
-| Amount | Ingredient          |
-| ------ | ------------------- |
-| 1½ cup | Cooked Rice         |
-| 2 cup  | Whole Milk, Divided |
-| ¼ tsp  | Salt                |
-| ⅔ cup  | Raisins (Optional)  |
-| 1 ea   | Egg, Beaten         |
-| ⅓ cup  | White Sugar         |
-| 1 tbsp | Butter              |
-| ½ tsp  | Vanilla Extract     |
+| Amount  | Ingredient          |
+|---------|---------------------|
+| 1 ½ cup | Cooked Rice         |
+| 2 cup   | Whole Milk, Divided |
+| ¼ tsp   | Salt                |
+| ⅔ cup   | Raisins (Optional)  |
+| 1 ea    | Egg, Beaten         |
+| ⅓ cup   | White Sugar         |
+| 1 tbsp  | Butter              |
+| ½ tsp   | Vanilla Extract     |
 
 ## Instructions
 

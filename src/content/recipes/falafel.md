@@ -1,6 +1,5 @@
 ---
-title: "Falafel"
-subtitle: ""
+title: Falafel
 date: 2024-01-20
 draft: false
 ---
@@ -8,7 +7,7 @@ draft: false
 ## Ingredients
 
 | Amount | Ingredient             |
-| ------ | ---------------------- |
+|--------|------------------------|
 | 2 cups | Dried Chickpeas        |
 | ½ tsp  | Baking Soda            |
 | 1 cup  | Parsley                |

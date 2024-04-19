@@ -1,62 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>XDG Default Applications</title>
-  <link rel="stylesheet" href="/static/css/theme.css">
-  <link rel="stylesheet" href="/static/css/syntax.css">
+    <meta charset="UTF-8">
+    <title>kestell.org | XDG Default Applications</title>
+    <link rel="stylesheet" href="/static/css/theme.css" />
 </head>
 <body>
-  <header>
+    <header>
+        <h1>kestell.org</h1>
+        <p><a href="/">Home</a> <span class="separator">/</span> <a href="/reference">Reference</a> <span class="separator">/</span> XDG Default Applications</p>
+    </header>
     <h1>XDG Default Applications</h1>
-    <h2>Fixing broken file associations in Linux.</h2>
-    <ul>
-      <li>
-        <span>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M5.75 2a.75.75 0 01.75.75V4h7V2.75a.75.75 0 011.5 0V4h.25A2.75 2.75 0 0118 6.75v8.5A2.75 2.75 0 0115.25 18H4.75A2.75 2.75 0 012 15.25v-8.5A2.75 2.75 0 014.75 4H5V2.75A.75.75 0 015.75 2zm-1 5.5c-.69 0-1.25.56-1.25 1.25v6.5c0 .69.56 1.25 1.25 1.25h10.5c.69 0 1.25-.56 1.25-1.25v-6.5c0-.69-.56-1.25-1.25-1.25H4.75z" clip-rule="evenodd" />
-          </svg>
-          2021-11-27
-        </span>
-      </li>
-    </ul>
-  </header>
-  <h2 id="xdg-mime"><code>xdg-mime</code></h2>
+    <h2><code>xdg-mime</code></h2>
 <p>Print the <code>.desktop</code> filename of the application that is registered to open directories:</p>
 <pre><code class="language-shell">xdg-mime query default inode/directory
 </code></pre>
 <p>Associate directories with Nautilus (Files). This will modify <code>~/.config/mimetypes.list</code>:</p>
 <pre><code class="language-shell">xdg-mime default org.gnome.Nautilus.desktop inode/directory
 </code></pre>
-<h3 id="example.configmimeapps.list">Example <code>~/.config/mimeapps.list</code></h3>
+<h3>Example <code>~/.config/mimeapps.list</code></h3>
 <pre><code class="language-ini">[Default Applications]
-audio/x-wav=io.bassi.Amberol.desktop
-audio/mp3=io.bassi.Amberol.desktop
-audio/ogg=io.bassi.Amberol.desktop
-audio/x-flac=io.bassi.Amberol.desktop
+application/json=code.desktop
 application/pdf=org.gnome.Evince.desktop
+audio/mp3=music.desktop
+audio/x-flac=music.desktop
 image/jpeg=org.gnome.eog.desktop
 image/png=org.gnome.eog.desktop
 inode/directory=org.gnome.Nautilus.desktop
-text/plain=org.gnome.TextEditor.desktop
 text/markdown=org.gnome.TextEditor.desktop
-video/mp4=io.github.celluloid_player.Celluloid.desktop
-video/x-matroska=io.github.celluloid_player.Celluloid.desktop
-video/webm=io.github.celluloid_player.Celluloid.desktop
-video/quicktime=io.github.celluloid_player.Celluloid.desktop
-video/x-m4v=io.github.celluloid_player.Celluloid.desktop
-video/ogg=io.github.celluloid_player.Celluloid.desktop
+text/plain=org.gnome.TextEditor.desktop
+video/mp4=io.github.vlc.desktop
+video/ogg=io.github.vlc.desktop
+video/quicktime=io.github.vlc.desktop
+video/webm=io.github.vlc.desktop
+video/x-m4v=io.github.vlc.desktop
+video/x-matroska=io.github.vlc.desktop
 </code></pre>
 <p>If you want the change to be system-wide, run <code>xdg-mime</code> as root. This will modify <code>/usr/share/applications/mimeapps.list</code>.</p>
-<h2 id="further-reading">Further Reading</h2>
+<h2>Further Reading</h2>
 <ul>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types">Mozilla Developer Network: Common MIME Types</a></li>
 <li><a href="https://wiki.archlinux.org/title/default_applications">Arch Wiki: Default Applications</a></li>
 </ul>
-
-  <footer>
-    <p>Generated on 2024-01-25 07:01:32</p>
-  </footer>
+    <footer>
+        <p>Last updated on 2024-03-16 13:54:32</p>
+    </footer>
 </body>
 </html>

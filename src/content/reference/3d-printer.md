@@ -1,6 +1,5 @@
 ---
-title: "3D Printer"
-subtitle: ""
+title: 3D Printer
 date: 2019-03-27
 draft: false
 ---

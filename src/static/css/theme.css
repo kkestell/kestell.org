@@ -204,8 +204,11 @@ td:nth-child(1) {
         --nav-active-color: #eee;
         --link-color: #78aeed;
         --icon-color: #e7e7e7;
+        --h1-color: #fff;
         --h2-color: #eee;
         --h3-color: #ddd;
+        --code-snippet-background-color: #000;
+        --code-snippet-text-color: #fafafa;
     }
 }
 
@@ -220,8 +223,11 @@ td:nth-child(1) {
         --nav-active-color: #000;
         --link-color: #1c71d8;
         --icon-color: #111;
+        --h1-color: #111;
         --h2-color: #333;
         --h3-color: #555;
+        --code-snippet-background-color: #111;
+        --code-snippet-text-color: #fafafa;
     }
 }
 
@@ -244,12 +250,12 @@ body {
     margin: 0 auto;
 }
 
-code {
-    font-family: var(--monospace-font-family);
+p, li {
+    max-width: 50rem;
 }
 
-p {
-    max-width: 50rem;
+code {
+    font-family: var(--monospace-font-family);
 }
 
 p,
@@ -268,6 +274,12 @@ h6 {
     margin: 2rem 0 1rem;
     line-height: 1.2;
     font-weight: bold;
+}
+
+h1 {
+    font-size: 1.8rem;
+    margin-top: 3rem;
+    color: var(--h1-color);
 }
 
 h2 {
@@ -313,6 +325,11 @@ ul.task-list input[type="checkbox"] {
     margin: 0 0.5rem 0 -2rem;
 }
 
+li > ul {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
 th,
 td {
     padding-right: 2rem;
@@ -344,7 +361,7 @@ sup {
 
 img {
     max-width: 100%;
-    margin: 2rem auto;
+    margin: 2rem 0;
     display: block;
 }
 
@@ -374,6 +391,12 @@ del {
 
 pre {
     margin-bottom: 1rem;
+    padding: 1rem;
+    overflow-x: scroll;
+    font-size: 0.9rem;
+    line-height: 1.25rem;
+    background: var(--code-snippet-background-color);
+    color: var(--code-snippet-text-color);
 }
 
 dl {
@@ -432,47 +455,31 @@ div.footnotes a.footnote-back-ref {
     margin-left: 0.5rem;
 }
 
-/* NAVIGATION */
+/* HEADER */
 
 header {
     margin-bottom: 3rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--rule-color);
 }
 
 header h1 {
     font-size: 1.8rem;
+    margin: 0 0 0.5rem 0;
 }
 
-header h2 {
-    margin: 1rem 0 2rem;
-    font-weight: normal;
-    font-size: 1.2rem;
-}
-
-header ul {
-    list-style: none;
-    margin: 0;
-}
-
-header li {
-    display: inline-block;
-    margin-right: 1rem;
-}
-
-header li a, header li span {
-    position: relative;
-    padding-left: 25px;
+header p {
     font-size: 0.9rem;
+    margin-top: 1rem;
 }
 
-header li a svg, header li span svg {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 18px;
-    height: 18px;
-    fill: var(--icon-color);
+header span.separator {
+    color: var(--text-color-dim);
+    margin: 0 0.25rem;
 }
- 
+
+/* FOOTER */
+
 footer {
     color: var(--text-color-dimmer);
     font-size: 0.8rem;
@@ -488,78 +495,29 @@ footer p {
 
 /* HOMEPAGE */
 
-#pages ul {
+.list ul {
     list-style: none;
     margin-left: 0;
 }
 
-#pages li {
+.list li {
     line-height: 1.6;
-    margin-bottom: 1rem;
-}
-
-#pages li > ul {
-    margin-left: 2rem;
-}
-
-#pages h2, 
-#pages h3, 
-#pages h4, 
-#pages h5, 
-#pages h6{
-    font-size: 1.3rem;
-    margin-top: 2rem;
-}
-
-#pages span {
-    font-size: 0.9rem;
-    /* color: var(--text-color-dim); */
-}
-
-
-/* BOOKS */
-
-.book {
-    display: flex;
-    align-items: flex-start;
-    margin-top: 2rem;
-    padding-top: 2rem;
-    border-top: 1px solid var(--rule-color);
-}
-
-.book img {
-    margin: 0 20px 0 0;
-}
-
-.book h2, .book h3, .book h4, .book p {
-    margin: 0;
-}
-
-.book h2 {
-    margin-bottom: 0.5rem;
-}
-
-.book h3, .book h4 {
     margin-bottom: 0.75rem;
 }
 
-.book h4, .book p {
-    width: 100%;
+.list li > .list {
+    margin-left: 2rem;
 }
 
-.book h4 {
-    font-size: 1.5rem;
-}
-
-.book blockquote {
+.list span {
     font-size: 0.9rem;
-    color: var(--text-color-dim);
 }
 
-.book p {
-    margin-top: 1rem;
+/* PRINT */
+
+@media print {
+  header, footer {
+    display: none;
+  }
 }
 
-.book-content {
-    flex: 1;
-}

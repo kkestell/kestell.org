@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>kestell.org | Python Virtual Environments and Packages</title>
+    <link rel="stylesheet" href="/static/css/theme.css" />
+</head>
+<body>
+    <header>
+        <h1>kestell.org</h1>
+        <p><a href="/">Home</a> <span class="separator">/</span> <a href="/reference">Reference</a> <span class="separator">/</span> Python Virtual Environments and Packages</p>
+    </header>
+    <h1>Python Virtual Environments and Packages</h1>
+    <h2>Virtual Environments</h2>
+<p>Create a virtual environment</p>
+<pre><code class="language-shell">python -m venv myenv
+</code></pre>
+<p>Activate a virtual environment</p>
+<pre><code class="language-shell">source myenv/bin/activate
+</code></pre>
+<p>Deactivate a virtual environment</p>
+<pre><code class="language-shell">deactivate
+</code></pre>
+<h2><code>pip</code></h2>
+<p>Install a package</p>
+<pre><code class="language-shell">pip install &lt;package_name&gt;
+</code></pre>
+<p>List installed packages</p>
+<pre><code class="language-shell">pip list
+</code></pre>
+<p>Uninstall a package</p>
+<pre><code class="language-shell">pip uninstall &lt;package_name&gt;
+</code></pre>
+<p>Upgrade a package</p>
+<pre><code class="language-shell">pip install --upgrade &lt;package_name&gt;
+</code></pre>
+<p>Freeze installed packages to a requirements file</p>
+<pre><code class="language-shell">pip freeze &gt; requirements.txt
+</code></pre>
+<p>Install packages from a requirements file</p>
+<pre><code class="language-shell">pip install -r requirements.txt
+</code></pre>
+<p>Upgrade pip</p>
+<pre><code class="language-shell">pip install --upgrade pip
+</code></pre>
+    <footer>
+        <p>Last updated on 2024-02-20 11:14:09</p>
+    </footer>
+</body>
+</html>

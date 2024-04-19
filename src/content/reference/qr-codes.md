@@ -1,6 +1,5 @@
 ---
-title: "Generating QR Codes"
-subtitle: ""
+title: Generating QR Codes
 date: 2021-11-27
 draft: false
 ---

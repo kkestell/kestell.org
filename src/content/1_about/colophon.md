@@ -1,6 +1,6 @@
 ---
 title: Colophon
-subtitle: About the software that runs this site
+subtitle: About the software that runs this site.
 date: 2023-04-27
 draft: false
 ---

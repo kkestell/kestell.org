@@ -7,6 +7,7 @@ serve:
 	python -m http.server --directory dist &
 
 watch:
+	make build
 	@echo "Starting server..."
 	@python -m http.server --directory dist & echo $$! > /tmp/server.pid
 	@echo "Watching for changes. Press [CTRL+C] to stop."

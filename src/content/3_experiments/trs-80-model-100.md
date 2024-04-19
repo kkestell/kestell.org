@@ -1,5 +1,6 @@
 ---
-title: TRS-80 Model 100
+title: TRS-80 Model 100 Cyberdeck
+subtitle: Portable Linux workstation.
 date: 2021-11-27
 draft: false
 ---

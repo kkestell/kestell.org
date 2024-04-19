@@ -40,3 +40,11 @@ draft: false
 ![Ivy - Details View](/static/images/ivy-details.jpg)
 
 ![Ivy - Libgen Downloader Plugin](/static/images/ivy-downloader.jpg)
+
+## Source
+
+Ivy is written in C#. The source code is available on [GitHub](https://github.com/kkestell/ivy).
+
+## License
+
+Ivy uses the [Zero-Clause BSD](https://opensource.org/license/0bsd/) license.

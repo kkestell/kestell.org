@@ -5,6 +5,7 @@ import shutil
 from string import Template
 from typing import List
 import markdown
+import re
 
 
 class Document:
@@ -37,15 +38,16 @@ class FrontMatterParser:
 
 
 class Node:
-    def __init__(self, name: str, path: str):
+    def __init__(self, name: str, path: str, order: int = 0):
         self.name = name
         self.path = path
         self.parent = None
+        self.order = order
 
 
 class Directory(Node):
-    def __init__(self, name: str, path: str, children: List[Node] = None):
-        super().__init__(name, path)
+    def __init__(self, name: str, path: str, children: List[Node] = None, order: int = 0):
+        super().__init__(name, path, order)
         if children is None:
             children = []
         self.children = children
@@ -83,9 +85,13 @@ class SiteBuilder:
 
     def _build_structure(self, current_directory: Directory, current_path: Path):
         for item in current_path.iterdir():
-            relative_path_str = item.relative_to(self.content_dir).as_posix()
+            order, name = self._parse_prefix(item.stem)
+            formatted_name = name.title()
+            formatted_path = item.relative_to(self.content_dir).as_posix()
+            formatted_path = re.sub(r'^\d+_', '', formatted_path)
+
             if item.is_dir():
-                directory = Directory(item.name.title(), relative_path_str)
+                directory = Directory(formatted_name, formatted_path, order=order)
                 current_directory.add_child(directory)
                 self._build_structure(directory, item)
             elif item.is_file() and item.suffix == '.md':
@@ -93,12 +99,18 @@ class SiteBuilder:
                 if document.frontmatter.get('draft', 'false').lower() == 'true':
                     continue
                 updated_on = datetime.fromtimestamp(item.stat().st_mtime).strftime('%Y-%m-%d %H:%M:%S')
-                file = File(relative_path_str, document, updated_on)
+                file = File(formatted_path, document, updated_on)
                 current_directory.add_child(file)
         self._sort_structure(current_directory)
 
+    def _parse_prefix(self, name):
+        match = re.match(r'^(\d+)_(.*)$', name)
+        if match:
+            return int(match.group(1)), match.group(2)
+        return 0, name
+
     def _sort_structure(self, directory: Directory):
-        directory.children.sort(key=lambda n: f"0{n.name}" if isinstance(n, Directory) else f"1{n.name}")
+        directory.children.sort(key=lambda n: (n.order, f"0{n.name}" if isinstance(n, Directory) else f"1{n.name}"))
         for child in directory.children:
             if isinstance(child, Directory):
                 self._sort_structure(child)
@@ -157,7 +169,7 @@ class SiteBuilder:
                 html_builder.append("</li>")
         html_builder.append("</ul></div>")
         return ''.join(html_builder)
-
+        
     def _generate_breadcrumbs(self, node: Node):
         breadcrumbs = []
         current_node = node.parent

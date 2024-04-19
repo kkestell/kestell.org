@@ -8,8 +8,8 @@ draft: false
 
 | Amount  | Ingredient      |
 |---------| --------------- |
-| 1 ½ cup | Brown Rice      |
-| 2 ½ cup | Water           |
+| 1 1⁄2 cup | Brown Rice      |
+| 2 1⁄2 cup | Water           |
 | 1 tbsp  | Unsalted Butter |
 | 1 tsp   | Kosher Salt     |
 | 1 ea    | Bay Leaf        |

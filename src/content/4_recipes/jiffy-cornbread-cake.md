@@ -10,10 +10,10 @@ draft: false
 |--------|---------------------|
 | 1 box  | Jiffy Cornbread Mix |
 | 2 ea   | Eggs                |
-| ½ cup  | Sour Cream          |
-| ¼ cup  | Vegetable Oil       |
+| 1⁄2 cup  | Sour Cream          |
+| 1⁄4 cup  | Vegetable Oil       |
 | 1 tbsp | Granulated Sugar    |
-| ½ tsp  | Salt                |
+| 1⁄2 tsp  | Salt                |
 
 ### Notes
 

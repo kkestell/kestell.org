@@ -1,6 +1,5 @@
 ---
-title: "FFmpeg"
-subtitle: ""
+title: FFmpeg
 date: 2023-08-21
 draft: false
 ---
@@ -15,4 +14,10 @@ Change container from MKV to MP4:
 
 ```bash
 ffmpeg -i input.mkv -codec copy output.mp4
+```
+
+Record RTSP stream w/ hardware acceleration:
+
+```bash
+ffmpeg -rtsp_transport tcp -i rtsp://10.0.0.1/ -c:v h264_nvenc -preset fast -b:v 1000k -c:a copy output.mp4
 ```

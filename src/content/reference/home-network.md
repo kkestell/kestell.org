@@ -1,6 +1,6 @@
 ---
-title: "Home Network"
-subtitle: "Lines of light ranged in the nonspace of the mind, clusters and constellations of data."
+title: Home Network
+subtitle: Lines of light ranged in the nonspace of the mind, clusters and constellations of data.
 date: 2021-11-27
 draft: false
 ---
@@ -147,12 +147,25 @@ Detect RAM:
 free -h
 ```
 
+## Misc. Servers
+
+### Lenovo ThinkCentre
+
+Hostname
+:    `oberon`
+
+CPU
+:    Intel Core i5-4570T @ 2.9GHz
+
+RAM
+:    8GB
+
 ## Network
 
 ### Static IPs
 
 | IP Address   | Hostname            | Description     |
-| ------------ | ------------------- | --------------- |
+|--------------|---------------------|-----------------|
 | `10.0.0.1`   | `openwrt.lan`       | Router          |
 
 ### Trusted VNET

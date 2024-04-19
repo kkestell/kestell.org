@@ -1,6 +1,1 @@
-venv/
-bin/
-obj/
-.idea/
-builder/publish
-.vs/
+.venv/

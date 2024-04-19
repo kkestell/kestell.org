@@ -1,40 +1,19 @@
 ---
-title: "Colophon"
-subtitle: "About the software that runs this site"
+title: Colophon
+subtitle: About the software that runs this site
 date: 2023-04-27
 draft: false
 ---
 
-This site is built using a custom static site generator written in C#. Markdown conversion is handled by [Markdig](), [YamlDotNet]() is used for YAML parsing, and templating is done using [Handlebars.Net](). PDFs are generated using [Pandoc]().
-
-Pages are written in Markdown with YAML front matter. The front matter is used to specify the page title, subtitle, date, and whether or not the page is a draft.
-
-## CLI
-
-The CLI supports two commands: `build` and `serve`.
-
-The `build` command builds the site.
-
-```shell
-builder build --root ./src --output ./dist
-```
-
-The `serve` command starts a local web server and automatically rebuilds the site when files change.
-
-```shell
-builder serve --root ./src --output ./dist --port 8080
-```
-
-Both the `build` and `serve` commands accept optional `--drafts`, `--pdfs`, and `--optimize` arguments which include draft posts in the build, and control PDF generation and image optimization, respectively.
-
-## Misc. Notes
-
-An `install.sh` script is included in the root of the repository. This script AOT compiles the builder CLI and copies it to `~/.local/bin`.
+This site is built using a custom static site generator written in Python.
 
 ## Source
 
-The source code for Builder is available on [GitHub](https://github.com/kkestell/kestell.org).
+The source code is available on [GitHub](https://github.com/kkestell/kestell.org).
 
 ## License
 
-Builder uses the [Zero-Clause BSD](https://opensource.org/license/0bsd/) license.
+The kestell.org static site generator uses the [Zero-Clause BSD](https://opensource.org/license/0bsd/) license.
+
+All content is in the public domain.
+

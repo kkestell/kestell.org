@@ -1,6 +1,6 @@
 ---
-title: "XDG Default Applications"
-subtitle: "Fixing broken file associations in Linux."
+title: XDG Default Applications
+subtitle: Fixing broken file associations in Linux.
 date: 2021-11-27
 draft: false
 ---
@@ -23,22 +23,21 @@ xdg-mime default org.gnome.Nautilus.desktop inode/directory
 
 ```ini
 [Default Applications]
-audio/x-wav=io.bassi.Amberol.desktop
-audio/mp3=io.bassi.Amberol.desktop
-audio/ogg=io.bassi.Amberol.desktop
-audio/x-flac=io.bassi.Amberol.desktop
+application/json=code.desktop
 application/pdf=org.gnome.Evince.desktop
+audio/mp3=music.desktop
+audio/x-flac=music.desktop
 image/jpeg=org.gnome.eog.desktop
 image/png=org.gnome.eog.desktop
 inode/directory=org.gnome.Nautilus.desktop
-text/plain=org.gnome.TextEditor.desktop
 text/markdown=org.gnome.TextEditor.desktop
-video/mp4=io.github.celluloid_player.Celluloid.desktop
-video/x-matroska=io.github.celluloid_player.Celluloid.desktop
-video/webm=io.github.celluloid_player.Celluloid.desktop
-video/quicktime=io.github.celluloid_player.Celluloid.desktop
-video/x-m4v=io.github.celluloid_player.Celluloid.desktop
-video/ogg=io.github.celluloid_player.Celluloid.desktop
+text/plain=org.gnome.TextEditor.desktop
+video/mp4=io.github.vlc.desktop
+video/ogg=io.github.vlc.desktop
+video/quicktime=io.github.vlc.desktop
+video/webm=io.github.vlc.desktop
+video/x-m4v=io.github.vlc.desktop
+video/x-matroska=io.github.vlc.desktop
 ```
 
 If you want the change to be system-wide, run `xdg-mime` as root. This will modify `/usr/share/applications/mimeapps.list`.

@@ -1,6 +1,5 @@
 ---
-title: "Jiffy Cornbread Cake"
-subtitle: ""
+title: Jiffy Cornbread Cake
 date: 2021-11-27
 draft: false
 ---
@@ -8,7 +7,7 @@ draft: false
 ### Ingredients
 
 | Amount | Ingredient          |
-| ------ | ------------------- |
+|--------|---------------------|
 | 1 box  | Jiffy Cornbread Mix |
 | 2 ea   | Eggs                |
 | ½ cup  | Sour Cream          |

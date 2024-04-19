@@ -1,28 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Z-Probe Offset</title>
-  <link rel="stylesheet" href="/static/css/theme.css">
-  <link rel="stylesheet" href="/static/css/syntax.css">
+    <meta charset="UTF-8">
+    <title>kestell.org | Z-Probe Offset</title>
+    <link rel="stylesheet" href="/static/css/theme.css" />
 </head>
 <body>
-  <header>
+    <header>
+        <h1>kestell.org</h1>
+        <p><a href="/">Home</a> <span class="separator">/</span> <a href="/reference">Reference</a> <span class="separator">/</span> Z-Probe Offset</p>
+    </header>
     <h1>Z-Probe Offset</h1>
-    <h2>Z-offset calibration procedure for Marlin firmware.</h2>
-    <ul>
-      <li>
-        <span>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M5.75 2a.75.75 0 01.75.75V4h7V2.75a.75.75 0 011.5 0V4h.25A2.75 2.75 0 0118 6.75v8.5A2.75 2.75 0 0115.25 18H4.75A2.75 2.75 0 012 15.25v-8.5A2.75 2.75 0 014.75 4H5V2.75A.75.75 0 015.75 2zm-1 5.5c-.69 0-1.25.56-1.25 1.25v6.5c0 .69.56 1.25 1.25 1.25h10.5c.69 0 1.25-.56 1.25-1.25v-6.5c0-.69-.56-1.25-1.25-1.25H4.75z" clip-rule="evenodd" />
-          </svg>
-          2021-11-27
-        </span>
-      </li>
-    </ul>
-  </header>
-  <table>
+    <table>
 <thead>
 <tr>
 <th>GCode</th>
@@ -100,7 +89,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="start.gcode"><code>start.gcode</code></h2>
+<h2><code>start.gcode</code></h2>
 <pre><code class="language-gcode">; Set Heat Bed temperature
 M140 S{material_bed_temperature_layer_0}
 
@@ -140,7 +129,7 @@ G92 E0
 ; Move Z Axis up little to prevent scratching of Heat Bed
 G1 Z2.0 F3000
 </code></pre>
-<h2 id="end.gcode"><code>end.gcode</code></h2>
+<h2><code>end.gcode</code></h2>
 <pre><code class="language-gcode">; Relative positioning
 G91
 
@@ -186,9 +175,8 @@ Do note to remove the G29 command in the start code of the slicer. The G29 comma
 
 1) Please note that auto-bed leveling might be confusingly indicating that some magic leveling of the build platform/surface itself is taking place (this is also possible in Marlin when there are multiple Z steppers and lead screws used), but, that is not actually what is meant with this phrasing. The process of the auto-bed leveling actually scans the surface of the build surface and compensates the height of the print head/nozzle during a predefined printing height (usually 10 mm, set in the firmware or through G-code: M420 Z10 ; Gradually reduce compensation until Z=10), during this printing process the nozzle gradually be less and less compensated until there is no compensation and the print nozzle will print parallel to the guide axis (e.g. the X-axis in i3 style printers and X-Y axes in CoreXY kinematics printers.
 -->
-
-  <footer>
-    <p>Generated on 2024-01-25 07:01:31</p>
-  </footer>
+    <footer>
+        <p>Last updated on 2024-02-18 05:58:56</p>
+    </footer>
 </body>
 </html>

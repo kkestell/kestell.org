@@ -1,6 +1,5 @@
 ---
-title: "Biscuits"
-subtitle: ""
+title: Biscuits
 date: 2021-11-27
 draft: false
 ---
@@ -10,7 +9,7 @@ Makes about 6 biscuits.
 ## Ingredients
 
 | Amount | Ingredient         |
-| ------ | ------------------ |
+|--------|--------------------|
 | 240 g  | All-Purpose Flour  |
 | 180 g  | Buttermilk         |
 | 100 g  | Lard or Shortening |

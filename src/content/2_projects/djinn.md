@@ -102,27 +102,6 @@ Djinn would expect your music to be organized as:
 
 This pattern directly reflects the provided format strings. Modify these strings in your configuration file to match your specific naming convention.
 
-## Configuration
-
-Djinn loads its configuration from `DJINN_CONFIG` or, if that isn't set, from `~/.config/djinn/djinn.json`.
-
-### Configuration File Example
-
-Here is an example of what the configuration file might look like:
-
-```
-{
-    "LibraryPath": "/home/kyle/Music",
-    "LastFmApiKey": "XXX",
-    "LastFmApiSecret": "XXX",
-    "SoulseekUsername": "XXX",
-    "SoulseekPassword": "XXX",
-    "ArtistFormat": "%S",
-    "AlbumFormat": "%Y %T",
-    "TrackFormat": "%n %t"
-}
-```
-
 ### Format Tokens
 
 The configuration includes format tokens that define how artist, album, and track information should be displayed. The available tokens are as follows:
@@ -154,6 +133,27 @@ All artist and album tokens, plus:
 | `%n`  | Track Number (formatted as two digits) | 01        |
 | `%N`  | Total number of tracks in the album    | 14        |
 
+## Configuration
+
+Djinn loads its configuration from `DJINN_CONFIG` or, if that isn't set, from `~/.config/djinn/djinn.json`.
+
+### Configuration File Example
+
+Here is an example of what the configuration file might look like:
+
+```
+{
+    "LibraryPath": "/home/kyle/Music",
+    "LastFmApiKey": "XXX",
+    "LastFmApiSecret": "XXX",
+    "SoulseekUsername": "XXX",
+    "SoulseekPassword": "XXX",
+    "ArtistFormat": "%S",
+    "AlbumFormat": "%Y %T",
+    "TrackFormat": "%n %t"
+}
+```
+
 ### Viewing Configuration with `djinn config`
 
 You can view the path of the loaded config file and the parsed values by running:
@@ -183,7 +183,7 @@ Tracks:  22761
 
 ## Source
 
-The source code for Djinn is available on [GitHub](https://github.com/kkestell/djinn).
+Djinn is written in C#. The source code is available on [GitHub](https://github.com/kkestell/djinn).
 
 ## License
 

@@ -1,10 +1,10 @@
 ---
 title: Music
-subtitle: QML music player.
+subtitle: Simple music player.
 date: 2023-04-02
 ---
 
-QML music player written in C++.
+Simple music player written in C++ / Qt 5 / QML. UI design shamelessly ripped off from [Amberol](https://apps.gnome.org/Amberol/).
 
 ![Music](/static/images/music.png)
 

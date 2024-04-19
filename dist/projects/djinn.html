@@ -8,7 +8,7 @@
 <body>
     <header>
         <h1>kestell.org</h1>
-        <p><a href="/">Home</a> <span class="separator">/</span> <a href="/experiments">Experiments</a> <span class="separator">/</span> Djinn</p>
+        <p><a href="/">Home</a> <span class="separator">/</span> <a href="/projects">Projects</a> <span class="separator">/</span> Djinn</p>
     </header>
     <h1>Djinn</h1>
     <p>Djinn downloads albums from <a href="https://www.slsknet.org/">Soulseek</a> using metadata from <a href="https://musicbrainz.org/">MusicBrainz</a> and <a href="https://www.last.fm/">Last.fm</a>.</p>
@@ -72,21 +72,6 @@ Options:
 <p>Djinn would expect your music to be organized as:</p>
 <p><code>Beatles, The</code>/<code>1969 Abbey Road</code>/<code>01 Come Together.flac</code></p>
 <p>This pattern directly reflects the provided format strings. Modify these strings in your configuration file to match your specific naming convention.</p>
-<h2>Configuration</h2>
-<p>Djinn loads its configuration from <code>DJINN_CONFIG</code> or, if that isn't set, from <code>~/.config/djinn/djinn.json</code>.</p>
-<h3>Configuration File Example</h3>
-<p>Here is an example of what the configuration file might look like:</p>
-<pre><code>{
-    &quot;LibraryPath&quot;: &quot;/home/kyle/Music&quot;,
-    &quot;LastFmApiKey&quot;: &quot;XXX&quot;,
-    &quot;LastFmApiSecret&quot;: &quot;XXX&quot;,
-    &quot;SoulseekUsername&quot;: &quot;XXX&quot;,
-    &quot;SoulseekPassword&quot;: &quot;XXX&quot;,
-    &quot;ArtistFormat&quot;: &quot;%S&quot;,
-    &quot;AlbumFormat&quot;: &quot;%Y %T&quot;,
-    &quot;TrackFormat&quot;: &quot;%n %t&quot;
-}
-</code></pre>
 <h3>Format Tokens</h3>
 <p>The configuration includes format tokens that define how artist, album, and track information should be displayed. The available tokens are as follows:</p>
 <h4>Artist Format Tokens</h4>
@@ -167,6 +152,21 @@ Options:
 </tr>
 </tbody>
 </table>
+<h2>Configuration</h2>
+<p>Djinn loads its configuration from <code>DJINN_CONFIG</code> or, if that isn't set, from <code>~/.config/djinn/djinn.json</code>.</p>
+<h3>Configuration File Example</h3>
+<p>Here is an example of what the configuration file might look like:</p>
+<pre><code>{
+    &quot;LibraryPath&quot;: &quot;/home/kyle/Music&quot;,
+    &quot;LastFmApiKey&quot;: &quot;XXX&quot;,
+    &quot;LastFmApiSecret&quot;: &quot;XXX&quot;,
+    &quot;SoulseekUsername&quot;: &quot;XXX&quot;,
+    &quot;SoulseekPassword&quot;: &quot;XXX&quot;,
+    &quot;ArtistFormat&quot;: &quot;%S&quot;,
+    &quot;AlbumFormat&quot;: &quot;%Y %T&quot;,
+    &quot;TrackFormat&quot;: &quot;%n %t&quot;
+}
+</code></pre>
 <h3>Viewing Configuration with <code>djinn config</code></h3>
 <p>You can view the path of the loaded config file and the parsed values by running:</p>
 <pre><code class="language-console">$ djinn config
@@ -186,11 +186,11 @@ Albums:  2013
 Tracks:  22761
 </code></pre>
 <h2>Source</h2>
-<p>The source code for Djinn is available on <a href="https://github.com/kkestell/djinn">GitHub</a>.</p>
+<p>Djinn is written in C#. The source code is available on <a href="https://github.com/kkestell/djinn">GitHub</a>.</p>
 <h2>License</h2>
 <p>Djinn uses the <a href="https://opensource.org/license/0bsd/">Zero-Clause BSD</a> license.</p>
     <footer>
-        <p>Last updated on 2024-02-20 08:01:48</p>
+        <p>Last updated on 2024-04-19 11:26:48</p>
     </footer>
 </body>
 </html>

@@ -17,7 +17,7 @@ The Ara compiler emits LLVM IR.
 
 ## Source
 
-The source code for Ara is available on [GitHub](https://github.com/kkestell/ara).
+Ara is written in C#. The source code is available on [GitHub](https://github.com/kkestell/ara).
 
 ## License
 

@@ -458,7 +458,7 @@ div.footnotes a.footnote-back-ref {
 /* HEADER */
 
 header {
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
     padding-bottom: 1rem;
     border-bottom: 1px solid var(--rule-color);
 }
@@ -503,6 +503,10 @@ footer p {
 .list li {
     line-height: 1.6;
     margin-bottom: 0.75rem;
+}
+
+.list li.dir > a {
+    font-weight: bold;
 }
 
 .list li > .list {

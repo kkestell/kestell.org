@@ -159,7 +159,7 @@ class SiteBuilder:
         for child in directory.children:
             if isinstance(child, Directory):
                 dir_link = f"/{child.path}/index.html"
-                html_builder.append(f"<li><a href=\"{dir_link}\">{child.name}</a>{self._generate_list(child)}</li>")
+                html_builder.append(f"<li class=\"dir\"><a href=\"{dir_link}\">{child.name}</a>{self._generate_list(child)}</li>")
             elif isinstance(child, File):
                 page_path = child.path.replace('.md', '.html')
                 title = child.name

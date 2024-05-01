@@ -8,13 +8,13 @@ Makes about 6 biscuits.
 
 ## Ingredients
 
-| Amount | Ingredient         |
-|--------|--------------------|
-| 240 g  | All-Purpose Flour  |
-| 180 g  | Buttermilk         |
-| 100 g  | Lard or Shortening |
-| 1 tbsp | Baking Powder      |
-| 1⁄2 tsp  | Kosher Salt        |
+| Amount  | Ingredient         |
+|---------|--------------------|
+| 240 g   | All-Purpose Flour  |
+| 180 g   | Buttermilk         |
+| 100 g   | Lard or Shortening |
+| 1 tbsp  | Baking Powder      |
+| 1⁄2 tsp | Kosher Salt        |
 
 ## Instructions
 

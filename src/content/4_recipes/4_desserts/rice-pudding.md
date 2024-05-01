@@ -8,15 +8,15 @@ draft: false
 
 Serve with cinnamon and nutmeg.
 
-| Amount   | Ingredient          |
-|----------|---------------------|
+| Amount    | Ingredient          |
+|-----------|---------------------|
 | 1 1⁄2 cup | Cooked Rice         |
-| 2 cup    | Whole Milk, Divided |
+| 2 cup     | Whole Milk, Divided |
 | 1⁄4 tsp   | Salt                |
 | 2⁄3 cup   | Raisins (Optional)  |
-| 1 ea     | Egg, Beaten         |
+| 1 ea      | Egg, Beaten         |
 | 1⁄3 cup   | White Sugar         |
-| 1 tbsp   | Butter              |
+| 1 tbsp    | Butter              |
 | 1⁄2 tsp   | Vanilla Extract     |
 
 ## Instructions

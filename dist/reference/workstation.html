@@ -61,8 +61,169 @@
 </table>
 <h2>Software</h2>
 <p>Arch / KDE / Wayland</p>
+<h3>Setup</h3>
+<div class="embed"><p>Embedded from <a href="https://raw.githubusercontent.com/kkestell/dotfiles/main/README.md">https://raw.githubusercontent.com/kkestell/dotfiles/main/README.md</a> on 2024-05-01 12:36:38</p><div class="embed-content">
+<h1>Arch</h1>
+<h2>Network Shares</h2>
+<p>Add the following to <code>/etc/fstab</code>:</p>
+<pre><code class="language-text">//NAS/Archive   /home/kyle/nas/archive   cifs _netdev,nofail,username=kyle,password=[REDACTED],workgroup=WORKGROUP,iocharset=utf8,uid=kyle,gid=kyle 0 0
+//NAS/Books     /home/kyle/nas/books     cifs _netdev,nofail,username=kyle,password=[REDACTED],workgroup=WORKGROUP,iocharset=utf8,uid=kyle,gid=kyle 0 0
+//NAS/Documents /home/kyle/nas/documents cifs _netdev,nofail,username=kyle,password=[REDACTED],workgroup=WORKGROUP,iocharset=utf8,uid=kyle,gid=kyle 0 0
+//NAS/Kyle      /home/kyle/nas/kyle      cifs _netdev,nofail,username=kyle,password=[REDACTED],workgroup=WORKGROUP,iocharset=utf8,uid=kyle,gid=kyle 0 0
+//NAS/Music     /home/kyle/nas/music     cifs _netdev,nofail,username=kyle,password=[REDACTED],workgroup=WORKGROUP,iocharset=utf8,uid=kyle,gid=kyle 0 0
+//NAS/Photos    /home/kyle/nas/photos    cifs _netdev,nofail,username=kyle,password=[REDACTED],workgroup=WORKGROUP,iocharset=utf8,uid=kyle,gid=kyle 0 0
+//NAS/Projects  /home/kyle/nas/projects  cifs _netdev,nofail,username=kyle,password=[REDACTED],workgroup=WORKGROUP,iocharset=utf8,uid=kyle,gid=kyle 0 0
+//NAS/Unsorted  /home/kyle/nas/unsorted  cifs _netdev,nofail,username=kyle,password=[REDACTED],workgroup=WORKGROUP,iocharset=utf8,uid=kyle,gid=kyle 0 0
+//NAS/Videos    /home/kyle/nas/videos    cifs _netdev,nofail,username=kyle,password=[REDACTED],workgroup=WORKGROUP,iocharset=utf8,uid=kyle,gid=kyle 0 0
+</code></pre>
+<p>Create mount points:</p>
+<pre><code class="language-console">mkdir -p ~/nas/{archive,books,documents,kyle,music,photos,projects,unsorted,videos}
+</code></pre>
+<p>Reload systemd:</p>
+<pre><code class="language-console">sudo systemctl daemon-reload
+</code></pre>
+<p>Mount:</p>
+<pre><code class="language-console">sudo mount -a
+</code></pre>
+<h3>PCIe Errors</h3>
+<p>Add <code>pcie_aspm=off</code> option to <code>/efi/loader/entries/...</code></p>
+<h3>Vulkan</h3>
+<pre><code>sudo pacman -Sy vulkan-radeon
+</code></pre>
+<h2>Fix Gnome Shell</h2>
+<h3>Disable Tracker</h3>
+<pre><code class="language-console">systemctl --user mask tracker-extract-3.service tracker-miner-fs-3.service tracker-miner-rss-3.service tracker-writeback-3.service tracker-xdg-portal-3.service tracker-miner-fs-control-3.service
+</code></pre>
+<pre><code class="language-console">tracker3 reset -s -r
+</code></pre>
+<pre><code class="language-console">sudo reboot
+</code></pre>
+<h2>Printing</h2>
+<p>Brother HL-L2340D</p>
+<pre><code class="language-console">yay -Sy cups cups-pdf brlaser
+</code></pre>
+<pre><code class="language-console">sudo systemctl enable cups.socket
+sudo systemctl enable cups.service
+sudo systemctl start cups.socket
+</code></pre>
+<h3>CUPS</h3>
+<pre><code>ipp://BRW1008B16E541A.lan:631/ipp
+</code></pre>
+<h2>Backup</h2>
+<p>See: <a href="https://github.com/kkestell/backup">https://github.com/kkestell/backup</a></p>
+<h2>Remote Desktop</h2>
+<pre><code>sudo pacman -Sy remmina freerdp
+</code></pre>
+<h2>Development</h2>
+<h3>General</h3>
+<p>Configure <code>git</code> username and email:</p>
+<pre><code class="language-console">git config --global user.name &quot;[REDACTED]&quot;
+git config --global user.email &quot;[REDACTED]&quot;
+</code></pre>
+<h3>Docker</h3>
+<pre><code class="language-console">yay -Sy docker docker-compose
+</code></pre>
+<pre><code class="language-console">sudo systemctl enable docker
+sudo systemctl start docker
+</code></pre>
+<pre><code class="language-console">sudo usermod -aG docker $(whoami)
+sudo reboot
+</code></pre>
+<h3>Rust</h3>
+<pre><code class="language-console">sudo pacman -Sy rustup
+rustup default stable
+</code></pre>
+<p>NOTE: This installation method puts <code>rustc</code> in <code>/usr/bin</code>, so use that as the toolchain path in e.g. Rust Rover</p>
+<p>See: <a href="https://wiki.archlinux.org/title/rust">https://wiki.archlinux.org/title/rust</a></p>
+<h3>.NET SDK</h3>
+<pre><code class="language-console">sudo pacman -Sy dotnet-sdk
+</code></pre>
+<h3>LLVM, Clang, and Valgrind</h3>
+<pre><code class="language-console">sudo pacman -Sy llvm clang valgrind
+</code></pre>
+<h3>JetBrains IDEs</h3>
+<h4>CLion</h4>
+<p>Download tarball from <a href="https://www.jetbrains.com/clion/download/">https://www.jetbrains.com/clion/download/</a>.</p>
+<p>Extract to <code>~/.local/bin</code>.</p>
+<pre><code class="language-console">tar -xzf CLion-*.tar.gz -C ~/.local/bin
+</code></pre>
+<p>Use <code>Tools</code> → <code>Create Desktop Entry</code> to create a desktop entry.</p>
+<h4>Rider</h4>
+<p>Download tarball from <a href="https://www.jetbrains.com/rider/download/">https://www.jetbrains.com/rider/download/</a>.</p>
+<p>Extract to <code>~/.local/bin</code>.</p>
+<pre><code class="language-console">tar -xzf JetBrains.Rider-*.tar.gz -C ~/.local/bin
+</code></pre>
+<p>Use <code>Tools</code> → <code>Create Desktop Entry</code> to create a desktop entry.</p>
+<h4>RustRover</h4>
+<p>Download tarball from <a href="https://www.jetbrains.com/rust/nextversion/">https://www.jetbrains.com/rust/nextversion/</a>.</p>
+<p>Extract to <code>~/.local/bin</code>.</p>
+<pre><code class="language-console">tar -xzf RustRover-*.tar.gz -C ~/.local/bin
+</code></pre>
+<p>Use <code>Tools</code> → <code>Create Desktop Entry</code> to create a desktop entry.</p>
+<h4>GoLand</h4>
+<p>Download tarball from <a href="https://www.jetbrains.com/go/download/">https://www.jetbrains.com/go/download/</a>.</p>
+<p>Extract to <code>~/.local/bin</code>.</p>
+<pre><code class="language-console">tar -xzf goland-*.tar.gz -C ~/.local/bin
+</code></pre>
+<p>Use <code>Tools</code> → <code>Create Desktop Entry</code> to create a desktop entry.</p>
+<h4>PyCharm</h4>
+<pre><code class="language-console">sudo pacman -Sy pycharm-community-edition
+</code></pre>
+<h2>Misc.</h2>
+<h3>Fonts</h3>
+<pre><code class="language-console">sudo pacman -Sy ttf-fira-code ttf-ibm-plex otf-latin-modern otf-latinmodern-math otf-stix ebgaramond-otf
+yay -Sy ttf-cm-unicode
+</code></pre>
+<h2>Software</h2>
+<h3>Flatpak</h3>
+<pre><code class="language-console">sudo pacman -Sy flatpak
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+</code></pre>
+<h4>Czkawka</h4>
+<pre><code class="language-console">flatpak install flathub com.github.qarmin.czkawka
+</code></pre>
+<h4>Calibre</h4>
+<pre><code class="language-console">flatpak install flathub com.calibre_ebook.calibre
+</code></pre>
+<h4>Telegram</h4>
+<pre><code class="language-console">flatpak install flathub org.telegram.desktop
+</code></pre>
+<h3>Pandoc</h3>
+<pre><code class="language-console">yay -Sy pandoc-bin texlive
+</code></pre>
+<pre><code class="language-console">pandoc test.md --pdf-engine=xelatex -o test.pdf
+pandoc test.md --pdf-engine=xelatex --variable &quot;geometry=margin=0.75in&quot; --highlight-style=monochrome -o test.pdf
+</code></pre>
+<p>See: https://pandoc.org/demos.html</p>
+<h3>Nicotine+</h3>
+<pre><code class="language-console">sudo pacman -Sy nicotine+
+</code></pre>
+<h3>GitHub Desktop</h3>
+<pre><code class="language-console">yay -Sy github-desktop-bin
+</code></pre>
+<h3>Visual Studio Code</h3>
+<pre><code class="language-console">yay -Sy visual-studio-code-bin
+</code></pre>
+<h3>Menu Editor</h3>
+<pre><code class="language-console">yay menulibre
+</code></pre>
+<h3>Sticky Notes</h3>
+<pre><code class="language-console">flatpak install flathub com.vixalien.sticky
+</code></pre>
+<h3>Express VPN</h3>
+<pre><code class="language-console">yay -Sy expressvpn
+</code></pre>
+<pre><code class="language-console">sudo systemctl enable expressvpn
+sudo systemctl start expressvpn
+</code></pre>
+<pre><code class="language-console">expressvpn activate
+</code></pre>
+<h3>OBS Studio</h3>
+<pre><code class="language-console">sudo pacman -Sy obs-studio qt6-wayland
+</code></pre>
+</div></div>
     <footer>
-        <p>Last updated on 2024-04-04 06:30:24</p>
+        <p>Last updated on 2024-05-01 12:29:30</p>
     </footer>
 </body>
 </html>

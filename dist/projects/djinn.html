@@ -11,17 +11,13 @@
         <p><a href="/">Home</a> <span class="separator">/</span> <a href="/projects">Projects</a> <span class="separator">/</span> Djinn</p>
     </header>
     <h1>Djinn</h1>
-    <p>Djinn downloads albums from <a href="https://www.slsknet.org/">Soulseek</a> using metadata from <a href="https://musicbrainz.org/">MusicBrainz</a> and <a href="https://www.last.fm/">Last.fm</a>.</p>
-<h2>Features</h2>
-<ul>
-<li>Uses <code>TagLib</code>, <code>eyeD3</code>, and <code>metaflac</code> to tag MP3 and FLAC files.</li>
-<li>Automatically downloads cover art from MusicBrainz and Last.fm.</li>
-<li>Configurable directory and file names.</li>
-</ul>
+    <h2>README</h2>
+<div class="embed"><p>Embedded from <a href="https://raw.githubusercontent.com/kkestell/djinn/main/README.md">https://raw.githubusercontent.com/kkestell/djinn/main/README.md</a> on 2024-05-01 12:36:38</p><div class="embed-content">
+<h1>Djinn</h1>
 <h2>Overview</h2>
 <p>Djinn is a command-line application for downloading music using Soulseek, with metadata from MusicBrainz and Last.fm.</p>
 <h2>Downloading Music with <code>djinn download</code></h2>
-<pre><code class="language-console">$ djinn download --help
+<pre><code>$ djinn download --help
 Description:
   Download one or more releases
 
@@ -72,6 +68,21 @@ Options:
 <p>Djinn would expect your music to be organized as:</p>
 <p><code>Beatles, The</code>/<code>1969 Abbey Road</code>/<code>01 Come Together.flac</code></p>
 <p>This pattern directly reflects the provided format strings. Modify these strings in your configuration file to match your specific naming convention.</p>
+<h2>Configuration</h2>
+<p>Djinn loads its configuration from <code>DJINN_CONFIG</code> or, if that isn't set, from <code>~/.config/djinn/djinn.json</code>.</p>
+<h3>Configuration File Example</h3>
+<p>Here is an example of what the configuration file might look like:</p>
+<pre><code>{
+    &quot;LibraryPath&quot;: &quot;/home/kyle/Music&quot;,
+    &quot;LastFmApiKey&quot;: &quot;XXX&quot;,
+    &quot;LastFmApiSecret&quot;: &quot;XXX&quot;,
+    &quot;SoulseekUsername&quot;: &quot;XXX&quot;,
+    &quot;SoulseekPassword&quot;: &quot;XXX&quot;,
+    &quot;ArtistFormat&quot;: &quot;%S&quot;,
+    &quot;AlbumFormat&quot;: &quot;%Y %T&quot;,
+    &quot;TrackFormat&quot;: &quot;%n %t&quot;
+}
+</code></pre>
 <h3>Format Tokens</h3>
 <p>The configuration includes format tokens that define how artist, album, and track information should be displayed. The available tokens are as follows:</p>
 <h4>Artist Format Tokens</h4>
@@ -152,24 +163,9 @@ Options:
 </tr>
 </tbody>
 </table>
-<h2>Configuration</h2>
-<p>Djinn loads its configuration from <code>DJINN_CONFIG</code> or, if that isn't set, from <code>~/.config/djinn/djinn.json</code>.</p>
-<h3>Configuration File Example</h3>
-<p>Here is an example of what the configuration file might look like:</p>
-<pre><code>{
-    &quot;LibraryPath&quot;: &quot;/home/kyle/Music&quot;,
-    &quot;LastFmApiKey&quot;: &quot;XXX&quot;,
-    &quot;LastFmApiSecret&quot;: &quot;XXX&quot;,
-    &quot;SoulseekUsername&quot;: &quot;XXX&quot;,
-    &quot;SoulseekPassword&quot;: &quot;XXX&quot;,
-    &quot;ArtistFormat&quot;: &quot;%S&quot;,
-    &quot;AlbumFormat&quot;: &quot;%Y %T&quot;,
-    &quot;TrackFormat&quot;: &quot;%n %t&quot;
-}
-</code></pre>
 <h3>Viewing Configuration with <code>djinn config</code></h3>
 <p>You can view the path of the loaded config file and the parsed values by running:</p>
-<pre><code class="language-console">$ djinn config
+<pre><code>$ djinn config
 Configuration loaded from /home/kyle/.config/djinn/djinn.json
 Library path:       /home/kyle/Music
 Last.fm API key:    XXX
@@ -180,17 +176,27 @@ Soulseek password:  XXX
 <p>This command provides a quick way to ensure that Djinn is configured correctly and is reading from the intended configuration file.</p>
 <h3>Display Library Statistics with <code>djinn stats</code></h3>
 <p>You can view statistics about your music library by running:</p>
-<pre><code class="language-console">$ djinn stats
+<pre><code>$ djinn stats
 Artists: 427
 Albums:  2013
 Tracks:  22761
 </code></pre>
+<h2>Building</h2>
+<h3>Arch</h3>
+<pre><code>yay python-eyed3
+sudo pacman -Sy flac
+</code></pre>
+<h3>Fedora</h3>
+<pre><code>sudo dnf install python3-eyed3 flac
+</code></pre>
+</div></div>
+
 <h2>Source</h2>
 <p>Djinn is written in C#. The source code is available on <a href="https://github.com/kkestell/djinn">GitHub</a>.</p>
 <h2>License</h2>
 <p>Djinn uses the <a href="https://opensource.org/license/0bsd/">Zero-Clause BSD</a> license.</p>
     <footer>
-        <p>Last updated on 2024-04-19 11:26:48</p>
+        <p>Last updated on 2024-05-01 12:23:22</p>
     </footer>
 </body>
 </html>

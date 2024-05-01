@@ -24,3 +24,7 @@ Most of this was purchased from Micro Center in March 2021.
 ## Software
 
 Arch / KDE / Wayland
+
+### Setup
+
+[[https://raw.githubusercontent.com/kkestell/dotfiles/main/README.md]]

@@ -1,5 +1,5 @@
 ---
-title: Ermine Cake Frosting
+title: Ermine Frosting
 date: 2021-11-27
 draft: false
 ---
@@ -8,7 +8,7 @@ draft: false
 
 | Amount  | Ingredient        |
 |---------|-------------------|
-| 1⁄4 cup   | All-Purpose Flour |
+| 1⁄4 cup | All-Purpose Flour |
 | 2 cup   | Whole Milk        |
 | 2 cup   | Unsalted Butter   |
 | 1 cup   | Granulated Sugar  |

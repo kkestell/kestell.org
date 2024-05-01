@@ -36,15 +36,15 @@ For cupcakes, bake at 350°F for 25 minutes. For 6” cakes, adjust the baking t
 \subsection*{For the Cake}
 \begin{itemize}[noitemsep]
     \item 2 cups white sugar (396g)
-    \item 1 3/4 cups all-purpose flour (180g)
-    \item 3/4 cup unsweetened cocoa powder (63g)
-    \item 1 1/2 teaspoons baking powder
-    \item 1 1/2 teaspoons baking soda
+    \item 1 3⁄4 cups all-purpose flour (180g)
+    \item 3⁄4 cup unsweetened cocoa powder (63g)
+    \item 1 1⁄2 teaspoons baking powder
+    \item 1 1⁄2 teaspoons baking soda
     \item 1 teaspoon salt
     \item 2 teaspoons espresso powder
     \item 2 eggs
     \item 1 cup milk
-    \item 1/2 cup vegetable oil
+    \item 1⁄2 cup vegetable oil
     \item 2 teaspoons vanilla extract
     \item 1 cup boiling water
 \end{itemize}
@@ -62,4 +62,24 @@ For cupcakes, bake at 350°F for 25 minutes. For 6” cakes, adjust the baking t
 \section*{Notes}
 For cupcakes, bake at 350°F for 25 minutes. For 6” cakes, adjust the baking time as needed, typically baking at 350°F.
 \end{document}
+```
+
+## Notes
+
+Compile with XeLaTeX:
+
+```
+xelatex example.tex
+```
+
+Convert PDF to JPG:
+
+```
+convert -density 70 -quality 100 -flatten example.pdf example.jpg
+```
+
+Add drop shadow:
+
+```
+convert example.jpg \( +clone -background black -shadow 20x4+0+0 \) +swap -background white -layers merge +repage example_shadow.jpg
 ```

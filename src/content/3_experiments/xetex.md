@@ -92,6 +92,7 @@ convert -density 70 -quality 100 -flatten example.pdf example.jpg
 
 Add drop shadow:
 
+NOTE: `20x4+0+0` is 20% opacity, 4px sigma (blur amount), 0 horizontal offset, 0 vertical offset.
 ```
 convert example.jpg \( +clone -background black -shadow 20x4+0+0 \) +swap -background white -layers merge +repage example_shadow.jpg
 ```

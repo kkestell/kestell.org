@@ -86,10 +86,11 @@ For cupcakes, bake at 350°F for 25 minutes. For 6” cakes, adjust the baking t
 <pre><code>convert -density 70 -quality 100 -flatten example.pdf example.jpg
 </code></pre>
 <p>Add drop shadow:</p>
+<p>NOTE: <code>20x4+0+0</code> is 20% opacity, 4px sigma (blur amount), 0 horizontal offset, 0 vertical offset.</p>
 <pre><code>convert example.jpg \( +clone -background black -shadow 20x4+0+0 \) +swap -background white -layers merge +repage example_shadow.jpg
 </code></pre>
     <footer>
-        <p>Last updated on 2024-05-03 05:56:31</p>
+        <p>Last updated on 2024-05-03 07:49:19</p>
     </footer>
 </body>
 </html>

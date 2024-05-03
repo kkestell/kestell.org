@@ -6,27 +6,25 @@ draft: false
 
 ## Recipes
 
+[Download PDF](/static/images/xetex/recipe.pdf)
+
 ![Recipe](/static/images/xetex/recipe.jpg)
 
 ```
 \documentclass[11pt]{article}
 \usepackage{fontspec}
 \usepackage{geometry}
-\usepackage{titlesec}
 \usepackage{enumitem}
 \usepackage{graphicx}
 \usepackage{paracol}
 \usepackage{microtype}
 \geometry{letterpaper, margin=0.75in}
-\setmainfont{Latin Modern Sans}
-\newfontfamily\headingfont{EB Garamond}
-\titleformat*{\section}{\Large\headingfont}
-\titleformat*{\subsection}{\large\headingfont}
-\titleformat*{\subsubsection}{\normalsize\headingfont}
+\setmainfont{Source Sans 3}
+\newfontfamily\headingfont{Source Sans 3}
 \pagestyle{empty}
 \begin{document}
 \begin{center}
-    {\Large \bfseries \headingfont Chocolate Cake}
+    {\Huge \bfseries \headingfont Chocolate Cake}
 \end{center}
 \vspace{1em}
 For cupcakes, bake at 350°F for 25 minutes. For 6” cakes, adjust the baking time as needed, typically baking at 350°F.
@@ -34,28 +32,42 @@ For cupcakes, bake at 350°F for 25 minutes. For 6” cakes, adjust the baking t
 \begin{paracol}{2}
 \section*{Ingredients}
 \subsection*{For the Cake}
-\begin{itemize}[noitemsep]
-    \item 2 cups white sugar (396g)
-    \item 1 3⁄4 cups all-purpose flour (180g)
-    \item 3⁄4 cup unsweetened cocoa powder (63g)
-    \item 1 1⁄2 teaspoons baking powder
-    \item 1 1⁄2 teaspoons baking soda
-    \item 1 teaspoon salt
-    \item 2 teaspoons espresso powder
-    \item 2 eggs
-    \item 1 cup milk
-    \item 1⁄2 cup vegetable oil
-    \item 2 teaspoons vanilla extract
-    \item 1 cup boiling water
-\end{itemize}
+\begin{tabular}{@{}ll}
+400g & Sugar \\
+180g & All-Purpose Flour \\
+65g & Unsweetened Cocoa Powder \\
+1 1⁄2 tsp & Baking Powder \\
+1 1⁄2 tsp & Baking Soda \\
+1 tsp & Salt \\
+2 tsp & Espresso Powder \\
+2 ea & Eggs \\
+1 cup & Milk \\
+1⁄2 cup & Vegetable Oil \\
+2 tsp & Vanilla Extract \\
+1 cup & Boiling Water \\
+\end{tabular}
+\subsection*{For the Frosting}
+\begin{tabular}{@{}ll}
+1 cup & Butter, Softened \\
+100 g & Unsweetened Cocoa Powder \\
+575 g & Powdered Sugar \\
+1⁄2 cup & Milk \\
+2 tsp & Vanilla Extract \\
+\end{tabular}
 \switchcolumn
 \section*{Instructions}
 \subsection*{For the Cake}
-\begin{enumerate}
+\begin{enumerate}[leftmargin=*]
     \item Preheat oven to 350°F. Spray a bundt cake pan with cooking spray.
     \item In a large mixing bowl, combine the sugar, flour, cocoa powder, baking powder, baking soda, and salt.
     \item Make a well in the middle of the dry ingredients and add in the eggs, milk, vegetable oil, and vanilla extract. Beat for 2 minutes at medium speed, then stir in the boiling water with espresso powder.
     \item Pour the batter into the prepared bundt pan. Bake for 35-45 minutes or until a toothpick comes out clean. Let the cake cool in the pan for 10 minutes, then flip it out onto a wire rack and let cool completely before assembling.
+\end{enumerate}
+\subsection*{For the Frosting}
+\begin{enumerate}[leftmargin=*]
+    \item In a large mixing bowl, beat the butter until light and fluffy. Add in the cocoa powder and powdered sugar, mixing until combined.
+    \item Add in the milk and vanilla extract, beating until smooth and creamy. If the frosting is too thick, add more milk, 1 tablespoon at a time, until the desired consistency is reached.
+    \item Frost the cooled cake as desired.
 \end{enumerate}
 \end{paracol}
 \vspace{1em}

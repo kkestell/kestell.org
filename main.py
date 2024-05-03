@@ -138,9 +138,10 @@ class SiteBuilder:
     def _build_structure(self, current_directory: Directory, current_path: Path):
         for item in current_path.iterdir():
             order, name = self._parse_prefix(item.stem)
+
             formatted_name = name.title()
             formatted_path = item.relative_to(self.content_dir).as_posix()
-            formatted_path = re.sub(r'^\d+_', '', formatted_path)
+            formatted_path = re.sub(r'\d+_', '', formatted_path)
 
             if item.is_dir():
                 directory = Directory(formatted_name, formatted_path, order=order)

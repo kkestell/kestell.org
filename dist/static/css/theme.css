@@ -187,8 +187,8 @@ td:nth-child(1) {
 /* VARIABLES */
 
 :root {
-    --font-size: 17px;
-    --line-height: 1.8;
+    --font-size: 16px;
+    --line-height: 1.7;
     --monospace-font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'
 }
 

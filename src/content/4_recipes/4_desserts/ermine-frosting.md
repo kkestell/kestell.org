@@ -13,7 +13,7 @@ draft: false
 | 2 cup   | Unsalted Butter   |
 | 1 cup   | Granulated Sugar  |
 | 1 tbsp  | Vanilla Extract   |
-| ½ tsp   | Salt              |
+| 1⁄2 tsp | Salt              |
 
 ## Instructions
 

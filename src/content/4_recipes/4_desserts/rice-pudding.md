@@ -21,6 +21,6 @@ Serve with cinnamon and nutmeg.
 
 ## Instructions
 
-1. Simmer rice, 1½ cups milk, and salt until thick and creamy, 15 to 20 minutes.
-2. Add remaining ½ cup milk, raisins, egg, and white sugar. Continue cooking until thickened, 2 to 3 minutes.
+1. Simmer rice, 1 1⁄2 cups milk, and salt until thick and creamy, 15 to 20 minutes.
+2. Add remaining 1⁄2 cup milk, raisins, egg, and white sugar. Continue cooking until thickened, 2 to 3 minutes.
 3. Remove from heat and stir in butter and vanilla.

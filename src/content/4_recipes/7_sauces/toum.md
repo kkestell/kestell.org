@@ -1,5 +1,5 @@
 ---
-title: Toum (Lebanese Garlic Sauce)
+title: Toum
 date: 2024-05-05
 draft: false
 ---

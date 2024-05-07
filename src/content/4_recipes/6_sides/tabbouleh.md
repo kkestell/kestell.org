@@ -8,7 +8,7 @@ draft: false
 
 | Amount   | Ingredient                |
 |----------|---------------------------|
-| 1⁄2 cup  | Bulgur                    |
+| 1 cup    | Bulgur                    |
 | 1 cup    | Diced Cucumber            |
 | 1 cup    | Tomato, diced             |
 | 1 tsp    | Fine Sea Salt, divided    |

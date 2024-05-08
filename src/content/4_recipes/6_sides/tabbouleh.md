@@ -17,6 +17,7 @@ draft: false
 | 1⁄3 cup  | Scallion, thinly sliced   |
 | 1⁄3 cup  | Extra-Virgin Olive Oil    |
 | 3-4 tbsp | Lemon Juice, to taste     |
+| 1 tsp    | Cumin, ground             |
 | 1 ea     | Clove Garlic, minced      |
 
 ## Instructions

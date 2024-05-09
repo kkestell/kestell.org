@@ -1,6 +1,5 @@
 ---
 title: XDG Default Applications
-subtitle: Fixing broken file associations in Linux.
 date: 2021-11-27
 draft: false
 ---

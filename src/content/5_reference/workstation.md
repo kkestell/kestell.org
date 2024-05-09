@@ -1,6 +1,5 @@
 ---
 title: Workstation
-subtitle: 2021 - Current
 date: 2022-10-29
 draft: false
 ---

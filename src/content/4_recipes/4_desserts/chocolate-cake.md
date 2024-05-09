@@ -28,6 +28,6 @@ draft: false
 3. Make a well in the middle of the dry ingredient mixture and add in the eggs, milk, vegetable oil, and vanilla extract. Beat for 2 minutes at medium speed, then stir in the boiling water with espresso powder. The batter will be very thin; this is normal.
 4. Pour the batter into the prepared bundt pan. Bake for 35-45 minutes or until a toothpick comes out clean. Let the cake cool in the pan for 10 minutes, then flip it out onto a wire rack and let cool completely before serving.
 
-### For cupcakes
+## Notes
 
-- Bake at 350°F for 25 minutes.
+For cupcakes, bake at 350°F for 25 minutes.

@@ -221,7 +221,7 @@ class SiteBuilder:
                 title = child.name
                 html_builder.append(f"<li><a href=\"/{page_path}\">{title}</a>")
                 if child.document.frontmatter.get('subtitle'):
-                    html_builder.append(f"<br>{child.document.frontmatter['subtitle']}")
+                    html_builder.append(f"<br><span>{child.document.frontmatter['subtitle']}</span>")
                 html_builder.append("</li>")
         html_builder.append("</ul></div>")
         return ''.join(html_builder)

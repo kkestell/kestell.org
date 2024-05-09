@@ -1,6 +1,5 @@
 ---
 title: Home Network
-subtitle: Lines of light ranged in the nonspace of the mind, clusters and constellations of data.
 date: 2021-11-27
 draft: false
 ---

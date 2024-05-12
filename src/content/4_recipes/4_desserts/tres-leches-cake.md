@@ -38,7 +38,7 @@ draft: false
 6. Gently fold in egg whites. Pour batter into pan. Bake for 26 minutes or until a toothpick comes out clean. Let cool.
 7. For the filling: Whisk sweetened condensed milk, evaporated milk, milk, and vanilla in a medium bowl.
 8. Poke holes all over cake with a fork. Pour milk mixture evenly over cake. Refrigerate until absorbed, at least 1 hour but preferably overnight.
-9. 
+
 ### For the Whipped Cream
 
 1. Beat heavy cream and sugar until stiff peaks form.

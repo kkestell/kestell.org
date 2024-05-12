@@ -28,6 +28,8 @@ draft: false
 
 ## Instructions
 
+### For the Cake
+
 1. Preheat oven to 350°F and grease a 9" x 13" baking pan with cooking spray.
 2. Whisk flour, baking powder, and salt in a large bowl.
 3. In a separate bowl, beat egg yolks and 1 cup sugar until stiff ribbons form. Beat in vanilla.
@@ -35,6 +37,9 @@ draft: false
 5. Combine yolk mixture with dry ingredients. Add milk and melted butter, beat until combined.
 6. Gently fold in egg whites. Pour batter into pan. Bake for 26 minutes or until a toothpick comes out clean. Let cool.
 7. For the filling: Whisk sweetened condensed milk, evaporated milk, milk, and vanilla in a medium bowl.
-8. Poke holes all over cake with a fork. Pour milk mixture evenly over cake. Refrigerate until absorbed, at least 1 hour.
-9. For the whipped cream: Beat heavy cream and sugar until stiff peaks form.
-10. Frost cake with whipped cream, sprinkle with cinnamon-sugar. Serve with strawberries.
+8. Poke holes all over cake with a fork. Pour milk mixture evenly over cake. Refrigerate until absorbed, at least 1 hour but preferably overnight.
+9. 
+### For the Whipped Cream
+
+1. Beat heavy cream and sugar until stiff peaks form.
+2. Frost cake with whipped cream, sprinkle with cinnamon-sugar. Serve with strawberries.

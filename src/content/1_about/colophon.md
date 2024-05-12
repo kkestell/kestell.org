@@ -5,15 +5,14 @@ date: 2023-04-27
 draft: false
 ---
 
-This site is built using a custom static site generator written in Python.
+The Cobbler's children have no shoes. Someday I'll write something here, but that day is not today.
 
 ## Source
 
-The source code is available on [GitHub](https://github.com/kkestell/kestell.org).
+The source code for the static site generator that builds this website is available on [GitHub](https://github.com/kkestell/kestell.org).
 
 ## License
 
 The kestell.org static site generator uses the [Zero-Clause BSD](https://opensource.org/license/0bsd/) license.
 
 All content is in the public domain.
-

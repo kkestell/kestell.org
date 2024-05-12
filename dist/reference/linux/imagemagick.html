@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>kestell.org | ImageMagick</title>
+    <link rel="stylesheet" href="/static/css/theme.css" />
+</head>
+<body>
+    <header>
+        <h1>kestell.org</h1>
+        <p><a href="/">Home</a> <span class="separator">/</span> <a href="/reference">Reference</a> <span class="separator">/</span> <a href="/reference/linux">Linux</a> <span class="separator">/</span> ImageMagick</p>
+    </header>
+    <h1>ImageMagick</h1>
+    <p>Trim transparent pixels from an image:</p>
+<pre><code class="language-bash">convert input.png -fuzz 0% -trim +repage output.png
+</code></pre>
+<p>Convert PDF to JPG:</p>
+<pre><code class="language-bash">convert -density 70 -quality 100 -flatten input.pdf output.jpg
+</code></pre>
+<p>Add drop shadow:</p>
+<p>NOTE: <code>20x4+0+0</code> is 20% opacity, 4px sigma (blur amount), 0 horizontal offset, 0 vertical offset.</p>
+<pre><code class="language-bash">convert input.jpg \( +clone -background black -shadow 20x4+0+0 \) +swap -background none -layers merge +repage output.png
+</code></pre>
+    <footer>
+        <p>Last updated on 2024-05-12 13:32:40</p>
+    </footer>
+</body>
+</html>

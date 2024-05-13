@@ -6,13 +6,13 @@ draft: false
 
 ## Ingredients
 
-| Amount  | Ingredient               |
-| ------- | ------------------------ |
-| 1⁄2 cup | Heavy Cream              |
-| 1⁄2 cup | Mascarpone Cheese        |
-| 2 tbsp  | Powdered Sugar           |
-| 1 tbsp  | Lemon Zest (~1 lemon)    |
-| 1 tbsp  | Lemon Juice (~1⁄2 lemon) |
+| Amount  | Ingredient        |
+| ------- | ----------------- |
+| 1⁄2 cup | Heavy Cream       |
+| 1⁄2 cup | Mascarpone Cheese |
+| 2 tbsp  | Powdered Sugar    |
+| 1 tbsp  | Lemon Zest        |
+| 1 tbsp  | Lemon Juice       |
 
 ## Instructions
 

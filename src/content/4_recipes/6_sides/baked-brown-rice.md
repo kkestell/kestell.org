@@ -1,5 +1,5 @@
 ---
-title: Brown Rice
+title: Baked Brown Rice
 date: 2021-11-27
 draft: false
 ---

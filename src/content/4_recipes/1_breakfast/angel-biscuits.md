@@ -20,11 +20,11 @@ draft: false
 
 ## Instructions
 
-1. Dissolve yeast in warm water in a small bowl.
-2. Sift dry ingredients (flour, baking soda, salt, baking powder, sugar) into a large mixing bowl.
-3. Cut in the lard with a pastry blender or rub and pinch in with fingers until the mixture resembles coarse meal.
-4. Stir in buttermilk and yeast mixture into the flour mixture until it forms a dough.
-5. Transfer the dough to a greased bowl, cover with plastic wrap, and refrigerate overnight.
-6. When ready to bake, preheat the oven to 400°F.
-7. Pinch off the needed amount of dough and roll or shape into 1⁄2-inch thick biscuits. Dust or pat the formed biscuits with more flour.
-8. Place the biscuits on a baking sheet and bake for 12 minutes or until golden brown.
+1. Dissolve yeast in warm water.
+2. Sift flour, baking soda, salt, baking powder, and sugar into a large bowl.
+3. Cut in lard until mixture looks like coarse meal.
+4. Stir in buttermilk and yeast mixture to form a dough.
+5. Transfer dough to a greased bowl, cover, and refrigerate overnight.
+6. Preheat oven to 400°F.
+7. Shape dough into 1⁄2" thick biscuits. Dust with flour.
+8. Place biscuits on a baking sheet and bake for 12 minutes until golden brown.

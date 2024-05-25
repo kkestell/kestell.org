@@ -42,9 +42,9 @@ draft: false
 
 ## Instructions
 
-1. Pat the ribs dry with paper towels if needed. Rub the jerk spice mix all over the ribs, ensuring they are fully coated. Arrange the ribs, bone side down, in two large roasting pans. Refrigerate for at least 1 hour, or overnight for deeper flavor.
-2. Preheat the oven to 400°F (200°C). Cover the ribs tightly with foil and roast for 1½ hours, switching the pans between the top and bottom racks halfway through.
-3. While the ribs roast, prepare the jerk sauce. In a blender or food processor, combine brown sugar, vinegar, orange juice, lime juice, olive oil, Scotch bonnet chilis, onion, bell pepper, whole garlic cloves, molasses, and soy sauce. Blend until smooth.
-4. Transfer the sauce mixture to a medium saucepan. Bring to a boil over high heat, then reduce to medium and simmer for 10-15 minutes until the sauce darkens.
-5. After roasting, remove the ribs from the oven. Uncover and coat evenly with the jerk sauce using a basting brush or the back of a spoon. Continue to cook uncovered, basting every 5 minutes, until the ribs are glazed and sticky, about 15 more minutes.
-6. Serve the ribs with pineapple salsa and extra jerk sauce on the side.
+1. Pat ribs dry and rub with jerk spice mix. Refrigerate overnight.
+2. Preheat oven to 400°F. Cover ribs with foil and roast for 1 1⁄2 hours, switching pans halfway through.
+3. While roasting, blend brown sugar, vinegar, orange juice, lime juice, olive oil, Scotch bonnet chilis, onion, bell pepper, garlic, molasses, and soy sauce until smooth.
+4. Transfer sauce to a saucepan. Boil, then simmer for 10-15 minutes until darkened.
+5. Remove ribs from oven. Uncover, coat with jerk sauce, and cook uncovered, basting every 5 minutes for 15 minutes.
+6. Serve ribs with pineapple salsa and extra jerk sauce.

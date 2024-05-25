@@ -24,4 +24,4 @@ draft: false
 4. Simmer over medium-high heat for 35 to 45 minutes, or until the beans are creamy and the meat from the turkey wings is tender and easily pulls away from the bone.
 5. Remove the turkey wings, detach the meat from the bones, chop or shred it, and return it to the pot. Stir well.
 6. Garnish with fresh parsley and serve either alone or over rice.
-7. 
+

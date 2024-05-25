@@ -6,37 +6,39 @@ draft: false
 
 ## Ingredients
 
-- 6 pounds Pork Spareribs, St. Louis-style, or Baby Back Ribs
+| Amount | Ingredient |
+|--------|------------|
+| 6 lb   | Pork Ribs  |
 
 ### For the Rub
 
-| Amount              | Ingredient               |
-|---------------------|--------------------------|
-| 1 tbsp              | Ground Allspice          |
-| 1⁄2 tsp             | Ground Cinnamon          |
-| 1⁄2 tsp             | Ground or Fresh Nutmeg   |
-| 1 tsp               | Ground Sage              |
-| 2 tbsp              | Garlic Powder            |
-| 4 tsp               | Salt, or to taste        |
-| 1 tsp               | Black Pepper             |
-| 1 tsp               | Cayenne Pepper           |
-| 1 tsp               | Smoked Paprika           |
+| Amount  | Ingredient     |
+|---------|----------------|
+| 1 tbsp  | Allspice       |
+| 1⁄2 tsp | Cinnamon       |
+| 1⁄2 tsp | Nutmeg         |
+| 1 tsp   | Sage           |
+| 2 tbsp  | Garlic Powder  |
+| 4 tsp   | Salt           |
+| 1 tsp   | Black Pepper   |
+| 1 tsp   | Cayenne Pepper |
+| 1 tsp   | Smoked Paprika |
 
 ### For the Sauce
 
-| Amount  | Ingredient                            |
-|---------|---------------------------------------|
-| 1⁄4 cup | Packed Brown Sugar                    |
-| 1⁄2 cup | Cider Vinegar                         |
-| 1⁄2 cup | Fresh Orange Juice                    |
-| 2 tbsp  | Fresh Lime Juice                      |
-| 2 tbsp  | Olive Oil                             |
-| 1-2 ea  | Minced Scotch Bonnet Chilis, to taste |
-| 1 cup   | Minced Onion                          |
-| 1⁄2 cup | Minced Green Bell Pepper              |
-| 4 ea    | Garlic Cloves, peeled but whole       |
-| 1⁄4 cup | Molasses                              |
-| 1⁄4 cup | Soy Sauce                             |
+| Amount  | Ingredient               |
+|---------|--------------------------|
+| 1⁄4 cup | Brown Sugar              |
+| 1⁄2 cup | Cider Vinegar            |
+| 1⁄2 cup | Orange Juice             |
+| 2 tbsp  | Lime Juice               |
+| 2 tbsp  | Olive Oil                |
+| 1-2 ea  | Scotch Bonnet Chilis     |
+| 1 cup   | Minced Onion             |
+| 1⁄2 cup | Minced Green Bell Pepper |
+| 4 ea    | Garlic Cloves            |
+| 1⁄4 cup | Molasses                 |
+| 1⁄4 cup | Soy Sauce                |
 
 ## Instructions
 

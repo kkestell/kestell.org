@@ -4,8 +4,6 @@ date: 2024-05-24
 draft: false
 ---
 
-# Mom's Banana Bread
-
 ## Ingredients
 
 ### Single
@@ -40,7 +38,7 @@ draft: false
 2. Cream together sugar, eggs, margarine, bananas, and vanilla.
 3. Sift together flour, salt, baking soda, and baking powder. Add to wet ingredients.
 4. Fold in walnuts.
-5. Grease & flour large bread pan.
+5. Grease & flour an 8x4" loaf pan.
 6. Bake for 45 minutes or until a toothpick comes out clean.
 
 ## Notes

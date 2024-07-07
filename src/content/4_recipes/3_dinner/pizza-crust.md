@@ -6,21 +6,20 @@ draft: false
 
 Standard pizza dough with 70% hydration and 2.5% salt.
 
-### Ingredients
+## Ingredients
 
-| Amount            | Ingredient       |
-|-------------------|------------------|
-| 500 g             | Bread Flour      |
-| 360 g             | Water            |
-| 10 g              | Salt             |
-| 1 packet (~2 tsp) | Active Dry Yeast |
+* 500 g bread flour
+* 360 g water
+* 10 g salt
+* 1 packet (~2 tsp) active dry yeast
 
-### Instructions
+## Instructions
 
-I knead this with the dough hook on my KitchenAid. Mix on low for a minute or two until dough ball forms, rest 15 minutes, then knead on low speed for 5 minutes.
+1. Knead with the dough hook on a KitchenAid. Mix on low for a minute or two until dough ball forms.
+2. Rest the dough for 15 minutes.
+3. Continue to knead on low speed for 5 minutes.
+4. Bake on a pizza stone at 550°F until it's done.
 
-Bake on a pizza stone at 550°F until it's done.
-
-### Notes
+## Notes
 
 Makes 3 pizzas.

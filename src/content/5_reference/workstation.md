@@ -22,7 +22,7 @@ Most of this was purchased from Micro Center in March 2021.
 
 ## Software
 
-Arch / KDE / Wayland
+Arch / GNOME / X11
 
 ### Setup
 

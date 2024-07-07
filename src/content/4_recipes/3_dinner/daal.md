@@ -6,17 +6,15 @@ draft: false
 
 ## Ingredients
 
-| Amount | Ingredient       |
-|--------|------------------|
-| 1 cup  | Red Lentils      |
-| 4 cups | Water or Stock   |
-| 100 g  | Onion            |
-| 6 ea   | Garlic Cloves    |
-| 50 g   | Tomato           |
-| 1 ea   | Green Chili      |
-| 2 ea   | Curry Leaves     |
-| 1 tbsp | Ghee             |
-| 2 tbsp | Shan Daal Masala |
+* 1 c red lentils
+* 4 c water or stock
+* 100 g onion
+* 50 g tomato
+* 6 garlic cloves
+* 1 green chili
+* 2 curry leaves
+* 1 tbsp ghee
+* 2 tbsp daal masala
 
 ## Instructions
 
@@ -24,4 +22,4 @@ draft: false
 2. In a pot, heat ghee over medium heat and add curry leaves.
 3. Add processed mixture to the pot and cook until fragrant.
 4. Add lentils, daal masala, and water to the pot and bring to a boil.
-5. Simmer for 20 minutes or until lentils are cooked.
+5. Simmer for about half an hour.

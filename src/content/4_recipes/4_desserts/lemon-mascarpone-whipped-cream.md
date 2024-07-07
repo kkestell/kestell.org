@@ -6,16 +6,14 @@ draft: false
 
 ## Ingredients
 
-| Amount  | Ingredient        |
-| ------- | ----------------- |
-| 1⁄2 cup | Heavy Cream       |
-| 1⁄2 cup | Mascarpone Cheese |
-| 2 tbsp  | Powdered Sugar    |
-| 1 tbsp  | Lemon Zest        |
-| 1 tbsp  | Lemon Juice       |
+* 1⁄2 c heavy cream
+* 1⁄2 c mascarpone cheese
+* 2 tbsp powdered sugar
+* 1 tbsp lemon zest
+* 1 tbsp lemon juice
 
 ## Instructions
 
-1. In a large bowl, whip heavy cream until stiff peaks form.
+1. Whip heavy cream in a large bowl until stiff peaks form.
 2. In a separate bowl, whisk together mascarpone cheese, powdered sugar, lemon zest, and lemon juice.
-3. Gently fold whipped cream into mascarpone mixture until combined.
+3. Fold whipped cream into mascarpone mixture until combined.

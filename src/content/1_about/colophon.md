@@ -5,7 +5,7 @@ date: 2023-04-27
 draft: false
 ---
 
-The Cobbler's children have no shoes. Someday I'll write something here, but that day is not today.
+The Cobbler's children have no shoes. Someday I'll write something here, but not today.
 
 ## Source
 

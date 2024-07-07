@@ -38,8 +38,8 @@ draft: false
 2. Cream together sugar, eggs, margarine, bananas, and vanilla.
 3. Sift together flour, salt, baking soda, and baking powder. Add to wet ingredients.
 4. Fold in walnuts.
-5. Grease & flour an 8x4" loaf pan.
-6. Bake for 45 minutes or until a toothpick comes out clean.
+5. Grease & flour an 8×4" loaf pan.
+6. Bake for 50-55 minutes or until a toothpick comes out clean.
 
 ## Notes
 

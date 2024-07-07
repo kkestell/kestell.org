@@ -157,9 +157,6 @@ deploy:
     read -s password &amp;&amp; \
     echo $$password | ssh kyle@home.lan 'sudo -S systemctl restart hello.service'
 
-import:
-    @. .venv/bin/activate &amp;&amp; MONGO_URL=mongodb://home.lan:27017 REDIS_URL=redis://home.lan:6379/ python import.py
-
 run:
     docker-compose up --build
 </code></pre>
@@ -171,12 +168,7 @@ ENV PYTHONUNBUFFERED=1 \
     PATH=&quot;/venv/bin:$PATH&quot;
 
 RUN apt-get update \
-    &amp;&amp; apt-get install -y python3-pip python3-venv python3-dev texlive-full \
-    &amp;&amp; apt-get clean \
-    &amp;&amp; rm -rf /var/lib/apt/lists/*
-
-RUN apt-get update \
-    &amp;&amp; apt-get install -y imagemagick \
+    &amp;&amp; apt-get install -y python3-pip python3-venv python3-dev \
     &amp;&amp; apt-get clean \
     &amp;&amp; rm -rf /var/lib/apt/lists/*
 
@@ -202,44 +194,9 @@ services:
       - &quot;5000:5000&quot;
     environment:
       - FLASK_ENV=development
-      - MONGO_URI=mongodb://mongo:27017/recipes
-      - CELERY_BROKER_URL=redis://redis:6379/0
-      - CELERY_RESULT_BACKEND=redis://redis:6379/0
-    depends_on:
-      - mongo
-      - redis
-    volumes:
-      - images_data:/app/static/images
-
-  mongo:
-    image: mongo:latest
-    volumes:
-      - mongodb_data:/data/db
-    ports:
-      - &quot;27017:27017&quot;
-
-  redis:
-    image: redis:latest
-    ports:
-      - &quot;6379:6379&quot;
-
-  worker:
-    build: .
-    command: celery -A app.celery worker --loglevel=info
-    environment:
-      - CELERY_BROKER_URL=redis://redis:6379/0
-      - CELERY_RESULT_BACKEND=redis://redis:6379/0
-    depends_on:
-      - redis
-    volumes:
-      - images_data:/app/static/images
-
-volumes:
-  mongodb_data:
-  images_data:
 </code></pre>
     <footer>
-        <p>Last updated on 2024-07-06 20:36:47</p>
+        <p>Last updated on 2024-07-06 21:09:39</p>
     </footer>
 </body>
 </html>

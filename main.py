@@ -5,59 +5,7 @@ import shutil
 from string import Template
 from typing import List
 import markdown
-import requests
-from markdown import Extension
-from markdown.postprocessors import Postprocessor
-from markdown.preprocessors import Preprocessor
 import re
-
-
-class EmbedPreprocessor(Preprocessor):
-    def run(self, lines):
-        new_lines = []
-        for line in lines:
-            match = re.search(r"\[\[(https?://[^\s\]]+)]]", line)
-            if match:
-                url = match.group(1)
-                url_content = requests.get(url).text
-                url_content_lines = url_content.split('\n')
-                new_lines.append("<!-- EMBED {} -->".format(url))
-                new_lines.extend(url_content_lines)
-                new_lines.append("<!-- /EMBED -->")
-            else:
-                new_lines.append(line)
-        return new_lines
-
-
-class EmbedPostprocessor(Postprocessor):
-    def run(self, text):
-        new_text = []
-        embed = False
-        for line in text.split('\n'):
-            if line.startswith("<!-- EMBED"):
-                embed = True
-                url = line.split(' ')[2]
-                now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-                new_text.append(
-                    f'<div class="embed"><p>Embedded from <a href="{url}">{url}</a> on {now}</p><div class="embed-content">')
-            elif line.startswith("<!-- /EMBED"):
-                embed = False
-                new_text.append('</div></div>')
-            elif embed:
-                new_text.append(line)
-            else:
-                new_text.append(line)
-        return '\n'.join(new_text)
-
-
-class EmbedPreprocessorExtension(Extension):
-    def extendMarkdown(self, md):
-        md.preprocessors.register(EmbedPreprocessor(md), 'norender', 1000)
-
-
-class EmbedPostprocessorExtension(Extension):
-    def extendMarkdown(self, md):
-        md.postprocessors.register(EmbedPostprocessor(md), 'norender', 10)
 
 
 class Document:
@@ -189,8 +137,7 @@ class SiteBuilder:
             f.write(index_html)
 
     def _build_page(self, file: File, output_file: Path):
-        content = markdown.markdown(file.document.content,
-                                    extensions=['extra', EmbedPreprocessorExtension(), EmbedPostprocessorExtension()])
+        content = markdown.markdown(file.document.content, extensions=['extra'])
         template_name = file.document.frontmatter.get('template', 'page')
         template = self._load_template(template_name)
         breadcrumbs = self._generate_breadcrumbs(file)
@@ -221,7 +168,7 @@ class SiteBuilder:
                 title = child.name
                 html_builder.append(f"<li><a href=\"/{page_path}\">{title}</a>")
                 if child.document.frontmatter.get('subtitle'):
-                    html_builder.append(f"<br><span>{child.document.frontmatter['subtitle']}</span>")
+                    html_builder.append(f"<span>{child.document.frontmatter['subtitle']}</span>")
                 html_builder.append("</li>")
         html_builder.append("</ul></div>")
         return ''.join(html_builder)

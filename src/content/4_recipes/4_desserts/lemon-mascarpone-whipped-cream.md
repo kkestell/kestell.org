@@ -17,3 +17,33 @@ draft: false
 1. Whip heavy cream in a large bowl until stiff peaks form.
 2. In a separate bowl, whisk together mascarpone cheese, powdered sugar, lemon zest, and lemon juice.
 3. Fold whipped cream into mascarpone mixture until combined.
+
+```json
+{
+    "title": "Lemon Mascarpone Whipped Cream",
+    "description": null,
+    "url": null,
+    "ingredient_groups": [
+        {
+            "title": null,
+            "ingredients": [
+                "1/2 cup heavy cream",
+                "1/2 cup mascarpone cheese",
+                "2 tablespoons powdered sugar",
+                "1 tablespoon lemon zest",
+                "1 tablespoon lemon juice"
+            ]
+        }
+    ],
+    "instruction_groups": [
+        {
+            "title": null,
+            "instructions": [
+                "Whip heavy cream in a large bowl until stiff peaks form.",
+                "In a separate bowl, whisk together mascarpone cheese, powdered sugar, lemon zest, and lemon juice.",
+                "Fold whipped cream into mascarpone mixture until combined."
+            ]
+        }
+    ]
+}
+```

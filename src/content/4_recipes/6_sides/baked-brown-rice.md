@@ -21,3 +21,35 @@ draft: false
 2. Boil water in microwave.
 3. Add rice, butter, bay leaf, salt, and pepper to 9" glass baking dish.
 4. Pour boiling water over rice, cover with foil, and bake for one hour.
+
+```json
+{
+    "title": "Baked Brown Rice",
+    "description": null,
+    "url": null,
+    "ingredient_groups": [
+        {
+            "title": null,
+            "ingredients": [
+                "1 1/2 cups brown rice",
+                "2 1/2 cups water",
+                "1 tablespoon unsalted butter",
+                "1 teaspoon kosher salt",
+                "1 bay leaf",
+                "black pepper"
+            ]
+        }
+    ],
+    "instruction_groups": [
+        {
+            "title": null,
+            "instructions": [
+                "Preheat oven to 375°F.",
+                "Boil water in microwave.",
+                "Add rice, butter, bay leaf, salt, and pepper to 9\" glass baking dish.",
+                "Pour boiling water over rice, cover with foil, and bake for one hour."
+            ]
+        }
+    ]
+}
+```

@@ -26,4 +26,41 @@ draft: false
 
 ## Notes
 
-Serve with [Lemon Mascarpone Whipped Cream](/recipes/desserts/lemon-mascarpone-whipped-cream) and fresh berries.
+Serve with [Lemon Mascarpone Whipped Cream](/recipes/desserts/lemon-mascarpone-whipped-cream.html) and fresh berries.
+
+```json
+{
+    "title": "Overnight Buttermilk Pancakes",
+    "description": null,
+    "url": null,
+    "ingredient_groups": [
+        {
+            "title": null,
+            "ingredients": [
+                "2 cups all-purpose flour",
+                "1/2 tablespoons instant yeast",
+                "1/2 tablespoons baking powder",
+                "1/2 tablespoons sugar",
+                "1 teaspoon baking soda",
+                "1/2 teaspoon salt",
+                "2 each eggs",
+                "2 cups buttermilk",
+                "2 tablespoons canola oil"
+            ]
+        }
+    ],
+    "instruction_groups": [
+        {
+            "title": null,
+            "instructions": [
+                "In a large bowl, whisk together the flour, yeast, baking powder, sugar, baking soda, and salt.",
+                "Add the eggs, buttermilk, and oil. Mix until combined.",
+                "Cover the bowl and refrigerate for at least 8 hours (or up to 24 hours)."
+            ]
+        }
+    ],
+    "notes": [
+        "Serve with lemon mascarpone whipped cream and fresh berries."
+    ]
+}
+```

@@ -23,7 +23,3 @@ Most of this was purchased from Micro Center in March 2021.
 ## Software
 
 Arch / GNOME / X11
-
-### Setup
-
-[[https://raw.githubusercontent.com/kkestell/dotfiles/main/README.md]]

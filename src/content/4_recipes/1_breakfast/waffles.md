@@ -16,3 +16,32 @@ draft: false
 | 2 cups  | Low-Fat Buttermilk      |
 | 1⁄2 cup | Unsalted Butter, Melted |
 | 2 ea    | Large Eggs              |
+
+```json
+{
+    "title": "Waffles",
+    "description": null,
+    "url": null,
+    "ingredient_groups": [
+        {
+            "title": null,
+            "ingredients": [
+                "2 cups all-purpose flour",
+                "2 tablespoons sugar",
+                "2 teaspoons baking powder",
+                "1 teaspoon baking soda",
+                "1/2 teaspoon salt",
+                "2 cups low-fat buttermilk",
+                "1/2 cup unsalted butter, melted",
+                "2 large eggs"
+            ]
+        }
+    ],
+    "instruction_groups": [
+        {
+            "title": null,
+            "instructions": []
+        }
+    ]
+}
+```

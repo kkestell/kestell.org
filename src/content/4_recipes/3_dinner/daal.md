@@ -23,3 +23,39 @@ draft: false
 3. Add processed mixture to the pot and cook until fragrant.
 4. Add lentils, daal masala, and water to the pot and bring to a boil.
 5. Simmer for about half an hour.
+
+```json
+{
+    "title": "Daal",
+    "description": null,
+    "url": null,
+    "ingredient_groups": [
+        {
+            "title": null,
+            "ingredients": [
+                "1 cup red lentils",
+                "4 cups water or stock",
+                "100 grams onion",
+                "50 grams tomato",
+                "6 garlic cloves",
+                "1 green chili",
+                "2 curry leaves",
+                "1 tablespoon ghee",
+                "2 tablespoons daal masala"
+            ]
+        }
+    ],
+    "instruction_groups": [
+        {
+            "title": null,
+            "instructions": [
+                "Process onion, garlic, tomato, and green chili until almost smooth.",
+                "In a pot, heat ghee over medium heat and add curry leaves.",
+                "Add processed mixture to the pot and cook until fragrant.",
+                "Add lentils, daal masala, and water to the pot and bring to a boil.",
+                "Simmer for about half an hour."
+            ]
+        }
+    ]
+}
+```

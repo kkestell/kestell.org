@@ -278,7 +278,7 @@ h6 {
 
 h1 {
     font-size: 1.8rem;
-    margin-top: 3rem;
+    margin-top: 2rem;
     color: var(--h1-color);
 }
 
@@ -489,6 +489,7 @@ footer {
 }
 
 footer p {
+    margin: 0;
     text-align: center;
     max-width: 100%;
 }
@@ -511,26 +512,62 @@ footer p {
 
 /* HOMEPAGE */
 
+.homepage {
+	column-count: 1;
+	column-gap: 2rem;
+	margin-top: 2rem;
+}
+
 .list ul {
     list-style: none;
-    margin-left: 0;
+    margin: 0;
+}
+
+.list span {
+    display: block;
+}
+
+@media (min-width: 600px) {
+	.homepage {
+		column-count: 2;
+	}
+}
+
+@media (min-width: 992px) {
+	.homepage {
+		column-count: 3;
+	}
+}
+
+.list li.dir * {
+    break-before: avoid-column;
+}
+
+.list li.dir > div.list {
+    margin-top: 1rem;
+}
+
+.list h2 {
+    font-size: 1rem;
+    margin-top: 0;
 }
 
 .list li {
     line-height: 1.6;
     margin-bottom: 0.75rem;
+    margin-left: 0rem;
+}
+
+.list ul li ul {
+    margin-left: 2rem;
 }
 
 .list li.dir > a {
     font-weight: bold;
 }
 
-.list li > .list {
-    margin-left: 2rem;
-}
-
 .list span {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
 }
 
 /* PRINT */

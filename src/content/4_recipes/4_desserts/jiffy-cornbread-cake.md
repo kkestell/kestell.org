@@ -19,3 +19,35 @@ draft: false
 2. Combine all ingredients in a mixing bowl.
 3. Pour the batter into a greased 9" pan.
 4. Bake for 30 minutes or until a toothpick inserted into the center comes out clean.
+
+```json
+{
+    "title": "Jiffy Cornbread Cake",
+    "description": null,
+    "url": null,
+    "ingredient_groups": [
+        {
+            "title": null,
+            "ingredients": [
+                "1 box Jiffy cornbread mix",
+                "2 eggs",
+                "1/2 cup sour cream",
+                "1/4 cup vegetable oil",
+                "1 tablespoon granulated sugar",
+                "1/2 teaspoon salt"
+            ]
+        }
+    ],
+    "instruction_groups": [
+        {
+            "title": null,
+            "instructions": [
+                "Preheat oven to 350°F (175°C).",
+                "Combine all ingredients in a mixing bowl.",
+                "Pour the batter into a greased 9\" pan.",
+                "Bake for 30 minutes or until a toothpick inserted into the center comes out clean."
+            ]
+        }
+    ]
+}
+```

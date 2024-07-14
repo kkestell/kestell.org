@@ -22,3 +22,33 @@ Make a roux and gradually whisk in hot milk.
 ## Variations
 
 To make a Mornay sauce, add a half cup each Gruyère and Parmesan, or go crazy and use half a block of cream cheese, a cup of your favorite melting cheese, and a teaspoon of Creole seasoning.
+
+```json
+{
+    "title": "Béchamel",
+    "description": "Makes two cups.",
+    "url": null,
+    "ingredient_groups": [
+        {
+            "title": null,
+            "ingredients": [
+                "2 tablespoons unsalted butter",
+                "2 tablespoons all-purpose flour",
+                "2 cups whole milk",
+                "1 teaspoon kosher salt"
+            ]
+        }
+    ],
+    "instruction_groups": [
+        {
+            "title": null,
+            "instructions": [
+                "Make a roux and gradually whisk in hot milk."
+            ]
+        }
+    ],
+    "variations": [
+        "To make a Mornay sauce, add a half cup each Gruyère and Parmesan, or go crazy and use half a block of cream cheese, a cup of your favorite melting cheese, and a teaspoon of Creole seasoning."
+    ]
+}
+```

@@ -2,50 +2,52 @@
 title: Tres Leches Cake
 date: 2024-05-05
 draft: false
+template: recipe
 ---
+
+# Tres Leches Cake
 
 ## Ingredients
 
 ### For the Cake
 
-* 1⁄2 c (120 ml) milk
-* 1⁄2 c (113 g) butter, melted and cooled
-* 1⁄2 tsp kosher salt
-* 1 tsp vanilla extract
-* 1⁄2 c (120 ml) cooking spray
-* 1⁄4 c (50 g) sugar
-* 1 c (200 g) sugar
-* 1⁄2 c (120 ml) milk
-* 5 ea large eggs, separated
-* 1⁄2 tsp baking powder
-* 1⁄2 c (94 g) all-purpose flour
+* 1/2 cup milk
+* 1/2 cup butter, melted and cooled
+* 1/2 teaspoon kosher salt
+* 1 teaspoon vanilla extract
+* 1/2 cup cooking spray
+* 1/4 cup sugar
+* 1 cup sugar
+* 1/2 cup milk
+* 5 large eggs, separated
+* 1/2 teaspoon baking powder
+* 1/2 cup all-purpose flour
 
 ### For the Filling
 
-* 1 can (14 oz) sweetened condensed milk
-* 1 can (12 oz) evaporated milk
-* 1⁄2 c (120 ml) milk
-* 1 tsp pure vanilla extract
+* 1 can (14 ounces) sweetened condensed milk
+* 1 can (12 ounces) evaporated milk
+* 1/2 cup milk
+* 1 teaspoon pure vanilla extract
 
 ### For the Whipped Cream
 
-* 2 c (480 ml) heavy cream
-* 1⁄2 c (100 g) granulated sugar
+* 2 cups heavy cream
+* 1/2 cup granulated sugar
 
 ### For Serving
 
-* 1⁄4 c cinnamon-sugar
+* 1/4 cup cinnamon-sugar
 * Sliced strawberries
-
 
 ## Instructions
 
 ### Preparing the Cake
 
-1. Preheat oven to 350 °F (175 °C) and grease a 9×13" baking pan with cooking spray.
+1. Preheat oven to 350 degrees Fahrenheit and grease a 9×13-inch baking pan with cooking spray.
 2. Whisk flour, baking powder, and salt in a large bowl.
-3. In a separate bowl, beat egg yolks and 1 c sugar until stiff ribbons form. Beat in vanilla.
-4. In another bowl, beat egg whites until soft peaks form. Gradually add 1⁄4 c sugar and continue beating until stiff peaks form.
+3. In a separate bowl, beat egg yolks and 1 cup sugar until stiff ribbons form. Beat in vanilla.
+4. In another bowl, beat egg whites until soft peaks form. Gradually add 1/4 cup sugar and continue beating until stiff peaks form.
 5. Combine yolk mixture with dry ingredients. Add milk and melted butter, beat until combined.
 6. Gently fold in egg whites.
 7. Pour batter into pan. Bake for 26 minutes or until a toothpick comes out clean. Let cool.
@@ -58,79 +60,3 @@ draft: false
 ### Serving the Cake
 
 1. Frost cake with whipped cream, sprinkle with cinnamon-sugar. Serve with strawberries.
-
-```json
-{
-    "title": "Tres Leches Cake",
-    "description": null,
-    "url": null,
-    "ingredient_groups": [
-        {
-            "title": "For the Cake",
-            "ingredients": [
-                "1/2 cup (120 ml) milk",
-                "1/2 cup (113 grams) butter, melted and cooled",
-                "1/2 teaspoon kosher salt",
-                "1 teaspoon vanilla extract",
-                "1/2 cup (120 ml) cooking spray",
-                "1/4 cup (50 grams) sugar",
-                "1 cup (200 grams) sugar",
-                "1/2 cup (120 ml) milk",
-                "5 large eggs, separated",
-                "1/2 teaspoon baking powder",
-                "1/2 cup (94 grams) all-purpose flour"
-            ]
-        },
-        {
-            "title": "For the Filling",
-            "ingredients": [
-                "1 can (14 ounces) sweetened condensed milk",
-                "1 can (12 ounces) evaporated milk",
-                "1/2 cup (120 ml) milk",
-                "1 teaspoon pure vanilla extract"
-            ]
-        },
-        {
-            "title": "For the Whipped Cream",
-            "ingredients": [
-                "2 cups (480 ml) heavy cream",
-                "1/2 cup (100 grams) granulated sugar"
-            ]
-        },
-        {
-            "title": "For Serving",
-            "ingredients": [
-                "1/4 cup cinnamon-sugar",
-                "sliced strawberries"
-            ]
-        }
-    ],
-    "instruction_groups": [
-        {
-            "title": "Preparing the Cake",
-            "instructions": [
-                "Preheat oven to 350°F (175°C) and grease a 9×13\" baking pan with cooking spray.",
-                "Whisk flour, baking powder, and salt in a large bowl.",
-                "In a separate bowl, beat egg yolks and 1 cup sugar until stiff ribbons form. Beat in vanilla.",
-                "In another bowl, beat egg whites until soft peaks form. Gradually add 1/4 cup sugar and continue beating until stiff peaks form.",
-                "Combine yolk mixture with dry ingredients. Add milk and melted butter, beat until combined.",
-                "Gently fold in egg whites.",
-                "Pour batter into pan. Bake for 26 minutes or until a toothpick comes out clean. Let cool."
-            ]
-        },
-        {
-            "title": "Adding the Filling",
-            "instructions": [
-                "Whisk sweetened condensed milk, evaporated milk, milk, and vanilla in a medium bowl.",
-                "Poke holes all over cake with a fork. Pour milk mixture evenly over cake. Refrigerate until absorbed, at least 1 hour but preferably overnight."
-            ]
-        },
-        {
-            "title": "Serving the Cake",
-            "instructions": [
-                "Frost cake with whipped cream, sprinkle with cinnamon-sugar. Serve with strawberries."
-            ]
-        }
-    ]
-}
-```

@@ -1,11 +1,14 @@
-from datetime import datetime
-from argparse import ArgumentParser
-from pathlib import Path
-import shutil
-from string import Template
-from typing import List
-import markdown
 import re
+import shutil
+from argparse import ArgumentParser
+from datetime import datetime
+from pathlib import Path
+from typing import List
+
+import markdown
+from jinja2 import Environment, FileSystemLoader
+
+from recipes import parse_recipe_markdown
 
 
 class Document:
@@ -71,8 +74,7 @@ class SiteBuilder:
         self.static_dir = input_dir / 'static'
         self.output_dir = output_dir
         self.root_directory = Directory('Home', '')
-        self.templates = self._cache_templates()
-        self._cache_templates()
+        self.jinja_env = Environment(loader=FileSystemLoader(str(self.templates_dir)))
 
     def build(self):
         if self.output_dir.exists():
@@ -131,25 +133,34 @@ class SiteBuilder:
     def _build_index(self, directory: Directory, output_path: Path):
         content = self._generate_list(directory)
         breadcrumbs = self._generate_breadcrumbs(directory)
-        template = self._load_template('index')
-        index_html = template.substitute(content=content, title=directory.name, breadcrumbs=breadcrumbs)
+        template = self.jinja_env.get_template('index.html')
+        index_html = template.render(content=content, title=directory.name, breadcrumbs=breadcrumbs)
         with open(output_path / "index.html", 'w', encoding='utf-8') as f:
             f.write(index_html)
 
     def _build_page(self, file: File, output_file: Path):
-        content = markdown.markdown(file.document.content, extensions=['extra'])
         template_name = file.document.frontmatter.get('template', 'page')
-        template = self._load_template(template_name)
+        template = self.jinja_env.get_template(f'{template_name}.html')
         breadcrumbs = self._generate_breadcrumbs(file)
-        html_content = template.substitute(content=content, breadcrumbs=breadcrumbs, updated_on=file.updated_on,
+
+        if template_name == 'recipe':
+            recipe = parse_recipe_markdown(file.document.content)
+            if not recipe:
+                raise ValueError(f"Failed to parse recipe: {file.path}")
+            html_content = template.render(recipe=recipe, breadcrumbs=breadcrumbs, updated_on=file.updated_on,
                                            **file.document.frontmatter)
+        else:
+            content = markdown.markdown(file.document.content, extensions=['extra'])
+            html_content = template.render(content=content, breadcrumbs=breadcrumbs, updated_on=file.updated_on,
+                                           **file.document.frontmatter)
+
         with output_file.open('w', encoding='utf-8') as f:
             f.write(html_content)
 
     def _build_homepage(self):
         content = self._generate_list(self.root_directory)
-        home_template = self._load_template('home')
-        home_html = home_template.substitute(content=content)
+        home_template = self.jinja_env.get_template('home.html')
+        home_html = home_template.render(content=content)
         with open(self.output_dir / "index.html", 'w', encoding='utf-8') as f:
             f.write(home_html)
 
@@ -182,17 +193,6 @@ class SiteBuilder:
         breadcrumbs = breadcrumbs[::-1]
         breadcrumbs.append(node.name)
         return ' <span class="separator">/</span> '.join(breadcrumbs)
-
-    def _cache_templates(self):
-        templates = {}
-        template_dir = self.templates_dir
-        for template_file in template_dir.glob('*.html'):
-            with template_file.open('r', encoding='utf-8') as file:
-                templates[template_file.stem] = Template(file.read())
-        return templates
-
-    def _load_template(self, name):
-        return self.templates[name]
 
 
 def main():

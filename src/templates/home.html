@@ -1,20 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>kestell.org</title>
-    <link rel="stylesheet" href="/static/css/theme.css" />
-</head>
-<body>
-    <header>
-        <h1>kestell.org</h1>
-    </header>
-    <div class="homepage">
-        ${content}
-    </div>
-    <footer>
-        <p>The meek shall inherit the dearth.</p>
-    </footer>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block content %}
+<div class="homepage">
+    {{ content | safe }}
+</div>
+{% endblock %}
+
+{% block footer %}
+<p>The meek shall inherit the dearth.</p>
+{% endblock %}

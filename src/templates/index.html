@@ -1,20 +1,16 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>kestell.org | ${title}</title>
-    <link rel="stylesheet" href="/static/css/theme.css" />
-</head>
-<body>
-    <header>
-        <h1>kestell.org</h1>
-        <p>${breadcrumbs}</p>
-    </header>
-    <h1>${title}</h1>
-    ${content}
-    <footer>
-        <p>&nbsp;</p>
-    </footer>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %} | {{ title }}{% endblock %}
+
+{% block breadcrumbs %}
+<p>{{ breadcrumbs | safe }}</p>
+{% endblock %}
+
+{% block content %}
+<h1>{{ title }}</h1>
+{{ content | safe }}
+{% endblock %}
+
+{% block footer %}
+<p>&nbsp;</p>
+{% endblock %}

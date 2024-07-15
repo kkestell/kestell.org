@@ -2,19 +2,22 @@
 title: Tibs
 date: 2024-04-15
 draft: false
+template: recipe
 ---
 
-From [Max Falkowitz](https://www.seriouseats.com/max-falkowitz-5118901) at [Serious Eats](https://www.seriouseats.com/beef-tibs-berbere-ethiopian-african-recipe).
+# Tibs
+
+From Max Falkowitz at Serious Eats.
 
 ## Ingredients
 
-* 5 tbsp unsalted butter
-* 2 c onion, chopped
-* 2 tbsp ginger, minced
-* 2 tbsp garlic, minced
-* 2 tbsp berbere
-* 1 lb sirloin, cubed
-* 1 tsp lemon juice
+* 5 tablespoons unsalted butter
+* 2 cups chopped onion 
+* 2 tablespoons minced ginger
+* 2 tablespoons minced garlic
+* 2 tablespoons berbere
+* 1 pound cubed sirloin
+* 1 teaspoon lemon juice
 * Salt to taste
 
 ## Instructions

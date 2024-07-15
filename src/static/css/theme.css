@@ -570,6 +570,35 @@ footer p {
     font-size: 0.85rem;
 }
 
+/* RECIPE */
+
+.recipe ul, .recipe ol {
+    padding-left: 20px;
+}
+
+.recipe-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.ingredients, .instructions {
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .recipe-content {
+        flex-direction: row;
+    }
+    .ingredients {
+        width: 300px;
+        padding-right: 2rem;
+    }
+    .instructions {
+        width: 60%;
+        padding-left: 2rem;
+    }
+}
+
 /* PRINT */
 
 @media print {

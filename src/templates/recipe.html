@@ -7,8 +7,12 @@
 {% endblock %}
 
 {% block content %}
-<main class="recipe">
+<main class="page recipe">
     <h1>{{ recipe.title }}</h1>
+
+    <p>
+        🖨️ <a href="{{ pdf_path }}" target="_blank">PDF</a>
+    </p>
 
     {% if recipe.description %}
         <p class="description">{{ recipe.description }}</p>

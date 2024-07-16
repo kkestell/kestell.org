@@ -149,3 +149,101 @@ def parse_recipe_markdown(content: str) -> Optional[RecipeModel]:
     except ValueError as e:
         print(f"Failed to parse recipe: {str(e)}")
         return None
+
+
+def _escape_latex(text):
+    mapping = {
+        '&': r'\&',
+        '%': r'\%',
+        '$': r'\$',
+        '#': r'\#',
+        '_': r'\_',
+        '{': r'\{',
+        '}': r'\}',
+        '~': r'\textasciitilde{}',
+        '^': r'\^{}',
+        '\\': r'\textbackslash{}',
+        '<': r'\textless{}',
+        '>': r'\textgreater{}'
+    }
+    return "".join(mapping.get(c, c) for c in text)
+
+
+def recipe_to_latex(recipe: RecipeModel) -> str:
+    title = recipe.title
+    description = recipe.description
+    ingredient_groups = recipe.ingredient_groups
+    instruction_groups = recipe.instruction_groups
+    notes = None
+    reviews = None
+    source = None
+    source_latex = "\\fancyfoot[C]{\\footnotesize " + _escape_latex(source) + "}" if source else ""
+
+    latex = [
+        "\\documentclass[10pt]{article}",
+        "\\usepackage{fontspec}",
+        "\\usepackage{geometry}",
+        "\\usepackage{enumitem}",
+        "\\usepackage{graphicx}",
+        "\\usepackage{paracol}",
+        "\\usepackage{microtype}",
+        "\\usepackage{parskip}",
+        "\\usepackage{fancyhdr}",
+        "\\geometry{letterpaper, margin=0.75in}",
+        "\\setmainfont{Source Serif 4}",
+        "\\newfontfamily\\headingfont{Source Serif 4}",
+        "\\pagestyle{fancy}",
+        "\\fancyhf{}",
+        "\\renewcommand{\\headrulewidth}{0pt}",
+        source_latex,
+        "\\begin{document}",
+        "\\setlist[enumerate,1]{itemsep=0em}",
+        "\\begin{center}",
+        "{\\huge \\bfseries \\headingfont " + _escape_latex(title) + "}",
+        "\\end{center}",
+        "\\vspace{1em}"
+    ]
+
+    if description:
+        latex.append("\\noindent " + _escape_latex(description))
+
+    latex.append("\\vspace{1em}")
+    latex.append("\\columnratio{0.35}")  # Adjust the column ratio as needed
+    latex.append("\\begin{paracol}{2}")
+    latex.append("\\section*{Ingredients}")
+    latex.append("\\raggedright")
+
+    for ingredient_group in ingredient_groups:
+        if ingredient_group.title:
+            latex.append(f"\\subsection*{{{_escape_latex(ingredient_group.title)}}}")
+        latex.append("\\begin{itemize}[leftmargin=*]")
+        for ingredient in ingredient_group.ingredients:
+            latex.append(f"\\item {_escape_latex(ingredient)}")
+        latex.append("\\end{itemize}")
+
+    latex.append("\\switchcolumn")
+    latex.append("\\section*{Instructions}")
+
+    for instruction_group in instruction_groups:
+        if instruction_group.title:
+            latex.append(f"\\subsection*{{{_escape_latex(instruction_group.title)}}}")
+        latex.append("\\begin{enumerate}[leftmargin=*]")
+        for instruction in instruction_group.instructions:
+            latex.append(f"\\item {_escape_latex(instruction)}")
+        latex.append("\\end{enumerate}")
+
+    latex.append("\\end{paracol}")
+
+    if notes:
+        latex.append("\\section*{Notes}")
+        latex.append(_escape_latex(notes))
+
+    if reviews:
+        latex.append("\\section*{Tips}")
+        for review in reviews:
+            latex.append(_escape_latex(review))
+            latex.append("\\par")
+
+    latex.append("\\end{document}")
+
+    return "\n".join(latex)

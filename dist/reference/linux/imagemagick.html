@@ -16,8 +16,9 @@
     </header>
 
     
-<h1>ImageMagick</h1>
-<p>Trim transparent pixels from an image:</p>
+<main class="page">
+    <h1>ImageMagick</h1>
+    <p>Trim transparent pixels from an image:</p>
 <pre><code class="language-bash">convert input.png -fuzz 0% -trim +repage output.png
 </code></pre>
 <p>Convert PDF to JPG:</p>
@@ -27,6 +28,7 @@
 <p>NOTE: <code>20x4+0+0</code> is 20% opacity, 4px sigma (blur amount), 0 horizontal offset, 0 vertical offset.</p>
 <pre><code class="language-bash">convert input.jpg \( +clone -background black -shadow 20x4+0+0 \) +swap -background none -layers merge +repage output.png
 </code></pre>
+</main>
 
 
     <footer>

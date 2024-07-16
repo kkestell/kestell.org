@@ -16,8 +16,9 @@
     </header>
 
     
-<h1>http://home.lan</h1>
-<h2>Prerequisites</h2>
+<main class="page">
+    <h1>http://home.lan</h1>
+    <h2>Prerequisites</h2>
 <h3>SSH Key Generation</h3>
 <p>Generate an SSH key:</p>
 <pre><code class="language-bash">kyle@rhea:~ $ ssh-keygen -t ed25519 -C &quot;kyle@rhea.lan&quot; -f ~/.ssh/id_ed25519_kyle_at_rhea_dot_lan
@@ -227,6 +228,7 @@ services:
     environment:
       - FLASK_ENV=development
 </code></pre>
+</main>
 
 
     <footer>

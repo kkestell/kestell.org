@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>kestell.org  | Scheme</title>
+    <link rel="stylesheet" href="/static/css/theme.css" />
+    
+</head>
+<body>
+    <header>
+        <h1>kestell.org</h1>
+        
+<p><a href="/">Home</a> <span class="separator">/</span> <a href="/projects">Projects</a> <span class="separator">/</span> Scheme</p>
+
+    </header>
+
+    
+<main class="page">
+    <h1>Scheme</h1>
+    <h2>Example</h2>
+<pre><code class="language-scheme">(define factorial
+    (lambda (n)
+        (if (= n 0)
+            1
+            (* n (factorial (- n 1)))
+        )
+    )
+)
+
+(define print-factorials-up-to
+    (lambda (n)
+        (let ((i 1))
+            (while (&lt;= i n)
+                (begin
+                    (display &quot;Factorial of &quot;)
+                    (display i)
+                    (display &quot; is &quot;)
+                    (display (factorial i))
+                    (newline)
+                    (set! i (+ i 1))
+                )
+            )
+        )
+    )
+)
+
+(print-factorials-up-to 10)
+</code></pre>
+<h2>Source</h2>
+<p>The source code for Scheme is available on <a href="https://github.com/kkestell/scheme">GitHub</a>.</p>
+<h2>License</h2>
+<p>Scheme uses the <a href="https://opensource.org/license/0bsd/">Zero-Clause BSD</a> license.</p>
+</main>
+
+
+    <footer>
+        
+<p>Last updated on 2024-02-17 19:00:31</p>
+
+    </footer>
+</body>
+</html>

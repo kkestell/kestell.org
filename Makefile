@@ -13,7 +13,7 @@ build: venv
 	@if [ -z "$$VIRTUAL_ENV" ]; then \
 		. $(VENV_ACTIVATE) && python main.py; \
 	else \
-		python main.py; \
+		python main.py -f; \
 	fi
 
 serve: venv

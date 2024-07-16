@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>kestell.org  | Recipes</title>
+    <link rel="stylesheet" href="/static/css/theme.css" />
+    
+</head>
+<body>
+    <header>
+        <h1>kestell.org</h1>
+        
+<p><a href="/">Home</a> <span class="separator">/</span> <a href="/projects">Projects</a> <span class="separator">/</span> Recipes</p>
+
+    </header>
+
+    
+<main class="page">
+    <h1>Recipes</h1>
+    <h2>File Formats</h2>
+<h3>JSON Schema</h3>
+<pre><code class="language-json">{
+  &quot;$schema&quot;: &quot;http://json-schema.org/draft-07/schema#&quot;,
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;required&quot;: [&quot;title&quot;, &quot;ingredient_groups&quot;],
+  &quot;properties&quot;: {
+    &quot;title&quot;: {
+      &quot;type&quot;: &quot;string&quot;
+    },
+    &quot;description&quot;: {
+      &quot;type&quot;: &quot;string&quot;
+    },
+    &quot;ingredient_groups&quot;: {
+      &quot;type&quot;: &quot;array&quot;,
+      &quot;minItems&quot;: 1,
+      &quot;items&quot;: {
+        &quot;type&quot;: &quot;object&quot;,
+        &quot;required&quot;: [&quot;ingredients&quot;],
+        &quot;properties&quot;: {
+          &quot;title&quot;: {
+            &quot;type&quot;: &quot;string&quot;
+          },
+          &quot;ingredients&quot;: {
+            &quot;type&quot;: &quot;array&quot;,
+            &quot;minItems&quot;: 1,
+            &quot;items&quot;: {
+              &quot;type&quot;: &quot;string&quot;
+            }
+          }
+        }
+      }
+    },
+    &quot;instruction_groups&quot;: {
+      &quot;type&quot;: &quot;array&quot;,
+      &quot;items&quot;: {
+        &quot;type&quot;: &quot;object&quot;,
+        &quot;required&quot;: [&quot;instructions&quot;],
+        &quot;properties&quot;: {
+          &quot;title&quot;: {
+            &quot;type&quot;: &quot;string&quot;
+          },
+          &quot;instructions&quot;: {
+            &quot;type&quot;: &quot;array&quot;,
+            &quot;items&quot;: {
+              &quot;type&quot;: &quot;string&quot;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+</code></pre>
+<h3>JSON Example</h3>
+<pre><code class="language-json">{
+  &quot;title&quot;: &quot;Chocolate Cake with Vanilla Frosting&quot;,
+  &quot;description&quot;: &quot;A classic chocolate cake with vanilla frosting.&quot;,
+  &quot;ingredient_groups&quot;: [
+    {
+      &quot;title&quot;: &quot;For the Cake&quot;,
+      &quot;ingredients&quot;: [
+        &quot;1 3/4 cups all-purpose flour&quot;,
+        &quot;1 1/2 cups granulated sugar&quot;,
+        &quot;3/4 cup unsweetened cocoa powder&quot;,
+        &quot;1 1/2 teaspoons baking powder&quot;,
+        &quot;1 1/2 teaspoons baking soda&quot;,
+        &quot;1 teaspoon salt&quot;,
+        &quot;2 large eggs&quot;,
+        &quot;1 cup whole milk&quot;,
+        &quot;1/2 cup vegetable oil&quot;,
+        &quot;2 teaspoons vanilla extract&quot;,
+        &quot;1 cup boiling water&quot;
+      ]
+    },
+    {
+      &quot;title&quot;: &quot;For the Frosting&quot;,
+      &quot;ingredients&quot;: [
+        &quot;1 cup unsalted butter, softened&quot;,
+        &quot;4 cups powdered sugar&quot;,
+        &quot;2 teaspoons vanilla extract&quot;,
+        &quot;2-4 tablespoons milk&quot;
+      ]
+    }
+  ],
+  &quot;instruction_groups&quot;: [
+    {
+      &quot;title&quot;: &quot;Making the Cake&quot;,
+      &quot;instructions&quot;: [
+        &quot;Preheat oven to 350°F.&quot;,
+        &quot;Grease and flour two 9-inch round baking pans.&quot;,
+        &quot;In a large bowl, combine flour, sugar, cocoa, baking powder, baking soda, and salt.&quot;,
+        &quot;Add eggs, milk, oil, and vanilla; beat on medium speed for 2 minutes.&quot;,
+        &quot;Stir in boiling water (batter will be thin).&quot;,
+        &quot;Pour batter into prepared pans.&quot;,
+        &quot;Bake for 30-35 minutes or until a toothpick inserted in the center comes out clean.&quot;,
+        &quot;Cool in pans for 10 minutes, then remove from pans and cool completely on wire racks.&quot;
+      ]
+    },
+    {
+      &quot;title&quot;: &quot;Making the Frosting&quot;,
+      &quot;instructions&quot;: [
+        &quot;In a large bowl, beat butter until creamy.&quot;,
+        &quot;Gradually add powdered sugar, beating until smooth.&quot;,
+        &quot;Beat in vanilla.&quot;,
+        &quot;Add milk, 1 tablespoon at a time, until desired consistency is reached.&quot;
+      ]
+    }
+  ]
+}
+</code></pre>
+<h3>Markdown</h3>
+<pre><code class="language-markdown"># Chocolate Cake with Vanilla Frosting
+
+A classic chocolate cake with vanilla frosting.
+
+## Ingredients
+
+### For the Cake
+
+- 1 3/4 cups all-purpose flour
+- 1 1/2 cups granulated sugar
+- 3/4 cup unsweetened cocoa powder
+- 1 1/2 teaspoons baking powder
+- 1 1/2 teaspoons baking soda
+- 1 teaspoon salt
+- 2 large eggs
+- 1 cup whole milk
+- 1/2 cup vegetable oil
+- 2 teaspoons vanilla extract
+- 1 cup boiling water
+
+### For the Frosting
+
+- 1 cup unsalted butter, softened
+- 4 cups powdered sugar
+- 2 teaspoons vanilla extract
+- 2-4 tablespoons milk
+
+## Instructions
+
+### Making the Cake
+
+1. Preheat oven to 350°F.
+2. Grease and flour two 9-inch round baking pans.
+3. In a large bowl, combine flour, sugar, cocoa, baking powder, baking soda, and salt.
+4. Add eggs, milk, oil, and vanilla; beat on medium speed for 2 minutes.
+5. Stir in boiling water (batter will be thin).
+6. Pour batter into prepared pans.
+7. Bake for 30-35 minutes or until a toothpick inserted in the center comes out clean.
+8. Cool in pans for 10 minutes, then remove from pans and cool completely on wire racks.
+
+### Making the Frosting
+
+1. In a large bowl, beat butter until creamy.
+2. Gradually add powdered sugar, beating until smooth.
+3. Beat in vanilla.
+4. Add milk, 1 tablespoon at a time, until desired consistency is reached.
+</code></pre>
+</main>
+
+
+    <footer>
+        
+<p>Last updated on 2024-07-14 10:47:22</p>
+
+    </footer>
+</body>
+</html>

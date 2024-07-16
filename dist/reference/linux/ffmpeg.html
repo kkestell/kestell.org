@@ -16,8 +16,9 @@
     </header>
 
     
-<h1>FFmpeg</h1>
-<p>Change video speed (2.0x):</p>
+<main class="page">
+    <h1>FFmpeg</h1>
+    <p>Change video speed (2.0x):</p>
 <pre><code class="language-bash">ffmpeg -i input.mkv -vf &quot;setpts=(PTS-STARTPTS)/2.0&quot; -af atempo=2.0 output.mkv
 </code></pre>
 <p>Change container from MKV to MP4:</p>
@@ -29,6 +30,7 @@
 <p>Download a portion of a video using <code>yt-dlp</code> and <code>ffmpeg</code>:</p>
 <pre><code class="language-bash">yt-dlp --external-downloader ffmpeg --external-downloader-args &quot;ffmpeg_i:-ss 00:01:07 -to 00:01:13&quot; -f best https://youtu.be/LR6KIFIJwHU -o &quot;output.mp4&quot;
 </code></pre>
+</main>
 
 
     <footer>

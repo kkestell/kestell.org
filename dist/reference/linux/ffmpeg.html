@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>kestell.org  | FFmpeg</title>
+    <link rel="stylesheet" href="/static/css/theme.css" />
+    
+</head>
+<body>
+    <header>
+        <h1>kestell.org</h1>
+        
+<p><a href="/">Home</a> <span class="separator">/</span> <a href="/reference">Reference</a> <span class="separator">/</span> <a href="/reference/linux">Linux</a> <span class="separator">/</span> FFmpeg</p>
+
+    </header>
+
+    
+<main class="page">
+    <h1>FFmpeg</h1>
+    <p>Change video speed (2.0x):</p>
+<pre><code class="language-bash">ffmpeg -i input.mkv -vf &quot;setpts=(PTS-STARTPTS)/2.0&quot; -af atempo=2.0 output.mkv
+</code></pre>
+<p>Change container from MKV to MP4:</p>
+<pre><code class="language-bash">ffmpeg -i input.mkv -codec copy output.mp4
+</code></pre>
+<p>Record RTSP stream w/ hardware acceleration (NVIDIA):</p>
+<pre><code class="language-bash">ffmpeg -rtsp_transport tcp -i rtsp://10.0.0.1/ -c:v h264_nvenc -preset fast -b:v 1000k -c:a copy output.mp4
+</code></pre>
+<p>Download a portion of a video using <code>yt-dlp</code> and <code>ffmpeg</code>:</p>
+<pre><code class="language-bash">yt-dlp --external-downloader ffmpeg --external-downloader-args &quot;ffmpeg_i:-ss 00:01:07 -to 00:01:13&quot; -f best https://youtu.be/LR6KIFIJwHU -o &quot;output.mp4&quot;
+</code></pre>
+</main>
+
+
+    <footer>
+        
+<p>Last updated on 2024-05-03 10:20:45</p>
+
+    </footer>
+</body>
+</html>

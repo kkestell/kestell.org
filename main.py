@@ -217,9 +217,17 @@ class SiteBuilder:
         }
 
     def _build_homepage(self):
-        content = self._generate_list(self.root_directory)
+        html = []
+        for child in self.root_directory.children:
+            if isinstance(child, Directory):
+                dir_name = child.name.lower()
+                html.append(f"<div class=\"list {dir_name}\">")
+                html.append(f"<h2><a href=\"/{child.formatted_path}\">{child.name}</a></h2>")
+                html.append(self._generate_list(child))
+                html.append("</div>")
+        html = ''.join(html)
         home_template = self.jinja_env.get_template('home.html')
-        home_html = home_template.render(content=content)
+        home_html = home_template.render(content=html)
         with open(self.output_dir / "index.html", 'w', encoding='utf-8') as f:
             f.write(home_html)
 
@@ -236,12 +244,12 @@ class SiteBuilder:
                 shutil.copy2(s, d)
 
     def _generate_list(self, directory: Directory):
-        html_builder = ["<div class=\"list\"><ul>"]
+        html_builder = ["<ul>"]
         for child in directory.children:
             if isinstance(child, Directory):
                 dir_link = f"/{child.formatted_path}/index.html"
                 html_builder.append(
-                    f"<li class=\"dir\"><a href=\"{dir_link}\">{child.name}</a>{self._generate_list(child)}</li>")
+                    f"<li class=\"dir\"><h2><a href=\"{dir_link}\">{child.name}</a></h2>{self._generate_list(child)}</li>")
             elif isinstance(child, File):
                 page_path = child.formatted_path.replace('.md', '.html')
                 title = child.name
@@ -249,7 +257,7 @@ class SiteBuilder:
                 if child.document.frontmatter.get('subtitle'):
                     html_builder.append(f"<span>{child.document.frontmatter['subtitle']}</span>")
                 html_builder.append("</li>")
-        html_builder.append("</ul></div>")
+        html_builder.append("</ul>")
         return ''.join(html_builder)
 
     def _generate_breadcrumbs(self, node: Node):

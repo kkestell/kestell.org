@@ -460,7 +460,7 @@ header {
 }
 
 header h1 {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     margin: 0 0 0.5rem 0;
 }
 
@@ -498,9 +498,13 @@ footer p {
     margin-top: 2rem;
 }
 
+.list {
+    margin-bottom: 3rem;
+}
+
 .list ul {
     list-style: none;
-    margin: 0 0 0 2rem;
+    margin: 0;
     padding: 0;
 }
 
@@ -535,17 +539,21 @@ footer p {
         column-count: 2;
     }
 
-    .list.about {
+    .homepage .list {
+    	margin-bottom: 0;
+	}
+
+    .homepage .list.about {
     	break-after: avoid;
     	margin-bottom: 3rem;
     }
 
-    .list.projects {
+    .homepage .list.projects {
         break-after: column;
     }
 
-    .list.recipes {
-        break-after: auto;
+    .homepage .list.recipes {
+        margin-bottom: 3rem;
     }
 }
 
@@ -554,23 +562,23 @@ footer p {
         column-count: 3;
     }
 
-    .list.about {
+    .homepage .list.about {
         break-after: avoid;
     }
 
-    .list.projects {
+    .homepage .list.projects {
         break-after: column;
     }
 
-    .list.recipes {
+    .homepage .list.recipes {
         break-after: column;
+        margin-bottom: 0;
     }
 
-    .list.reference {
+    .homepage .list.reference {
         break-after: auto;
     }
 }
-
 
 /* PAGE */
 

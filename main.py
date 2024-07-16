@@ -222,7 +222,7 @@ class SiteBuilder:
             if isinstance(child, Directory):
                 dir_name = child.name.lower()
                 html.append(f"<div class=\"list {dir_name}\">")
-                html.append(f"<h2><a href=\"/{child.formatted_path}\">{child.name}</a></h2>")
+                html.append(f"<h2>{child.name}</h2>")
                 html.append(self._generate_list(child))
                 html.append("</div>")
         html = ''.join(html)

@@ -530,28 +530,21 @@ footer p {
     font-size: 0.85rem;
 }
 
-.list.about {
-    break-after: column;
-}
-
-.list.projects {
-    break-after: column;
-}
-
 @media (min-width: 600px) {
     .homepage {
         column-count: 2;
     }
 
     .list.about {
+    	break-after: avoid;
     	margin-bottom: 3rem;
     }
 
-    .list.about, .list.projects {
-        break-after: auto;
+    .list.projects {
+        break-after: column;
     }
 
-    .list.recipes, .list.reference {
+    .list.recipes {
         break-after: auto;
     }
 }

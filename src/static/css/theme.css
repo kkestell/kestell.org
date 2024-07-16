@@ -247,6 +247,7 @@ body {
     font-weight: var(--font-weight);
     line-height: var(--line-height);
     padding: 2rem;
+    max-width: 70rem;
     margin: 0 auto;
 }
 
@@ -582,11 +583,6 @@ footer p {
 
 /* PAGE */
 
-body {
-    max-width: 70rem;
-    margin: 0 auto;
-}
-
 /* RECIPE */
 
 .recipe-content {
@@ -596,6 +592,10 @@ body {
 
 .ingredients, .instructions {
     width: 100%;
+}
+
+.instructions ol li {
+	margin-bottom: 0.5rem;
 }
 
 @media (min-width: 768px) {

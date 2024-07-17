@@ -16,7 +16,7 @@ NOTE: Marlin can be challenging to find outside of regions where it is commonly 
 * 1 cup chopped celery
 * 1 cup chopped green beans
 * 2 cups tomato purée
-* 1 1/2-2 liters water
+* 1 1/2-2 quarts chicken stock
 * 1/4 cup canned sliced jalapeño chiles
 * 1/4 cup vinegar from the can of jalapeños
 * 1/4 cup green olives, chopped (optional)
@@ -34,8 +34,8 @@ NOTE: Marlin can be challenging to find outside of regions where it is commonly 
 3. In a large pot, heat the olive oil over medium heat.
 4. Add the minced white onion and garlic to the pot. Sauté until the onion becomes translucent and the garlic is fragrant, about 3-4 minutes.
 5. Add the chopped carrot, celery, and green beans to the pot. Stir well to combine with the onion and garlic. Cook for about 5-7 minutes until the vegetables begin to soften.
-6. Pour in the tomato puree, stirring to combine it with the sautéed vegetables.
-7. Add 1 1/2 to 2 liters of water, depending on the desired consistency of the soup. Stir well.
+6. Pour in the tomato purée, stirring to combine it with the sautéed vegetables.
+7. Add 1 1/2 to 2 quarts of stock, depending on the desired consistency of the soup. Stir well.
 8. Add the bay leaves and oregano. Stir to incorporate the seasonings.
 9. Bring the mixture to a gentle boil. Reduce the heat to low and let it simmer for about 20-25 minutes, or until the vegetables are tender.
 10. Add the shredded smoked marlin to the pot. Stir to combine.

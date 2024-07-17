@@ -20,19 +20,12 @@ class InstructionGroup:
 
 class RecipeModel:
     def __init__(self, title: str, description: Optional[str], ingredient_groups: List[IngredientGroup],
-                 instruction_groups: List[InstructionGroup]):
+                 instruction_groups: List[InstructionGroup], notes: Optional[str] = None):
         self.title = title
         self.description = description
         self.ingredient_groups = ingredient_groups
         self.instruction_groups = instruction_groups
-
-    def to_dict(self):
-        return {
-            'title': self.title,
-            'description': self.description,
-            'ingredient_groups': [ig.__dict__ for ig in self.ingredient_groups],
-            'instruction_groups': [ig.__dict__ for ig in self.instruction_groups]
-        }
+        self.notes = notes
 
 
 def normalize_fractions(val):
@@ -78,7 +71,13 @@ class RecipeParser(Treeprocessor):
         if instruction_groups is None:
             return None
 
-        return RecipeModel(title, description, ingredient_groups, instruction_groups)
+        current_index += 1
+        notes = None
+        if current_index < len(root) and root[current_index].tag == 'h2' and root[current_index].text == 'Notes':
+            notes = root[current_index + 1].text
+            current_index += 2
+
+        return RecipeModel(title, description, ingredient_groups, instruction_groups, notes)
 
     def parse_ingredient_groups(self, root, start_index) -> Optional[List[IngredientGroup]]:
         groups = []
@@ -174,7 +173,7 @@ def recipe_to_latex(recipe: RecipeModel) -> str:
     description = recipe.description
     ingredient_groups = recipe.ingredient_groups
     instruction_groups = recipe.instruction_groups
-    notes = None
+    notes = recipe.notes
     reviews = None
     source = None
     source_latex = "\\fancyfoot[C]{\\footnotesize " + _escape_latex(source) + "}" if source else ""

@@ -165,8 +165,8 @@ class SiteBuilder:
         html_content = template.render(content=content, breadcrumbs=breadcrumbs, updated_on=file.updated_on, **file.document.frontmatter)
         return html_content
 
-    def _generate_pdf(self, recipe: RecipeModel, pdf_path: str):
-        pdf_path = self.output_dir / pdf_path.lstrip('/')
+    def _generate_pdf(self, recipe: RecipeModel, pdf_path: Path):
+        pdf_path = self.output_dir / pdf_path
         latex_content = recipe_to_latex(recipe)
         with tempfile.TemporaryDirectory() as temp_dir:
             temp_file = os.path.join(temp_dir, 'recipe.tex')
@@ -182,7 +182,7 @@ class SiteBuilder:
         recipe = parse_recipe_markdown(file.document.content)
         if not recipe:
             raise ValueError(f"Failed to parse recipe: {file.original_path}")
-        pdf_path = f"/static/{file.formatted_path.replace('.md', '.pdf')}"
+        pdf_path = Path(f"static/{file.formatted_path.replace('.md', '.pdf')}")
         if self.pdf:
             self._generate_pdf(recipe, pdf_path)
         html_content = template.render(recipe=recipe, pdf_path=pdf_path, breadcrumbs=breadcrumbs, updated_on=file.updated_on, **file.document.frontmatter)

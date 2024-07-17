@@ -11,7 +11,7 @@
     <h1>{{ recipe.title }}</h1>
 
     <p>
-        🖨️ <a href="{{ pdf_path }}" target="_blank">PDF</a>
+        🖨️ <a href="/{{ pdf_path }}" target="_blank">PDF</a>
     </p>
 
     {% if recipe.description %}
@@ -47,6 +47,13 @@
             {% endfor %}
         </div>
     </div>
+
+    {% if recipe.notes %}
+        <div class="notes">
+            <h2>Notes</h2>
+            <p>{{ recipe.notes }}</p>
+        </div>
+    {% endif %}
 </main>
 {% endblock %}
 

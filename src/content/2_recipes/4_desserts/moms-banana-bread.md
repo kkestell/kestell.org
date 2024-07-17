@@ -31,7 +31,5 @@ template: recipe
 
 ## Notes
 
-* The original recipe called for margarine, but we like butter. Use what you prefer.
-* When bananas get over-ripe, freeze them. When you have enough, thaw and make banana bread.
-* This recipe also makes good cupcakes.
-* Double the recipe and put some banana bread in the freezer. This freezes very well!
+* Makes good cupcakes.
+* This freezes very well!

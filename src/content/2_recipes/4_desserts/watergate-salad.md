@@ -9,11 +9,11 @@ template: recipe
 
 ## Ingredients
 
-* 1 package (3.4 oz) instant pistachio pudding mix
-* 1 can (8 oz) crushed pineapple, with juice
+* 1 package (3.4 ounces) instant pistachio pudding mix
+* 1 can (8 ounces) crushed pineapple, with juice
 * 1 cup miniature marshmallows
 * 1/2 cup chopped toasted walnuts
-* 4 oz frozen whipped topping, thawed
+* 4 ounces frozen whipped topping, thawed
 
 ## Instructions
 

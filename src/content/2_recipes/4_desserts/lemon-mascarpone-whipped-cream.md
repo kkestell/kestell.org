@@ -20,3 +20,4 @@ template: recipe
 1. Whip heavy cream in a large bowl until stiff peaks form.
 2. In a separate bowl, whisk together mascarpone cheese, powdered sugar, lemon zest, and lemon juice.
 3. Fold whipped cream into mascarpone mixture until combined.
+

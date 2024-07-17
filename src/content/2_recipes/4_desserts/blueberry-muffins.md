@@ -17,14 +17,14 @@ template: recipe
 
 ### For the Muffins
 
-* 1 1⁄2 cups all-purpose flour
-* 3⁄4 cups granulated sugar
+* 1 1/2 cups all-purpose flour
+* 3/4 cups granulated sugar
 * 2 teaspoons baking powder
-* 1⁄2 teaspoon salt
-* 1⁄3 cup vegetable oil
+* 1/2 teaspoon salt
+* 1/3 cup vegetable oil
 * 1 large egg
 * 1 teaspoon vanilla extract
-* 1⁄3 cup milk, or more as needed
+* 1/3 cup milk, or more as needed
 * 1 cup fresh blueberries
 
 ## Instructions

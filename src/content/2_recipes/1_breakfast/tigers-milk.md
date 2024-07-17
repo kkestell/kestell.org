@@ -13,9 +13,9 @@ Adele Davis' original recipe.
 
 * 1 cup milk
 * 1⁄4 cup powdered milk
-* 1⁄3 ea banana
-* 1 tbsp brewer's yeast
-* 2 tbsp wheat germ
+* 1⁄3 of a banana
+* 1 tablespoon brewer's yeast
+* 2 tablespoons wheat germ
 
 ## Instructions
 

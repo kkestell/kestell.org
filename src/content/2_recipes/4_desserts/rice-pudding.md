@@ -12,7 +12,7 @@ template: recipe
 * 1 1/2 cups cooked rice
 * 2 cups whole milk, divided
 * 1/4 teaspoon salt
-* 2/3 cup raisins (optional)
+* 2/3 cup raisins
 * 1 egg, beaten
 * 1/3 cup white sugar
 * 1 tablespoon butter

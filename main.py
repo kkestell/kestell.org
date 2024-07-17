@@ -264,7 +264,7 @@ class SiteBuilder:
         breadcrumbs = []
         current_node = node.parent
         while current_node:
-            breadcrumbs.append(f"<a href=\"/{current_node.formatted_path}\">{current_node.name}</a>")
+            breadcrumbs.append(f"<a href=\"/{current_node.formatted_path}/index.html\">{current_node.name}</a>")
             current_node = current_node.parent
         breadcrumbs = breadcrumbs[::-1]
         breadcrumbs.append(node.name)

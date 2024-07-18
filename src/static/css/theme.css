@@ -209,6 +209,8 @@ td:nth-child(1) {
         --h3-color: #ddd;
         --code-snippet-background-color: #000;
         --code-snippet-text-color: #fafafa;
+        --pill-text-color: #fff;
+        --pill-background-color: #333;
     }
 }
 
@@ -216,7 +218,7 @@ td:nth-child(1) {
     :root {
         --background-color: #fefefe;
         --text-color: #111;
-        --text-color-dim: #aaa;
+        --text-color-dim: #666;
         --text-color-dimmer: #ccc;
         --rule-color: #eee;
         --nav-link-color: #111;
@@ -228,6 +230,8 @@ td:nth-child(1) {
         --h3-color: #555;
         --code-snippet-background-color: #111;
         --code-snippet-text-color: #fafafa;
+        --pill-text-color: #111;
+        --pill-background-color: #eee;
     }
 }
 
@@ -535,6 +539,18 @@ footer p {
     column-count: 1;
     column-gap: 2rem;
     margin-top: 2rem;
+}
+
+.homepage span {
+    color: var(--text-color-dim);
+}
+
+.homepage small {
+    font-family: var(--monospace-font-family);
+    background: var(--pill-background-color);
+    color: var(--pill-text-color);
+    padding: 0 2px;
+    display: inline-block;
 }
 
 @media (min-width: 600px) {

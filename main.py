@@ -281,8 +281,9 @@ class SiteBuilder:
         for repo, _ in self.github_repos:
             name = repo['name']
             description = repo['description'] or "No description"
+            language = repo['language'] or "Unknown"
             url = repo['html_url']
-            html_builder.append(f"<li><a href=\"{url}\">{name}</a>")
+            html_builder.append(f"<li><a href=\"{url}\">{name}</a> <small>{language}</small>")
             html_builder.append(f"<span>{description}</span>")
             html_builder.append("</li>")
         html_builder.append("</ul>")

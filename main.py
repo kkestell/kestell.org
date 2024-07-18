@@ -6,11 +6,12 @@ import shutil
 import subprocess
 import tempfile
 from argparse import ArgumentParser
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 from typing import List
 
 import markdown
+import requests
 from jinja2 import Environment, FileSystemLoader, Template
 
 from recipes import parse_recipe_markdown, RecipeModel, recipe_to_latex
@@ -88,6 +89,47 @@ class SiteBuilder:
         self.cache_file = output_dir / '.build_cache.json'
         self.file_cache = {} if force else self._load_cache()
         self.pdf = pdf
+        self.github_username = 'kkestell'
+        self.github_repos = self._fetch_github_repos()
+
+    def _fetch_github_repos(self):
+        url = f"https://api.github.com/users/{self.github_username}/repos"
+        params = {
+            "sort": "pushed",
+            "direction": "desc",
+            "per_page": 100
+        }
+
+        repos = []
+        page = 1
+        six_months_ago = datetime.now() - timedelta(days=180)
+
+        while True:
+            response = requests.get(url, params={**params, "page": page})
+
+            if response.status_code != 200:
+                print(f"Error: Unable to fetch repositories. Status code: {response.status_code}")
+                return []
+
+            page_repos = response.json()
+            if not page_repos:
+                break
+
+            for repo in page_repos:
+                if repo['fork'] or repo['archived']:
+                    continue
+                if repo['name'] == 'tiny-vm':
+                    pass
+                updated_at = datetime.strptime(repo['updated_at'], "%Y-%m-%dT%H:%M:%SZ")
+                print(f"Repository: {repo['name']} - {updated_at}")
+                if updated_at > six_months_ago:
+                    repos.append((repo, updated_at))
+                else:
+                    return repos
+
+            page += 1
+
+        return repos
 
     def _load_cache(self):
         if self.cache_file.exists():
@@ -220,16 +262,34 @@ class SiteBuilder:
         html = []
         for child in self.root_directory.children:
             if isinstance(child, Directory):
-                dir_name = child.name.lower()
-                html.append(f"<div class=\"list {dir_name}\">")
-                html.append(f"<h2>{child.name}</h2>")
-                html.append(self._generate_list(child))
-                html.append("</div>")
+                if child.name.lower() == "projects":
+                    html.append(f"<div class=\"list projects\">")
+                    html.append(f"<h2>Projects</h2>")
+                    html.append(self._generate_github_repos_list())
+                    html.append("</div>")
+                else:
+                    dir_name = child.name.lower()
+                    html.append(f"<div class=\"list {dir_name}\">")
+                    html.append(f"<h2>{child.name}</h2>")
+                    html.append(self._generate_list(child))
+                    html.append("</div>")
         html = ''.join(html)
         home_template = self.jinja_env.get_template('home.html')
         home_html = home_template.render(content=html)
         with open(self.output_dir / "index.html", 'w', encoding='utf-8') as f:
             f.write(home_html)
+
+    def _generate_github_repos_list(self):
+        html_builder = ["<ul>"]
+        for repo, _ in self.github_repos:
+            name = repo['name']
+            description = repo['description'] or "No description"
+            url = repo['html_url']
+            html_builder.append(f"<li><a href=\"{url}\">{name}</a>")
+            html_builder.append(f"<span>{description}</span>")
+            html_builder.append("</li>")
+        html_builder.append("</ul>")
+        return ''.join(html_builder)
 
     def _copy_static(self):
         target_dir = self.output_dir / 'static'

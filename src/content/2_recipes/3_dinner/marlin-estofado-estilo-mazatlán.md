@@ -38,7 +38,7 @@ NOTE: Marlin can be challenging to find outside of regions where it is commonly 
 7. Add 1 1/2 to 2 quarts of stock, depending on the desired consistency of the soup. Stir well.
 8. Add the bay leaves and oregano. Stir to incorporate the seasonings.
 9. Bring the mixture to a gentle boil. Reduce the heat to low and let it simmer for about 20-25 minutes, or until the vegetables are tender.
-10. Add the shredded smoked marlin to the pot. Stir to combine.
+10. Add the chopped smoked fish to the pot. Stir to combine.
 11. Add the canned sliced jalapeño peppers and the vinegar from the can. Stir well.
 12. If using, add the chopped green olives. Stir to incorporate all ingredients.
 13. Before serving, remove the bay leaves from the soup.

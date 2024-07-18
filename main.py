@@ -118,10 +118,7 @@ class SiteBuilder:
             for repo in page_repos:
                 if repo['fork'] or repo['archived']:
                     continue
-                if repo['name'] == 'tiny-vm':
-                    pass
                 updated_at = datetime.strptime(repo['updated_at'], "%Y-%m-%dT%H:%M:%SZ")
-                print(f"Repository: {repo['name']} - {updated_at}")
                 if updated_at > six_months_ago:
                     repos.append((repo, updated_at))
                 else:

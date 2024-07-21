@@ -207,30 +207,17 @@ class SiteBuilder:
             temp_file = os.path.join(temp_dir, 'recipe.tex')
             with open(temp_file, 'w') as f:
                 f.write(latex_content)
-            subprocess_args = [
-                'xelatex',
-                '-output-driver=xdvipdfmx -q -E',
-                temp_file,
-                '-output-directory',
-                temp_dir
-            ]
-            subprocess.run(subprocess_args, cwd=temp_dir, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+            env = os.environ.copy()
+            env['SOURCE_DATE_EPOCH'] = str(int(datetime(2024, 1, 1).timestamp()))
+
+            subprocess_args = ['xelatex', temp_file, '-output-directory', temp_dir]
+            subprocess.run(subprocess_args, cwd=temp_dir, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, env=env)
 
             temp_path = os.path.join(temp_dir, 'recipe.pdf')
-
-            if pdf_path.exists():
-                # Compare the checksum of the new file with the existing file
-                new_checksum = self.file_checksum(temp_path)
-                existing_checksum = self.file_checksum(pdf_path)
-                if new_checksum != existing_checksum:
-                    shutil.move(temp_path, pdf_path)
-                    print(pdf_path)
-                else:
-                    print(f"\033[90m{pdf_path}\033[0m")
-            else:
-                pdf_path.parent.mkdir(parents=True, exist_ok=True)
-                shutil.move(temp_path, pdf_path)
-                print(pdf_path)
+            pdf_path.parent.mkdir(parents=True, exist_ok=True)
+            shutil.move(temp_path, pdf_path)
+            print(pdf_path)
 
     def _build_recipe_page(self, template: Template, breadcrumbs: str, file: File):
         recipe = parse_recipe_markdown(file.document.content)
@@ -255,8 +242,6 @@ class SiteBuilder:
         output_file.parent.mkdir(parents=True, exist_ok=True)
         with output_file.open('w', encoding='utf-8') as f:
             f.write(html_content)
-
-        print(output_file)
 
     def _build_homepage(self):
         html = []

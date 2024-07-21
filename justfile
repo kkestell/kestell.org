@@ -5,7 +5,7 @@ clean:
     rm -rf dist
 
 dist:
-    python main.py -p
+    python src/builder/build.py -p
 
 watch:
     python watch.py

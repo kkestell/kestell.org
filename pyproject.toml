@@ -1,0 +1,28 @@
+[project]
+name = "website"
+version = "0.1.0"
+description = "Default template for PDM package"
+authors = [
+    {name = "Kyle Kestell", email = "kyle@kestell.org"},
+]
+dependencies = [
+]
+requires-python = "==3.12.*"
+readme = "README.md"
+license = {text = "MIT"}
+
+[tool.pdm]
+distribution = false
+
+[tool.pdm.scripts]
+build = "python -m src.builder.main"
+
+[tool.pdm.dev-dependencies]
+dev = [
+    "markdown>=3.6",
+    "httpx>=0.27.0",
+    "jinja2>=3.1.4",
+    "flask>=3.0.3",
+    "watchdog>=4.0.1",
+    "-e file:///${PROJECT_ROOT}/../recipy#egg=recipy",
+]

@@ -209,7 +209,8 @@ class SiteBuilder:
                 f.write(latex_content)
 
             env = os.environ.copy()
-            env['SOURCE_DATE_EPOCH'] = str(int(datetime(2024, 1, 1).timestamp()))
+            env['SOURCE_DATE_EPOCH'] = '0'
+            env['FORCE_SOURCE_DATE'] = '1'
 
             subprocess_args = ['xelatex', temp_file, '-output-directory', temp_dir]
             subprocess.run(subprocess_args, cwd=temp_dir, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, env=env)

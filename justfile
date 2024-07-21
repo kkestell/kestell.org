@@ -1,9 +1,11 @@
 build:
     python main.py
 
-dist:
+clean:
     rm -rf dist
-    python main.py -f -p
+
+dist:
+    python main.py -p
 
 watch:
     python watch.py

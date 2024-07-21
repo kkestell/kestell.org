@@ -1,3 +1,4 @@
+import filecmp
 import hashlib
 import json
 import os
@@ -8,7 +9,7 @@ import tempfile
 from argparse import ArgumentParser
 from datetime import datetime, timedelta
 from pathlib import Path
-from typing import List
+from typing import List, Union
 
 import markdown
 import requests
@@ -79,7 +80,7 @@ class File(Node):
 
 
 class SiteBuilder:
-    def __init__(self, input_dir: Path, output_dir: Path, force: bool, pdf: bool):
+    def __init__(self, input_dir: Path, output_dir: Path, pdf: bool):
         self.content_dir = input_dir / 'content'
         self.templates_dir = input_dir / 'templates'
         self.static_dir = input_dir / 'static'
@@ -87,7 +88,6 @@ class SiteBuilder:
         self.root_directory = Directory('Home', '', '')
         self.jinja_env = Environment(loader=FileSystemLoader(str(self.templates_dir)))
         self.cache_file = output_dir / '.build_cache.json'
-        self.file_cache = {} if force else self._load_cache()
         self.pdf = pdf
         self.github_username = 'kkestell'
         self.github_repos = self._fetch_github_repos()
@@ -128,16 +128,6 @@ class SiteBuilder:
 
         return repos
 
-    def _load_cache(self):
-        if self.cache_file.exists():
-            with open(self.cache_file, 'r') as f:
-                return json.load(f)
-        return {}
-
-    def _save_cache(self):
-        with open(self.cache_file, 'w') as f:
-            json.dump(self.file_cache, f)
-
     def build(self):
         if not self.output_dir.exists():
             self.output_dir.mkdir(parents=True, exist_ok=True)
@@ -145,7 +135,6 @@ class SiteBuilder:
         self._build_html(self.root_directory)
         self._build_homepage()
         self._copy_static()
-        self._save_cache()
 
     def _build_structure(self, current_directory: Directory, current_path: Path):
         for item in current_path.iterdir():
@@ -204,6 +193,13 @@ class SiteBuilder:
         html_content = template.render(content=content, breadcrumbs=breadcrumbs, updated_on=file.updated_on, **file.document.frontmatter)
         return html_content
 
+    def file_checksum(self, file_path: Union[str, Path]) -> str:
+        hash_md5 = hashlib.md5()
+        with open(file_path, "rb") as f:
+            for chunk in iter(lambda: f.read(4096), b""):
+                hash_md5.update(chunk)
+        return hash_md5.hexdigest()
+
     def _generate_pdf(self, recipe: RecipeModel, pdf_path: Path):
         pdf_path = self.output_dir / pdf_path
         latex_content = recipe_to_latex(recipe)
@@ -211,11 +207,30 @@ class SiteBuilder:
             temp_file = os.path.join(temp_dir, 'recipe.tex')
             with open(temp_file, 'w') as f:
                 f.write(latex_content)
-            subprocess_args = ['xelatex', temp_file, '-output-directory', temp_dir]
+            subprocess_args = [
+                'xelatex',
+                '-output-driver=xdvipdfmx -q -E',
+                temp_file,
+                '-output-directory',
+                temp_dir
+            ]
             subprocess.run(subprocess_args, cwd=temp_dir, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
             temp_path = os.path.join(temp_dir, 'recipe.pdf')
-            pdf_path.parent.mkdir(parents=True, exist_ok=True)
-            shutil.move(temp_path, pdf_path)
+
+            if pdf_path.exists():
+                # Compare the checksum of the new file with the existing file
+                new_checksum = self.file_checksum(temp_path)
+                existing_checksum = self.file_checksum(pdf_path)
+                if new_checksum != existing_checksum:
+                    shutil.move(temp_path, pdf_path)
+                    print(pdf_path)
+                else:
+                    print(f"\033[90m{pdf_path}\033[0m")
+            else:
+                pdf_path.parent.mkdir(parents=True, exist_ok=True)
+                shutil.move(temp_path, pdf_path)
+                print(pdf_path)
 
     def _build_recipe_page(self, template: Template, breadcrumbs: str, file: File):
         recipe = parse_recipe_markdown(file.document.content)
@@ -228,13 +243,6 @@ class SiteBuilder:
         return html_content
 
     def _build_page(self, file: File, output_file: Path):
-        cached_info = self.file_cache.get(file.original_path, {})
-        cached_hash = cached_info.get('content_hash')
-        current_hash = file.document.content_hash
-
-        if output_file.exists() and cached_hash == current_hash:
-            return
-
         template_name = file.document.frontmatter.get('template', 'page')
         template = self.jinja_env.get_template(f'{template_name}.html')
         breadcrumbs = self._generate_breadcrumbs(file)
@@ -248,12 +256,7 @@ class SiteBuilder:
         with output_file.open('w', encoding='utf-8') as f:
             f.write(html_content)
 
-        # Update the cache
-        self.file_cache[file.original_path] = {
-            'content_hash': current_hash,
-            'mtime': os.path.getmtime(self.content_dir / file.original_path),
-            'formatted_path': file.formatted_path
-        }
+        print(output_file)
 
     def _build_homepage(self):
         html = []
@@ -283,7 +286,7 @@ class SiteBuilder:
             description = repo['description'] or "No description"
             language = repo['language'] or "Unknown"
             url = repo['html_url']
-            html_builder.append(f"<li><a href=\"{url}\">{name}</a> <small>{language}</small>")
+            html_builder.append(f"<li><a href=\"{url}\">{name}</a> <small>{language.lower()}</small>")
             html_builder.append(f"<span>{description}</span>")
             html_builder.append("</li>")
         html_builder.append("</ul>")
@@ -322,7 +325,7 @@ class SiteBuilder:
         breadcrumbs = []
         current_node = node.parent
         while current_node:
-            breadcrumbs.append(f"<a href=\"/{current_node.formatted_path}/index.html\">{current_node.name}</a>")
+            breadcrumbs.append(f"<a href=\"/{current_node.formatted_path}\">{current_node.name}</a>")
             current_node = current_node.parent
         breadcrumbs = breadcrumbs[::-1]
         breadcrumbs.append(node.name)
@@ -333,11 +336,10 @@ def main():
     parser = ArgumentParser(description="Static site generator")
     parser.add_argument('-i', '--input', default='./src/', help='Input directory path')
     parser.add_argument('-o', '--output', default='./dist/', help='Output directory path')
-    parser.add_argument('-f', '--force', action='store_true', help='Force rebuild of all files')
     parser.add_argument('-p', '--pdf', action='store_true', help='Generate PDFs for recipe pages')
     args = parser.parse_args()
 
-    builder = SiteBuilder(Path(args.input), Path(args.output), args.force, args.pdf)
+    builder = SiteBuilder(Path(args.input), Path(args.output), args.pdf)
     builder.build()
 
 

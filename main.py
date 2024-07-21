@@ -1,6 +1,4 @@
-import filecmp
 import hashlib
-import json
 import os
 import re
 import shutil
@@ -9,7 +7,7 @@ import tempfile
 from argparse import ArgumentParser
 from datetime import datetime, timedelta
 from pathlib import Path
-from typing import List, Union
+from typing import List
 
 import markdown
 import requests
@@ -33,26 +31,28 @@ class FrontMatterParser:
         self.filename = Path(filename)
 
     def parse(self):
-        with self.filename.open('r', encoding='utf-8') as file:
+        with self.filename.open("r", encoding="utf-8") as file:
             lines = file.readlines()
 
-        if lines[0].strip() == '---':
-            end_frontmatter_idx = lines[1:].index('---\n') + 1
+        if lines[0].strip() == "---":
+            end_frontmatter_idx = lines[1:].index("---\n") + 1
         else:
             raise ValueError("Frontmatter must start with '---'")
 
         frontmatter = {}
         for line in lines[1:end_frontmatter_idx]:
-            key, value = line.strip().split(': ', 1)
+            key, value = line.strip().split(": ", 1)
             frontmatter[key] = value
 
-        content = ''.join(lines[end_frontmatter_idx + 2:])
+        content = "".join(lines[end_frontmatter_idx + 2 :])
 
         return Document(frontmatter, content)
 
 
 class Node:
-    def __init__(self, name: str, formatted_path: str, original_path: str, order: int = 0):
+    def __init__(
+        self, name: str, formatted_path: str, original_path: str, order: int = 0
+    ):
         self.name = name
         self.formatted_path = formatted_path
         self.original_path = original_path
@@ -61,7 +61,14 @@ class Node:
 
 
 class Directory(Node):
-    def __init__(self, name: str, formatted_path: str, original_path: str, children: List[Node] = None, order: int = 0):
+    def __init__(
+        self,
+        name: str,
+        formatted_path: str,
+        original_path: str,
+        children: List[Node] = None,
+        order: int = 0,
+    ):
         super().__init__(name, formatted_path, original_path, order)
         if children is None:
             children = []
@@ -73,32 +80,36 @@ class Directory(Node):
 
 
 class File(Node):
-    def __init__(self, formatted_path: str, original_path: str, document: Document, updated_on: str):
-        super().__init__(document.frontmatter.get('title', 'Untitled'), formatted_path, original_path)
+    def __init__(
+        self,
+        formatted_path: str,
+        original_path: str,
+        document: Document,
+        updated_on: str,
+    ):
+        super().__init__(
+            document.frontmatter.get("title", "Untitled"), formatted_path, original_path
+        )
         self.document = document
         self.updated_on = updated_on
 
 
 class SiteBuilder:
     def __init__(self, input_dir: Path, output_dir: Path, pdf: bool):
-        self.content_dir = input_dir / 'content'
-        self.templates_dir = input_dir / 'templates'
-        self.static_dir = input_dir / 'static'
+        self.content_dir = input_dir / "content"
+        self.templates_dir = input_dir / "templates"
+        self.static_dir = input_dir / "static"
         self.output_dir = output_dir
-        self.root_directory = Directory('Home', '', '')
+        self.root_directory = Directory("Home", "", "")
         self.jinja_env = Environment(loader=FileSystemLoader(str(self.templates_dir)))
-        self.cache_file = output_dir / '.build_cache.json'
+        self.cache_file = output_dir / ".build_cache.json"
         self.pdf = pdf
-        self.github_username = 'kkestell'
+        self.github_username = "kkestell"
         self.github_repos = self._fetch_github_repos()
 
     def _fetch_github_repos(self):
         url = f"https://api.github.com/users/{self.github_username}/repos"
-        params = {
-            "sort": "pushed",
-            "direction": "desc",
-            "per_page": 100
-        }
+        params = {"sort": "pushed", "direction": "desc", "per_page": 100}
 
         repos = []
         page = 1
@@ -108,7 +119,9 @@ class SiteBuilder:
             response = requests.get(url, params={**params, "page": page})
 
             if response.status_code != 200:
-                print(f"Error: Unable to fetch repositories. Status code: {response.status_code}")
+                print(
+                    f"Error: Unable to fetch repositories. Status code: {response.status_code}"
+                )
                 return []
 
             page_repos = response.json()
@@ -116,9 +129,9 @@ class SiteBuilder:
                 break
 
             for repo in page_repos:
-                if repo['fork'] or repo['archived']:
+                if repo["fork"] or repo["archived"]:
                     continue
-                updated_at = datetime.strptime(repo['updated_at'], "%Y-%m-%dT%H:%M:%SZ")
+                updated_at = datetime.strptime(repo["updated_at"], "%Y-%m-%dT%H:%M:%SZ")
                 if updated_at > six_months_ago:
                     repos.append((repo, updated_at))
                 else:
@@ -142,29 +155,38 @@ class SiteBuilder:
 
             formatted_name = name.title()
             original_path = item.relative_to(self.content_dir).as_posix()
-            formatted_path = re.sub(r'\d+_', '', original_path)
+            formatted_path = re.sub(r"\d+_", "", original_path)
 
             if item.is_dir():
-                directory = Directory(formatted_name, formatted_path, original_path, order=order)
+                directory = Directory(
+                    formatted_name, formatted_path, original_path, order=order
+                )
                 current_directory.add_child(directory)
                 self._build_structure(directory, item)
-            elif item.is_file() and item.suffix == '.md':
+            elif item.is_file() and item.suffix == ".md":
                 document = FrontMatterParser(item).parse()
-                if document.frontmatter.get('draft', 'false').lower() == 'true':
+                if document.frontmatter.get("draft", "false").lower() == "true":
                     continue
-                updated_on = datetime.fromtimestamp(item.stat().st_mtime).strftime('%Y-%m-%d %H:%M:%S')
+                updated_on = datetime.fromtimestamp(item.stat().st_mtime).strftime(
+                    "%Y-%m-%d %H:%M:%S"
+                )
                 file = File(formatted_path, original_path, document, updated_on)
                 current_directory.add_child(file)
         self._sort_structure(current_directory)
 
     def _parse_prefix(self, name):
-        match = re.match(r'^(\d+)_(.*)$', name)
+        match = re.match(r"^(\d+)_(.*)$", name)
         if match:
             return int(match.group(1)), match.group(2)
         return 0, name
 
     def _sort_structure(self, directory: Directory):
-        directory.children.sort(key=lambda n: (n.order, f"0{n.name}" if isinstance(n, Directory) else f"1{n.name}"))
+        directory.children.sort(
+            key=lambda n: (
+                n.order,
+                f"0{n.name}" if isinstance(n, Directory) else f"1{n.name}",
+            )
+        )
         for child in directory.children:
             if isinstance(child, Directory):
                 self._sort_structure(child)
@@ -177,45 +199,53 @@ class SiteBuilder:
                 self._build_html(child)
                 self._build_index(child, directory_path)
             elif isinstance(child, File):
-                output_file = (self.output_dir / child.formatted_path).with_suffix('.html')
+                output_file = (self.output_dir / child.formatted_path).with_suffix(
+                    ".html"
+                )
                 self._build_page(child, output_file)
 
     def _build_index(self, directory: Directory, output_path: Path):
         content = self._generate_list(directory)
         breadcrumbs = self._generate_breadcrumbs(directory)
-        template = self.jinja_env.get_template('index.html')
-        index_html = template.render(content=content, title=directory.name, breadcrumbs=breadcrumbs)
-        with open(output_path / "index.html", 'w', encoding='utf-8') as f:
+        template = self.jinja_env.get_template("index.html")
+        index_html = template.render(
+            content=content, title=directory.name, breadcrumbs=breadcrumbs
+        )
+        with open(output_path / "index.html", "w", encoding="utf-8") as f:
             f.write(index_html)
 
     def _build_normal_page(self, template: Template, breadcrumbs: str, file: File):
-        content = markdown.markdown(file.document.content, extensions=['extra'])
-        html_content = template.render(content=content, breadcrumbs=breadcrumbs, updated_on=file.updated_on, **file.document.frontmatter)
+        content = markdown.markdown(file.document.content, extensions=["extra"])
+        html_content = template.render(
+            content=content,
+            breadcrumbs=breadcrumbs,
+            updated_on=file.updated_on,
+            **file.document.frontmatter,
+        )
         return html_content
-
-    def file_checksum(self, file_path: Union[str, Path]) -> str:
-        hash_md5 = hashlib.md5()
-        with open(file_path, "rb") as f:
-            for chunk in iter(lambda: f.read(4096), b""):
-                hash_md5.update(chunk)
-        return hash_md5.hexdigest()
 
     def _generate_pdf(self, recipe: RecipeModel, pdf_path: Path):
         pdf_path = self.output_dir / pdf_path
         latex_content = recipe_to_latex(recipe)
         with tempfile.TemporaryDirectory() as temp_dir:
-            temp_file = os.path.join(temp_dir, 'recipe.tex')
-            with open(temp_file, 'w') as f:
+            temp_file = os.path.join(temp_dir, "recipe.tex")
+            with open(temp_file, "w") as f:
                 f.write(latex_content)
 
             env = os.environ.copy()
-            env['SOURCE_DATE_EPOCH'] = '0'
-            env['FORCE_SOURCE_DATE'] = '1'
+            env["SOURCE_DATE_EPOCH"] = "0"
+            env["FORCE_SOURCE_DATE"] = "1"
 
-            subprocess_args = ['xelatex', temp_file, '-output-directory', temp_dir]
-            subprocess.run(subprocess_args, cwd=temp_dir, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, env=env)
+            subprocess_args = ["xelatex", temp_file, "-output-directory", temp_dir]
+            subprocess.run(
+                subprocess_args,
+                cwd=temp_dir,
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL,
+                env=env,
+            )
 
-            temp_path = os.path.join(temp_dir, 'recipe.pdf')
+            temp_path = os.path.join(temp_dir, "recipe.pdf")
             pdf_path.parent.mkdir(parents=True, exist_ok=True)
             shutil.move(temp_path, pdf_path)
             print(pdf_path)
@@ -227,59 +257,69 @@ class SiteBuilder:
         pdf_path = Path(f"static/{file.formatted_path.replace('.md', '.pdf')}")
         if self.pdf:
             self._generate_pdf(recipe, pdf_path)
-        html_content = template.render(recipe=recipe, pdf_path=pdf_path, breadcrumbs=breadcrumbs, updated_on=file.updated_on, **file.document.frontmatter)
+        html_content = template.render(
+            recipe=recipe,
+            pdf_path=pdf_path,
+            breadcrumbs=breadcrumbs,
+            updated_on=file.updated_on,
+            **file.document.frontmatter,
+        )
         return html_content
 
     def _build_page(self, file: File, output_file: Path):
-        template_name = file.document.frontmatter.get('template', 'page')
-        template = self.jinja_env.get_template(f'{template_name}.html')
+        template_name = file.document.frontmatter.get("template", "page")
+        template = self.jinja_env.get_template(f"{template_name}.html")
         breadcrumbs = self._generate_breadcrumbs(file)
 
-        if template_name == 'recipe':
+        if template_name == "recipe":
             html_content = self._build_recipe_page(template, breadcrumbs, file)
         else:
             html_content = self._build_normal_page(template, breadcrumbs, file)
 
         output_file.parent.mkdir(parents=True, exist_ok=True)
-        with output_file.open('w', encoding='utf-8') as f:
+        with output_file.open("w", encoding="utf-8") as f:
             f.write(html_content)
+
+        print(output_file)
 
     def _build_homepage(self):
         html = []
         for child in self.root_directory.children:
             if isinstance(child, Directory):
                 if child.name.lower() == "projects":
-                    html.append(f"<div class=\"list projects\">")
+                    html.append(f'<div class="list projects">')
                     html.append(f"<h2>Projects</h2>")
                     html.append(self._generate_github_repos_list())
                     html.append("</div>")
                 else:
                     dir_name = child.name.lower()
-                    html.append(f"<div class=\"list {dir_name}\">")
+                    html.append(f'<div class="list {dir_name}">')
                     html.append(f"<h2>{child.name}</h2>")
                     html.append(self._generate_list(child))
                     html.append("</div>")
-        html = ''.join(html)
-        home_template = self.jinja_env.get_template('home.html')
+        html = "".join(html)
+        home_template = self.jinja_env.get_template("home.html")
         home_html = home_template.render(content=html)
-        with open(self.output_dir / "index.html", 'w', encoding='utf-8') as f:
+        with open(self.output_dir / "index.html", "w", encoding="utf-8") as f:
             f.write(home_html)
 
     def _generate_github_repos_list(self):
         html_builder = ["<ul>"]
         for repo, _ in self.github_repos:
-            name = repo['name']
-            description = repo['description'] or "No description"
-            language = repo['language'] or "Unknown"
-            url = repo['html_url']
-            html_builder.append(f"<li><a href=\"{url}\">{name}</a> <small>{language.lower()}</small>")
+            name = repo["name"]
+            description = repo["description"] or "No description"
+            language = repo["language"] or "Unknown"
+            url = repo["html_url"]
+            html_builder.append(
+                f'<li><a href="{url}">{name}</a> <small>{language.lower()}</small>'
+            )
             html_builder.append(f"<span>{description}</span>")
             html_builder.append("</li>")
         html_builder.append("</ul>")
-        return ''.join(html_builder)
+        return "".join(html_builder)
 
     def _copy_static(self):
-        target_dir = self.output_dir / 'static'
+        target_dir = self.output_dir / "static"
         target_dir.mkdir(parents=True, exist_ok=True)
 
         for item in os.listdir(self.static_dir):
@@ -296,22 +336,27 @@ class SiteBuilder:
             if isinstance(child, Directory):
                 dir_link = f"/{child.formatted_path}/index.html"
                 html_builder.append(
-                    f"<li class=\"dir\"><h2><a href=\"{dir_link}\">{child.name}</a></h2>{self._generate_list(child)}</li>")
+                    f'<li class="dir"><h2><a href="{dir_link}">{child.name}</a></h2>{self._generate_list(child)}</li>'
+                )
             elif isinstance(child, File):
-                page_path = child.formatted_path.replace('.md', '.html')
+                page_path = child.formatted_path.replace(".md", ".html")
                 title = child.name
-                html_builder.append(f"<li><a href=\"/{page_path}\">{title}</a>")
-                if child.document.frontmatter.get('subtitle'):
-                    html_builder.append(f"<span>{child.document.frontmatter['subtitle']}</span>")
+                html_builder.append(f'<li><a href="/{page_path}">{title}</a>')
+                if child.document.frontmatter.get("subtitle"):
+                    html_builder.append(
+                        f"<span>{child.document.frontmatter['subtitle']}</span>"
+                    )
                 html_builder.append("</li>")
         html_builder.append("</ul>")
-        return ''.join(html_builder)
+        return "".join(html_builder)
 
     def _generate_breadcrumbs(self, node: Node):
         breadcrumbs = []
         current_node = node.parent
         while current_node:
-            breadcrumbs.append(f"<a href=\"/{current_node.formatted_path}\">{current_node.name}</a>")
+            breadcrumbs.append(
+                f'<a href="/{current_node.formatted_path}">{current_node.name}</a>'
+            )
             current_node = current_node.parent
         breadcrumbs = breadcrumbs[::-1]
         breadcrumbs.append(node.name)
@@ -320,9 +365,13 @@ class SiteBuilder:
 
 def main():
     parser = ArgumentParser(description="Static site generator")
-    parser.add_argument('-i', '--input', default='./src/', help='Input directory path')
-    parser.add_argument('-o', '--output', default='./dist/', help='Output directory path')
-    parser.add_argument('-p', '--pdf', action='store_true', help='Generate PDFs for recipe pages')
+    parser.add_argument("-i", "--input", default="./src/", help="Input directory path")
+    parser.add_argument(
+        "-o", "--output", default="./dist/", help="Output directory path"
+    )
+    parser.add_argument(
+        "-p", "--pdf", action="store_true", help="Generate PDFs for recipe pages"
+    )
     args = parser.parse_args()
 
     builder = SiteBuilder(Path(args.input), Path(args.output), args.pdf)

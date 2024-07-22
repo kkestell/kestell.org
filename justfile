@@ -5,10 +5,11 @@ clean:
     rm -rf dist
 
 dist:
+    just clean
     python src/builder/build.py -p
 
 watch:
-    python watch.py
+    python src/builder/watch.py
 
 default:
     just build

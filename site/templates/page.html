@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %} | {{ title }}{% endblock %}
+
+{% block breadcrumbs %}
+<p>{{ breadcrumbs | safe }}</p>
+{% endblock %}
+
+{% block content %}
+<main class="page">
+    <h1>{{ title }}</h1>
+    {{ content | safe }}
+</main>
+{% endblock %}
+
+{% block footer %}
+<p>Last updated on {{ updated_on }}</p>
+{% endblock %}

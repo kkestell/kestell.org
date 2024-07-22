@@ -7,7 +7,7 @@ template: recipe
 
 # Weeknight Spaghetti
 
-This is a good way to trick your kids into eating vegetables.
+This is a great way to trick your kids into eating vegetables.
 
 ## Ingredients
 
@@ -33,3 +33,4 @@ This is a good way to trick your kids into eating vegetables.
 ## Notes
 
 Use whatever vegetables you have on hand.
+

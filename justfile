@@ -1,5 +1,5 @@
 build:
-    python main.py
+    python src/builder/build.py -p
 
 clean:
     rm -rf dist

@@ -237,7 +237,6 @@ class SiteBuilder:
             raise ValueError(f"Failed to parse recipe: {file.original_path}")
         pdf_path = Path(f"static/{file.formatted_path.replace('.md', '.pdf')}")
         if self.pdf:
-            # convert date to seconds since epoch e.g. '2024-07-20 22:41:06'
             source_date_epoch = str(int(datetime.strptime(file.updated_on, "%Y-%m-%d %H:%M:%S").timestamp()))
             self._generate_pdf(recipe, pdf_path, source_date_epoch)
         html_content = template.render(

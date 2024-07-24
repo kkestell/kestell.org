@@ -22,8 +22,8 @@
         <div class="ingredients">
             <h2>Ingredients</h2>
             {% for group in recipe.ingredient_groups %}
-                {% if group.title %}
-                    <h3>{{ group.title }}</h3>
+                {% if group.name %}
+                    <h3>{{ group.name }}</h3>
                 {% endif %}
                 <ul>
                     {% for ingredient in group.ingredients %}
@@ -36,8 +36,8 @@
         <div class="instructions">
             <h2>Instructions</h2>
             {% for group in recipe.instruction_groups %}
-                {% if group.title %}
-                    <h3>{{ group.title }}</h3>
+                {% if group.name %}
+                    <h3>{{ group.name }}</h3>
                 {% endif %}
                 <ol>
                     {% for instruction in group.instructions %}

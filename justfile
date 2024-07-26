@@ -1,15 +1,16 @@
 build:
-    python src/builder/build.py -p
+    pdm run python src/builder/build.py -p
 
 clean:
     rm -rf dist
 
-dist:
+deploy:
     just clean
-    python src/builder/build.py -p
+    just build
+    rsync -avz dist/* kkestell_kestell@ssh.nyc1.nearlyfreespeech.net:/home/public/
 
 watch:
-    python src/builder/watch.py
+    pdm run python src/builder/watch.py
 
 default:
     just build

@@ -290,7 +290,7 @@ class SiteBuilder:
         for repo, _ in self.github_repos:
             name = repo["name"]
             description = repo["description"] or "No description"
-            language = repo["language"] or "Unknown"
+            language = repo["language"] or "markdown"
             url = repo["html_url"]
             html_builder.append(
                 f'<li><a href="{url}">{name}</a> <small>{language.lower()}</small>'

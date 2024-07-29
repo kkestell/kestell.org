@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>kestell.org  | http://home.lan</title>
+    <title>kestell.org  | Web Server</title>
     <link rel="stylesheet" href="/static/css/theme.css" />
     
 </head>
@@ -11,13 +11,13 @@
     <header>
         <h1>kestell.org</h1>
         
-<p><a href="/">Home</a> <span class="separator">/</span> <a href="/reference">Reference</a> <span class="separator">/</span> http://home.lan</p>
+<p><a href="/">Home</a> <span class="separator">/</span> <a href="/reference">Reference</a> <span class="separator">/</span> <a href="/reference/home-network">Home Network</a> <span class="separator">/</span> Web Server</p>
 
     </header>
 
     
 <main class="page">
-    <h1>http://home.lan</h1>
+    <h1>Web Server</h1>
     <h2>Prerequisites</h2>
 <h3>SSH Key Generation</h3>
 <p>Generate an SSH key:</p>
@@ -34,34 +34,34 @@
 <pre><code>/home.lan/10.0.0.2
 </code></pre>
 <h2>Install Debian</h2>
-<p><img src="/static/images/home.lan/debian-install-1.png" />
-<img src="/static/images/home.lan/debian-install-2.png" />
-<img src="/static/images/home.lan/debian-install-3.png" />
-<img src="/static/images/home.lan/debian-install-4.png" />
-<img src="/static/images/home.lan/debian-install-5.png" />
-<img src="/static/images/home.lan/debian-install-6.png" />
-<img src="/static/images/home.lan/debian-install-7.png" />
-<img src="/static/images/home.lan/debian-install-8.png" />
-<img src="/static/images/home.lan/debian-install-9.png" />
-<img src="/static/images/home.lan/debian-install-10.png" />
-<img src="/static/images/home.lan/debian-install-11.png" />
-<img src="/static/images/home.lan/debian-install-12.png" />
-<img src="/static/images/home.lan/debian-install-13.png" />
-<img src="/static/images/home.lan/debian-install-14.png" />
-<img src="/static/images/home.lan/debian-install-15.png" />
-<img src="/static/images/home.lan/debian-install-16.png" />
-<img src="/static/images/home.lan/debian-install-17.png" />
-<img src="/static/images/home.lan/debian-install-18.png" />
-<img src="/static/images/home.lan/debian-install-19.png" />
-<img src="/static/images/home.lan/debian-install-20.png" />
-<img src="/static/images/home.lan/debian-install-21.png" />
-<img src="/static/images/home.lan/debian-install-22.png" />
-<img src="/static/images/home.lan/debian-install-23.png" />
-<img src="/static/images/home.lan/debian-install-24.png" />
-<img src="/static/images/home.lan/debian-install-25.png" />
-<img src="/static/images/home.lan/debian-install-26.png" />
-<img src="/static/images/home.lan/debian-install-27.png" />
-<img src="/static/images/home.lan/debian-install-28.png" /></p>
+<p><img src="/static/images/home-network/web-server/debian-install-1.png" />
+<img src="/static/images/home-network/web-server/debian-install-2.png" />
+<img src="/static/images/home-network/web-server/debian-install-3.png" />
+<img src="/static/images/home-network/web-server/debian-install-4.png" />
+<img src="/static/images/home-network/web-server/debian-install-5.png" />
+<img src="/static/images/home-network/web-server/debian-install-6.png" />
+<img src="/static/images/home-network/web-server/debian-install-7.png" />
+<img src="/static/images/home-network/web-server/debian-install-8.png" />
+<img src="/static/images/home-network/web-server/debian-install-9.png" />
+<img src="/static/images/home-network/web-server/debian-install-10.png" />
+<img src="/static/images/home-network/web-server/debian-install-11.png" />
+<img src="/static/images/home-network/web-server/debian-install-12.png" />
+<img src="/static/images/home-network/web-server/debian-install-13.png" />
+<img src="/static/images/home-network/web-server/debian-install-14.png" />
+<img src="/static/images/home-network/web-server/debian-install-15.png" />
+<img src="/static/images/home-network/web-server/debian-install-16.png" />
+<img src="/static/images/home-network/web-server/debian-install-17.png" />
+<img src="/static/images/home-network/web-server/debian-install-18.png" />
+<img src="/static/images/home-network/web-server/debian-install-19.png" />
+<img src="/static/images/home-network/web-server/debian-install-20.png" />
+<img src="/static/images/home-network/web-server/debian-install-21.png" />
+<img src="/static/images/home-network/web-server/debian-install-22.png" />
+<img src="/static/images/home-network/web-server/debian-install-23.png" />
+<img src="/static/images/home-network/web-server/debian-install-24.png" />
+<img src="/static/images/home-network/web-server/debian-install-25.png" />
+<img src="/static/images/home-network/web-server/debian-install-26.png" />
+<img src="/static/images/home-network/web-server/debian-install-27.png" />
+<img src="/static/images/home-network/web-server/debian-install-28.png" /></p>
 <ol>
 <li>Install Debian 12 using the netinst ISO.</li>
 <li>During installation, deselect the graphical environment and GNOME; select the SSH server.</li>
@@ -69,10 +69,10 @@
 </ol>
 <h3>SSH Configuration and Key Distribution</h3>
 <p>Verify SSH login capability using a password:</p>
-<pre><code class="language-bash">kyle@rhea:~ $ ssh kyle@home.lan
+<pre><code class="language-bash">kyle@rhea:~ $ ssh kyle@web-server
 </code></pre>
 <p>Add the generated SSH key to the server:</p>
-<pre><code class="language-bash">kyle@rhea:~ $ ssh-copy-id -i ~/.ssh/id_ed25519_kyle_at_rhea_dot_lan kyle@home.lan
+<pre><code class="language-bash">kyle@rhea:~ $ ssh-copy-id -i ~/.ssh/id_ed25519_kyle_at_rhea_dot_lan kyle@web-server
 </code></pre>
 <p>Attempt to log in again to confirm that no password prompt appears.</p>
 <h2>Server Configuration</h2>
@@ -166,7 +166,7 @@ WantedBy=multi-user.target
 <pre><code class="language-bash">kyle@home:~ $ sudo systemctl status hello.service
 </code></pre>
 <h4>Verify Setup</h4>
-<pre><code class="language-bash">kyle@rhea:~ $ curl -I hello.home.lan
+<pre><code class="language-bash">kyle@rhea:~ $ curl -I hello.web-server
 HTTP/1.1 200 OK
 Server: nginx/1.22.1
 Date: Sat, 06 Jul 2024 18:16:06 GMT
@@ -174,7 +174,7 @@ Content-Type: text/html; charset=utf-8
 Content-Length: 15837
 Connection: keep-alive
 
-kyle@rhea:~ $ curl hello.home.lan
+kyle@rhea:~ $ curl hello.web-server
 Hello, World!
 </code></pre>
 <h1>Deployments</h1>
@@ -233,7 +233,7 @@ services:
 
     <footer>
         
-<p>Last updated on 2024-07-07 08:26:48</p>
+<p>Last updated on 2024-07-28 19:35:54</p>
 
     </footer>
 </body>

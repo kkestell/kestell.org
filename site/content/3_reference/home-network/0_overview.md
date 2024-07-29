@@ -1,5 +1,5 @@
 ---
-title: Home Network
+title: Overview
 date: 2021-11-27
 draft: false
 ---
@@ -151,7 +151,7 @@ free -h
 ### Lenovo ThinkCentre
 
 Hostname
-:    `oberon`
+:    `home`
 
 CPU
 :    Intel Core i5-4570T @ 2.9GHz

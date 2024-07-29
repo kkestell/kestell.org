@@ -152,7 +152,7 @@ class SiteBuilder:
         for item in current_path.iterdir():
             order, name = self._parse_prefix(item.stem)
 
-            formatted_name = name.title()
+            formatted_name = name.replace("-", " ").title()
             original_path = item.relative_to(self.content_dir).as_posix()
             formatted_path = re.sub(r"\d+_", "", original_path)
 

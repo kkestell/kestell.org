@@ -1,5 +1,5 @@
 ---
-title: http://home.lan
+title: Web Server
 date: 2024-06-13
 draft: false
 ---
@@ -33,34 +33,34 @@ In OpenWRT, under DHCP and DNS settings, map the hostname to an IP address:
 
 ## Install Debian
 
-<img src="/static/images/home.lan/debian-install-1.png" />
-<img src="/static/images/home.lan/debian-install-2.png" />
-<img src="/static/images/home.lan/debian-install-3.png" />
-<img src="/static/images/home.lan/debian-install-4.png" />
-<img src="/static/images/home.lan/debian-install-5.png" />
-<img src="/static/images/home.lan/debian-install-6.png" />
-<img src="/static/images/home.lan/debian-install-7.png" />
-<img src="/static/images/home.lan/debian-install-8.png" />
-<img src="/static/images/home.lan/debian-install-9.png" />
-<img src="/static/images/home.lan/debian-install-10.png" />
-<img src="/static/images/home.lan/debian-install-11.png" />
-<img src="/static/images/home.lan/debian-install-12.png" />
-<img src="/static/images/home.lan/debian-install-13.png" />
-<img src="/static/images/home.lan/debian-install-14.png" />
-<img src="/static/images/home.lan/debian-install-15.png" />
-<img src="/static/images/home.lan/debian-install-16.png" />
-<img src="/static/images/home.lan/debian-install-17.png" />
-<img src="/static/images/home.lan/debian-install-18.png" />
-<img src="/static/images/home.lan/debian-install-19.png" />
-<img src="/static/images/home.lan/debian-install-20.png" />
-<img src="/static/images/home.lan/debian-install-21.png" />
-<img src="/static/images/home.lan/debian-install-22.png" />
-<img src="/static/images/home.lan/debian-install-23.png" />
-<img src="/static/images/home.lan/debian-install-24.png" />
-<img src="/static/images/home.lan/debian-install-25.png" />
-<img src="/static/images/home.lan/debian-install-26.png" />
-<img src="/static/images/home.lan/debian-install-27.png" />
-<img src="/static/images/home.lan/debian-install-28.png" />
+<img src="/static/images/home-network/web-server/debian-install-1.png" />
+<img src="/static/images/home-network/web-server/debian-install-2.png" />
+<img src="/static/images/home-network/web-server/debian-install-3.png" />
+<img src="/static/images/home-network/web-server/debian-install-4.png" />
+<img src="/static/images/home-network/web-server/debian-install-5.png" />
+<img src="/static/images/home-network/web-server/debian-install-6.png" />
+<img src="/static/images/home-network/web-server/debian-install-7.png" />
+<img src="/static/images/home-network/web-server/debian-install-8.png" />
+<img src="/static/images/home-network/web-server/debian-install-9.png" />
+<img src="/static/images/home-network/web-server/debian-install-10.png" />
+<img src="/static/images/home-network/web-server/debian-install-11.png" />
+<img src="/static/images/home-network/web-server/debian-install-12.png" />
+<img src="/static/images/home-network/web-server/debian-install-13.png" />
+<img src="/static/images/home-network/web-server/debian-install-14.png" />
+<img src="/static/images/home-network/web-server/debian-install-15.png" />
+<img src="/static/images/home-network/web-server/debian-install-16.png" />
+<img src="/static/images/home-network/web-server/debian-install-17.png" />
+<img src="/static/images/home-network/web-server/debian-install-18.png" />
+<img src="/static/images/home-network/web-server/debian-install-19.png" />
+<img src="/static/images/home-network/web-server/debian-install-20.png" />
+<img src="/static/images/home-network/web-server/debian-install-21.png" />
+<img src="/static/images/home-network/web-server/debian-install-22.png" />
+<img src="/static/images/home-network/web-server/debian-install-23.png" />
+<img src="/static/images/home-network/web-server/debian-install-24.png" />
+<img src="/static/images/home-network/web-server/debian-install-25.png" />
+<img src="/static/images/home-network/web-server/debian-install-26.png" />
+<img src="/static/images/home-network/web-server/debian-install-27.png" />
+<img src="/static/images/home-network/web-server/debian-install-28.png" />
 
 1. Install Debian 12 using the netinst ISO.
 2. During installation, deselect the graphical environment and GNOME; select the SSH server.
@@ -71,13 +71,13 @@ In OpenWRT, under DHCP and DNS settings, map the hostname to an IP address:
 Verify SSH login capability using a password:
 
 ```bash
-kyle@rhea:~ $ ssh kyle@home.lan
+kyle@rhea:~ $ ssh kyle@web-server
 ```
 
 Add the generated SSH key to the server:
 
 ```bash
-kyle@rhea:~ $ ssh-copy-id -i ~/.ssh/id_ed25519_kyle_at_rhea_dot_lan kyle@home.lan
+kyle@rhea:~ $ ssh-copy-id -i ~/.ssh/id_ed25519_kyle_at_rhea_dot_lan kyle@web-server
 ```
 
 Attempt to log in again to confirm that no password prompt appears.
@@ -226,7 +226,7 @@ kyle@home:~ $ sudo systemctl status hello.service
 #### Verify Setup
 
 ```bash
-kyle@rhea:~ $ curl -I hello.home.lan
+kyle@rhea:~ $ curl -I hello.web-server
 HTTP/1.1 200 OK
 Server: nginx/1.22.1
 Date: Sat, 06 Jul 2024 18:16:06 GMT
@@ -234,7 +234,7 @@ Content-Type: text/html; charset=utf-8
 Content-Length: 15837
 Connection: keep-alive
 
-kyle@rhea:~ $ curl hello.home.lan
+kyle@rhea:~ $ curl hello.web-server
 Hello, World!
 ```
 

@@ -5,8 +5,6 @@ clean:
     rm -rf dist
 
 deploy:
-    just clean
-    just build
     rsync -avz dist/* kkestell_kestell@ssh.nyc1.nearlyfreespeech.net:/home/public/
 
 watch:

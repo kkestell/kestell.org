@@ -36,9 +36,9 @@ template: recipe
 
 ### Making the Marinade
 
-1. Combine jalapeños, cilantro, garlic, mayonnaise, sour cream, lime juice, and vinegar in a blender. Blend until smooth. With blender running, slowly drizzle in olive oil. Refrigerate until ready to use.
-
-### Making the Marinade
-
 1. Combine salt, cumin, paprika, pepper, garlic, vinegar, and oil in a small bowl. Mix well.
 
+### Making the Sauce
+
+1. Combine jalapeños, cilantro, garlic, mayonnaise, sour cream, lime juice, and vinegar in a blender. Blend until smooth. With blender running, slowly drizzle in olive oil.
+2. Refrigerate until ready to use.

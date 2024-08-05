@@ -7,8 +7,8 @@ from watchdog.events import FileSystemEventHandler
 from watchdog.observers import Observer
 
 PORT = 8080
-DIST_DIR = '/home/kyle/src/public/kestell.org/dist'
-SITE_DIR = '/home/kyle/src/public/kestell.org/site'
+DIST_DIR = '/home/kyle/src/kestell.org/dist'
+SITE_DIR = '/home/kyle/src/kestell.org/site'
 DEBOUNCE_DELAY_SECONDS = 1
 
 app = Flask(__name__, static_folder=DIST_DIR)
@@ -46,13 +46,13 @@ def start_server():
 
 
 if __name__ == "__main__":
-    os.system('python /home/kyle/src/public/kestell.org/src/builder/build.py')
+    os.system('python /home/kyle/src/kestell.org/src/builder/build.py')
 
     server_thread = threading.Thread(target=start_server)
     server_thread.daemon = True
     server_thread.start()
 
-    event_handler = ChangeHandler('python /home/kyle/src/public/kestell.org/src/builder/build.py')
+    event_handler = ChangeHandler('python /home/kyle/src/kestell.org/src/builder/build.py')
     observer = Observer()
     observer.schedule(event_handler, path=SITE_DIR, recursive=True)
     observer.start()

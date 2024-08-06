@@ -1,11 +1,11 @@
 ---
-title: Marlin Estofado Estilo Mazatlán
+title: Marlin Estofado Estilo Mazatlán (Marlin Stew)
 date: 2024-05-12
 draft: false
 template: recipe
 ---
 
-# Marlin Estofado Estilo Mazatlán
+# Marlin Estofado Estilo Mazatlán (Marlin Stew)
 
 NOTE: Marlin can be challenging to find outside of regions where it is commonly fished, such as the Pacific coast of Mexico. If marlin is not available, you can substitute another firm, meaty fish like mahi-mahi, which is what we use. Swordfish or tuna would also work well.
 

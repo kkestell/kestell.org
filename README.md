@@ -15,13 +15,13 @@ python build.py [options]
 ### Options
 
 <dl>
-  <dt>-i, --input</dt>
+  <dt><code>-i, --input</code></dt>
   <dd>Input directory path (default: <code>./site/</code>)</dd>
 
-  <dt>-o, --output</dt>
+  <dt><code>-o, --output</code></dt>
   <dd>Output directory path (default: <code>./dist/</code>)</dd>
 
-  <dt>-p, --pdf</dt>
+  <dt><code>-p, --pdf</code></dt>
   <dd>Generate PDFs for recipe pages</dd>
 </dl>
 
@@ -66,16 +66,16 @@ pdm run src/builder/watch.py [options]
 ### Options
 
 <dl>
-  <dt>-i, --input</dt>
+  <dt><code>-i, --input</code></dt>
   <dd>Input directory path (default: <code>./site/</code>)</dd>
 
-  <dt>-o, --output</dt>
+  <dt><code>-o, --output</code></dt>
   <dd>Output directory path (default: <code>./dist/</code>)</dd>
 
-  <dt>-p, --port</dt>
+  <dt><code>-p, --port</code></dt>
   <dd>Port to run the server on (default: <code>8080</code>)</dd>
 
-  <dt>-b, --build-command</dt>
+  <dt><code>-b, --build-command</code></dt>
   <dd>Command to run on file changes (default: <code>pdm run src/builder/build.py</code>)</dd>
 </dl>
 
@@ -125,16 +125,16 @@ pdm run src/builder/scaffold.py recipe [options]
 ### Options
 
 <dl>
-  <dt>-i, --input</dt>
+  <dt><code>-i, --input</code></dt>
   <dd>Input directory (default: <code>./site/</code>)</dd>
 
-  <dt>-c, --category</dt>
+  <dt><code>-c, --category</code></dt>
   <dd>Category name (default: <code>misc</code>).</dd>
 
-  <dt>-t, --title</dt>
+  <dt><code>-t, --title</code></dt>
   <dd>Title of the document (default: <code>Untitled</code>).</dd>
 
-  <dt>-u, --url</dt>
+  <dt><code>-u, --url</code></dt>
   <dd>URL to fetch the recipe from.</dd>
 </dl>
 

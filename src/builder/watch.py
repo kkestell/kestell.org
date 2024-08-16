@@ -1,27 +1,28 @@
 import os
 import threading
 import time
+import argparse
+from pathlib import Path
 
 from flask import Flask, send_from_directory
 from watchdog.events import FileSystemEventHandler
 from watchdog.observers import Observer
 
-PORT = 8080
-DIST_DIR = '/home/kyle/src/kestell.org/dist'
-SITE_DIR = '/home/kyle/src/kestell.org/site'
 DEBOUNCE_DELAY_SECONDS = 1
 
-app = Flask(__name__, static_folder=DIST_DIR)
 
+def create_app(output_dir):
+    app = Flask(__name__, static_folder=output_dir)
 
-@app.route('/')
-def serve_index():
-    return send_from_directory(app.static_folder, 'index.html')
+    @app.route('/')
+    def serve_index():
+        return send_from_directory(app.static_folder, 'index.html')
 
+    @app.route('/<path:path>')
+    def serve_file(path):
+        return send_from_directory(app.static_folder, path)
 
-@app.route('/<path:path>')
-def serve_file(path):
-    return send_from_directory(app.static_folder, path)
+    return app
 
 
 class ChangeHandler(FileSystemEventHandler):
@@ -41,20 +42,35 @@ class ChangeHandler(FileSystemEventHandler):
                 os.system(self.build_command)
 
 
-def start_server():
-    app.run(port=PORT, use_reloader=False)
+def start_server(app, port):
+    app.run(port=port, use_reloader=False)
 
 
 if __name__ == "__main__":
-    os.system('python /home/kyle/src/kestell.org/src/builder/build.py')
+    parser = argparse.ArgumentParser(description="Watchdog server with Flask")
+    parser.add_argument("-i", "--input", default="./site/", help="Input directory path")
+    parser.add_argument(
+        "-o", "--output", default="./dist/", help="Output directory path"
+    )
+    parser.add_argument("-p", "--port", type=int, default=8080, help="Port to run the server on")
+    parser.add_argument("-b", "--build-command", default="pdm run src/builder/build.py",
+                        help="Build command to run on file changes")
 
-    server_thread = threading.Thread(target=start_server)
+    args = parser.parse_args()
+
+    input_dir = Path(args.input).resolve()
+    output_dir = Path(args.output).resolve()
+
+    os.system(args.build_command)
+
+    app = create_app(output_dir)
+    server_thread = threading.Thread(target=start_server, args=(app, args.port))
     server_thread.daemon = True
     server_thread.start()
 
-    event_handler = ChangeHandler('python /home/kyle/src/kestell.org/src/builder/build.py')
+    event_handler = ChangeHandler(args.build_command)
     observer = Observer()
-    observer.schedule(event_handler, path=SITE_DIR, recursive=True)
+    observer.schedule(event_handler, path=input_dir, recursive=True)
     observer.start()
 
     try:

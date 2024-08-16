@@ -6,6 +6,7 @@ authors = [
     {name = "Kyle Kestell", email = "kyle@kestell.org"},
 ]
 dependencies = [
+    "python-slugify>=8.0.4",
 ]
 requires-python = "==3.12.*"
 readme = "README.md"

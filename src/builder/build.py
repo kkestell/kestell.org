@@ -198,9 +198,14 @@ class SiteBuilder:
                 self._build_html(child)
                 self._build_index(child, directory_path)
             elif isinstance(child, File):
-                output_file = (self.output_dir / child.formatted_path).with_suffix(
-                    ".html"
-                )
+                output_file = (self.output_dir / child.formatted_path).with_suffix(".html")
+
+                # if output_file.exists():
+                #     output_file_mtime = output_file.stat().st_mtime
+                #     source_file_mtime = (self.content_dir / child.original_path).stat().st_mtime
+                #     if output_file_mtime >= source_file_mtime:
+                #         continue
+
                 self._build_page(child, output_file)
 
     def _build_index(self, directory: Directory, output_path: Path):

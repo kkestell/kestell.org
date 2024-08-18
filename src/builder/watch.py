@@ -38,7 +38,6 @@ class ChangeHandler(FileSystemEventHandler):
             now = time.time()
             if now - self.last_modified > DEBOUNCE_DELAY_SECONDS:
                 self.last_modified = now
-                print(f"File changed: {event.src_path}, rebuilding...")
                 os.system(self.build_command)
 
 

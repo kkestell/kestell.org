@@ -1,22 +1,17 @@
 [project]
-name = "website"
+name = "builder"
 version = "0.1.0"
-description = "Default template for PDM package"
+description = "Static site generator for kestell.org"
 authors = [
     {name = "Kyle Kestell", email = "kyle@kestell.org"},
 ]
-dependencies = [
-    "python-slugify>=8.0.4",
-]
+dependencies = []
 requires-python = "==3.12.*"
 readme = "README.md"
 license = {text = "MIT"}
 
 [tool.pdm]
 distribution = false
-
-[tool.pdm.scripts]
-build = "python -m src.builder.main"
 
 [tool.pdm.dev-dependencies]
 dev = [
@@ -25,5 +20,6 @@ dev = [
     "jinja2>=3.1.4",
     "flask>=3.0.3",
     "watchdog>=4.0.1",
-    "-e file:///${PROJECT_ROOT}/../recipy#egg=recipy",
+    "python-slugify>=8.0.4",
+    "python-recipy>=0.1.3",
 ]

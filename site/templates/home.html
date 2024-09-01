@@ -1,8 +1,45 @@
 {% extends "base.html" %}
 
+{% macro render_directory(directory) %}
+<div class="list {{ directory.name|lower }}">
+    <ul>
+        {% for child in directory.children %}
+            {% if child.__class__.__name__ == 'Directory' %}
+                <li class="dir">
+                    <h2><a href="/{{ child.formatted_path }}/index.html">{{ child.name }}</a></h2>
+                    {{ render_directory(child) }}
+                </li>
+            {% elif child.__class__.__name__ == 'File' %}
+                <li>
+                    <a href="/{{ child.formatted_path.replace('.md', '.html') }}">{{ child.name }}</a>
+                    {% if child.document.frontmatter.subtitle %}
+                        <span>{{ child.document.frontmatter.subtitle }}</span>
+                    {% endif %}
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</div>
+{% endmacro %}
+
 {% block content %}
 <div class="homepage">
-    {{ content | safe }}
+    <h2>Projects</h2>
+    <div class="list projects">
+        <ul>
+            {% for repo, updated_at in github_repos %}
+                <li>
+                    <a href="{{ repo.html_url }}">{{ repo.name }}</a>
+                    <small>{{ repo.language|lower }}</small>
+                    <span>{{ repo.description or 'No description' }}</span>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% for child in root_directory.children %}
+        <h2>{{ child.name }}</h2>
+        {{ render_directory(child) }}
+    {% endfor %}
 </div>
 {% endblock %}
 

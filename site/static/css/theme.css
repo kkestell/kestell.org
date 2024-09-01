@@ -541,6 +541,11 @@ footer p {
     margin-top: 2rem;
 }
 
+.homepage h2 {
+    font-size: 1rem;
+    margin-top: 0;
+}
+
 .homepage span {
     color: var(--text-color-dim);
 }
@@ -600,6 +605,35 @@ footer p {
 }
 
 /* PAGE */
+
+.page .list {
+    margin-top: 2rem;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+@media (min-width: 600px) {
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 992px) {
+    .gallery {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.gallery img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0;
+}
 
 /* RECIPE */
 

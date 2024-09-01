@@ -1,18 +1,27 @@
+import concurrent.futures
 import hashlib
+import json
 import os
 import re
 import shutil
+import threading
 from argparse import ArgumentParser
 from datetime import datetime, timedelta
 from pathlib import Path
+from queue import Queue, Empty
 from typing import List, Optional
 
 import httpx
 import markdown
 from jinja2 import Environment, FileSystemLoader, Template
+from recipy.latex import LatexOptions
 from recipy.markdown import recipe_from_markdown
 from recipy.models import Recipe
-from recipy.pdf import recipe_to_pdf
+from recipy.pdf import recipe_to_pdf, PdfOptions
+from rich.console import Console
+
+
+console = Console()
 
 
 class Document:
@@ -43,14 +52,14 @@ class FrontMatterParser:
             key, value = line.strip().split(": ", 1)
             frontmatter[key] = value
 
-        content = "".join(lines[end_frontmatter_idx + 2 :])
+        content = "".join(lines[end_frontmatter_idx + 2:])
 
         return Document(frontmatter, content)
 
 
 class Node:
     def __init__(
-        self, name: str, formatted_path: str, original_path: str, order: int = 0
+            self, name: str, formatted_path: str, original_path: str, order: int = 0
     ):
         self.name = name
         self.formatted_path = formatted_path
@@ -61,12 +70,12 @@ class Node:
 
 class Directory(Node):
     def __init__(
-        self,
-        name: str,
-        formatted_path: str,
-        original_path: str,
-        children: List[Node] = None,
-        order: int = 0,
+            self,
+            name: str,
+            formatted_path: str,
+            original_path: str,
+            children: List[Node] = None,
+            order: int = 0,
     ):
         super().__init__(name, formatted_path, original_path, order)
         if children is None:
@@ -80,11 +89,11 @@ class Directory(Node):
 
 class File(Node):
     def __init__(
-        self,
-        formatted_path: str,
-        original_path: str,
-        document: Document,
-        updated_on: str,
+            self,
+            formatted_path: str,
+            original_path: str,
+            document: Document,
+            updated_on: str,
     ):
         super().__init__(
             document.frontmatter.get("title", "Untitled"), formatted_path, original_path
@@ -94,7 +103,7 @@ class File(Node):
 
 
 class SiteBuilder:
-    def __init__(self, input_dir: Path, output_dir: Path, pdf: bool):
+    def __init__(self, input_dir: Path, output_dir: Path, force: bool):
         self.content_dir = input_dir / "content"
         self.templates_dir = input_dir / "templates"
         self.static_dir = input_dir / "static"
@@ -102,9 +111,11 @@ class SiteBuilder:
         self.root_directory = Directory("Home", "", "")
         self.jinja_env = Environment(loader=FileSystemLoader(str(self.templates_dir)))
         self.cache_file = output_dir / ".build_cache.json"
-        self.pdf = pdf
+        self.force = force
         self.github_username = "kkestell"
         self.github_repos = self._fetch_github_repos()
+        self.pdf_queue = Queue()
+        self.stop_event = threading.Event()
 
     def _fetch_github_repos(self):
         url = f"https://api.github.com/users/{self.github_username}/repos"
@@ -141,12 +152,17 @@ class SiteBuilder:
         return repos
 
     def build(self):
-        if not self.output_dir.exists():
-            self.output_dir.mkdir(parents=True, exist_ok=True)
-        self._build_structure(self.root_directory, self.content_dir)
-        self._build_html(self.root_directory)
-        self._build_homepage()
-        self._copy_static()
+        num_threads = os.cpu_count()
+        with console.status("[bold green]building site", refresh_per_second=15) as status:
+            with concurrent.futures.ThreadPoolExecutor(max_workers=num_threads) as executor:
+                for _ in range(num_threads):
+                    executor.submit(self._process_pdf_queue)
+                self._build_structure(self.root_directory, self.content_dir)
+                self._build_html(self.root_directory)
+                self._build_homepage()
+                self._copy_static()
+                self.stop_event.set()
+                self.pdf_queue.join()
 
     def _build_structure(self, current_directory: Directory, current_path: Path):
         for item in current_path.iterdir():
@@ -200,11 +216,11 @@ class SiteBuilder:
             elif isinstance(child, File):
                 output_file = (self.output_dir / child.formatted_path).with_suffix(".html")
 
-                # if output_file.exists():
-                #     output_file_mtime = output_file.stat().st_mtime
-                #     source_file_mtime = (self.content_dir / child.original_path).stat().st_mtime
-                #     if output_file_mtime >= source_file_mtime:
-                #         continue
+                if not self.force and output_file.exists():
+                    output_file_mtime = output_file.stat().st_mtime
+                    source_file_mtime = (self.content_dir / child.original_path).stat().st_mtime
+                    if output_file_mtime >= source_file_mtime:
+                        continue
 
                 self._build_page(child, output_file)
 
@@ -212,8 +228,17 @@ class SiteBuilder:
         content = self._generate_list(directory)
         breadcrumbs = self._generate_breadcrumbs(directory)
         template = self.jinja_env.get_template("index.html")
+        meta = {}
+        if directory.parent:
+            meta_file = self.content_dir / directory.original_path / "meta.json"
+            if meta_file.exists():
+                with open(meta_file, 'r') as f:
+                    meta = json.load(f)
         index_html = template.render(
-            content=content, title=directory.name, breadcrumbs=breadcrumbs
+            content=content,
+            title=directory.name,
+            breadcrumbs=breadcrumbs,
+            description=meta.get("description", ""),
         )
         with open(output_path / "index.html", "w", encoding="utf-8") as f:
             f.write(index_html)
@@ -229,21 +254,33 @@ class SiteBuilder:
         return html_content
 
     def _generate_pdf(self, recipe: Recipe, pdf_path: Path, source_date_epoch: Optional[str] = "0"):
-        pdf_path = self.output_dir / pdf_path
-        pdf_data = recipe_to_pdf(recipe, source_date_epoch)
-        pdf_path.parent.mkdir(parents=True, exist_ok=True)
-        with pdf_path.open("wb") as f:
-            f.write(pdf_data)
-        print(pdf_path)
+        self.pdf_queue.put((recipe, pdf_path, source_date_epoch))
+
+    def _process_pdf_queue(self):
+        while not self.stop_event.is_set() or not self.pdf_queue.empty():
+            try:
+                recipe, pdf_path, source_date_epoch = self.pdf_queue.get(timeout=1)
+                pdf_path = self.output_dir / pdf_path
+                latex_options = LatexOptions(main_font="Source Serif Pro", heading_font="Source Sans Pro")
+                pdf_options = PdfOptions(reproducible=True)
+                pdf_data = recipe_to_pdf(recipe, latex_options=latex_options, pdf_options=pdf_options)
+                pdf_path.parent.mkdir(parents=True, exist_ok=True)
+                with pdf_path.open("wb") as f:
+                    f.write(pdf_data)
+                console.log(pdf_path)
+                self.pdf_queue.task_done()
+            except Empty:
+                continue
 
     def _build_recipe_page(self, template: Template, breadcrumbs: str, file: File):
+        if file.name == "Vee's Devil Food Cake":
+            pass
         recipe = recipe_from_markdown(file.document.content)
         if not recipe:
             raise ValueError(f"Failed to parse recipe: {file.original_path}")
         pdf_path = Path(f"static/{file.formatted_path.replace('.md', '.pdf')}")
-        if self.pdf:
-            source_date_epoch = str(int(datetime.strptime(file.updated_on, "%Y-%m-%d %H:%M:%S").timestamp()))
-            self._generate_pdf(recipe, pdf_path, source_date_epoch)
+        source_date_epoch = str(int(datetime.strptime(file.updated_on, "%Y-%m-%d %H:%M:%S").timestamp()))
+        self._generate_pdf(recipe, pdf_path, source_date_epoch)
         html_content = template.render(
             recipe=recipe,
             pdf_path=pdf_path,
@@ -267,26 +304,11 @@ class SiteBuilder:
         with output_file.open("w", encoding="utf-8") as f:
             f.write(html_content)
 
-        print(output_file)
+        console.log(output_file)
 
     def _build_homepage(self):
-        html = []
-        for child in self.root_directory.children:
-            if isinstance(child, Directory):
-                if child.name.lower() == "projects":
-                    html.append(f'<div class="list projects">')
-                    html.append(f"<h2>Projects</h2>")
-                    html.append(self._generate_github_repos_list())
-                    html.append("</div>")
-                else:
-                    dir_name = child.name.lower()
-                    html.append(f'<div class="list {dir_name}">')
-                    html.append(f"<h2>{child.name}</h2>")
-                    html.append(self._generate_list(child))
-                    html.append("</div>")
-        html = "".join(html)
         home_template = self.jinja_env.get_template("home.html")
-        home_html = home_template.render(content=html)
+        home_html = home_template.render(root_directory=self.root_directory, github_repos=self.github_repos)
         with open(self.output_dir / "index.html", "w", encoding="utf-8") as f:
             f.write(home_html)
 
@@ -357,11 +379,11 @@ def main():
         "-o", "--output", default="./dist/", help="Output directory path"
     )
     parser.add_argument(
-        "-p", "--pdf", action="store_true", help="Generate PDFs for recipe pages"
+        "-f", "--force", action="store_true", help="Force all pages and PDFs to be rebuilt"
     )
     args = parser.parse_args()
 
-    builder = SiteBuilder(Path(args.input), Path(args.output), args.pdf)
+    builder = SiteBuilder(Path(args.input), Path(args.output), args.force)
     builder.build()
 
 

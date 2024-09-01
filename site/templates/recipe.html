@@ -18,6 +18,10 @@
         <p class="description">{{ recipe.description }}</p>
     {% endif %}
 
+    {% if recipe.image_urls %}
+        <img src="{{ recipe.image_urls[0] }}" alt="{{ recipe.title }}">
+    {% endif %}
+
     <div class="recipe-content">
         <div class="ingredients">
             <h2>Ingredients</h2>

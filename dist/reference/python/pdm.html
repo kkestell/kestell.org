@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>kestell.org  | PDM</title>
+    <link rel="stylesheet" href="/static/css/theme.css" />
+    
+</head>
+<body>
+    <header>
+        <h1>kestell.org</h1>
+        
+<p><a href="/">Home</a> <span class="separator">/</span> <a href="/reference">Reference</a> <span class="separator">/</span> <a href="/reference/python">Python</a> <span class="separator">/</span> PDM</p>
+
+    </header>
+
+    
+<main class="page">
+    <h1>PDM</h1>
+    <h2>Create a New Project</h2>
+<p>Initialize a new project with a <code>pyproject.toml</code> file:</p>
+<pre><code class="language-shell">pdm init
+</code></pre>
+<h2>Project Structure</h2>
+<p>Assuming the project is named "hello," a typical PDM project structure with a <code>src</code> directory might look like this:</p>
+<pre><code class="language-shell">hello/
+├── .pdm-python         # Automatically generated file (add to .gitignore)
+├── pyproject.toml      # Project configuration file
+├── pdm.lock            # Automatically generated lock file
+├── src/                # Source code directory
+│   └── hello/          # Main application package
+│       ├── __init__.py # Marks the directory as a package
+│       └── main.py     # Entry point of the application
+└── tests/              # Test directory
+    ├── __init__.py     # Marks the directory as a package
+    └── test_main.py    # Example test file
+</code></pre>
+<h2>Manage Packages</h2>
+<p>Add and install a regular (runtime) dependency to your project:</p>
+<pre><code class="language-shell">pdm add &lt;package_name&gt;
+</code></pre>
+<p>Add and install a development dependency:</p>
+<pre><code class="language-shell">pdm add -d &lt;package_name&gt;
+</code></pre>
+<p>This will add the development dependency to the <code>dev</code> group under <code>[tool.pdm.dev-dependencies]</code> in your <code>pyproject.toml</code>.</p>
+<h2>Using <code>pdm run</code></h2>
+<p>Run the <code>main.py</code> script:</p>
+<pre><code class="language-shell">pdm run python src/hello/main.py
+</code></pre>
+<p>Run a script defined in <code>pyproject.toml</code>:</p>
+<pre><code class="language-shell">pdm run &lt;script_name&gt;
+</code></pre>
+<h2>Using <code>pdm run</code> with Pytest</h2>
+<p>Run tests in the "hello" project:</p>
+<pre><code class="language-shell">pdm run pytest
+</code></pre>
+<p>Run a specific test module or function:</p>
+<pre><code class="language-shell">pdm run pytest tests/test_main.py
+</code></pre>
+<h2>Example Test with Pytest</h2>
+<p>Assume you have a <code>greet</code> function defined in the <code>hello</code> module within the <code>src/hello/</code> directory.</p>
+<p><code>src/hello/main.py</code>:</p>
+<pre><code class="language-shell">def greet(name: str) -&gt; str:
+    return f&quot;Hello, {name}!&quot;
+</code></pre>
+<p><code>tests/test_main.py</code>:</p>
+<pre><code class="language-shell">import pytest
+from hello.main import greet
+
+def test_greet():
+    assert greet(&quot;World&quot;) == &quot;Hello, World!&quot;
+</code></pre>
+<h2>Manage Virtual Environments</h2>
+<p>Create and activate a virtual environment automatically managed by PDM:</p>
+<pre><code class="language-shell">pdm venv create
+pdm venv activate
+</code></pre>
+<p>Deactivate the virtual environment:</p>
+<pre><code class="language-shell">deactivate
+</code></pre>
+<h2>Requirements Management</h2>
+<h3>Example <code>pyproject.toml</code></h3>
+<p>Here’s how your <code>pyproject.toml</code> file might look for the "hello" project:</p>
+<pre><code class="language-shell">[project]
+name = &quot;hello&quot;
+version = &quot;0.1.0&quot;
+description = &quot;Default template for PDM package&quot;
+authors = [
+    {name = &quot;Kyle Kestell&quot;, email = &quot;kyle@kestell.org&quot;},
+]
+requires-python = &quot;&gt;=3.12&quot;
+readme = &quot;README.md&quot;
+license = { text = &quot;MIT&quot; }
+dependencies = [
+    &quot;rich&gt;=13.7.1&quot;,
+]
+
+[tool.pdm.dev-dependencies]
+dev = [
+    &quot;pytest&gt;=8.3.2&quot;,
+]
+
+[build-system]
+requires = [&quot;pdm-backend&quot;]
+build-backend = &quot;pdm.backend&quot;
+
+[tool.pdm]
+distribution = true
+</code></pre>
+<h3>Export Regular and Development Dependencies</h3>
+<h4>Export Regular (Runtime) Dependencies</h4>
+<p>To export only the regular (runtime) dependencies:</p>
+<pre><code class="language-shell">pdm export --without-hashes --prod &gt; requirements.txt
+</code></pre>
+<h4>Export Development Dependencies</h4>
+<p>To export the development dependencies:</p>
+<pre><code class="language-shell">pdm export --without-hashes --dev &gt; requirements-dev.txt
+</code></pre>
+<h3>Install Dependencies from a Requirements File</h3>
+<p>Install dependencies from a requirements file:</p>
+<pre><code class="language-shell">pdm install -r requirements.txt
+</code></pre>
+<h2>Upgrade PDM</h2>
+<p>Upgrade PDM itself:</p>
+<pre><code class="language-shell">pdm self update
+</code></pre>
+</main>
+
+
+    <footer>
+        
+<p>Last updated on 2024-08-22 07:04:25</p>
+
+    </footer>
+</body>
+</html>

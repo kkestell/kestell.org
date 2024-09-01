@@ -13,7 +13,7 @@ def find_category_path(base_dir: Path, category: str) -> str:
 
 
 def create_recipe(input_dir: str, category: str, title: str, url: str = None):
-    base_dir = Path(input_dir) / "content" / "2_recipes"
+    base_dir = Path(input_dir) / "content" / "1_recipes"
     category_dir = find_category_path(base_dir, category)
 
     slugified_title = slugify(title)
